@@ -44,17 +44,17 @@ export const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const tabs: Array<{ key: TabKey; label: string; count?: number; alert?: boolean; subtitle?: string }> = [
-    { key: 'dashboard', label: 'TELEMETRY & OVERVIEW' },
+    { key: 'dashboard', label: 'OVERVIEW' },
     { key: 'prototypes', label: 'PROTOTYPES', count: archiveStats.totalPrototypes },
-    { key: 'patents', label: 'PATENT DOSSIERS', count: archiveStats.totalPatents },
-    { key: 'logs', label: 'LABORATORY LOGS', count: archiveStats.totalLogs },
+    { key: 'patents', label: 'SPECULATIVE PATENTS', count: archiveStats.totalPatents },
+    { key: 'logs', label: 'RESEARCH NOTES', count: archiveStats.totalLogs },
     { key: 'monographs', label: 'MONOGRAPHS', count: archiveStats.totalMonographs },
-    { key: 'bench', label: 'TEST BENCH' },
+    { key: 'bench', label: 'ACOUSTIC BENCH' },
     { key: 'spectra', label: 'SPECTRA//LAB' },
-    { key: 'infrastructure', label: 'OBSERVATORIES', count: archiveStats.totalFieldSites },
-    { key: 'vault', label: 'BLACK VAULT', count: archiveStats.totalFailures, alert: true },
-    { key: 'personnel', label: 'FACULTY & FELLOWS', count: archiveStats.totalPersonnel },
-    { key: 'audit', label: 'LEDGER AUDIT', count: archiveStats.totalRevisions }
+    { key: 'infrastructure', label: 'FIELD STATIONS', count: archiveStats.totalFieldSites },
+    { key: 'vault', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, alert: true },
+    { key: 'personnel', label: 'FELLOWS & INVENTORS', count: archiveStats.totalPersonnel },
+    { key: 'audit', label: 'SYSTEM AUDIT', count: archiveStats.totalRevisions }
   ];
 
   return (
@@ -64,15 +64,15 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1.5 text-[#dfb76c] font-medium tracking-wider">
             <Award className="w-3.5 h-3.5 text-[#d4af37]" />
-            <span>INSTITUTUM ANOMALIARUM APPLICATARUM</span>
+            <span>ZAZIE INSTITUTE OF APPLIED ANOMALIES</span>
           </span>
           <span className="hidden lg:inline text-zinc-600">|</span>
-          <span className="hidden lg:inline text-zinc-400">
-            ACCREDITED RESEARCH FACILITY · ISO/IEC 17025 METROLOGY SPEC
+          <span className="hidden lg:inline text-zinc-300">
+            CREATIVE-TECHNOLOGY INITIATIVE · SPECULATIVE ENGINEERING & EXPERIMENTAL AUDIO
           </span>
           <span className="hidden xl:inline text-zinc-600">|</span>
           <span className="hidden xl:inline text-zinc-500 font-mono">
-            ISSN: 2834-9180 (Online) · DOI: 10.1088/ZIAA
+            ISSN: 2834-9180 · DOI: 10.1088/ZIAA
           </span>
         </div>
 
@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
           {isAudioPlaying && (
             <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-600/80 text-emerald-300 animate-pulse">
               <Volume2 className="w-3 h-3" />
-              <span>RF/AUDIO BUS ACTIVE</span>
+              <span>AUDIO ENGINE ACTIVE</span>
             </div>
           )}
 
@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <span className="hidden sm:inline text-zinc-600">·</span>
           <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#0a121e] border border-[#23354d] text-cyan-400 font-semibold">
-            CLEARANCE: LEVEL-4
+            STATUS: ACTIVE ARCHIVE
           </span>
         </div>
       </div>
@@ -111,15 +111,15 @@ export const Header: React.FC<HeaderProps> = ({
                 ZAZIE INSTITUTE OF APPLIED ANOMALIES
               </h1>
               <span className="hidden sm:inline-block px-2 py-0.5 text-[9px] font-mono tracking-widest text-[#dfb76c] bg-[#161309] border border-[#8c6d31]/60 rounded">
-                CHARTER ZIA-8941
+                CREATIVE TECH LAB
               </span>
             </div>
             <div className="text-xs text-zinc-400 flex items-center gap-2 font-serif">
-              <span>R&D Division of Zazie Productions LLC</span>
+              <span>Research Division of Zazie Productions LLC</span>
               <span className="text-zinc-600">·</span>
-              <span className="hidden md:inline italic text-[#c5a059]">Auditus Inauditi · Veritas Occultorum</span>
-              <span className="hidden md:inline text-zinc-600">·</span>
-              <span className="text-emerald-400/90 font-mono text-[10.5px]">5-Year Archive (2021–2026)</span>
+              <span className="hidden md:inline italic text-[#c5a059]">Applied Anomalies, Audio Technology & Speculative Systems</span>
+              <span className="text-zinc-600 hidden md:inline">·</span>
+              <span className="text-emerald-400/90 font-mono text-[10.5px]">Archive Cycle (2021–2026)</span>
             </div>
           </div>
         </div>

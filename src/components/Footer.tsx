@@ -19,10 +19,10 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
               <div className="text-xs text-zinc-400 mt-1">
-                Autonomous Theoretical Acoustics & Speculative Patents Division of <strong>Zazie Productions LLC</strong>
+                Creative-Technology Initiative & Speculative Engineering Division of <strong>Zazie Productions LLC</strong>
               </div>
               <div className="text-xs text-[#c5a059] italic mt-0.5">
-                "Auditus Inauditi · Veritas Occultorum" — Hearing the Unheard, Disclosing the Hidden
+                "Applied Anomalies · Experimental Systems · Audio Technology · Computational Creativity"
               </div>
             </div>
           </div>
@@ -30,15 +30,15 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#070d14] border border-[#1b2c40] text-zinc-300">
               <Lock className="w-3.5 h-3.5 text-[#dfb76c]" />
-              <span>CLASSIFICATION: 4-DELTA</span>
+              <span>ARCHIVE STATUS: ACTIVE</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#070d14] border border-[#1b2c40] text-zinc-300">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#070d14] border border-[#1b2c40] text-cyan-300">
               <Radio className="w-3.5 h-3.5 text-cyan-400" />
-              <span>RUBIDIUM 10MHz ATOMIC SYNC</span>
+              <span>OPEN SOUND CONTROL / DANTE</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#070d14] border border-[#1b2c40] text-zinc-300">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#070d14] border border-[#1b2c40] text-emerald-300">
               <Shield className="w-3.5 h-3.5 text-emerald-400" />
-              <span>SHA-256 VAULT BUS VERIFIED</span>
+              <span>SYSTEM LEDGER VERIFIED</span>
             </div>
           </div>
         </div>
@@ -52,28 +52,28 @@ export const Footer: React.FC = () => {
             <p className="text-zinc-400 leading-relaxed">
               Permanent repository maintaining <strong className="text-zinc-200">{archiveStats.totalPrototypes} Prototype Systems</strong>,{' '}
               <strong className="text-zinc-200">{archiveStats.totalPatents} Speculative Patents</strong>,{' '}
-              <strong className="text-zinc-200">{archiveStats.totalLogs} Telemetry Logs</strong>, and{' '}
-              <strong className="text-zinc-200">{archiveStats.totalMonographs} Peer-Reviewed Longform Treatises</strong>.
+              <strong className="text-zinc-200">{archiveStats.totalLogs} Research Notes</strong>, and{' '}
+              <strong className="text-zinc-200">{archiveStats.totalMonographs} Working Monographs</strong>.
             </p>
           </div>
 
           <div>
             <div className="text-[10px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">
-              ACCREDITATION & PROTOCOLS
+              RESEARCH INITIATIVE FOCUS
             </div>
             <p className="text-zinc-400 leading-relaxed">
-              Operated under International Acoustic Metrology Board Standard ISO/IEC 17025. 
-              Subterranean telemetry streams comply with SEED seismic and Open Sound Control (OSC) telecommunication protocols.
+              Dedicated to applied anomalies, physical computing, modular audio technology, computational creativity, 
+              and interdisciplinary invention across software and hardware.
             </p>
           </div>
 
           <div>
             <div className="text-[10px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">
-              PUBLIC ARCHIVE ACCESS
+              OPEN RESEARCH & ARCHIVE ACCESS
             </div>
             <p className="text-zinc-400 leading-relaxed">
-              Open to accredited university fellows and independent researchers upon submission of Level-4 clearance credentials. 
-              Direct queries to the Office of the Registrar, ZIAA Brussels / Salton Sink.
+              Open research archive for creative technologists, sound artists, acoustic engineers, and speculative designers. 
+              Direct inquiries to the Directorate of Research, Zazie Productions LLC.
             </p>
           </div>
         </div>

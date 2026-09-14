@@ -38,18 +38,18 @@ export const LabLogsStream: React.FC<LabLogsStreamProps> = ({ onSelectLog }) => 
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              CONTINUOUS METROLOGY LEDGER
+              RESEARCH NOTES & FIELD LOGS
             </span>
-            <span className="text-[10.5px] font-mono text-zinc-500">
-              STRATUM-1 TIME-SYNCHRONIZED ARCHIVE
+            <span className="text-[10.5px] font-mono text-zinc-400">
+              CHRONOLOGICAL ENGINEERING STREAM
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Laboratory Telemetry & Sensor Ledger ({labLogs.length} Entries)
+            Field Notes & Laboratory Research Stream ({labLogs.length} Entries)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Real-time chronological telemetry records, ambient thermal conditions, acoustic sound pressure levels, 
-            geomagnetic flux deflections, and verified non-Hermitian anomalous events.
+            Continuous stream of studio observations, DSP firmware calibrations, acoustic telemetry, 
+            and prototype testing sessions recorded across all facilities and field stations.
           </p>
         </div>
 

@@ -15,23 +15,23 @@ export const FieldInfrastructure: React.FC<FieldInfrastructureProps> = ({ onSele
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              GLOBAL OBSERVATORY GRID
+              DISTRIBUTED FIELD STATIONS
             </span>
-            <span className="text-[10.5px] font-mono text-zinc-500">
-              STRATIFIED BOREHOLE & BENTHIC SENSOR NETWORK
+            <span className="text-[10.5px] font-mono text-zinc-400">
+              REMOTE LISTENING POSTS & ACOUSTIC OBSERVATORIES
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Global Field Observatories & Acoustic Stations ({fieldSites.length} Facilities)
+            Distributed Field Stations & Sound Observatories ({fieldSites.length} Stations)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Global subterranean seismic arrays, deep oceanic SOFAR listening pods, Atacama sub-millimeter arrays, 
-            and Arctic sub-glacial wells continuously streaming planetary acoustic telemetry to the central archive.
+            Remote desert acoustic sanctuaries, sub-glacial hydrophone arrays, subterranean reverberation vaults, 
+            and coastal listening pavilions gathering environmental acoustic and electromagnetic telemetry.
           </p>
         </div>
 
         <div className="text-right text-xs font-mono text-zinc-400 bg-[#020509] px-3.5 py-2 border border-[#1b2636] rounded-md shrink-0">
-          Network Status: <strong className="text-amber-400 font-bold">{fieldSites.length} Global Observatories</strong>
+          Network Status: <strong className="text-amber-400 font-bold">{fieldSites.length} Active Stations</strong>
         </div>
       </div>
 

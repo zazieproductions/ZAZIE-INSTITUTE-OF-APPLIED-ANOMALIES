@@ -48,6 +48,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
   const featuredPrototypes = prototypes.slice(0, 4);
   const featuredMonographs = monographs.slice(0, 3);
 
+  const disciplineSummaries: Record<string, string> = {
+    'Applied Anomalies': 'Nonlinear acoustic feedback, physical hysteresis, room boundary reflections, and perceptual edge cases.',
+    'Experimental Audio Systems': 'Custom analog/digital synthesis hardware, wave-terrain modeling, physical resonators, and reactive audio devices.',
+    'Computational Creativity': 'Autonomous musical agents, real-time procedural scores, neural audio resynthesis, and generative polyphony.',
+    'Speculative Engineering': 'Design fiction hardware, multi-head tape transports, kinetic percussion automata, and experimental lutherie.',
+    'Perceptual Interfaces': 'Tactile acoustic floor arrays, motorized haptic controllers, spatial gesture tracking, and microtonal touch surfaces.',
+    'Generative Software': 'Low-latency DSP audio worklets, ambisonic spatialization engines, WebAssembly tools, and live-coding systems.',
+    'Signal Archaeology': 'Non-contact optical laser scanning of historical records, magnetic media recovery, and atmospheric VLF listening.',
+    'Acoustic Architecture': 'Multichannel spatial speaker domes, subterranean resonant vaults, site-specific sound installations, and field stations.'
+  };
+
   return (
     <div className="space-y-6 font-serif">
       {/* Hero Welcome / Prestigious Research Directorate Banner */}
@@ -62,26 +73,26 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
               <span className="archival-stamp font-mono text-[9.5px]">
-                OFFICIAL REPOSITORY // ACCREDITED
+                CREATIVE-TECHNOLOGY INITIATIVE // ARCHIVE
               </span>
               <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#162233] text-cyan-300 border border-cyan-800/60">
-                QUINQUENNIAL ARCHIVE CYCLE 2021–2026
+                RESEARCH CYCLE 2021–2026
               </span>
               <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-800/80 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                METROLOGY LEDGER ONLINE
+                DSP BENCH & AUDIO ENGINE ONLINE
               </span>
             </div>
 
             <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
-              Autonomous Laboratory for Experimental Acoustics & Speculative Patents
+              Creative-Technology Initiative for Applied Anomalies & Speculative Systems
             </h1>
 
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               Official research archives of the <strong className="text-white font-semibold">Zazie Institute of Applied Anomalies (ZIAA)</strong>. 
-              Founded in 2021 as the advanced theoretical acoustics and speculative instrumentation division of 
-              <span className="text-[#dfb76c] font-medium"> Zazie Productions LLC</span>, the Institute develops non-Hermitian phononic transducers, 
-              superconducting micro-mechanical resonators, and deep subterranean geoseismic listening infrastructure.
+              Founded in 2021 as the interdisciplinary creative-technology and speculative engineering division of 
+              <span className="text-[#dfb76c] font-medium"> Zazie Productions LLC</span>, the Institute develops experimental sound systems, 
+              tangible perceptual interfaces, computational creativity software, and site-specific acoustic instruments.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -90,7 +101,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 className="px-4 py-2 bg-[#dfb76c] hover:bg-[#ebd097] text-[#05080f] font-bold text-xs rounded transition-all shadow-md flex items-center gap-2"
               >
                 <BookOpen className="w-3.5 h-3.5" />
-                <span>Read Peer-Reviewed Monographs</span>
+                <span>Read Working Monographs</span>
               </button>
               <button
                 onClick={() => onSelectTab('prototypes')}
@@ -115,13 +126,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <InstitutionalCrest size={72} variant="gold" />
             </div>
             <div className="text-xs font-bold text-white tracking-wider">
-              OFFICE OF THE DIRECTORATE
+              ZAZIE PRODUCTIONS R&D
             </div>
             <div className="text-[11px] text-[#c5a059] italic">
-              "Auditus Inauditi · Veritas Occultorum"
+              "Applied Anomalies · Experimental Systems · Speculative Engineering"
             </div>
             <p className="text-[10px] text-zinc-400 leading-normal border-t border-[#1b2636] pt-2">
-              All physical specimens, telemetry logs, and patent claims have undergone strict metrological review under the ZIAA Research Ethics Charter.
+              Documenting physical prototypes, custom audio software, speculative patent disclosures, and field recordings developed across 2021–2026.
             </p>
           </div>
         </div>
@@ -140,7 +151,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="text-2xl font-bold text-white group-hover:text-[#dfb76c] mt-1">
             {archiveStats.totalPrototypes}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">86% Active Bench</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Active Hardware & Code</div>
         </div>
 
         <div
@@ -154,7 +165,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="text-2xl font-bold text-cyan-300 group-hover:text-cyan-200 mt-1">
             {archiveStats.totalPatents}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">Defensive / Issued</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Speculative Dossiers</div>
         </div>
 
         <div
@@ -162,13 +173,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
           className="p-3 bg-[#050911] border border-[#213045] hover:border-emerald-400 rounded-lg cursor-pointer transition-all group"
         >
           <div className="text-[10px] text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-            <span>LAB LOGS</span>
+            <span>RESEARCH LOGS</span>
             <Activity className="w-3 h-3 text-emerald-400" />
           </div>
           <div className="text-2xl font-bold text-emerald-400 group-hover:text-emerald-300 mt-1">
             {archiveStats.totalLogs}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">24/7 Telemetry</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Field & Bench Notes</div>
         </div>
 
         <div
@@ -182,7 +193,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="text-2xl font-bold text-[#f5d78e] group-hover:text-white mt-1">
             {archiveStats.totalMonographs}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">Peer-Reviewed</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Research Treatises</div>
         </div>
 
         <div
@@ -190,13 +201,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
           className="p-3 bg-[#050911] border border-[#213045] hover:border-violet-400 rounded-lg cursor-pointer transition-all group"
         >
           <div className="text-[10px] text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-            <span>FACULTY</span>
+            <span>FELLOWS</span>
             <Users className="w-3 h-3 text-violet-400" />
           </div>
           <div className="text-2xl font-bold text-violet-300 group-hover:text-violet-200 mt-1">
             {archiveStats.totalPersonnel}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">Senior Fellows</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Inventors & Artists</div>
         </div>
 
         <div
@@ -210,7 +221,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="text-2xl font-bold text-amber-400 group-hover:text-amber-300 mt-1">
             {archiveStats.totalFieldSites}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">Global Arrays</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Listening Stations</div>
         </div>
 
         <div
@@ -218,13 +229,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
           className="p-3 bg-[#050911] border border-red-950/80 hover:border-red-500 rounded-lg cursor-pointer transition-all group"
         >
           <div className="text-[10px] text-red-400 uppercase tracking-wider flex items-center justify-between">
-            <span>BLACK VAULT</span>
+            <span>POST-MORTEMS</span>
             <AlertTriangle className="w-3 h-3 text-red-400" />
           </div>
           <div className="text-2xl font-bold text-red-400 group-hover:text-red-300 mt-1">
             {archiveStats.totalFailures}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">Contained Incidents</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Anomaly Case Studies</div>
         </div>
 
         <div
@@ -232,13 +243,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
           className="p-3 bg-[#050911] border border-[#213045] hover:border-indigo-400 rounded-lg cursor-pointer transition-all group"
         >
           <div className="text-[10px] text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-            <span>AUDIT LEDGER</span>
+            <span>SYSTEM AUDIT</span>
             <Layers className="w-3 h-3 text-indigo-400" />
           </div>
           <div className="text-2xl font-bold text-indigo-300 group-hover:text-indigo-200 mt-1">
             {archiveStats.totalRevisions}
           </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">SHA-256 Verified</div>
+          <div className="text-[9.5px] text-zinc-500 mt-0.5">Versioned Commits</div>
         </div>
       </div>
 
@@ -247,20 +258,21 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-[#1b2636] pb-3">
           <div>
             <div className="archival-stamp text-[9px] font-mono mb-1">
-              INSTITUTIONAL GOVERNANCE
+              RESEARCH INITIATIVE
             </div>
             <h2 className="text-lg font-bold text-white tracking-wide">
-              Academic Faculties & Research Divisions
+              Interdisciplinary Research Divisions & Studios
             </h2>
           </div>
           <div className="text-xs text-zinc-400 font-mono">
-            8 Certified Research Divisions · Peer-Reviewed Under ISO/IEC 17025
+            8 Research Clusters · Integrating Audio Engineering, Creative Coding & Speculative Prototyping
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs">
-          {disciplines.map((d, idx) => {
+          {disciplines.map((d) => {
             const count = prototypes.filter(p => p.discipline === d).length;
+            const desc = disciplineSummaries[d] || 'Applied investigations, software synthesis, and experimental acoustic design.';
             return (
               <div
                 key={d}
@@ -272,11 +284,11 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     {d}
                   </span>
                   <span className="shrink-0 px-1.5 py-0.2 rounded text-[10px] font-mono bg-[#0c1420] border border-[#233347] text-cyan-300">
-                    {count} Projects
+                    {count} Prototypes
                   </span>
                 </div>
-                <div className="text-[11px] text-zinc-500 mt-1.5 line-clamp-2">
-                  Primary investigations, boundary field modulations, and precision acoustic metrology.
+                <div className="text-[11px] text-zinc-400 mt-1.5 line-clamp-2 leading-relaxed">
+                  {desc}
                 </div>
               </div>
             );
@@ -456,7 +468,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
       {/* Facilities & Observatories Status Strip */}
       <div className="bg-[#05080f] border border-[#213045] rounded-xl p-5">
         <div className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider mb-3">
-          GLOBAL OBSERVATORIES & UNDERGROUND VAULT CONTAINMENT STATUS
+          DISTRIBUTED RESEARCH STUDIOS & REMOTE FIELD STATIONS
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
           {facilities.slice(0, 4).map((fac, idx) => (
@@ -465,8 +477,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 <span className="font-bold text-zinc-200">{fac}</span>
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
               </div>
-              <div className="text-[10.5px] font-mono text-zinc-500 mt-1">STATUS: OPERATIONAL</div>
-              <div className="text-[10.5px] font-mono text-emerald-400/90 mt-0.5">CONTAINMENT: LEVEL-4 NOMINAL</div>
+              <div className="text-[10.5px] font-mono text-zinc-400 mt-1">STATUS: OPERATIONAL</div>
+              <div className="text-[10.5px] font-mono text-emerald-400/90 mt-0.5">AUDIO NETWORK: DANTE STREAMING</div>
             </div>
           ))}
         </div>

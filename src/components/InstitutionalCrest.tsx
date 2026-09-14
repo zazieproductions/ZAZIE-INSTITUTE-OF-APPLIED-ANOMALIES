@@ -37,9 +37,9 @@ export const InstitutionalCrest: React.FC<CrestProps> = ({
         d="M 50,50 m -41.5,0 a 41.5,41.5 0 1,1 83,0 a 41.5,41.5 0 1,1 -83,0"
         fill="none"
       />
-      <text fill={strokeColor} fontSize="4.2" letterSpacing="0.18em" fontWeight="600" opacity="0.85">
+      <text fill={strokeColor} fontSize="3.8" letterSpacing="0.14em" fontWeight="600" opacity="0.85">
         <textPath href="#crestCircle" startOffset="50%" textAnchor="middle">
-          INSTITUTUM ANOMALIARUM APPLICATARUM · MMXXI
+          ZAZIE INSTITUTE OF APPLIED ANOMALIES · EST 2021
         </textPath>
       </text>
 

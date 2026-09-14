@@ -27,18 +27,18 @@ export const AuditRevisions: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              CRYPTOGRAPHIC ARCHIVE LEDGER
+              SYSTEM ARCHITECTURE LEDGER
             </span>
-            <span className="text-[10.5px] font-mono text-zinc-500">
-              TAMPER-EVIDENT MERKLE RECORD
+            <span className="text-[10.5px] font-mono text-zinc-400">
+              VERSION-CONTROLLED DEVELOPMENT LOG
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Cryptographic Archival Revision Ledger ({revisions.length} Commits)
+            System Architecture Ledger & Research Changelog ({revisions.length} Commits)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Immutable SHA-256 commit chain documenting schematic amendments, acoustic parameter calibrations, 
-            peer-review sign-offs, and security classification adjustments across all catalogued assets.
+            Version-controlled repository changelog tracking prototype firmware updates, C++ DSP algorithm revisions, 
+            CAD schematics, and experimental documentation.
           </p>
         </div>
 

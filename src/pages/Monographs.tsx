@@ -54,16 +54,16 @@ export const Monographs: React.FC = () => {
             <span className="archival-stamp text-[9.5px] font-mono">
               PEER-REVIEWED MONOGRAPHS
             </span>
-            <span className="text-[10.5px] font-mono text-zinc-500">
-              ISSN: 2834-9180 (Online)
+            <span className="text-[10.5px] font-mono text-zinc-400">
+              ISSN: 2834-9180 (Online) · OPEN RESEARCH
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            ZIAA Transactions on Speculative Acoustics & Applied Anomalies
+            ZIAA Transactions on Applied Anomalies & Experimental Systems
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Curated mathematical treatises, boundary acoustic formulations, non-Hermitian phononics, 
-            and signal archaeology published by the Senior Research Faculty ({monographs.length} Volumes).
+            Peer-reviewed working papers, research monographs, and theoretical treatises on audio technology, 
+            computational creativity, speculative engineering, and interdisciplinary invention ({monographs.length} Volumes).
           </p>
         </div>
 

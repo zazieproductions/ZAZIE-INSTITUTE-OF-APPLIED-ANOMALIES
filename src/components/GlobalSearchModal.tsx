@@ -58,7 +58,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Search 128 prototypes, 86 patents, 264 logs, incidents, personnel..."
+            placeholder="Search prototypes, speculative patents, research notes, post-mortems, fellows..."
             className="w-full bg-transparent border-none text-white placeholder-zinc-500 focus:outline-none text-sm"
           />
           {query && (
@@ -150,12 +150,12 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                 </div>
               )}
 
-              {/* Black Vault Incidents */}
+              {/* Anomaly Post-Mortems */}
               {results.failures.length > 0 && (
                 <div className="pt-3">
                   <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>BLACK VAULT INCIDENTS ({results.failures.length})</span>
+                    <span>ANOMALY POST-MORTEMS ({results.failures.length})</span>
                   </div>
                   <div className="space-y-1.5">
                     {results.failures.slice(0, 3).map(f => (
