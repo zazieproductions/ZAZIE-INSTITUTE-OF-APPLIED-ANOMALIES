@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { revisions } from '../data/archive';
 import { Revision } from '../data/types';
-import { GitCommit, Search, Terminal, Clock, CheckCircle } from 'lucide-react';
+import { GitCommit, Search, Terminal, Clock, CheckCircle, ArrowRight } from 'lucide-react';
 
 export const AuditRevisions: React.FC = () => {
   const [search, setSearch] = useState<string>('');
+  const [visibleCount, setVisibleCount] = useState<number>(40);
 
   const filtered = revisions.filter(r => {
     const q = search.toLowerCase();
@@ -18,60 +19,91 @@ export const AuditRevisions: React.FC = () => {
     );
   });
 
+  const displayed = filtered.slice(0, visibleCount);
+
   return (
-    <div className="space-y-5 font-mono text-xs">
-      <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 bg-[#05080c] border border-violet-950 p-4 rounded-lg">
+    <div className="space-y-6 font-serif">
+      <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 bg-[#05080f] border border-[#213045] p-5 rounded-xl shadow-lg">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-violet-400" />
-            <h1 className="text-base font-bold text-white tracking-wider">
-              CRYPTOGRAPHIC REVISION AUDIT & REVISION LOG ({revisions.length} COMMITS)
-            </h1>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="archival-stamp text-[9.5px] font-mono">
+              CRYPTOGRAPHIC ARCHIVE LEDGER
+            </span>
+            <span className="text-[10.5px] font-mono text-zinc-500">
+              TAMPER-EVIDENT MERKLE RECORD
+            </span>
           </div>
-          <p className="text-zinc-400 text-[11px] mt-1">
-            Tamper-evident record of schematic changes, acoustic parameter modifications, and security classification adjustments.
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
+            Cryptographic Archival Revision Ledger ({revisions.length} Commits)
+          </h1>
+          <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
+            Immutable SHA-256 commit chain documenting schematic amendments, acoustic parameter calibrations, 
+            peer-review sign-offs, and security classification adjustments across all catalogued assets.
           </p>
         </div>
 
-        <div className="text-right text-[11px] text-zinc-500">
-          Showing <span className="text-violet-400 font-bold">{filtered.length}</span> commits
+        <div className="text-right text-xs font-mono text-zinc-400 bg-[#020509] px-3.5 py-2 border border-[#1b2636] rounded-md shrink-0">
+          Showing <span className="text-violet-400 font-bold">{Math.min(visibleCount, filtered.length)}</span> of {filtered.length} Commits
         </div>
       </div>
 
-      <div className="bg-[#04070a] border border-violet-950 p-3 rounded-lg">
-        <div className="flex items-center gap-2 bg-[#020406] border border-violet-900/60 px-3 py-1.5 rounded">
+      <div className="bg-[#04070d] border border-[#213045] p-4 rounded-xl shadow-md">
+        <div className="flex items-center gap-2.5 bg-[#020509] border border-[#23354d] px-3.5 py-2 rounded-lg">
           <Search className="w-4 h-4 text-violet-400 shrink-0" />
           <input
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search commits by hash, author, target prototype/patent, or commit message..."
-            className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs"
+            placeholder="Search commits by hash, author, target specimen, or change summary..."
+            className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs md:text-sm font-serif"
           />
+          {search && (
+            <button onClick={() => setSearch('')} className="text-zinc-500 hover:text-white text-xs font-mono">
+              CLEAR
+            </button>
+          )}
         </div>
       </div>
 
-      <div className="bg-[#05080c] border border-violet-950 rounded-lg overflow-hidden divide-y divide-violet-950/60">
-        {filtered.map(r => (
-          <div key={r.commitHash} className="p-3 hover:bg-violet-950/15 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-2">
+      <div className="space-y-3">
+        {displayed.map((r, idx) => (
+          <div
+            key={idx}
+            className="p-4 bg-[#05080f] border border-[#1c2a3b] hover:border-violet-500/80 rounded-xl transition-all shadow-sm flex flex-col sm:flex-row justify-between sm:items-center gap-3 group"
+          >
             <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="text-violet-400 font-bold font-mono">commit {r.commitHash}</span>
-                <span className="px-1.5 py-0.2 rounded text-[9.5px] bg-zinc-900 text-zinc-400 border border-zinc-800">
-                  {r.changeType}
-                </span>
-                <span className="text-emerald-400 font-bold">{r.targetRecord}</span>
+              <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+                <span className="text-violet-400 font-bold">commit {r.commitHash}</span>
+                <span className="text-zinc-600">·</span>
+                <span className="text-zinc-400">{r.timestamp.replace('T', ' ').substring(0, 19)} UTC</span>
+                <span className="text-zinc-600">·</span>
+                <span className="text-emerald-400 font-semibold">{r.targetRecord}</span>
               </div>
-              <div className="text-zinc-200 text-xs">{r.message}</div>
+              <div className="text-sm text-zinc-200 group-hover:text-white transition-colors">
+                {r.message}
+              </div>
             </div>
 
-            <div className="text-right text-[10px] text-zinc-500 shrink-0">
-              <div>Author: <span className="text-zinc-300">{r.author}</span></div>
-              <div className="text-zinc-500">{r.timestamp}</div>
+            <div className="flex sm:flex-col items-end gap-1.5 shrink-0 text-xs font-mono">
+              <span className="px-2 py-0.5 rounded text-[10px] bg-[#110c1c] text-violet-300 border border-violet-900/60 font-semibold">
+                {r.changeType}
+              </span>
+              <span className="text-zinc-500 text-[10.5px]">{r.author}</span>
             </div>
           </div>
         ))}
       </div>
+
+      {visibleCount < filtered.length && (
+        <div className="text-center pt-2">
+          <button
+            onClick={() => setVisibleCount(prev => prev + 40)}
+            className="px-6 py-2.5 bg-[#091322] hover:bg-[#0f1d33] border border-[#2b3e58] hover:border-violet-400 text-violet-300 rounded-lg font-mono text-xs transition-all shadow-md"
+          >
+            Load 40 More Commit Entries (Showing {visibleCount} of {filtered.length})
+          </button>
+        </div>
+      )}
     </div>
   );
 };

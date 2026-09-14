@@ -1,7 +1,7 @@
 import React from 'react';
 import { failures } from '../data/archive';
 import { FailedIncident } from '../data/types';
-import { AlertTriangle, ShieldAlert, Skull, Flame, FileWarning } from 'lucide-react';
+import { AlertTriangle, ShieldAlert, Skull, Flame, FileWarning, ArrowRight } from 'lucide-react';
 
 interface BlackVaultFailuresProps {
   onSelectFailure: (id: string) => void;
@@ -9,22 +9,28 @@ interface BlackVaultFailuresProps {
 
 export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelectFailure }) => {
   return (
-    <div className="space-y-5 font-mono text-xs">
-      <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 bg-[#080404] border border-red-950 p-4 rounded-lg">
+    <div className="space-y-6 font-serif">
+      <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 bg-[#0a0404] border border-red-950/80 p-5 rounded-xl shadow-lg">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
-            <h1 className="text-base font-bold text-red-400 tracking-wider">
-              THE BLACK VAULT // CONTAINED HAZARDS & CATASTROPHIC FAILURES ({failures.length} INCIDENTS)
-            </h1>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="archival-stamp archival-stamp-red text-[9.5px] font-mono">
+              CLASSIFIED DISASTER FORENSICS
+            </span>
+            <span className="text-[10.5px] font-mono text-red-400/80">
+              SECURITY ACCESS: BLACK-BOX ONLY
+            </span>
           </div>
-          <p className="text-zinc-400 text-[11px] mt-1">
-            Forensic autopsies of acoustic resonant runaways, 168 dB concrete fractures, structural cavitations, and decommissioned experiments.
+          <h1 className="text-xl md:text-2xl font-bold text-red-300 tracking-wide">
+            The Black Vault // Contained Failures & Incident Autopsies ({failures.length} Records)
+          </h1>
+          <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
+            Declassified forensic investigations of extreme acoustic resonant runaways, shockwave containment ruptures, 
+            superconducting magnetic quenches, and catastrophic structural cavitation events.
           </p>
         </div>
 
-        <div className="text-right text-[11px] text-red-400/80">
-          CLEARANCE: BLACK-BOX
+        <div className="text-right text-xs font-mono text-red-400 bg-[#140505] px-3.5 py-2 border border-red-900/60 rounded-md shrink-0">
+          Status: <strong className="text-red-300 font-bold">{failures.length} Contained Incidents</strong>
         </div>
       </div>
 
@@ -33,41 +39,44 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
           <div
             key={f.id}
             onClick={() => onSelectFailure(f.id)}
-            className="bg-[#070303] border border-red-950/80 hover:border-red-600/80 p-4 rounded-lg cursor-pointer transition-all flex flex-col justify-between group shadow-sm shadow-red-950/20"
+            className="bg-[#070303] border border-red-950 hover:border-red-600/80 p-5 rounded-xl cursor-pointer transition-all flex flex-col justify-between group shadow-md"
           >
             <div>
               <div className="flex justify-between items-start gap-2 mb-2">
                 <div>
-                  <span className="text-red-400 font-bold text-xs tracking-wider group-hover:text-red-300">
+                  <span className="text-red-400 font-mono font-bold text-xs tracking-wider group-hover:text-red-300">
                     {f.id} // {f.projectCode}
                   </span>
-                  <div className="text-zinc-200 font-semibold text-xs mt-0.5">
+                  <div className="text-zinc-100 font-bold text-base mt-1">
                     {f.projectTitle}
                   </div>
                 </div>
 
-                <span className="shrink-0 px-2 py-0.5 rounded text-[9px] bg-red-950 text-red-300 border border-red-800">
+                <span className="shrink-0 px-2 py-0.5 rounded text-[9.5px] font-mono bg-red-950 text-red-300 border border-red-800">
                   {f.hazardClassification}
                 </span>
               </div>
 
-              <div className="text-[10px] text-zinc-500 mb-2">
-                DATE: {f.incidentDate} · INVESTIGATOR: <span className="text-zinc-300">{f.leadInvestigator}</span>
+              <div className="text-xs text-zinc-400 font-mono mb-2">
+                DATE: <span className="text-zinc-300">{f.incidentDate}</span> · LEAD INVESTIGATOR: <span className="text-zinc-200">{f.leadInvestigator}</span>
               </div>
 
-              <p className="text-[11px] text-zinc-400 leading-relaxed line-clamp-3 mb-3">
+              <p className="text-xs text-zinc-300 leading-relaxed line-clamp-3 mb-3">
                 {f.summary}
               </p>
 
-              <div className="p-2.5 bg-[#030101] border border-red-950/60 rounded text-[10px] text-red-300/80 space-y-1 mb-2">
-                <div>STATUS: <span className="text-red-400 font-bold">{f.decommissionStatus}</span></div>
-                <div className="line-clamp-2">ROOT CAUSE: {f.rootCauseAnalysis}</div>
+              <div className="space-y-1 text-xs font-mono text-zinc-400 border-t border-red-950/60 pt-2.5 mb-2">
+                <div>DECOMMISSION: <span className="text-red-400 font-bold">{f.decommissionStatus}</span></div>
+                <div>SALVAGED: <span className="text-zinc-300">{f.salvagedComponents.join(', ')}</span></div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-red-950/60 text-[10px]">
-              <span className="text-zinc-600">FORENSIC DISSECTION</span>
-              <span className="text-red-400 group-hover:underline">VIEW AUTOPSY →</span>
+            <div className="pt-2.5 border-t border-red-950/60 flex items-center justify-between text-xs font-mono text-red-400/90">
+              <span>ROOT CAUSE AUDITED</span>
+              <span className="group-hover:underline flex items-center gap-1 text-red-300">
+                <span>VIEW AUTOPSY DOSSIER</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+              </span>
             </div>
           </div>
         ))}

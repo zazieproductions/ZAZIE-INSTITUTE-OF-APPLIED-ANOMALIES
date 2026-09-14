@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { prototypes, disciplines, clearances, statuses } from '../data/archive';
 import { Prototype } from '../data/types';
 import { audioEngine } from '../audio/audioEngine';
-import { Search, Play, Square, Cpu, Sliders, Filter, Sparkles, Volume2 } from 'lucide-react';
+import { Search, Play, Square, Cpu, Sliders, Filter, Sparkles, Volume2, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface PrototypesArchiveProps {
   onSelectPrototype: (id: string) => void;
@@ -48,53 +48,59 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
   };
 
   return (
-    <div className="space-y-5 font-mono text-xs">
+    <div className="space-y-6 font-serif">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row justify-between md:items-center gap-3 bg-[#05080c] border border-emerald-950 p-4 rounded-lg">
+      <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 bg-[#05080f] border border-[#213045] p-5 rounded-xl shadow-lg">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-            <h1 className="text-base font-bold text-white tracking-wider">
-              PROTOTYPE CLASSIFIED REGISTRY ({prototypes.length} RECORDS)
-            </h1>
+          <div className="flex items-center gap-2 mb-1">
+            <span className="archival-stamp text-[9.5px] font-mono">
+              VERIFIED BENCH SPECIMENS
+            </span>
+            <span className="text-[10.5px] font-mono text-zinc-500">
+              CLASSIFIED SPECIFICATION REGISTRY
+            </span>
           </div>
-          <p className="text-zinc-400 text-[11px] mt-1">
-            Complete five-year inventory (2021–2026) of experimental transducers, acoustic resonators, and material interfaces.
+          <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
+            Experimental Acoustic Prototype Registry ({prototypes.length} Records)
+          </h1>
+          <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
+            Full five-year metrology inventory (2021–2026) of custom transducers, laser-scanned phononic resonators, 
+            superconducting cavities, and subterranean seismic probes.
           </p>
         </div>
 
-        <div className="text-right text-[11px] text-zinc-500">
-          Showing <span className="text-emerald-400 font-bold">{filtered.length}</span> of {prototypes.length} Prototypes
+        <div className="text-right text-xs font-mono text-zinc-400 bg-[#020509] px-3 py-2 border border-[#1b2636] rounded-md shrink-0">
+          Showing <span className="text-[#dfb76c] font-bold">{filtered.length}</span> of {prototypes.length} Prototypes
         </div>
       </div>
 
       {/* Filter and Search Toolbar */}
-      <div className="bg-[#04070a] border border-emerald-950 p-3 rounded-lg space-y-3">
+      <div className="bg-[#04070d] border border-[#213045] p-4 rounded-xl space-y-3 shadow-md">
         {/* Search Input */}
-        <div className="flex items-center gap-2 bg-[#020406] border border-emerald-900/60 px-3 py-1.5 rounded">
-          <Search className="w-4 h-4 text-emerald-400 shrink-0" />
+        <div className="flex items-center gap-2.5 bg-[#020509] border border-[#23354d] px-3.5 py-2 rounded-lg">
+          <Search className="w-4 h-4 text-[#dfb76c] shrink-0" />
           <input
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Filter by prototype ID, codename, title, researcher, or abstract keywords..."
-            className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs"
+            placeholder="Search by accession ID, codename, title, researcher, or abstract keywords..."
+            className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs md:text-sm font-serif"
           />
           {search && (
-            <button onClick={() => setSearch('')} className="text-zinc-500 hover:text-white text-xs">
+            <button onClick={() => setSearch('')} className="text-zinc-500 hover:text-white text-xs font-mono">
               CLEAR
             </button>
           )}
         </div>
 
         {/* Dropdown filters */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
           <div>
-            <label className="text-zinc-500 text-[10px] block mb-1">DISCIPLINE</label>
+            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">DISCIPLINE</label>
             <select
               value={selectedDiscipline}
               onChange={e => setSelectedDiscipline(e.target.value)}
-              className="w-full bg-[#080d14] border border-emerald-950 text-zinc-200 rounded p-1.5 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-2 focus:outline-none focus:border-[#dfb76c]"
             >
               <option value="ALL">ALL DISCIPLINES ({disciplines.length})</option>
               {disciplines.map(d => (
@@ -104,25 +110,25 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
           </div>
 
           <div>
-            <label className="text-zinc-500 text-[10px] block mb-1">STATUS</label>
+            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">STATUS</label>
             <select
               value={selectedStatus}
               onChange={e => setSelectedStatus(e.target.value)}
-              className="w-full bg-[#080d14] border border-emerald-950 text-zinc-200 rounded p-1.5 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-2 focus:outline-none focus:border-[#dfb76c]"
             >
               <option value="ALL">ALL STATUSES</option>
               {statuses.map(s => (
-                <option key={s} value={s}>{s}</option>
+                <option key={s} value={s}>{s.replace(/_/g, ' ')}</option>
               ))}
             </select>
           </div>
 
           <div>
-            <label className="text-zinc-500 text-[10px] block mb-1">SECURITY CLEARANCE</label>
+            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">CLEARANCE</label>
             <select
               value={selectedClearance}
               onChange={e => setSelectedClearance(e.target.value)}
-              className="w-full bg-[#080d14] border border-emerald-950 text-zinc-200 rounded p-1.5 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-2 focus:outline-none focus:border-[#dfb76c]"
             >
               <option value="ALL">ALL CLEARANCES</option>
               {clearances.map(c => (
@@ -132,11 +138,11 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
           </div>
 
           <div>
-            <label className="text-zinc-500 text-[10px] block mb-1">YEAR</label>
+            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">YEAR</label>
             <select
               value={selectedYear}
               onChange={e => setSelectedYear(e.target.value)}
-              className="w-full bg-[#080d14] border border-emerald-950 text-zinc-200 rounded p-1.5 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-2 focus:outline-none focus:border-[#dfb76c]"
             >
               <option value="ALL">ALL YEARS (2021–2026)</option>
               {['2021', '2022', '2023', '2024', '2025', '2026'].map(y => (
@@ -148,66 +154,66 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
       </div>
 
       {/* Prototype Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map(p => {
           const isThisPlaying = playingId === p.id;
           return (
             <div
               key={p.id}
               onClick={() => onSelectPrototype(p.id)}
-              className="bg-[#05080c] border border-emerald-950/80 hover:border-emerald-600/70 p-3.5 rounded-lg cursor-pointer transition-all flex flex-col justify-between group shadow-sm hover:shadow-emerald-950/30"
+              className="bg-[#05080f] border border-[#1c2a3b] hover:border-[#dfb76c]/80 p-4 rounded-xl cursor-pointer transition-all flex flex-col justify-between group shadow-md hover:shadow-[#dfb76c]/5"
             >
               <div>
                 {/* Top ID & Badges */}
                 <div className="flex justify-between items-start gap-2 mb-2">
                   <div>
-                    <div className="text-emerald-400 font-bold text-xs tracking-wider group-hover:text-emerald-300">
+                    <div className="text-[#dfb76c] font-bold text-xs tracking-wider group-hover:text-white font-mono">
                       {p.id} // {p.codeName}
                     </div>
-                    <div className="text-zinc-200 font-semibold text-xs mt-0.5 line-clamp-1">
+                    <div className="text-zinc-100 font-bold text-sm mt-0.5 line-clamp-1">
                       {p.title}
                     </div>
                   </div>
 
-                  <span className="shrink-0 px-1.5 py-0.5 rounded text-[9.5px] bg-emerald-950 text-emerald-300 border border-emerald-800">
+                  <span className="shrink-0 px-2 py-0.5 rounded text-[9.5px] font-mono bg-[#0b1522] text-cyan-300 border border-cyan-800/60">
                     {p.clearance}
                   </span>
                 </div>
 
                 {/* Abstract snippet */}
-                <p className="text-[11px] text-zinc-400 leading-relaxed line-clamp-3 mb-3">
+                <p className="text-xs text-zinc-300 leading-relaxed line-clamp-3 mb-3">
                   {p.abstract}
                 </p>
 
                 {/* Specs pill badges */}
-                <div className="space-y-1 text-[10px] text-zinc-500 border-t border-emerald-950/60 pt-2 mb-3">
+                <div className="space-y-1.5 text-[10.5px] font-mono text-zinc-400 border-t border-[#172333] pt-2.5 mb-3">
                   <div className="flex justify-between">
-                    <span>DISCIPLINE:</span>
-                    <span className="text-cyan-400 font-medium">{p.discipline}</span>
+                    <span className="text-zinc-500">DISCIPLINE:</span>
+                    <span className="text-cyan-400 font-medium truncate max-w-[180px]">{p.discipline}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>BANDWIDTH:</span>
+                    <span className="text-zinc-500">BANDWIDTH:</span>
                     <span className="text-zinc-300">{p.operationalBandwidth}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>TRANSDUCER:</span>
-                    <span className="text-zinc-400 truncate max-w-[160px]">{p.primaryTransducer}</span>
+                    <span className="text-zinc-500">TRANSDUCER:</span>
+                    <span className="text-zinc-400 truncate max-w-[170px]">{p.primaryTransducer}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>YEAR:</span>
-                    <span className="text-zinc-400">{p.year}</span>
+                    <span className="text-zinc-500">INVESTIGATOR:</span>
+                    <span className="text-zinc-300 truncate max-w-[170px]">{p.leadResearcher}</span>
                   </div>
                 </div>
               </div>
 
               {/* Bottom Card Action Bar */}
-              <div className="flex items-center justify-between pt-2 border-t border-emerald-950/80">
+              <div className="flex items-center justify-between pt-2.5 border-t border-[#172333]">
                 <button
                   onClick={e => handleToggleAudio(e, p)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-bold transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono font-bold transition-all shadow-sm ${
                     isThisPlaying
-                      ? 'bg-red-500 text-black shadow-[0_0_8px_#ef4444]'
-                      : 'bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-800 text-emerald-300'
+                      ? 'bg-red-500 text-black shadow-[0_0_10px_#ef4444]'
+                      : 'bg-[#0f1d2e] hover:bg-[#182b40] border border-[#2b415e] text-cyan-300'
                   }`}
                   title="Audition synthesized acoustic signature"
                 >
@@ -218,14 +224,15 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
                     </>
                   ) : (
                     <>
-                      <Play className="w-3 h-3 fill-current" />
+                      <Play className="w-3 h-3 fill-current text-cyan-400" />
                       <span>AUDITION</span>
                     </>
                   )}
                 </button>
 
-                <span className="text-[10px] text-zinc-500 group-hover:text-emerald-400">
-                  OPEN DOSSIER →
+                <span className="text-xs font-mono text-zinc-400 group-hover:text-[#dfb76c] flex items-center gap-1">
+                  <span>OPEN DOSSIER</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </div>
             </div>
@@ -234,8 +241,8 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
       </div>
 
       {filtered.length === 0 && (
-        <div className="py-12 text-center text-zinc-500 bg-[#040608] border border-emerald-950 rounded-lg">
-          No prototypes found matching the selected filter criteria.
+        <div className="py-16 text-center text-zinc-400 bg-[#04070d] border border-[#213045] rounded-xl font-serif">
+          No experimental prototypes match the selected query. Please refine your filter parameters.
         </div>
       )}
     </div>
