@@ -14,11 +14,11 @@ export const AcousticBenchPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
             <h1 className="text-base font-bold text-white tracking-wider">
-              EXPERIMENTAL ACOUSTIC SYNTHESIS TEST STATIONS
+              INTERACTIVE DSP ACOUSTIC WORKSTATIONS
             </h1>
           </div>
           <p className="text-zinc-400 text-[11px] mt-1">
-            Real-time DSP engines, audio analysis suites, and non-Hermitian frequency wave simulators.
+            Real-time DSP synthesis engines, acoustic oscilloscope profiling, harmonic analysis, and interactive parameter modulation.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export const AcousticBenchPage: React.FC = () => {
             }`}
           >
             <Activity className="w-3.5 h-3.5" />
-            <span>TEST BENCH V4.1</span>
+            <span>ACOUSTIC BENCH</span>
           </button>
           <button
             onClick={() => setActiveWorkstation('spectra')}
@@ -44,7 +44,7 @@ export const AcousticBenchPage: React.FC = () => {
             }`}
           >
             <Zap className="w-3.5 h-3.5" />
-            <span>SPECTRA//LAB (KAIROS)</span>
+            <span>SPECTRA//LAB</span>
           </button>
         </div>
       </div>

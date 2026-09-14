@@ -15,17 +15,17 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
   compact = false
 }) => {
   const defaultProfile: AudioProfile = initialProfile || {
-    presetName: 'CHRONO-LITH OBSIDIAN HYSTERESIS',
-    carrierFreq: 216.0,
-    modFreq: 8.4,
+    presetName: 'ACOUSTIC FEEDBACK PROFILE',
+    carrierFreq: 220.0,
+    modFreq: 6.2,
     waveform: 'sine',
     filterType: 'bandpass',
-    filterCutoff: 432,
-    resonance: 12.0,
-    noiseLevel: 0.22,
+    filterCutoff: 440,
+    resonance: 8.5,
+    noiseLevel: 0.12,
     binauralDelta: 3.5,
-    harmonicScatter: 0.65,
-    description: 'Delayed acoustic envelope decay governed by internal vitreous silicate grain-boundary hysteresis.'
+    harmonicScatter: 0.45,
+    description: 'Dynamic acoustic feedback profile with optical limiting and subtle room-mode harmonic overtones.'
   };
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -76,17 +76,17 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
 
   const triggerAnomaly = useCallback(() => {
     const anomalyProfile: AudioProfile = {
-      presetName: 'NON-HERMITIAN COIL RUNAWAY',
-      carrierFreq: 18.2,
-      modFreq: 24.5,
+      presetName: 'RECURSIVE FEEDBACK CASCADE',
+      carrierFreq: 88.0,
+      modFreq: 14.5,
       waveform: 'sawtooth',
       filterType: 'notch',
-      filterCutoff: 650,
-      resonance: 22.0,
-      noiseLevel: 0.75,
-      binauralDelta: 14.1,
-      harmonicScatter: 0.95,
-      description: 'Spontaneous exponential gain runaway with 168 dB structural cavitation sub-harmonic.'
+      filterCutoff: 840,
+      resonance: 18.0,
+      noiseLevel: 0.38,
+      binauralDelta: 7.2,
+      harmonicScatter: 0.82,
+      description: 'Simulated high-gain acoustic feedback loop with nonlinear harmonic saturation and multi-mode room resonance.'
     };
     setProfile(anomalyProfile);
     audioEngine.playProfile(anomalyProfile);

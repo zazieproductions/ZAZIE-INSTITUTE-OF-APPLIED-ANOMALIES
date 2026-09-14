@@ -65,7 +65,7 @@ export const DossierModal: React.FC<DossierModalProps> = ({
   const handleCopyCitation = () => {
     const id = 'id' in record ? record.id : 'RECORD';
     const title = 'title' in record ? record.title : 'name' in record ? record.name : 'summary' in record ? record.summary : id;
-    const citation = `Zazie Institute of Applied Anomalies. (2026). Archival Record ${id}: ${title}. Division of Metrology & Speculative Patents, Zazie Productions LLC. DOI: 10.1088/ziaa.2026.${id.toLowerCase()}`;
+    const citation = `Zazie Institute of Applied Anomalies. (2026). Archival Record ${id}: ${title}. Division of Applied Anomalies & Speculative Systems, Zazie Productions LLC. DOI: 10.1088/ziaa.2026.${id.toLowerCase()}`;
     navigator.clipboard.writeText(citation);
     setCopiedCitation(true);
     setTimeout(() => setCopiedCitation(false), 2000);
@@ -82,7 +82,7 @@ export const DossierModal: React.FC<DossierModalProps> = ({
               <div className="text-[10px] font-mono text-[#c5a059] uppercase tracking-widest flex items-center gap-1.5">
                 <span>ZAZIE INSTITUTE OF APPLIED ANOMALIES // ARCHIVE DOSSIER</span>
                 <span>·</span>
-                <span className="text-zinc-500">ISO/IEC 17025</span>
+                <span className="text-zinc-400">CREATIVE-TECH INITIATIVE</span>
               </div>
               <div className="text-sm font-bold text-white tracking-wider flex items-center gap-2">
                 <span className="font-mono">{'id' in record ? record.id : 'DOSSIER'}</span>
@@ -172,8 +172,8 @@ export const DossierModal: React.FC<DossierModalProps> = ({
 
         {/* Footer */}
         <div className="px-5 py-2.5 bg-[#040608] border-t border-emerald-950/80 text-[10px] text-zinc-500 flex justify-between items-center shrink-0">
-          <span>CLASSIFIED R&D ARCHIVE // ZAZIE PRODUCTIONS LLC</span>
-          <span>INTEGRITY VERIFIED // SHA-256 CHECKED</span>
+          <span>RESEARCH & PROTOTYPE ARCHIVE // ZAZIE PRODUCTIONS LLC</span>
+          <span>SYSTEM ARCHIVE // VERIFIED RECORD</span>
         </div>
       </div>
     </div>
@@ -311,12 +311,12 @@ const PrototypeDossier: React.FC<{
 
     {/* Hazard Warnings & Field Deployments */}
     {p.hazardWarnings && p.hazardWarnings.length > 0 && (
-      <div className="p-3 bg-red-950/30 border border-red-900/60 rounded-md">
-        <div className="flex items-center gap-2 text-red-400 font-bold mb-1">
+      <div className="p-3 bg-amber-950/20 border border-amber-900/50 rounded-md">
+        <div className="flex items-center gap-2 text-amber-400 font-bold mb-1">
           <ShieldAlert className="w-4 h-4" />
-          <span>ACOUSTIC HAZARD PROTOCOLS</span>
+          <span>BENCH & FIELD OPERATION NOTES</span>
         </div>
-        <ul className="list-disc list-inside space-y-1 text-red-300/90">
+        <ul className="list-disc list-inside space-y-1 text-zinc-300">
           {p.hazardWarnings.map((h, i) => (
             <li key={i}>{h}</li>
           ))}

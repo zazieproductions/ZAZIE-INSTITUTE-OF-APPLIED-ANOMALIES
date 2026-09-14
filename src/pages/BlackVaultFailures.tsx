@@ -14,23 +14,23 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp archival-stamp-red text-[9.5px] font-mono">
-              CLASSIFIED DISASTER FORENSICS
+              ANOMALY POST-MORTEMS
             </span>
             <span className="text-[10.5px] font-mono text-red-400/80">
-              SECURITY ACCESS: BLACK-BOX ONLY
+              SPECULATIVE ENGINEERING ARCHIVE
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-red-300 tracking-wide">
-            The Black Vault // Contained Failures & Incident Autopsies ({failures.length} Records)
+            Experimental Anomalies & System Post-Mortems ({failures.length} Records)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Declassified forensic investigations of extreme acoustic resonant runaways, shockwave containment ruptures, 
-            superconducting magnetic quenches, and catastrophic structural cavitation events.
+            Detailed case studies of prototype feedback cascades, mechanical fatigue, algorithmic drift, 
+            and physical acoustic boundaries encountered during experimental testing.
           </p>
         </div>
 
         <div className="text-right text-xs font-mono text-red-400 bg-[#140505] px-3.5 py-2 border border-red-900/60 rounded-md shrink-0">
-          Status: <strong className="text-red-300 font-bold">{failures.length} Contained Incidents</strong>
+          Status: <strong className="text-red-300 font-bold">{failures.length} Documented Post-Mortems</strong>
         </div>
       </div>
 

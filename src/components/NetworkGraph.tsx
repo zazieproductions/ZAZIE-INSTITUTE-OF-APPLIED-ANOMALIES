@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { prototypes, patents, failures, fieldSites, disciplines } from '../data/archive';
+import { prototypes, patents, failures, fieldSites, disciplines, archiveStats } from '../data/archive';
 
 interface Node {
   id: string;
@@ -32,14 +32,14 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
 
   // Disciplines as central orbital hubs
   const disciplineColors: Record<string, string> = {
-    'Perceptual Interfaces': '#06b6d4',
-    'Signal Archaeology': '#38bdf8',
-    'Generative Composition': '#a855f7',
-    'Material Acoustics': '#10b981',
-    'Public Listening Infrastructure': '#f59e0b',
-    'Sub-Audible & Infrasonics': '#ef4444',
-    'Speculative Radio': '#ec4899',
-    'Cryptic Storage & Media': '#8b5cf6'
+    'Applied Anomalies': '#f59e0b',
+    'Experimental Audio Systems': '#06b6d4',
+    'Computational Creativity': '#a855f7',
+    'Speculative Engineering': '#10b981',
+    'Perceptual Interfaces': '#38bdf8',
+    'Generative Software': '#ec4899',
+    'Signal Archaeology': '#eab308',
+    'Acoustic Architecture': '#6366f1'
   };
 
   const discKeys = Object.keys(disciplineColors);
@@ -302,10 +302,10 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
         {/* Legend */}
         <div className="absolute top-3 right-3 bg-[#05080c]/85 border border-zinc-800/80 rounded p-2 text-[10px] space-y-1 backdrop-blur-sm pointer-events-none">
           <div className="font-bold text-zinc-400 pb-0.5 border-b border-zinc-800">NODE TAXONOMY</div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-400"></span> <span>Prototypes (128)</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-sky-400"></span> <span>Patents (86)</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-400"></span> <span>Black Vault Failures (18)</span></div>
-          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-400"></span> <span>Field Sites (12)</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-400"></span> <span>Prototypes ({archiveStats.totalPrototypes})</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-sky-400"></span> <span>Patents ({archiveStats.totalPatents})</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-400"></span> <span>Anomaly Post-Mortems ({archiveStats.totalFailures})</span></div>
+          <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-400"></span> <span>Field Stations ({archiveStats.totalFieldSites})</span></div>
         </div>
       </div>
     </div>

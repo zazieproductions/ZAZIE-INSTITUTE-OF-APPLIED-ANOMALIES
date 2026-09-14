@@ -396,7 +396,7 @@ export const SubterraneanArraySchematic: React.FC<{ codeName?: string; className
       {/* Sensor Pod 3 (-290m) */}
       <circle cx="340" cy="290" r="9" fill="#047857" stroke="#34d399" strokeWidth="1.5" />
       <line x1="349" y1="290" x2="420" y2="290" stroke="#34d399" strokeWidth="1" />
-      <text x="428" y="293" fill="#a7f3d0" fontSize="8">DEEP CRUST TRIAXIAL SQUID [-290m]</text>
+      <text x="428" y="293" fill="#a7f3d0" fontSize="8">DEEP BOREHOLE TRIAXIAL GEOPHONE [-290m]</text>
 
       {/* Seismic Wavefront Dispersion Arcs */}
       <path d="M 340 290 Q 240 230, 160 290" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="4,2" />

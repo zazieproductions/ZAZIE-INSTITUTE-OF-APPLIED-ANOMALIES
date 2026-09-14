@@ -40,18 +40,18 @@ export const PatentDossiers: React.FC<PatentDossiersProps> = ({ onSelectPatent }
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              OFFICIAL IP REGISTRY
+              SPECULATIVE ENGINEERING PATENTS
             </span>
-            <span className="text-[10.5px] font-mono text-zinc-500">
-              UNITED STATES & INTERNATIONAL PATENT OFFICE ARCHIVE
+            <span className="text-[10.5px] font-mono text-zinc-400">
+              DEFENSIVE DISCLOSURES & TECHNICAL INVENTIONS
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Intellectual Property & Patent Dossiers ({patents.length} Filings)
+            Speculative Patents & Technical Dossiers ({patents.length} Filings)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Formal legal disclosures, independent claims schedules, prior art critiques, and non-Hermitian boundary mathematics 
-            prosecuted under the Office of the General Counsel and Metrology Board of ZIAA.
+            Speculative engineering patent specifications, independent claims schedules, prior-art critiques, and defensive technical 
+            disclosures spanning experimental sound, physical computing, and creative software.
           </p>
         </div>
 
