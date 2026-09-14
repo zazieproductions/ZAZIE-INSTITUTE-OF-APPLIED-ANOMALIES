@@ -58,7 +58,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
             type="text"
             value={query}
             onChange={e => setQuery(e.target.value)}
-            placeholder="Search 128 prototypes, 86 patents, 264 logs, incidents, personnel..."
+            placeholder="Search prototypes, patents, notes, people, sites..."
             className="w-full bg-transparent border-none text-white placeholder-zinc-500 focus:outline-none text-sm"
           />
           {query && (
@@ -121,7 +121,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                 <div className="pt-3">
                   <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <FileText className="w-3.5 h-3.5" />
-                    <span>SPECULATIVE PATENTS ({results.patents.length})</span>
+                    <span>PATENTS ({results.patents.length})</span>
                   </div>
                   <div className="space-y-1.5">
                     {results.patents.slice(0, 4).map(pat => (
@@ -155,7 +155,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                 <div className="pt-3">
                   <div className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>BLACK VAULT INCIDENTS ({results.failures.length})</span>
+                    <span>FAILED EXPERIMENTS ({results.failures.length})</span>
                   </div>
                   <div className="space-y-1.5">
                     {results.failures.slice(0, 3).map(f => (
@@ -189,7 +189,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                 <div className="pt-3">
                   <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <User className="w-3.5 h-3.5" />
-                    <span>RESEARCH FELLOWS ({results.personnel.length})</span>
+                    <span>PEOPLE ({results.personnel.length})</span>
                   </div>
                   <div className="space-y-1.5">
                     {results.personnel.slice(0, 3).map(per => (
@@ -223,8 +223,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
 
         {/* Footer */}
         <div className="px-4 py-2.5 bg-[#030508] border-t border-emerald-950/80 text-[10px] text-zinc-500 flex justify-between items-center">
-          <span>Search query active across entire ZIAA 2021–2026 database</span>
-          <span>Click entry to open classified dossier</span>
+          <span>Searching the full ZIAA archive (2021–2026)</span>
+          <span>Click a result to open</span>
         </div>
       </div>
     </div>

@@ -111,7 +111,7 @@ export function App() {
                   </h1>
                 </div>
                 <p className="text-zinc-400 text-xs mt-1">
-                  Volumetric spectral field canvas, particle physics, 64-band FFT analysis, 8x8 mod matrix, and automated parameter curves.
+                  A playground of floating sound nodes, frequency response visualization, and a live modulation grid.
                 </p>
               </div>
             </div>

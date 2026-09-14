@@ -52,18 +52,18 @@ export const Monographs: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              PEER-REVIEWED MONOGRAPHS
+              WRITING FROM THE INSTITUTE
             </span>
             <span className="text-[10.5px] font-mono text-zinc-500">
               ISSN: 2834-9180 (Online)
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            ZIAA Transactions on Speculative Acoustics & Applied Anomalies
+            Essays, Monographs &amp; Research Writing
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Curated mathematical treatises, boundary acoustic formulations, non-Hermitian phononics, 
-            and signal archaeology published by the Senior Research Faculty ({monographs.length} Volumes).
+            Long-form writing from the Institute: essays on sound, listening, speculative engineering, strange instruments, 
+            esoteric software, and the creative technology life, published in-house ({monographs.length} volumes).
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export const Monographs: React.FC = () => {
             className="flex items-center gap-1.5 px-3 py-1.5 bg-[#09121d] hover:bg-[#122238] border border-[#263c59] text-[#dfb76c] rounded-md transition-all shadow-sm"
           >
             <Share2 className="w-3.5 h-3.5" />
-            <span>Cite Treatise</span>
+            <span>Cite</span>
           </button>
           <button
             onClick={() => window.print()}
@@ -89,7 +89,7 @@ export const Monographs: React.FC = () => {
         {/* Left Monograph Index (4 cols) */}
         <div className="lg:col-span-4 space-y-2.5">
           <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider px-1">
-            Publication Index ({monographs.length} Volumes)
+            Writing Index ({monographs.length} Volumes)
           </div>
           {monographs.map(m => {
             const isSelected = m.id === selectedId;
@@ -123,7 +123,7 @@ export const Monographs: React.FC = () => {
               <div className="border-b border-[#1b2636] pb-5 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#c5a059]">
                   <span className="archival-stamp font-mono text-[9.5px]">
-                    OFFICIAL PEER-REVIEWED TREATISE
+                    PEER-REVIEWED
                   </span>
                   <span>{activeMonograph.volume} · Published {activeMonograph.date}</span>
                 </div>
@@ -133,7 +133,7 @@ export const Monographs: React.FC = () => {
                 </h2>
 
                 <div className="text-sm text-zinc-300 pt-1">
-                  Primary Investigator: <strong className="text-[#dfb76c] font-medium">{activeMonograph.author}</strong>
+                  Author: <strong className="text-[#dfb76c] font-medium">{activeMonograph.author}</strong>
                   {activeMonograph.coAuthors && activeMonograph.coAuthors.length > 0 && (
                     <span className="text-zinc-400"> · Co-Authors: {activeMonograph.coAuthors.join(', ')}</span>
                   )}
@@ -142,7 +142,7 @@ export const Monographs: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-500 pt-1">
                   <span>Accession DOI: <span className="text-cyan-400 underline">10.1088/ziaa.2026.{activeMonograph.id.toLowerCase()}</span></span>
                   <span>·</span>
-                  <span>Review Committee: Certified Unanimous</span>
+                  <span>Editorial review: passed</span>
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ export const Monographs: React.FC = () => {
               <div className="p-5 bg-[#060a12] border-l-4 border-[#dfb76c] rounded-r-lg text-zinc-200 leading-relaxed text-sm shadow-inner">
                 <div className="text-[10.5px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2 flex items-center gap-2">
                   <Bookmark className="w-3.5 h-3.5 text-[#dfb76c]" />
-                  <span>MONOGRAPH ABSTRACT & THESIS</span>
+                  <span>ABSTRACT</span>
                 </div>
                 <p className="italic text-zinc-300 leading-relaxed">
                   {activeMonograph.abstract}
@@ -162,12 +162,12 @@ export const Monographs: React.FC = () => {
                 <div className="space-y-3">
                   <div className="text-[11px] font-mono font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-2">
                     <Award className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>KEY THEOREMS & BOUNDARY EQUATIONS</span>
+                    <span>KEY IDEAS &amp; OBSERVATIONS</span>
                   </div>
                   {activeMonograph.keyTheorems.map((t, idx) => (
                     <div key={idx} className="math-block text-xs md:text-sm">
                       <div className="text-[10px] font-mono text-[#c5a059] not-italic mb-1">
-                        FORMULATION [{idx + 1}.1]
+                        NOTE [{idx + 1}.1]
                       </div>
                       <div className="text-zinc-100">{t}</div>
                     </div>
@@ -193,7 +193,7 @@ export const Monographs: React.FC = () => {
               {activeMonograph.references && activeMonograph.references.length > 0 && (
                 <div className="pt-6 border-t border-[#1b2636] space-y-2">
                   <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">
-                    References & Primary Citations
+                    References &amp; Further Reading
                   </div>
                   <ol className="list-decimal list-inside space-y-1 text-xs text-zinc-400 font-mono">
                     {activeMonograph.references.map((ref, idx) => (
@@ -208,11 +208,11 @@ export const Monographs: React.FC = () => {
               {/* Institutional Sign-off Footer */}
               <div className="p-4 bg-[#030509] border border-[#1b2636] rounded-lg flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-zinc-500 font-mono">
                 <div>
-                  ARCHIVAL SPECIMEN // ZIEE PUBLICATIONS DIVISION
+                  ARCHIVED WRITING // ZIAA PUBLICATIONS
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>PERMANENT PRESERVATION RECORD</span>
+                  <span>PERMANENTLY ARCHIVED</span>
                 </div>
               </div>
             </>
@@ -228,7 +228,7 @@ export const Monographs: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Share2 className="w-4 h-4 text-[#dfb76c]" />
                 <h3 className="text-base font-bold text-white font-serif">
-                  Cite This Academic Treatise
+                  Cite this piece
                 </h3>
               </div>
               <button

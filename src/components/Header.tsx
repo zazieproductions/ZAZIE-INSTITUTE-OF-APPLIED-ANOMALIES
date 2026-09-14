@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
           <span className="hidden lg:inline text-zinc-600">|</span>
           <span className="hidden lg:inline text-zinc-400">
-            ACCREDITED RESEARCH FACILITY · ISO/IEC 17025 METROLOGY SPEC
+            INDEPENDENT CREATIVE-TECHNOLOGY RESEARCH · EST. 2021
           </span>
           <span className="hidden xl:inline text-zinc-600">|</span>
           <span className="hidden xl:inline text-zinc-500 font-mono">
@@ -115,11 +115,11 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <div className="text-xs text-zinc-400 flex items-center gap-2 font-serif">
-              <span>R&D Division of Zazie Productions LLC</span>
-              <span className="text-zinc-600">·</span>
+              <span>R&D workshop of Zazie Productions LLC — experimental systems, audio & interdisciplinary invention</span>
+              <span className="hidden md:inline text-zinc-600">·</span>
               <span className="hidden md:inline italic text-[#c5a059]">Auditus Inauditi · Veritas Occultorum</span>
               <span className="hidden md:inline text-zinc-600">·</span>
-              <span className="text-emerald-400/90 font-mono text-[10.5px]">5-Year Archive (2021–2026)</span>
+              <span className="text-emerald-400/90 font-mono text-[10.5px]">Five-year archive (2021–2026)</span>
             </div>
           </div>
         </div>

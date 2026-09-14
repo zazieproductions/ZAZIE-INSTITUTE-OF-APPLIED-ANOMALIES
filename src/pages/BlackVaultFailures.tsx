@@ -14,23 +14,23 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp archival-stamp-red text-[9.5px] font-mono">
-              CLASSIFIED DISASTER FORENSICS
+              THINGS THAT BROKE
             </span>
             <span className="text-[10.5px] font-mono text-red-400/80">
-              SECURITY ACCESS: BLACK-BOX ONLY
+              FAILURE NOTES FROM THE WORKSHOP
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-red-300 tracking-wide">
-            The Black Vault // Contained Failures & Incident Autopsies ({failures.length} Records)
+            The Black Vault — Failed Experiments &amp; Post-Mortems ({failures.length} Records)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Declassified forensic investigations of extreme acoustic resonant runaways, shockwave containment ruptures, 
-            superconducting magnetic quenches, and catastrophic structural cavitation events.
+            Post-mortems for the projects that didn't survive: resonant runaways, melted coils, cracked lithophones, 
+            software that refused to compile, and other quiet catastrophes of the workshop floor.
           </p>
         </div>
 
         <div className="text-right text-xs font-mono text-red-400 bg-[#140505] px-3.5 py-2 border border-red-900/60 rounded-md shrink-0">
-          Status: <strong className="text-red-300 font-bold">{failures.length} Contained Incidents</strong>
+          On file: <strong className="text-red-300 font-bold">{failures.length} post-mortems</strong>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
               </div>
 
               <div className="text-xs text-zinc-400 font-mono mb-2">
-                DATE: <span className="text-zinc-300">{f.incidentDate}</span> · LEAD INVESTIGATOR: <span className="text-zinc-200">{f.leadInvestigator}</span>
+                DATE: <span className="text-zinc-300">{f.incidentDate}</span> · LEAD: <span className="text-zinc-200">{f.leadInvestigator}</span>
               </div>
 
               <p className="text-xs text-zinc-300 leading-relaxed line-clamp-3 mb-3">
@@ -72,9 +72,9 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
             </div>
 
             <div className="pt-2.5 border-t border-red-950/60 flex items-center justify-between text-xs font-mono text-red-400/90">
-              <span>ROOT CAUSE AUDITED</span>
+              <span>POST-MORTEM COMPLETE</span>
               <span className="group-hover:underline flex items-center gap-1 text-red-300">
-                <span>VIEW AUTOPSY DOSSIER</span>
+                <span>READ FULL REPORT</span>
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </div>

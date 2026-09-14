@@ -54,18 +54,18 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              VERIFIED BENCH SPECIMENS
+              WORKING INSTRUMENTS
             </span>
             <span className="text-[10.5px] font-mono text-zinc-500">
-              CLASSIFIED SPECIFICATION REGISTRY
+              THE PROTOTYPE CATALOGUE
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Experimental Acoustic Prototype Registry ({prototypes.length} Records)
+            Experimental Prototypes &amp; Hand-built Instruments ({prototypes.length} Records)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Full five-year metrology inventory (2021–2026) of custom transducers, laser-scanned phononic resonators, 
-            superconducting cavities, and subterranean seismic probes.
+            Five years (2021–2026) of hand-built hardware, custom software, resonant objects, generative systems, 
+            listening devices, and site-specific sound installations.
           </p>
         </div>
 

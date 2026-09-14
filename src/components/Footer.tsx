@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
               <div className="text-xs text-zinc-400 mt-1">
-                Autonomous Theoretical Acoustics & Speculative Patents Division of <strong>Zazie Productions LLC</strong>
+                A creative-technology workshop for experimental audio, speculative instruments &amp; interdisciplinary invention — a division of <strong>Zazie Productions LLC</strong>
               </div>
               <div className="text-xs text-[#c5a059] italic mt-0.5">
                 "Auditus Inauditi · Veritas Occultorum" — Hearing the Unheard, Disclosing the Hidden
@@ -50,30 +50,29 @@ export const Footer: React.FC = () => {
               CURATED ARCHIVAL HOLDINGS
             </div>
             <p className="text-zinc-400 leading-relaxed">
-              Permanent repository maintaining <strong className="text-zinc-200">{archiveStats.totalPrototypes} Prototype Systems</strong>,{' '}
-              <strong className="text-zinc-200">{archiveStats.totalPatents} Speculative Patents</strong>,{' '}
-              <strong className="text-zinc-200">{archiveStats.totalLogs} Telemetry Logs</strong>, and{' '}
-              <strong className="text-zinc-200">{archiveStats.totalMonographs} Peer-Reviewed Longform Treatises</strong>.
+              Permanent collection of <strong className="text-zinc-200">{archiveStats.totalPrototypes} working prototypes</strong>,{' '}
+              <strong className="text-zinc-200">{archiveStats.totalPatents} speculative patents</strong>,{' '}
+              <strong className="text-zinc-200">{archiveStats.totalLogs} research notes &amp; lab journals</strong>, and{' '}
+              <strong className="text-zinc-200">{archiveStats.totalMonographs} peer-reviewed essays &amp; monographs</strong>.
             </p>
           </div>
 
           <div>
             <div className="text-[10px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">
-              ACCREDITATION & PROTOCOLS
+              LINES OF INQUIRY
             </div>
             <p className="text-zinc-400 leading-relaxed">
-              Operated under International Acoustic Metrology Board Standard ISO/IEC 17025. 
-              Subterranean telemetry streams comply with SEED seismic and Open Sound Control (OSC) telecommunication protocols.
+              Experimental audio, computational creativity, speculative engineering, site-specific installations, esoteric software, 
+              and generative systems. Field recordings stream over open audio networks from observatories on three continents.
             </p>
           </div>
 
           <div>
             <div className="text-[10px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">
-              PUBLIC ARCHIVE ACCESS
+              ARCHIVE ACCESS
             </div>
             <p className="text-zinc-400 leading-relaxed">
-              Open to accredited university fellows and independent researchers upon submission of Level-4 clearance credentials. 
-              Direct queries to the Office of the Registrar, ZIAA Brussels / Salton Sink.
+              Open to fellow artists, researchers, and curious builders by inquiry. Write to the Office of the Registrar, ZIAA Brussels / Salton Sink.
             </p>
           </div>
         </div>
@@ -88,7 +87,7 @@ export const Footer: React.FC = () => {
             <span>·</span>
             <span>ISSN: 2834-9180</span>
             <span>·</span>
-            <span>OAI-PMH METADATA ENDPOINT</span>
+            <span>PERMANENT ARCHIVE</span>
           </div>
         </div>
       </div>

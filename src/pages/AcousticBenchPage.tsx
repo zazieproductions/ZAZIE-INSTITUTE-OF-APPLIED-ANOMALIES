@@ -14,11 +14,11 @@ export const AcousticBenchPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
             <h1 className="text-base font-bold text-white tracking-wider">
-              EXPERIMENTAL ACOUSTIC SYNTHESIS TEST STATIONS
+              SOUND LAB — INSTRUMENT TEST STATIONS
             </h1>
           </div>
           <p className="text-zinc-400 text-[11px] mt-1">
-            Real-time DSP engines, audio analysis suites, and non-Hermitian frequency wave simulators.
+            Real-time synthesis, audio analysis, and playable prototypes you can audition in the browser.
           </p>
         </div>
 

@@ -14,23 +14,23 @@ export const PersonnelDirectory: React.FC<PersonnelDirectoryProps> = ({ onSelect
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              SCIENTIFIC COUNCIL & FACULTY
+              THE COLLECTIVE
             </span>
             <span className="text-[10.5px] font-mono text-zinc-500">
-              ACCREDITED RESEARCH CHAIRS
+              FELLOWS, COLLABORATORS &amp; BUILDERS
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Senior Research Fellows & Faculty Directory ({personnel.length} Profiles)
+            Fellows, Artists &amp; Researchers ({personnel.length} Profiles)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Distinguished physicists, theoretical acousticians, geoseismologists, signal archaeologists, 
-            and neuro-acoustics investigators directing ZIAA laboratories and experimental programs.
+            The people behind the work — instrument builders, sound artists, software poets, field recordists, 
+            composers, and interdisciplinary inventors running the labs and the long-haul projects.
           </p>
         </div>
 
         <div className="text-right text-xs font-mono text-zinc-400 bg-[#020509] px-3.5 py-2 border border-[#1b2636] rounded-md shrink-0">
-          Total Faculty: <strong className="text-[#dfb76c]">{personnel.length} Principal Investigators</strong>
+          The team: <strong className="text-[#dfb76c]">{personnel.length} collaborators</strong>
         </div>
       </div>
 

@@ -40,18 +40,18 @@ export const PatentDossiers: React.FC<PatentDossiersProps> = ({ onSelectPatent }
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              OFFICIAL IP REGISTRY
+              SPECULATIVE IP
             </span>
             <span className="text-[10.5px] font-mono text-zinc-500">
-              UNITED STATES & INTERNATIONAL PATENT OFFICE ARCHIVE
+              PATENTS, PROVISIONALS &amp; IDEA DISCLOSURES
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Intellectual Property & Patent Dossiers ({patents.length} Filings)
+            Speculative Patents &amp; Idea Dossiers ({patents.length} Filings)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Formal legal disclosures, independent claims schedules, prior art critiques, and non-Hermitian boundary mathematics 
-            prosecuted under the Office of the General Counsel and Metrology Board of ZIAA.
+            Defensive filings, concept disclosures, and imaginary intellectual property — each one a thought experiment 
+            about a technology that could exist, or almost does, maintained by the ZIAA legal &amp; research office.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export const PatentDossiers: React.FC<PatentDossiersProps> = ({ onSelectPatent }
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search patents by serial number, inventor, title, or claims keywords..."
+            placeholder="Search by serial number, inventor, title, or concept keywords..."
             className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs md:text-sm font-serif"
           />
           {search && (

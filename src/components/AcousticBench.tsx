@@ -15,7 +15,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
   compact = false
 }) => {
   const defaultProfile: AudioProfile = initialProfile || {
-    presetName: 'CHRONO-LITH OBSIDIAN HYSTERESIS',
+    presetName: 'CHRONO-LITH OBSIDIAN RESONANCE',
     carrierFreq: 216.0,
     modFreq: 8.4,
     waveform: 'sine',
@@ -25,7 +25,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
     noiseLevel: 0.22,
     binauralDelta: 3.5,
     harmonicScatter: 0.65,
-    description: 'Delayed acoustic envelope decay governed by internal vitreous silicate grain-boundary hysteresis.'
+    description: 'Slowly decaying obsidian resonance — the stone keeps singing long after the strike.'
   };
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -76,7 +76,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
 
   const triggerAnomaly = useCallback(() => {
     const anomalyProfile: AudioProfile = {
-      presetName: 'NON-HERMITIAN COIL RUNAWAY',
+      presetName: 'ANOMALY — COIL FEEDBACK',
       carrierFreq: 18.2,
       modFreq: 24.5,
       waveform: 'sawtooth',
@@ -86,7 +86,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
       noiseLevel: 0.75,
       binauralDelta: 14.1,
       harmonicScatter: 0.95,
-      description: 'Spontaneous exponential gain runaway with 168 dB structural cavitation sub-harmonic.'
+      description: 'A sudden feedback bloom — that moment when the machine starts to misbehave on its own terms.'
     };
     setProfile(anomalyProfile);
     audioEngine.playProfile(anomalyProfile);
@@ -215,10 +215,10 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
         <div className="flex items-center gap-2">
           <Activity className="w-4 h-4 text-emerald-400 animate-pulse" />
           <span className="font-bold tracking-widest text-emerald-400">
-            ZIAA ACOUSTIC SYNTHESIS TEST BENCH // V4.1
+            ZIAA SOUND LAB // V4.1
           </span>
           <span className="px-1.5 py-0.5 rounded text-[10px] bg-emerald-950/80 text-emerald-400 border border-emerald-800/40">
-            {isPlaying ? 'ACTIVE EMISSION' : 'STANDBY'}
+            {isPlaying ? 'PLAYING' : 'STANDBY'}
           </span>
         </div>
 
@@ -226,7 +226,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           <button
             onClick={triggerAnomaly}
             className="flex items-center gap-1 px-2.5 py-1 bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-800/60 rounded text-xs transition-colors"
-            title="Inject non-Hermitian acoustic cavitation anomaly"
+            title="Trigger a sudden sonic anomaly"
           >
             <AlertTriangle className="w-3.5 h-3.5" />
             <span>TRIGGER ANOMALY</span>
@@ -243,12 +243,12 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
             {isPlaying ? (
               <>
                 <Square className="w-3.5 h-3.5 fill-current" />
-                <span>HALT EMISSION</span>
+                <span>STOP</span>
               </>
             ) : (
               <>
                 <Play className="w-3.5 h-3.5 fill-current" />
-                <span>COMMENCE TEST</span>
+                <span>PLAY</span>
               </>
             )}
           </button>

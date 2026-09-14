@@ -38,18 +38,18 @@ export const LabLogsStream: React.FC<LabLogsStreamProps> = ({ onSelectLog }) => 
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              CONTINUOUS METROLOGY LEDGER
+              THE LAB JOURNAL
             </span>
             <span className="text-[10.5px] font-mono text-zinc-500">
-              STRATUM-1 TIME-SYNCHRONIZED ARCHIVE
+              DATED ENTRIES FROM THE BENCH
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Laboratory Telemetry & Sensor Ledger ({labLogs.length} Entries)
+            Research Notes, Lab Journals &amp; Field Logs ({labLogs.length} Entries)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Real-time chronological telemetry records, ambient thermal conditions, acoustic sound pressure levels, 
-            geomagnetic flux deflections, and verified non-Hermitian anomalous events.
+            Dated notes from the workbench, late-night sessions, field trips, and the occasional anomaly — 
+            temperature, sound level, humidity, and electromagnetic conditions logged alongside the writing.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export const LabLogsStream: React.FC<LabLogsStreamProps> = ({ onSelectLog }) => 
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search telemetry records by log ID, author, summary keywords, or sensor tags..."
+            placeholder="Search notes by ID, author, keyword, or tag..."
             className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs md:text-sm font-serif"
           />
           {search && (
@@ -158,7 +158,7 @@ export const LabLogsStream: React.FC<LabLogsStreamProps> = ({ onSelectLog }) => 
                 ))}
               </div>
               <span className="text-emerald-400/80 group-hover:underline flex items-center gap-1">
-                <span>FULL TELEMETRY LOG</span>
+                <span>READ FULL ENTRY</span>
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </div>
@@ -172,14 +172,14 @@ export const LabLogsStream: React.FC<LabLogsStreamProps> = ({ onSelectLog }) => 
             onClick={() => setVisibleCount(prev => prev + 40)}
             className="px-6 py-2.5 bg-[#091322] hover:bg-[#0f1d33] border border-[#2b3e58] hover:border-[#dfb76c] text-[#dfb76c] rounded-lg font-mono text-xs transition-all shadow-md"
           >
-            Load 40 More Telemetry Records (Showing {visibleCount} of {filtered.length})
+            Load 40 more entries (showing {visibleCount} of {filtered.length})
           </button>
         </div>
       )}
 
       {filtered.length === 0 && (
         <div className="py-16 text-center text-zinc-400 bg-[#04070d] border border-[#213045] rounded-xl font-serif">
-          No telemetry records found matching query parameters.
+          No notes match the current search. Try another keyword.
         </div>
       )}
     </div>

@@ -65,7 +65,7 @@ export const DossierModal: React.FC<DossierModalProps> = ({
   const handleCopyCitation = () => {
     const id = 'id' in record ? record.id : 'RECORD';
     const title = 'title' in record ? record.title : 'name' in record ? record.name : 'summary' in record ? record.summary : id;
-    const citation = `Zazie Institute of Applied Anomalies. (2026). Archival Record ${id}: ${title}. Division of Metrology & Speculative Patents, Zazie Productions LLC. DOI: 10.1088/ziaa.2026.${id.toLowerCase()}`;
+    const citation = `Zazie Institute of Applied Anomalies. (2026). Archival Record ${id}: ${title}. ZIAA Research Archive, Zazie Productions LLC. DOI: 10.1088/ziaa.2026.${id.toLowerCase()}`;
     navigator.clipboard.writeText(citation);
     setCopiedCitation(true);
     setTimeout(() => setCopiedCitation(false), 2000);
@@ -82,7 +82,7 @@ export const DossierModal: React.FC<DossierModalProps> = ({
               <div className="text-[10px] font-mono text-[#c5a059] uppercase tracking-widest flex items-center gap-1.5">
                 <span>ZAZIE INSTITUTE OF APPLIED ANOMALIES // ARCHIVE DOSSIER</span>
                 <span>·</span>
-                <span className="text-zinc-500">ISO/IEC 17025</span>
+                <span className="text-zinc-500">IN-HOUSE ARCHIVE</span>
               </div>
               <div className="text-sm font-bold text-white tracking-wider flex items-center gap-2">
                 <span className="font-mono">{'id' in record ? record.id : 'DOSSIER'}</span>
@@ -219,7 +219,7 @@ const PrototypeDossier: React.FC<{
 
       <div className="pt-2 border-t border-emerald-950/60">
         <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
-          TECHNICAL SUMMARY & TRANSDUCTION DYNAMICS
+          NOTES ON HOW IT WORKS
         </div>
         <p className="text-zinc-300 leading-relaxed">{p.technicalSummary}</p>
       </div>
@@ -273,7 +273,7 @@ const PrototypeDossier: React.FC<{
     {/* Interactive Acoustic Bench (Audio Simulator for this prototype) */}
     <div>
       <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
-        PLAYABLE PROTOTYPE ACOUSTIC EMISSION BENCH
+        AUDITION THE INSTRUMENT
       </div>
       <AcousticBench initialProfile={p.audioProfile} initialPrototype={p} compact />
     </div>
@@ -314,7 +314,7 @@ const PrototypeDossier: React.FC<{
       <div className="p-3 bg-red-950/30 border border-red-900/60 rounded-md">
         <div className="flex items-center gap-2 text-red-400 font-bold mb-1">
           <ShieldAlert className="w-4 h-4" />
-          <span>ACOUSTIC HAZARD PROTOCOLS</span>
+          <span>CAUTION NOTES</span>
         </div>
         <ul className="list-disc list-inside space-y-1 text-red-300/90">
           {p.hazardWarnings.map((h, i) => (
@@ -328,7 +328,7 @@ const PrototypeDossier: React.FC<{
     <div className="pt-3 border-t border-emerald-950 flex flex-wrap gap-4 text-xs">
       {p.linkedPatents && p.linkedPatents.length > 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-zinc-500">SPECULATIVE PATENTS:</span>
+          <span className="text-zinc-500">RELATED PATENTS:</span>
           {p.linkedPatents.map(patId => (
             <button
               key={patId}
@@ -343,7 +343,7 @@ const PrototypeDossier: React.FC<{
 
       {p.linkedLogs && p.linkedLogs.length > 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-zinc-500">TELEMETRY LOGS:</span>
+          <span className="text-zinc-500">LAB NOTES:</span>
           {p.linkedLogs.map(logId => (
             <button
               key={logId}
@@ -393,7 +393,7 @@ const PatentDossier: React.FC<{
     {/* Abstract */}
     <div className="bg-[#04070a] border border-cyan-950/80 p-4 rounded-md">
       <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
-        PATENT ABSTRACT & METHOD DISCLOSURE
+        PATENT ABSTRACT
       </div>
       <p className="text-zinc-300 leading-relaxed">{p.abstract}</p>
     </div>
@@ -401,7 +401,7 @@ const PatentDossier: React.FC<{
     {/* Independent & Dependent Claims */}
     <div className="space-y-3">
       <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
-        LEGAL CLAIMS SCHEDULE
+        CLAIMS
       </div>
       <div className="space-y-2 bg-[#04070a] border border-cyan-950/60 p-3 rounded">
         {p.independentClaims && p.independentClaims.map((claim, idx) => (
@@ -432,7 +432,7 @@ const PatentDossier: React.FC<{
         <p className="text-zinc-300 text-[11px] leading-relaxed">{p.priorArtCritique}</p>
       </div>
       <div className="p-3 bg-[#080d14] border border-cyan-950 rounded">
-        <div className="text-cyan-400 text-[10px] uppercase font-bold mb-1">COUNSEL SECRECY MEMO</div>
+        <div className="text-cyan-400 text-[10px] uppercase font-bold mb-1">INTERNAL NOTE</div>
         <p className="text-cyan-200/90 text-[11px] leading-relaxed">{p.legalCounselMemo}</p>
       </div>
     </div>
@@ -441,7 +441,7 @@ const PatentDossier: React.FC<{
     {p.physicalAnomalies && p.physicalAnomalies.length > 0 && (
       <div className="p-3 bg-amber-950/30 border border-amber-900/60 rounded">
         <div className="text-amber-400 font-bold mb-1 text-[10px] uppercase">
-          REPORTED PHYSICAL ACOUSTIC ANOMALIES
+          OBSERVED ANOMALIES
         </div>
         <ul className="list-disc list-inside space-y-1 text-amber-200/90 text-[11px]">
           {p.physicalAnomalies.map((anom, i) => (
@@ -491,7 +491,7 @@ const FailureDossier: React.FC<{ f: FailedIncident }> = ({ f }) => (
     </div>
 
     <div className="p-3.5 bg-red-950/20 border border-red-900/60 rounded">
-      <div className="text-red-400 font-bold uppercase text-[10px] mb-1">INCIDENT NARRATIVE</div>
+      <div className="text-red-400 font-bold uppercase text-[10px] mb-1">WHAT HAPPENED</div>
       <p className="text-zinc-200 leading-relaxed text-xs">{f.incidentNarrative}</p>
     </div>
 
@@ -557,7 +557,7 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
 
     <div className="p-3.5 bg-[#04070a] border border-zinc-800 rounded leading-relaxed text-zinc-300">
       <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1">
-        CURRICULUM & BIOGRAPHY
+        BIOGRAPHY
       </div>
       <p>{p.biography}</p>
     </div>
@@ -565,7 +565,7 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
     {p.selectedPublications && p.selectedPublications.length > 0 && (
       <div>
         <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
-          SELECTED SCIENTIFIC PUBLICATIONS
+          SELECTED PUBLICATIONS &amp; WRITING
         </div>
         <ul className="space-y-1.5">
           {p.selectedPublications.map((pub, idx) => (
@@ -578,7 +578,7 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
     )}
 
     <div className="p-2.5 bg-[#030508] border border-zinc-900 rounded text-[10px] text-zinc-500 font-mono">
-      VOICEPRINT RECOGNITION HASH: {p.voiceprintHash}
+      VOICEPRINT: {p.voiceprintHash}
     </div>
   </div>
 );
@@ -620,14 +620,14 @@ const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
 
     <div className="p-3 bg-[#04070a] border border-zinc-800 rounded text-zinc-300 leading-relaxed text-xs">
       <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-1">
-        FACILITY INFRASTRUCTURE OVERVIEW
+        ABOUT THIS SITE
       </div>
       <p>{s.description}</p>
     </div>
 
     <div className="p-3 bg-[#04070a] border border-zinc-800 rounded text-zinc-300 leading-relaxed text-xs">
       <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
-        PUBLIC ACCESS & LISTENING PROTOCOL
+        VISITING &amp; LISTENING
       </div>
       <p>{s.publicAccessProtocol}</p>
     </div>
@@ -635,7 +635,7 @@ const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
     {s.instrumentationList && s.instrumentationList.length > 0 && (
       <div>
         <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
-          DEPLOYED INSTRUMENTATION CLUSTER
+          INSTALLED EQUIPMENT
         </div>
         <ul className="space-y-1">
           {s.instrumentationList.map((inst, i) => (
@@ -674,7 +674,7 @@ const LabLogDossier: React.FC<{
     {/* Environmental Telemetry Sensors */}
     <div>
       <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
-        TELEMETRY SENSOR MATRIX READOUT
+        CONDITIONS AT TIME OF ENTRY
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
@@ -712,7 +712,7 @@ const LabLogDossier: React.FC<{
     {/* Equipment links */}
     {l.equipmentIds && l.equipmentIds.length > 0 && (
       <div className="flex items-center gap-2 pt-2 border-t border-zinc-800">
-        <span className="text-zinc-500">ASSOCIATED EQUIPMENT:</span>
+        <span className="text-zinc-500">EQUIPMENT USED:</span>
         {l.equipmentIds.map(eq => (
           <button
             key={eq}

@@ -27,18 +27,18 @@ export const AuditRevisions: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              CRYPTOGRAPHIC ARCHIVE LEDGER
+              CHANGE LOG
             </span>
             <span className="text-[10.5px] font-mono text-zinc-500">
-              TAMPER-EVIDENT MERKLE RECORD
+              WHAT WE TWEAKED, WHEN
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
-            Cryptographic Archival Revision Ledger ({revisions.length} Commits)
+            Archive Revision History ({revisions.length} Entries)
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Immutable SHA-256 commit chain documenting schematic amendments, acoustic parameter calibrations, 
-            peer-review sign-offs, and security classification adjustments across all catalogued assets.
+            A running commit log of revisions to the archive — schematic changes, parameter tweaks, newly added 
+            field recordings, essays, and prototypes, signed off by the editorial group.
           </p>
         </div>
 
@@ -54,7 +54,7 @@ export const AuditRevisions: React.FC = () => {
             type="text"
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search commits by hash, author, target specimen, or change summary..."
+            placeholder="Search by hash, author, record, or note..."
             className="w-full bg-transparent border-none text-white focus:outline-none placeholder-zinc-500 text-xs md:text-sm font-serif"
           />
           {search && (
@@ -100,7 +100,7 @@ export const AuditRevisions: React.FC = () => {
             onClick={() => setVisibleCount(prev => prev + 40)}
             className="px-6 py-2.5 bg-[#091322] hover:bg-[#0f1d33] border border-[#2b3e58] hover:border-violet-400 text-violet-300 rounded-lg font-mono text-xs transition-all shadow-md"
           >
-            Load 40 More Commit Entries (Showing {visibleCount} of {filtered.length})
+            Load 40 more entries (showing {visibleCount} of {filtered.length})
           </button>
         </div>
       )}
