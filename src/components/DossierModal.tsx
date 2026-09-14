@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Prototype,
   Patent,
@@ -9,6 +9,7 @@ import {
 } from '../data/types';
 import { TechnicalSchematics } from './TechnicalSchematics';
 import { AcousticBench } from './AcousticBench';
+import { InstitutionalCrest } from './InstitutionalCrest';
 import {
   X,
   Printer,
@@ -22,7 +23,10 @@ import {
   Link,
   AlertOctagon,
   User,
-  Activity
+  Activity,
+  Share2,
+  Check,
+  Award
 } from 'lucide-react';
 
 interface DossierModalProps {
@@ -40,6 +44,8 @@ export const DossierModal: React.FC<DossierModalProps> = ({
   recordType,
   onNavigateRecord
 }) => {
+  const [copiedCitation, setCopiedCitation] = useState<boolean>(false);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -56,27 +62,58 @@ export const DossierModal: React.FC<DossierModalProps> = ({
     window.print();
   };
 
+  const handleCopyCitation = () => {
+    const id = 'id' in record ? record.id : 'RECORD';
+    const title = 'title' in record ? record.title : 'name' in record ? record.name : 'summary' in record ? record.summary : id;
+    const citation = `Zazie Institute of Applied Anomalies. (2026). Archival Record ${id}: ${title}. Division of Metrology & Speculative Patents, Zazie Productions LLC. DOI: 10.1088/ziaa.2026.${id.toLowerCase()}`;
+    navigator.clipboard.writeText(citation);
+    setCopiedCitation(true);
+    setTimeout(() => setCopiedCitation(false), 2000);
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-[#070a0e] border-2 border-emerald-900/60 rounded-lg shadow-2xl overflow-hidden font-mono text-zinc-300 my-auto max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-4xl bg-[#060910] border border-[#2b3e58] rounded-xl shadow-2xl overflow-hidden font-serif text-zinc-300 my-auto max-h-[92vh] flex flex-col">
         {/* Dossier Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 bg-[#040608] border-b border-emerald-900/50 shrink-0">
+        <div className="flex items-center justify-between px-5 py-3.5 bg-[#03060a] border-b border-[#1b2636] shrink-0">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+            <InstitutionalCrest size={34} variant="gold" />
             <div>
-              <div className="text-[10px] text-zinc-500 uppercase tracking-widest">
-                ZAZIE INSTITUTE OF APPLIED ANOMALIES // ARCHIVE DOSSIER
+              <div className="text-[10px] font-mono text-[#c5a059] uppercase tracking-widest flex items-center gap-1.5">
+                <span>ZAZIE INSTITUTE OF APPLIED ANOMALIES // ARCHIVE DOSSIER</span>
+                <span>·</span>
+                <span className="text-zinc-500">ISO/IEC 17025</span>
               </div>
               <div className="text-sm font-bold text-white tracking-wider flex items-center gap-2">
-                <span>{'id' in record ? record.id : 'DOSSIER'}</span>
-                <span className="text-xs px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 uppercase">
+                <span className="font-mono">{'id' in record ? record.id : 'DOSSIER'}</span>
+                <span className="text-xs px-2 py-0.5 rounded font-mono bg-[#0c1827] border border-[#223b5c] text-cyan-300 uppercase">
                   {recordType}
+                </span>
+                <span className="hidden sm:inline-block archival-stamp text-[8.5px] font-mono py-0.2">
+                  VERIFIED RECORD
                 </span>
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={handleCopyCitation}
+              className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono bg-[#09121d] hover:bg-[#122238] border border-[#263c59] text-[#dfb76c] rounded transition-colors"
+              title="Copy Formal Archival Citation"
+            >
+              {copiedCitation ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="hidden sm:inline">Copied</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Cite</span>
+                </>
+              )}
+            </button>
             <button
               onClick={handlePrint}
               className="p-1.5 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded transition-colors"

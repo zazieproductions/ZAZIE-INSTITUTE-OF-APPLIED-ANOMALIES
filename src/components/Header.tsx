@@ -1,6 +1,7 @@
-import React from 'react';
-import { Search, Activity, Shield, Terminal, Volume2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, Activity, Shield, Terminal, Volume2, BookOpen, Clock, Award, Globe } from 'lucide-react';
 import { archiveStats } from '../data/archive';
+import { InstitutionalCrest } from './InstitutionalCrest';
 
 export type TabKey =
   | 'dashboard'
@@ -28,100 +29,147 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSearch,
   isAudioPlaying = false
 }) => {
-  const tabs: Array<{ key: TabKey; label: string; count?: number; alert?: boolean }> = [
-    { key: 'dashboard', label: 'TELEMETRY' },
+  const [currentTime, setCurrentTime] = useState<string>('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setCurrentTime(
+        now.toISOString().replace('T', ' ').substring(0, 19) + ' UTC'
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const tabs: Array<{ key: TabKey; label: string; count?: number; alert?: boolean; subtitle?: string }> = [
+    { key: 'dashboard', label: 'TELEMETRY & OVERVIEW' },
     { key: 'prototypes', label: 'PROTOTYPES', count: archiveStats.totalPrototypes },
-    { key: 'patents', label: 'PATENTS', count: archiveStats.totalPatents },
-    { key: 'logs', label: 'LAB LOGS', count: archiveStats.totalLogs },
+    { key: 'patents', label: 'PATENT DOSSIERS', count: archiveStats.totalPatents },
+    { key: 'logs', label: 'LABORATORY LOGS', count: archiveStats.totalLogs },
+    { key: 'monographs', label: 'MONOGRAPHS', count: archiveStats.totalMonographs },
     { key: 'bench', label: 'TEST BENCH' },
     { key: 'spectra', label: 'SPECTRA//LAB' },
-    { key: 'infrastructure', label: 'FIELD SITES', count: archiveStats.totalFieldSites },
-    { key: 'monographs', label: 'MONOGRAPHS' },
+    { key: 'infrastructure', label: 'OBSERVATORIES', count: archiveStats.totalFieldSites },
     { key: 'vault', label: 'BLACK VAULT', count: archiveStats.totalFailures, alert: true },
-    { key: 'personnel', label: 'PERSONNEL', count: archiveStats.totalPersonnel },
-    { key: 'audit', label: 'AUDIT', count: archiveStats.totalRevisions }
+    { key: 'personnel', label: 'FACULTY & FELLOWS', count: archiveStats.totalPersonnel },
+    { key: 'audit', label: 'LEDGER AUDIT', count: archiveStats.totalRevisions }
   ];
 
   return (
-    <header className="bg-[#040608] border-b border-emerald-950/80 sticky top-0 z-40 font-mono text-zinc-300">
-      {/* Top Banner / Ticker */}
-      <div className="flex items-center justify-between px-3 md:px-5 py-2 border-b border-emerald-950/60 text-xs">
-        {/* Brand */}
+    <header className="bg-[#03060a] border-b border-[#253245]/70 sticky top-0 z-40 text-zinc-300 shadow-xl shadow-black/50">
+      {/* Top Academic Registry Strip */}
+      <div className="flex flex-wrap items-center justify-between px-3 md:px-6 py-1.5 bg-[#020407] border-b border-[#1b2533] text-[10.5px] text-zinc-400">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
-            <span className="font-bold tracking-widest text-emerald-400 text-sm">
-              ZIAA
-            </span>
-          </div>
-          <span className="hidden sm:inline text-zinc-500">|</span>
-          <span className="hidden sm:inline text-zinc-400 text-[11px] tracking-wider">
-            ZAZIE INSTITUTE OF APPLIED ANOMALIES
+          <span className="flex items-center gap-1.5 text-[#dfb76c] font-medium tracking-wider">
+            <Award className="w-3.5 h-3.5 text-[#d4af37]" />
+            <span>INSTITUTUM ANOMALIARUM APPLICATARUM</span>
           </span>
-          <span className="hidden lg:inline px-1.5 py-0.5 rounded text-[9.5px] bg-zinc-900 border border-zinc-800 text-zinc-400">
-            R&D // ZAZIE PRODUCTIONS LLC
+          <span className="hidden lg:inline text-zinc-600">|</span>
+          <span className="hidden lg:inline text-zinc-400">
+            ACCREDITED RESEARCH FACILITY · ISO/IEC 17025 METROLOGY SPEC
+          </span>
+          <span className="hidden xl:inline text-zinc-600">|</span>
+          <span className="hidden xl:inline text-zinc-500 font-mono">
+            ISSN: 2834-9180 (Online) · DOI: 10.1088/ZIAA
           </span>
         </div>
 
-        {/* Global Controls & Search */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 font-mono text-[10px]">
           {isAudioPlaying && (
-            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-800/80 text-emerald-400 text-[10px] animate-pulse">
+            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-600/80 text-emerald-300 animate-pulse">
               <Volume2 className="w-3 h-3" />
-              <span>RF/AUDIO ACTIVE</span>
+              <span>RF/AUDIO BUS ACTIVE</span>
             </div>
           )}
 
-          <div className="hidden md:flex items-center gap-2 text-[10px] text-zinc-500">
-            <span>NETWORK: ENCRYPTED</span>
-            <span>·</span>
-            <span>CLEARANCE: LEVEL-4</span>
+          <div className="flex items-center gap-1.5 text-zinc-400">
+            <Clock className="w-3 h-3 text-[#dfb76c]" />
+            <span>{currentTime || '2026-09-14 20:58:00 UTC'}</span>
           </div>
 
+          <span className="hidden sm:inline text-zinc-600">·</span>
+          <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#0a121e] border border-[#23354d] text-cyan-400 font-semibold">
+            CLEARANCE: LEVEL-4
+          </span>
+        </div>
+      </div>
+
+      {/* Main Prestigious Masthead */}
+      <div className="flex items-center justify-between px-3 md:px-6 py-3 border-b border-[#1f2b3c]/60 bg-gradient-to-r from-[#03060a] via-[#050a12] to-[#03060a]">
+        {/* Heraldry and Title */}
+        <div className="flex items-center gap-3.5 cursor-pointer" onClick={() => onSelectTab('dashboard')}>
+          <div className="relative group">
+            <InstitutionalCrest size={46} variant="gold" className="transition-transform group-hover:scale-105" />
+            <div className="absolute inset-0 bg-[#d4af37]/10 rounded-full blur-sm pointer-events-none" />
+          </div>
+
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-base md:text-lg font-bold tracking-wide text-white font-serif">
+                ZAZIE INSTITUTE OF APPLIED ANOMALIES
+              </h1>
+              <span className="hidden sm:inline-block px-2 py-0.5 text-[9px] font-mono tracking-widest text-[#dfb76c] bg-[#161309] border border-[#8c6d31]/60 rounded">
+                CHARTER ZIA-8941
+              </span>
+            </div>
+            <div className="text-xs text-zinc-400 flex items-center gap-2 font-serif">
+              <span>R&D Division of Zazie Productions LLC</span>
+              <span className="text-zinc-600">·</span>
+              <span className="hidden md:inline italic text-[#c5a059]">Auditus Inauditi · Veritas Occultorum</span>
+              <span className="hidden md:inline text-zinc-600">·</span>
+              <span className="text-emerald-400/90 font-mono text-[10.5px]">5-Year Archive (2021–2026)</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Global Controls & OMNISearch */}
+        <div className="flex items-center gap-3">
           <button
             onClick={onOpenSearch}
-            className="flex items-center gap-2 px-3 py-1 bg-[#090d12] hover:bg-[#0e141c] border border-emerald-900/60 hover:border-emerald-500/60 text-zinc-300 rounded text-xs transition-colors"
+            className="flex items-center gap-2.5 px-3.5 py-1.5 bg-[#070e17] hover:bg-[#0c1827] border border-[#2b3e58] hover:border-[#dfb76c]/80 text-zinc-200 rounded-md text-xs transition-all shadow-md group"
           >
-            <Search className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="hidden sm:inline">OMNISearch</span>
-            <kbd className="hidden sm:inline text-[9px] bg-zinc-900 px-1 py-0.2 rounded border border-zinc-800 text-zinc-400">
+            <Search className="w-3.5 h-3.5 text-[#dfb76c] group-hover:scale-110 transition-transform" />
+            <span className="font-serif tracking-wider">Archive Search</span>
+            <kbd className="hidden sm:inline text-[9.5px] bg-[#020509] px-1.5 py-0.5 rounded border border-[#1e2e42] text-zinc-400 font-mono">
               ⌘K
             </kbd>
           </button>
         </div>
       </div>
 
-      {/* Primary Navigation Tabs */}
-      <nav className="flex items-center overflow-x-auto px-2 md:px-4 py-1 gap-1 text-[11px] scrollbar-none bg-[#030507]">
+      {/* Primary Scholarly Tabs Navigation */}
+      <nav className="flex items-center overflow-x-auto px-2 md:px-5 py-1 gap-1 text-[11.5px] scrollbar-none bg-[#020407]">
         {tabs.map(tab => {
           const isActive = activeTab === tab.key;
           return (
             <button
               key={tab.key}
               onClick={() => onSelectTab(tab.key)}
-              className={`px-3 py-1.5 rounded transition-all whitespace-nowrap flex items-center gap-1.5 font-medium ${
+              className={`px-3 py-1.5 rounded transition-all whitespace-nowrap flex items-center gap-2 font-serif tracking-wider ${
                 isActive
                   ? tab.alert
-                    ? 'bg-red-950 text-red-300 border border-red-700 font-bold shadow-sm'
+                    ? 'bg-red-950/80 text-red-200 border-b-2 border-red-500 font-bold shadow-sm'
                     : tab.key === 'spectra'
-                    ? 'bg-cyan-950 text-cyan-300 border border-cyan-700 font-bold shadow-sm'
-                    : 'bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold shadow-sm'
+                    ? 'bg-cyan-950/80 text-cyan-200 border-b-2 border-cyan-400 font-bold shadow-sm'
+                    : 'bg-[#121926] text-[#dfb76c] border-b-2 border-[#dfb76c] font-bold shadow-sm'
                   : tab.alert
-                  ? 'text-red-400/80 hover:text-red-300 hover:bg-red-950/30'
+                  ? 'text-red-400/80 hover:text-red-200 hover:bg-red-950/30'
                   : tab.key === 'spectra'
-                  ? 'text-cyan-400/90 hover:text-cyan-300 hover:bg-cyan-950/30'
-                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/60'
+                  ? 'text-cyan-400/80 hover:text-cyan-200 hover:bg-cyan-950/30'
+                  : 'text-zinc-400 hover:text-zinc-100 hover:bg-[#090f17]'
               }`}
             >
               <span>{tab.label}</span>
               {tab.count !== undefined && (
                 <span
-                  className={`px-1 py-0.2 rounded text-[9px] ${
+                  className={`px-1.5 py-0.2 rounded text-[10px] font-mono ${
                     isActive
                       ? tab.alert
                         ? 'bg-red-900 text-red-200'
-                        : 'bg-emerald-900 text-emerald-200'
-                      : 'bg-zinc-900 text-zinc-500'
+                        : 'bg-[#251e0e] text-[#f5d78e] border border-[#8c6d31]/50'
+                      : 'bg-[#090f17] text-zinc-500 border border-[#162233]'
                   }`}
                 >
                   {tab.count}
