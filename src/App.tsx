@@ -7,10 +7,10 @@ import { PatentDossiers } from './pages/PatentDossiers';
 import { LabLogsStream } from './pages/LabLogsStream';
 import { AcousticBenchPage } from './pages/AcousticBenchPage';
 import { SpectraLabConsole } from './components/SpectraLabConsole';
+import { SynthesisSignalPage } from './pages/SynthesisSignalPage';
 import { FieldInfrastructure } from './pages/FieldInfrastructure';
 import { Monographs } from './pages/Monographs';
 import { BlackVaultFailures } from './pages/BlackVaultFailures';
-import { PersonnelDirectory } from './pages/PersonnelDirectory';
 import { AuditRevisions } from './pages/AuditRevisions';
 import { VoidOculusPage } from './pages/VoidOculusPage';
 import { DossierModal } from './components/DossierModal';
@@ -20,7 +20,6 @@ import {
   getPatentById,
   getLabLogById,
   getFailureById,
-  getPersonnelById,
   getFieldSiteById
 } from './data/archive';
 import { audioEngine } from './audio/audioEngine';
@@ -50,7 +49,6 @@ export function App() {
     else if (type === 'patent') rec = getPatentById(id);
     else if (type === 'log') rec = getLabLogById(id);
     else if (type === 'failure') rec = getFailureById(id);
-    else if (type === 'personnel') rec = getPersonnelById(id);
     else if (type === 'site') rec = getFieldSiteById(id);
 
     if (rec) {
@@ -120,6 +118,10 @@ export function App() {
           </div>
         )}
 
+        {activeTab === 'synthesis' && (
+          <SynthesisSignalPage />
+        )}
+
         {activeTab === 'oculus' && (
           <VoidOculusPage />
         )}
@@ -137,12 +139,6 @@ export function App() {
         {activeTab === 'vault' && (
           <BlackVaultFailures
             onSelectFailure={id => openDossier('failure', id)}
-          />
-        )}
-
-        {activeTab === 'personnel' && (
-          <PersonnelDirectory
-            onSelectFellow={id => openDossier('personnel', id)}
           />
         )}
 
