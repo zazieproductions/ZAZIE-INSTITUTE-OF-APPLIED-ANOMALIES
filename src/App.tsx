@@ -12,6 +12,7 @@ import { Monographs } from './pages/Monographs';
 import { BlackVaultFailures } from './pages/BlackVaultFailures';
 import { PersonnelDirectory } from './pages/PersonnelDirectory';
 import { AuditRevisions } from './pages/AuditRevisions';
+import { VoidOculusPage } from './pages/VoidOculusPage';
 import { DossierModal } from './components/DossierModal';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
 import {
@@ -117,6 +118,10 @@ export function App() {
             </div>
             <SpectraLabConsole />
           </div>
+        )}
+
+        {activeTab === 'oculus' && (
+          <VoidOculusPage />
         )}
 
         {activeTab === 'infrastructure' && (
