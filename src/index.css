@@ -1,1 +1,32 @@
+@import "@fontsource/stix-two-text/400.css";
+@import "@fontsource/stix-two-text/500.css";
+@import "@fontsource/stix-two-text/600.css";
+@import "@fontsource/stix-two-text/700.css";
+@import "@fontsource/stix-two-text/400-italic.css";
+@import "@fontsource/stix-two-text/600-italic.css";
+
+@import "@fontsource/eb-garamond/400.css";
+@import "@fontsource/eb-garamond/500.css";
+@import "@fontsource/eb-garamond/600.css";
+@import "@fontsource/eb-garamond/700.css";
+@import "@fontsource/eb-garamond/400-italic.css";
+
 @import "tailwindcss";
+
+@theme {
+  --font-serif: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --font-sans: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --font-mono: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+}
+
+:root {
+  --font-academic: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  font-family: var(--font-academic);
+}
+
+body {
+  font-family: var(--font-academic);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}

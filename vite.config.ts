@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig(async ({ mode }) => {
-  const plugins = [react(), tailwindcss()];
+export default defineConfig(async ({ mode }): Promise<any> => {
+  const plugins: any[] = [react(), tailwindcss()];
   try {
     // @ts-ignore
     const m = await import('./.vite-source-tags.js');
@@ -19,6 +19,10 @@ export default defineConfig(async ({ mode }) => {
 
   return {
     plugins,
+    server: {
+      host: '0.0.0.0',
+      allowedHosts: true,
+    },
     envPrefix: ['VITE_', 'NEXT_PUBLIC_'],
     define: processEnvDefines,
   };
