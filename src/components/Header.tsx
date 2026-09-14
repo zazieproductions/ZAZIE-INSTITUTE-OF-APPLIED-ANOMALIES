@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Activity, Shield, Terminal, Volume2, BookOpen, Clock, Award, Globe } from 'lucide-react';
+import { Search, Volume2, BookOpen, Clock, Award } from 'lucide-react';
 import { archiveStats } from '../data/archive';
 import { InstitutionalCrest } from './InstitutionalCrest';
 
@@ -11,6 +11,7 @@ export type TabKey =
   | 'bench'
   | 'spectra'
   | 'synthesis'
+  | 'oculus'
   | 'infrastructure'
   | 'monographs'
   | 'vault'
@@ -51,7 +52,8 @@ export const Header: React.FC<HeaderProps> = ({
     { key: 'monographs', label: 'MONOGRAPHS', count: archiveStats.totalMonographs },
     { key: 'bench', label: 'ACOUSTIC BENCH' },
     { key: 'spectra', label: 'SPECTRA//LAB' },
-    { key: 'synthesis', label: 'SYNTHESIS//SIGNAL', count: undefined },
+    { key: 'synthesis', label: 'SYNTHESIS//SIGNAL' },
+    { key: 'oculus', label: 'VOID//OCULUS' },
     { key: 'infrastructure', label: 'FIELD STATIONS', count: archiveStats.totalFieldSites },
     { key: 'vault', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, alert: true },
     { key: 'audit', label: 'SYSTEM AUDIT', count: archiveStats.totalRevisions }
@@ -145,6 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
           const isActive = activeTab === tab.key;
           const isSynthesis = tab.key === 'synthesis';
           const isSpectra = tab.key === 'spectra';
+          const isOculus = tab.key === 'oculus';
           return (
             <button
               key={tab.key}
@@ -155,6 +158,8 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'bg-red-950/80 text-red-200 border-b-2 border-red-500 font-bold shadow-sm'
                     : isSynthesis
                     ? 'bg-[#0a1214] text-[#00ffcc] border-b-2 border-[#00ffcc] font-bold shadow-[0_0_12px_rgba(0,255,204,0.25)]'
+                    : isOculus
+                    ? 'bg-violet-950/80 text-violet-200 border-b-2 border-violet-400 font-bold shadow-sm'
                     : isSpectra
                     ? 'bg-cyan-950/80 text-cyan-200 border-b-2 border-cyan-400 font-bold shadow-sm'
                     : 'bg-[#121926] text-[#dfb76c] border-b-2 border-[#dfb76c] font-bold shadow-sm'
@@ -162,6 +167,8 @@ export const Header: React.FC<HeaderProps> = ({
                   ? 'text-red-400/80 hover:text-red-200 hover:bg-red-950/30'
                   : isSynthesis
                   ? 'text-[#00ffcc]/70 hover:text-[#00ffcc] hover:bg-[#00ffcc]/10 border border-transparent hover:border-[#00ffcc]/30'
+                  : isOculus
+                  ? 'text-violet-400/80 hover:text-violet-200 hover:bg-violet-950/30'
                   : isSpectra
                   ? 'text-cyan-400/80 hover:text-cyan-200 hover:bg-cyan-950/30'
                   : 'text-zinc-400 hover:text-zinc-100 hover:bg-[#090f17]'

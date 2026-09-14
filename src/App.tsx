@@ -12,6 +12,7 @@ import { FieldInfrastructure } from './pages/FieldInfrastructure';
 import { Monographs } from './pages/Monographs';
 import { BlackVaultFailures } from './pages/BlackVaultFailures';
 import { AuditRevisions } from './pages/AuditRevisions';
+import { VoidOculusPage } from './pages/VoidOculusPage';
 import { DossierModal } from './components/DossierModal';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
 import {
@@ -19,7 +20,6 @@ import {
   getPatentById,
   getLabLogById,
   getFailureById,
-  getPersonnelById,
   getFieldSiteById
 } from './data/archive';
 import { audioEngine } from './audio/audioEngine';
@@ -120,6 +120,10 @@ export function App() {
 
         {activeTab === 'synthesis' && (
           <SynthesisSignalPage />
+        )}
+
+        {activeTab === 'oculus' && (
+          <VoidOculusPage />
         )}
 
         {activeTab === 'infrastructure' && (
