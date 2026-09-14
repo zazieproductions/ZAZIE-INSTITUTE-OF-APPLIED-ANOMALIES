@@ -1,5 +1,6 @@
 import React from 'react';
 import { Eye, ExternalLink, Maximize2, ShieldCheck } from 'lucide-react';
+import { StatusBadge } from '../components/StatusBadge';
 
 /**
  * The VOID//OCULUS prototype is intentionally kept in an isolated document.
@@ -18,6 +19,7 @@ export const VoidOculusPage: React.FC = () => {
                 <Eye className="h-3 w-3" />
                 OCULAR PROTOTYPE
               </span>
+              <StatusBadge label="Operational" size="xs" />
               <span className="text-[10px] tracking-wider text-zinc-500">VOID-OCULUS / EMBEDDED RUNTIME</span>
             </div>
             <h1 className="font-serif text-xl font-bold tracking-wide text-white md:text-2xl">

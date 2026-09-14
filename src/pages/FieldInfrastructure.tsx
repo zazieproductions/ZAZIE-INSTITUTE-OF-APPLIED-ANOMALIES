@@ -1,8 +1,10 @@
 import React from 'react';
 import { fieldSites } from '../data/archive';
 import { FieldSite } from '../data/types';
+import { StatusBadge } from '../components/StatusBadge';
+import { getFieldSiteStatusLabel } from '../data/projectStatus';
 import { SubterraneanArraySchematic } from '../components/TechnicalSchematics';
-import { Compass, Radio, MapPin, Layers, Server, ArrowRight } from 'lucide-react';
+import { Compass, Radio, MapPin, Layers, Server, ArrowRight, Info } from 'lucide-react';
 
 interface FieldInfrastructureProps {
   onSelectSite: (id: string) => void;
@@ -35,6 +37,24 @@ export const FieldInfrastructure: React.FC<FieldInfrastructureProps> = ({ onSele
         </div>
       </div>
 
+      {/* Field Site Notice */}
+      <div className="bg-[#03060c] border border-[#1e2a3b] rounded-xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2 text-zinc-300">
+          <Info className="w-4 h-4 text-[#dfb76c] shrink-0" />
+          <span className="leading-relaxed">
+            <strong className="text-white">Classification Notice:</strong> Field observatories and seismic listening arrays represent 
+            <strong> artistic research</strong> installations and speculative environmental sound stations.
+          </span>
+        </div>
+        <a
+          href="#disclaimer"
+          className="text-[#dfb76c] hover:underline font-mono text-[11px] whitespace-nowrap shrink-0 flex items-center gap-1"
+        >
+          <span>Research Disclaimer</span>
+          <ArrowRight className="w-3 h-3" />
+        </a>
+      </div>
+
       {/* Subterranean Blueprint Feature */}
       <SubterraneanArraySchematic codeName="FACILITY-7-SEISMIC" />
 
@@ -60,6 +80,10 @@ export const FieldInfrastructure: React.FC<FieldInfrastructureProps> = ({ onSele
                 <span className="shrink-0 px-2 py-0.5 rounded text-[9.5px] font-mono bg-[#161208] text-amber-300 border border-amber-800">
                   {s.activeStatus}
                 </span>
+              </div>
+
+              <div className="mb-2">
+                <StatusBadge label={getFieldSiteStatusLabel(s)} size="xs" />
               </div>
 
               <div className="text-xs text-zinc-400 font-mono mb-2 flex items-center gap-2">
@@ -91,3 +115,4 @@ export const FieldInfrastructure: React.FC<FieldInfrastructureProps> = ({ onSele
     </div>
   );
 };
+

@@ -13,6 +13,8 @@ import { Monographs } from './pages/Monographs';
 import { BlackVaultFailures } from './pages/BlackVaultFailures';
 import { AuditRevisions } from './pages/AuditRevisions';
 import { VoidOculusPage } from './pages/VoidOculusPage';
+import { LegalDisclosuresPage, LegalSectionKey } from './pages/LegalDisclosuresPage';
+import { StatusBadge } from './components/StatusBadge';
 import { DossierModal } from './components/DossierModal';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
 import {
@@ -43,6 +45,28 @@ export function App() {
     };
   }, []);
 
+  // Listen for direct URL hash navigation (e.g. #disclaimer, #terms, #privacy, #institutional-status)
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#institutional-status' || hash === '#status-notice' || hash === '#institutional') {
+        setActiveTab('institutional-status');
+      } else if (hash === '#disclaimer' || hash === '#research-disclaimer' || hash === '#speculation-disclaimer') {
+        setActiveTab('disclaimer');
+      } else if (hash === '#terms' || hash === '#terms-of-use') {
+        setActiveTab('terms');
+      } else if (hash === '#privacy' || hash === '#privacy-policy') {
+        setActiveTab('privacy');
+      } else if (hash === '#legal' || hash === '#disclosures') {
+        setActiveTab('legal');
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const openDossier = (type: any, id: string) => {
     let rec: any = null;
     if (type === 'prototype') rec = getPrototypeById(id);
@@ -56,6 +80,27 @@ export function App() {
       setSelectedRecordType(type);
       setDossierOpen(true);
     }
+  };
+
+  const isLegalTab = ['legal', 'institutional-status', 'disclaimer', 'terms', 'privacy'].includes(activeTab);
+
+  const getLegalInitialSection = (): LegalSectionKey => {
+    if (activeTab === 'institutional-status') return 'status';
+    if (activeTab === 'disclaimer') return 'disclaimer';
+    if (activeTab === 'terms') return 'terms';
+    if (activeTab === 'privacy') return 'privacy';
+    return 'status';
+  };
+
+  const handleFooterLegalNavigate = (section: 'status' | 'disclaimer' | 'terms' | 'privacy') => {
+    const mapping: Record<string, TabKey> = {
+      status: 'institutional-status',
+      disclaimer: 'disclaimer',
+      terms: 'terms',
+      privacy: 'privacy'
+    };
+    setActiveTab(mapping[section] || 'legal');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -103,11 +148,12 @@ export function App() {
           <div className="space-y-4">
             <div className="flex justify-between items-center bg-[#05080c] border border-cyan-950 p-4 rounded-lg">
               <div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
                   <h1 className="text-base font-bold text-white tracking-wider">
                     SPECTRA//LAB — AUDIOVISUAL DSP WORKSTATION
                   </h1>
+                  <StatusBadge label="Operational" size="xs" />
                 </div>
                 <p className="text-zinc-400 text-xs mt-1">
                   Volumetric spectral field canvas, particle physics, 64-band FFT analysis, 8x8 mod matrix, and automated parameter curves.
@@ -145,10 +191,29 @@ export function App() {
         {activeTab === 'audit' && (
           <AuditRevisions />
         )}
+
+        {isLegalTab && (
+          <LegalDisclosuresPage
+            initialSection={getLegalInitialSection()}
+            onSelectSection={sec => {
+              const tabMap: Record<LegalSectionKey, TabKey> = {
+                status: 'institutional-status',
+                disclaimer: 'disclaimer',
+                terms: 'terms',
+                privacy: 'privacy'
+              };
+              setActiveTab(tabMap[sec]);
+            }}
+            onReturnToArchive={() => {
+              setActiveTab('dashboard');
+              window.history.replaceState(null, '', window.location.pathname);
+            }}
+          />
+        )}
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer with subtle and readable legal disclaimer */}
+      <Footer onNavigateLegal={handleFooterLegalNavigate} />
 
       {/* Classified Dossier Modal */}
       <DossierModal

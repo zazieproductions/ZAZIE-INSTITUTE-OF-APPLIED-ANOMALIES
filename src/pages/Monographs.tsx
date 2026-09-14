@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { monographs } from '../data/archive';
 import { Monograph } from '../data/types';
-import { BookOpen, FileText, Share2, Award, Printer, Copy, Check, ExternalLink, Bookmark } from 'lucide-react';
+import { StatusBadge } from '../components/StatusBadge';
+import { getMonographStatusLabel } from '../data/projectStatus';
+import { Share2, Award, Printer, Copy, Check, Bookmark, Info, ArrowRight } from 'lucide-react';
 
 export const Monographs: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string>(monographs[0]?.id || '');
@@ -17,11 +19,11 @@ export const Monographs: React.FC = () => {
     const doi = `10.1088/ziaa.${year}.${m.id.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
 
     if (fmt === 'apa') {
-      return `${authors}. (${year}). ${m.title}. ${m.volume}, ZIAA Press. https://doi.org/${doi}`;
+      return `${authors}. (${year}). ${m.title}. ${m.volume}, ZIAA Archive Series (Artistic Research). doi: ${doi}. https://zazieinstitute.org/#disclaimer`;
     } else if (fmt === 'ieee') {
-      return `${authors}, "${m.title}," ${m.volume}, Zazie Institute of Applied Anomalies, ${year}, doi: ${doi}.`;
+      return `${authors}, "${m.title}," ${m.volume}, Zazie Institute of Applied Anomalies Archive (Internal Monograph Series), ${year}, doi: ${doi}.`;
     } else if (fmt === 'chicago') {
-      return `${authors}. "${m.title}." ${m.volume} (ZIAA Archive, ${year}). https://doi.org/${doi}.`;
+      return `${authors}. "${m.title}." ${m.volume} (ZIAA Archive, ${year}), doi: ${doi}. https://zazieinstitute.org/#disclaimer.`;
     } else {
       // BibTeX
       const citeKey = `${m.author.split(' ').pop()?.toLowerCase() || 'ziaa'}${year}${m.id.replace(/[^0-9]/g, '')}`;
@@ -30,9 +32,10 @@ export const Monographs: React.FC = () => {
   title = {${m.title}},
   journal = {${m.volume}},
   year = {${year}},
-  publisher = {Zazie Institute of Applied Anomalies},
+  publisher = {Zazie Institute of Applied Anomalies / Zazie Productions LLC},
+  note = {Internal Research Monograph (Artistic Research Series)},
   doi = {${doi}},
-  url = {https://archive.ziaa.internal/monographs/${m.id}}
+  url = {https://zazieinstitute.org/#monographs}
 }`;
     }
   };
@@ -52,17 +55,17 @@ export const Monographs: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              PEER-REVIEWED MONOGRAPHS
+              WORKING RESEARCH MONOGRAPHS
             </span>
             <span className="text-[10.5px] font-mono text-zinc-400">
-              ISSN: 2834-9180 (Online) · OPEN RESEARCH
+              INTERNAL CURATORIAL SERIES · ARTISTIC & SPECULATIVE THEORY
             </span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">
             ZIAA Transactions on Applied Anomalies & Experimental Systems
           </h1>
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Peer-reviewed working papers, research monographs, and theoretical treatises on audio technology, 
+            Curated working papers, research monographs, and theoretical treatises on audio technology, 
             computational creativity, speculative engineering, and interdisciplinary invention ({monographs.length} Volumes).
           </p>
         </div>
@@ -85,6 +88,24 @@ export const Monographs: React.FC = () => {
         </div>
       </div>
 
+      {/* Mandatory Monograph Disclosure Notice */}
+      <div className="bg-[#03060c] border border-[#1e2a3b] rounded-xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2 text-zinc-300">
+          <Info className="w-4 h-4 text-[#dfb76c] shrink-0" />
+          <span className="leading-relaxed">
+            <strong className="text-white">Publication Status:</strong> ZIAA monographs represent internal creative practice, 
+            speculative theory, and artistic research. They are <strong>not</strong> externally peer-reviewed academic journal publications.
+          </span>
+        </div>
+        <a
+          href="#disclaimer"
+          className="text-[#dfb76c] hover:underline font-mono text-[11px] whitespace-nowrap shrink-0 flex items-center gap-1"
+        >
+          <span>Research Disclaimer</span>
+          <ArrowRight className="w-3 h-3" />
+        </a>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Monograph Index (4 cols) */}
         <div className="lg:col-span-4 space-y-2.5">
@@ -93,6 +114,7 @@ export const Monographs: React.FC = () => {
           </div>
           {monographs.map(m => {
             const isSelected = m.id === selectedId;
+            const status = getMonographStatusLabel(m);
             return (
               <div
                 key={m.id}
@@ -103,12 +125,15 @@ export const Monographs: React.FC = () => {
                     : 'bg-[#04070d] border-[#1b2636] hover:border-zinc-600'
                 }`}
               >
-                <div className="text-[10px] font-mono text-[#c5a059] mb-1">{m.volume}</div>
+                <div className="flex justify-between items-center gap-2 mb-1">
+                  <div className="text-[10px] font-mono text-[#c5a059]">{m.volume}</div>
+                  <StatusBadge label={status} size="xs" />
+                </div>
                 <div className="text-white font-bold text-sm mb-1.5 leading-snug">{m.title}</div>
                 <div className="text-xs text-emerald-400/90">{m.author}</div>
                 <div className="text-[10.5px] font-mono text-zinc-500 mt-2 flex justify-between items-center">
                   <span>{m.date}</span>
-                  <span className="text-zinc-600 font-mono text-[9.5px]">DOI: 10.1088/ziaa</span>
+                  <span className="text-zinc-600 font-mono text-[9.5px]">INTERNAL CURATORIAL SERIES</span>
                 </div>
               </div>
             );
@@ -122,10 +147,13 @@ export const Monographs: React.FC = () => {
               {/* Journal Masthead Header */}
               <div className="border-b border-[#1b2636] pb-5 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#c5a059]">
-                  <span className="archival-stamp font-mono text-[9.5px]">
-                    OFFICIAL PEER-REVIEWED TREATISE
-                  </span>
-                  <span>{activeMonograph.volume} · Published {activeMonograph.date}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="archival-stamp font-mono text-[9.5px]">
+                      WORKING MONOGRAPH
+                    </span>
+                    <StatusBadge label={getMonographStatusLabel(activeMonograph)} size="xs" />
+                  </div>
+                  <span>{activeMonograph.volume} · Released {activeMonograph.date}</span>
                 </div>
 
                 <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug">
@@ -140,9 +168,9 @@ export const Monographs: React.FC = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-500 pt-1">
-                  <span>Accession DOI: <span className="text-cyan-400 underline">10.1088/ziaa.2026.{activeMonograph.id.toLowerCase()}</span></span>
+                  <span>Internal Series DOI: <span className="text-cyan-400">10.1088/ziaa.2026.{activeMonograph.id.toLowerCase()}</span></span>
                   <span>·</span>
-                  <span>Review Committee: Certified Unanimous</span>
+                  <span>Curatorial Review: Approved for Open Archive</span>
                 </div>
               </div>
 

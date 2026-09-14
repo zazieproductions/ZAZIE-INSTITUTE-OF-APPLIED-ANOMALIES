@@ -10,23 +10,20 @@ import {
 import { TechnicalSchematics } from './TechnicalSchematics';
 import { AcousticBench } from './AcousticBench';
 import { InstitutionalCrest } from './InstitutionalCrest';
+import { StatusBadge } from './StatusBadge';
+import {
+  getPrototypeStatusLabel,
+  getPatentStatusLabel,
+  getFailureStatusLabel,
+  getFieldSiteStatusLabel,
+  getLabLogStatusLabel
+} from '../data/projectStatus';
 import {
   X,
   Printer,
   ShieldAlert,
-  FileText,
-  Sliders,
-  Cpu,
-  Radio,
-  Clock,
-  Compass,
-  Link,
-  AlertOctagon,
-  User,
-  Activity,
   Share2,
-  Check,
-  Award
+  Check
 } from 'lucide-react';
 
 interface DossierModalProps {
@@ -71,6 +68,19 @@ export const DossierModal: React.FC<DossierModalProps> = ({
     setTimeout(() => setCopiedCitation(false), 2000);
   };
 
+  let headerStatusBadge: React.ReactNode = null;
+  if (recordType === 'prototype') {
+    headerStatusBadge = <StatusBadge label={getPrototypeStatusLabel(record as Prototype)} size="xs" />;
+  } else if (recordType === 'patent') {
+    headerStatusBadge = <StatusBadge label={getPatentStatusLabel(record as Patent)} size="xs" />;
+  } else if (recordType === 'failure') {
+    headerStatusBadge = <StatusBadge label={getFailureStatusLabel(record as FailedIncident)} size="xs" />;
+  } else if (recordType === 'site') {
+    headerStatusBadge = <StatusBadge label={getFieldSiteStatusLabel(record as FieldSite)} size="xs" />;
+  } else if (recordType === 'log') {
+    headerStatusBadge = <StatusBadge label={getLabLogStatusLabel(record as LabLog)} size="xs" />;
+  }
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-4xl bg-[#060910] border border-[#2b3e58] rounded-xl shadow-2xl overflow-hidden font-serif text-zinc-300 my-auto max-h-[92vh] flex flex-col">
@@ -84,13 +94,14 @@ export const DossierModal: React.FC<DossierModalProps> = ({
                 <span>·</span>
                 <span className="text-zinc-400">CREATIVE-TECH INITIATIVE</span>
               </div>
-              <div className="text-sm font-bold text-white tracking-wider flex items-center gap-2">
+              <div className="text-sm font-bold text-white tracking-wider flex flex-wrap items-center gap-2">
                 <span className="font-mono">{'id' in record ? record.id : 'DOSSIER'}</span>
                 <span className="text-xs px-2 py-0.5 rounded font-mono bg-[#0c1827] border border-[#223b5c] text-cyan-300 uppercase">
                   {recordType}
                 </span>
+                {headerStatusBadge}
                 <span className="hidden sm:inline-block archival-stamp text-[8.5px] font-mono py-0.2">
-                  VERIFIED RECORD
+                  INTERNAL RECORD
                 </span>
               </div>
             </div>
@@ -171,9 +182,19 @@ export const DossierModal: React.FC<DossierModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="px-5 py-2.5 bg-[#040608] border-t border-emerald-950/80 text-[10px] text-zinc-500 flex justify-between items-center shrink-0">
+        <div className="px-5 py-2.5 bg-[#040608] border-t border-emerald-950/80 text-[10px] text-zinc-500 flex flex-wrap justify-between items-center gap-2 shrink-0 font-mono">
           <span>RESEARCH & PROTOTYPE ARCHIVE // ZAZIE PRODUCTIONS LLC</span>
-          <span>SYSTEM ARCHIVE // VERIFIED RECORD</span>
+          <div className="flex items-center gap-3">
+            <span>CLASSIFICATION: VERIFIED INTERNAL RECORD</span>
+            <span>·</span>
+            <a
+              href="#disclaimer"
+              onClick={onClose}
+              className="text-zinc-400 hover:text-[#dfb76c] underline"
+            >
+              INSTITUTIONAL DISCLOSURES
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -192,19 +213,25 @@ const PrototypeDossier: React.FC<{
         <span className="text-emerald-400 text-lg font-bold">
           {p.id}: {p.codeName}
         </span>
+        <StatusBadge label={getPrototypeStatusLabel(p)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800">
           CLEARANCE: {p.clearance}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
-          STATUS: {p.status}
+          INTERNAL STATE: {p.status}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
           YEAR: {p.year}
         </span>
       </div>
       <h2 className="text-zinc-200 text-sm font-semibold">{p.title}</h2>
-      <div className="text-zinc-400 text-[11px] mt-1">
-        Discipline: <span className="text-cyan-400">{p.discipline}</span> · Lead Researcher: <span className="text-zinc-200">{p.leadResearcher}</span>
+      <div className="text-zinc-400 text-[11px] mt-1 flex flex-wrap items-center justify-between gap-2">
+        <span>
+          Discipline: <span className="text-cyan-400">{p.discipline}</span> · Lead Researcher: <span className="text-zinc-200">{p.leadResearcher}</span>
+        </span>
+        <span className="text-[10px] text-zinc-500 font-mono italic">
+          * Internal ZIAA research classification · Creative & experimental scope
+        </span>
       </div>
     </div>
 
@@ -377,16 +404,22 @@ const PatentDossier: React.FC<{
         <span className="text-cyan-400 text-lg font-bold">
           {p.patentNumber}
         </span>
+        <StatusBadge label={getPatentStatusLabel(p)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-800">
-          STATUS: {p.status}
+          INTERNAL REGISTRY: {p.status}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
           FILING: {p.filingDate}
         </span>
       </div>
       <h2 className="text-zinc-100 text-sm font-semibold">{p.title}</h2>
-      <div className="text-zinc-400 text-[11px] mt-1">
-        Assignee: <span className="text-zinc-200">{p.assignee}</span> · Inventors: <span className="text-emerald-400">{p.inventors.join(', ')}</span>
+      <div className="text-zinc-400 text-[11px] mt-1 flex flex-wrap items-center justify-between gap-2">
+        <span>
+          Assignee: <span className="text-zinc-200">{p.assignee}</span> · Inventors: <span className="text-emerald-400">{p.inventors.join(', ')}</span>
+        </span>
+        <span className="text-[10px] text-zinc-500 font-mono italic">
+          * Speculative defensive disclosure / Design fiction · Not an issued governmental patent
+        </span>
       </div>
     </div>
 
@@ -474,6 +507,7 @@ const FailureDossier: React.FC<{ f: FailedIncident }> = ({ f }) => (
     <div>
       <div className="flex flex-wrap items-center gap-2 mb-1">
         <span className="text-red-400 text-lg font-bold">{f.id}</span>
+        <StatusBadge label={getFailureStatusLabel(f)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-red-950 text-red-300 border border-red-800">
           HAZARD: {f.hazardClassification}
         </span>
@@ -485,8 +519,11 @@ const FailureDossier: React.FC<{ f: FailedIncident }> = ({ f }) => (
       <h2 className="text-zinc-100 text-base font-semibold">
         {f.projectCode}: {f.projectTitle}
       </h2>
-      <div className="text-zinc-400 text-[11px] mt-0.5">
-        Lead Investigator: <span className="text-zinc-200">{f.leadInvestigator}</span>
+      <div className="text-zinc-400 text-[11px] mt-0.5 flex flex-wrap items-center justify-between gap-2">
+        <span>Lead Investigator: <span className="text-zinc-200">{f.leadInvestigator}</span></span>
+        <span className="text-[10px] text-zinc-500 font-mono italic">
+          * Design fiction & speculative post-mortem case study
+        </span>
       </div>
     </div>
 
@@ -534,9 +571,15 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
           <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800">
             {p.clearance}
           </span>
+          <span className="px-2 py-0.5 rounded text-[9.5px] font-mono bg-[#161309] text-[#dfb76c] border border-[#8c6d31]/60">
+            INVESTIGATOR
+          </span>
         </div>
         <div className="text-zinc-300 font-semibold">{p.title}</div>
         <div className="text-cyan-400 text-xs mt-0.5">Specialization: {p.specialization}</div>
+        <div className="text-[10px] text-zinc-500 font-mono italic mt-1">
+          * Research title at Zazie Productions LLC creative R&D. Not a university-conferred academic professorship or tenure.
+        </div>
       </div>
     </div>
 
@@ -587,8 +630,9 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
 const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
   <div className="space-y-5">
     <div>
-      <div className="flex items-center gap-2 mb-1">
+      <div className="flex flex-wrap items-center gap-2 mb-1">
         <span className="text-amber-400 text-lg font-bold">{s.codename}</span>
+        <StatusBadge label={getFieldSiteStatusLabel(s)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-amber-950 text-amber-300 border border-amber-800">
           STATUS: {s.activeStatus}
         </span>
@@ -656,8 +700,9 @@ const LabLogDossier: React.FC<{
 }> = ({ l, onNavigate }) => (
   <div className="space-y-5">
     <div>
-      <div className="flex items-center gap-2 mb-1">
+      <div className="flex flex-wrap items-center gap-2 mb-1">
         <span className="text-emerald-400 text-lg font-bold">{l.id}</span>
+        <StatusBadge label={getLabLogStatusLabel(l)} size="sm" />
         <span className="text-zinc-400 text-xs">{l.displayDate}</span>
         {l.anomalyAlert && (
           <span className="px-2 py-0.5 rounded text-[10px] bg-red-950 text-red-400 border border-red-800 font-bold animate-pulse">

@@ -13,6 +13,8 @@ import {
 import { NetworkGraph } from '../components/NetworkGraph';
 import { AcousticBench } from '../components/AcousticBench';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
+import { StatusBadge } from '../components/StatusBadge';
+import { getPrototypeStatusLabel, getMonographStatusLabel } from '../data/projectStatus';
 import {
   Activity,
   Cpu,
@@ -25,7 +27,8 @@ import {
   Award,
   BookOpen,
   MapPin,
-  ExternalLink
+  ExternalLink,
+  Shield
 } from 'lucide-react';
 
 interface DashboardProps {
@@ -75,6 +78,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 DSP BENCH & AUDIO ENGINE ONLINE
               </span>
+              <button
+                onClick={() => onSelectTab('institutional-status')}
+                className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#161309] text-[#dfb76c] border border-[#8c6d31]/60 hover:border-[#dfb76c] flex items-center gap-1.5 transition-colors"
+                title="View Institutional Status Notice & Disclosures"
+              >
+                <Shield className="w-3 h-3 text-[#dfb76c]" />
+                <span>INDEPENDENT R&D · NON-ACCREDITED</span>
+              </button>
             </div>
 
             <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
@@ -127,6 +138,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <p className="text-[10px] text-zinc-400 leading-normal border-t border-[#1b2636] pt-2">
               Documenting physical prototypes, custom audio software, speculative patent disclosures, and field recordings developed across 2021–2026.
             </p>
+            <div className="pt-2 border-t border-[#1b2636] flex justify-center">
+              <button
+                onClick={() => onSelectTab('institutional-status')}
+                className="text-[10px] text-[#dfb76c] hover:underline font-mono flex items-center gap-1"
+              >
+                <Shield className="w-3 h-3 text-[#dfb76c]" />
+                <span>Institutional Status & Disclosures</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -307,6 +327,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00ffcc] animate-pulse shadow-[0_0_6px_#00ffcc]" />
                   NEW INTEGRATION • INTERACTIVE
                 </span>
+                <StatusBadge label="Operational" size="xs" />
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#161309] border border-[#8c6d31]/40 text-[#dfb76c]">PROT-161</span>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#1a0a1a] border border-[#ff00ff]/30 text-[#ff00ff]">EXTERNAL RECOVERY</span>
               </div>
@@ -451,8 +472,11 @@ export const Dashboard: React.FC<DashboardProps> = ({
               className="p-4 bg-[#03060a] border border-[#1b2636] hover:border-[#dfb76c]/70 rounded-lg cursor-pointer transition-all group flex flex-col justify-between"
             >
               <div>
-                <div className="text-[10px] text-[#c5a059] font-mono tracking-wider mb-1">
-                  {m.volume}
+                <div className="flex justify-between items-start gap-2 mb-1">
+                  <div className="text-[10px] text-[#c5a059] font-mono tracking-wider">
+                    {m.volume}
+                  </div>
+                  <StatusBadge label={getMonographStatusLabel(m)} size="xs" />
                 </div>
                 <h4 className="text-sm font-bold text-white group-hover:text-[#dfb76c] transition-colors leading-snug">
                   {m.title}
@@ -499,14 +523,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="font-bold text-white group-hover:text-[#dfb76c] text-xs">
-                      {p.id}: {p.codeName}
-                    </span>
-                    <div className="text-[11.5px] text-zinc-300 font-medium mt-0.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-bold text-white group-hover:text-[#dfb76c] text-xs">
+                        {p.id}: {p.codeName}
+                      </span>
+                      <StatusBadge label={getPrototypeStatusLabel(p)} size="xs" />
+                    </div>
+                    <div className="text-[11.5px] text-zinc-300 font-medium mt-1">
                       {p.title}
                     </div>
                   </div>
-                  <span className="text-[9.5px] font-mono px-2 py-0.5 rounded bg-[#0b1522] text-cyan-300 border border-cyan-800/60">
+                  <span className="text-[9.5px] font-mono px-2 py-0.5 rounded bg-[#0b1522] text-zinc-400 border border-zinc-800">
                     {p.clearance}
                   </span>
                 </div>
