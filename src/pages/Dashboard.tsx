@@ -8,7 +8,6 @@ import {
   fieldSites,
   facilities,
   disciplines,
-  personnel,
   monographs
 } from '../data/archive';
 import { NetworkGraph } from '../components/NetworkGraph';
@@ -19,19 +18,13 @@ import {
   Cpu,
   FileText,
   AlertTriangle,
-  Compass,
   ArrowRight,
-  Shield,
   Layers,
   Radio,
-  Clock,
-  Terminal,
   Zap,
   Award,
   BookOpen,
-  Users,
   MapPin,
-  CheckCircle2,
   ExternalLink
 } from 'lucide-react';
 
@@ -138,8 +131,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </div>
       </div>
 
-      {/* Institutional Statistics Key Metrics Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 font-mono">
+      {/* Institutional Statistics Key Metrics Grid - Fellows removed per request */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 font-mono">
         <div
           onClick={() => onSelectTab('prototypes')}
           className="p-3 bg-[#050911] border border-[#213045] hover:border-[#dfb76c] rounded-lg cursor-pointer transition-all group"
@@ -194,20 +187,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
             {archiveStats.totalMonographs}
           </div>
           <div className="text-[9.5px] text-zinc-500 mt-0.5">Research Treatises</div>
-        </div>
-
-        <div
-          onClick={() => onSelectTab('personnel')}
-          className="p-3 bg-[#050911] border border-[#213045] hover:border-violet-400 rounded-lg cursor-pointer transition-all group"
-        >
-          <div className="text-[10px] text-zinc-400 uppercase tracking-wider flex items-center justify-between">
-            <span>FELLOWS</span>
-            <Users className="w-3 h-3 text-violet-400" />
-          </div>
-          <div className="text-2xl font-bold text-violet-300 group-hover:text-violet-200 mt-1">
-            {archiveStats.totalPersonnel}
-          </div>
-          <div className="text-[9.5px] text-zinc-500 mt-0.5">Inventors & Artists</div>
         </div>
 
         <div
@@ -315,6 +294,135 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </div>
 
         <AcousticBench compact={true} />
+      </div>
+
+      {/* NEW: SYNTHESIS-SIGNAL External Prototype Recovery - Interactive Lab Teaser */}
+      <div className="relative overflow-hidden rounded-xl border border-[#00ffcc]/20 bg-gradient-to-br from-[#050a0a] via-[#060a12] to-[#050508] p-[1px] group">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00ffcc]/10 via-[#ff00ff]/10 to-[#facc15]/10 opacity-50 group-hover:opacity-80 transition-opacity blur-xl" />
+        <div className="relative bg-[#030508]/90 rounded-[11px] p-5 md:p-6">
+          <div className="flex flex-col lg:flex-row justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#00ffcc]/10 border border-[#00ffcc]/30 text-[#00ffcc] tracking-widest flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00ffcc] animate-pulse shadow-[0_0_6px_#00ffcc]" />
+                  NEW INTEGRATION • INTERACTIVE
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#161309] border border-[#8c6d31]/40 text-[#dfb76c]">PROT-161</span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#1a0a1a] border border-[#ff00ff]/30 text-[#ff00ff]">EXTERNAL RECOVERY</span>
+              </div>
+
+              <div>
+                <h2 className="text-xl md:text-2xl font-bold tracking-tight flex items-center gap-2 font-mono">
+                  <span className="text-white">SYNTH</span><span className="text-[#00ffcc] drop-shadow-[0_0_8px_#00ffcc]">ESIS</span>
+                  <span className="text-[#444]">//</span>
+                  <span className="text-[#ff00ff]">SIGNAL</span>
+                  <span className="text-xs font-normal text-zinc-500 ml-2 tracking-widest">AUDIOVISUAL ENVIRONMENT</span>
+                </h2>
+                <p className="text-sm text-zinc-300 leading-relaxed mt-2 font-serif">
+                  Browser-based audiovisual laboratory that transforms uploaded audio into FFT-driven Three.js geometry, 
+                  particle-field modulation, spectral analysis, and realtime oscilloscope rendering. Recovered from 
+                  <span className="text-[#00ffcc]"> zazieproductions/SYNTHESIS-SIGNAL</span> and fully integrated as an interactive DSP workstation.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono">
+                <div className="p-2 bg-[#0a0a0a] border border-[#222] rounded">
+                  <div className="text-[#666]">FFT_SIZE</div>
+                  <div className="text-[#00ffcc] font-bold">2048-PT</div>
+                </div>
+                <div className="p-2 bg-[#0a0a0a] border border-[#222] rounded">
+                  <div className="text-[#666]">PARTICLES</div>
+                  <div className="text-[#facc15] font-bold">3,000</div>
+                </div>
+                <div className="p-2 bg-[#0a0a0a] border border-[#222] rounded">
+                  <div className="text-[#666]">GEOMETRY</div>
+                  <div className="text-[#ff00ff] font-bold">TORUS-KNOT</div>
+                </div>
+                <div className="p-2 bg-[#0a0a0a] border border-[#222] rounded">
+                  <div className="text-[#666]">PROCESSING</div>
+                  <div className="text-emerald-400 font-bold">LOCAL ONLY</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 pt-1">
+                <button
+                  onClick={() => onSelectTab('synthesis')}
+                  className="px-4 py-2 bg-[#00ffcc] hover:bg-[#00ffcc]/90 text-black font-bold text-xs rounded shadow-[0_0_20px_rgba(0,255,204,0.3)] flex items-center gap-2 transition-all"
+                >
+                  <Zap className="w-3.5 h-3.5" />
+                  Launch Interactive Lab
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+                <a
+                  href="https://github.com/zazieproductions/SYNTHESIS-SIGNAL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-[#0a0a0a] hover:bg-[#111] border border-[#333] hover:border-[#00ffcc]/50 text-zinc-400 hover:text-[#00ffcc] text-xs rounded flex items-center gap-2 transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  GitHub Repository
+                </a>
+              </div>
+            </div>
+
+            {/* Mini preview visualization */}
+            <div className="lg:w-[340px] shrink-0">
+              <div className="relative h-[220px] rounded-lg overflow-hidden bg-black border border-[#222]">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00ffcc]/10 via-transparent to-[#ff00ff]/10" />
+                {/* Fake oscilloscope preview */}
+                <svg viewBox="0 0 340 220" className="absolute inset-0 w-full h-full">
+                  <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#00ffcc" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#ff00ff" stopOpacity="0.8" />
+                    </linearGradient>
+                  </defs>
+                  {/* Grid */}
+                  {Array.from({ length: 11 }).map((_, i) => (
+                    <line key={`v-${i}`} x1={i * 34} y1="0" x2={i * 34} y2="220" stroke="#222" strokeWidth="0.5" />
+                  ))}
+                  {Array.from({ length: 7 }).map((_, i) => (
+                    <line key={`h-${i}`} x1="0" y1={i * 36} x2="340" y2={i * 36} stroke="#222" strokeWidth="0.5" />
+                  ))}
+                  {/* Waveform */}
+                  <path
+                    d={`M 0 110 ${Array.from({ length: 80 }).map((_, i) => {
+                      const x = (i / 80) * 340;
+                      const y = 110 + Math.sin(i * 0.3) * 30 + Math.sin(i * 0.8) * 15 + Math.sin(i * 0.15) * 20;
+                      return `L ${x} ${y}`;
+                    }).join(' ')}`}
+                    fill="none"
+                    stroke="url(#grad1)"
+                    strokeWidth="1.5"
+                    opacity="0.9"
+                  />
+                  {/* Particles */}
+                  {Array.from({ length: 20 }).map((_, i) => (
+                    <circle
+                      key={i}
+                      cx={20 + (i * 37) % 300}
+                      cy={30 + Math.sin(i) * 60 + 80}
+                      r={1 + Math.random() * 2}
+                      fill={i % 2 === 0 ? '#00ffcc' : '#ff00ff'}
+                      opacity="0.6"
+                    />
+                  ))}
+                </svg>
+                <div className="absolute top-2 left-2 flex gap-1.5">
+                  <span className="px-1.5 py-0.5 rounded bg-black/70 border border-[#00ffcc]/30 text-[#00ffcc] text-[8px] font-mono">RENDER_OUT</span>
+                  <span className="px-1.5 py-0.5 rounded bg-black/70 border border-[#333] text-white text-[8px] font-mono">LIVE PREVIEW</span>
+                </div>
+                <div className="absolute bottom-2 left-2 right-2 flex justify-between text-[8px] font-mono text-[#555] bg-black/70 px-2 py-1 rounded border border-[#222]">
+                  <span>FFT 2048 • TORUS-KNOT • 60 FPS</span>
+                  <span className="text-[#00ffcc]">● SIGNAL</span>
+                </div>
+              </div>
+              <div className="mt-2 text-[10px] text-zinc-500 font-mono leading-relaxed">
+                <span className="text-[#dfb76c]">→</span> Upload any MP3/WAV, observe real-time geometry displacement driven by bass, particle color by treble, rotation by mids. Fully interactive.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Featured Monographs & Publications */}

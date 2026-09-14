@@ -10,10 +10,10 @@ export type TabKey =
   | 'logs'
   | 'bench'
   | 'spectra'
+  | 'synthesis'
   | 'infrastructure'
   | 'monographs'
   | 'vault'
-  | 'personnel'
   | 'audit';
 
 interface HeaderProps {
@@ -51,9 +51,9 @@ export const Header: React.FC<HeaderProps> = ({
     { key: 'monographs', label: 'MONOGRAPHS', count: archiveStats.totalMonographs },
     { key: 'bench', label: 'ACOUSTIC BENCH' },
     { key: 'spectra', label: 'SPECTRA//LAB' },
+    { key: 'synthesis', label: 'SYNTHESIS//SIGNAL', count: undefined },
     { key: 'infrastructure', label: 'FIELD STATIONS', count: archiveStats.totalFieldSites },
     { key: 'vault', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, alert: true },
-    { key: 'personnel', label: 'FELLOWS & INVENTORS', count: archiveStats.totalPersonnel },
     { key: 'audit', label: 'SYSTEM AUDIT', count: archiveStats.totalRevisions }
   ];
 
@@ -143,6 +143,8 @@ export const Header: React.FC<HeaderProps> = ({
       <nav className="flex items-center overflow-x-auto px-2 md:px-5 py-1 gap-1 text-[11.5px] scrollbar-none bg-[#020407]">
         {tabs.map(tab => {
           const isActive = activeTab === tab.key;
+          const isSynthesis = tab.key === 'synthesis';
+          const isSpectra = tab.key === 'spectra';
           return (
             <button
               key={tab.key}
@@ -151,12 +153,16 @@ export const Header: React.FC<HeaderProps> = ({
                 isActive
                   ? tab.alert
                     ? 'bg-red-950/80 text-red-200 border-b-2 border-red-500 font-bold shadow-sm'
-                    : tab.key === 'spectra'
+                    : isSynthesis
+                    ? 'bg-[#0a1214] text-[#00ffcc] border-b-2 border-[#00ffcc] font-bold shadow-[0_0_12px_rgba(0,255,204,0.25)]'
+                    : isSpectra
                     ? 'bg-cyan-950/80 text-cyan-200 border-b-2 border-cyan-400 font-bold shadow-sm'
                     : 'bg-[#121926] text-[#dfb76c] border-b-2 border-[#dfb76c] font-bold shadow-sm'
                   : tab.alert
                   ? 'text-red-400/80 hover:text-red-200 hover:bg-red-950/30'
-                  : tab.key === 'spectra'
+                  : isSynthesis
+                  ? 'text-[#00ffcc]/70 hover:text-[#00ffcc] hover:bg-[#00ffcc]/10 border border-transparent hover:border-[#00ffcc]/30'
+                  : isSpectra
                   ? 'text-cyan-400/80 hover:text-cyan-200 hover:bg-cyan-950/30'
                   : 'text-zinc-400 hover:text-zinc-100 hover:bg-[#090f17]'
               }`}

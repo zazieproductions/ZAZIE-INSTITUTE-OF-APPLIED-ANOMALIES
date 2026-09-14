@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { AcousticBench } from '../components/AcousticBench';
 import { SpectraLabConsole } from '../components/SpectraLabConsole';
-import { Activity, Zap, Layers, Sparkles } from 'lucide-react';
+import { SynthesisSignalLab } from '../components/SynthesisSignalLab';
+import { Activity, Zap, Layers, Sparkles, Box } from 'lucide-react';
 
 export const AcousticBenchPage: React.FC = () => {
-  const [activeWorkstation, setActiveWorkstation] = useState<'bench' | 'spectra'>('bench');
+  const [activeWorkstation, setActiveWorkstation] = useState<'bench' | 'spectra' | 'synthesis'>('bench');
 
   return (
     <div className="space-y-6 font-mono text-xs">
@@ -46,6 +47,17 @@ export const AcousticBenchPage: React.FC = () => {
             <Zap className="w-3.5 h-3.5" />
             <span>SPECTRA//LAB</span>
           </button>
+          <button
+            onClick={() => setActiveWorkstation('synthesis')}
+            className={`px-3 py-1.5 rounded transition-all font-bold flex items-center gap-1.5 ${
+              activeWorkstation === 'synthesis'
+                ? 'bg-[#00ffcc] text-black shadow-[0_0_12px_rgba(0,255,204,0.4)]'
+                : 'text-zinc-400 hover:text-white'
+            }`}
+          >
+            <Box className="w-3.5 h-3.5" />
+            <span>SYNTHESIS//SIGNAL</span>
+          </button>
         </div>
       </div>
 
@@ -54,9 +66,13 @@ export const AcousticBenchPage: React.FC = () => {
         <div className="space-y-4">
           <AcousticBench />
         </div>
-      ) : (
+      ) : activeWorkstation === 'spectra' ? (
         <div className="space-y-4">
           <SpectraLabConsole />
+        </div>
+      ) : (
+        <div className="space-y-4">
+          <SynthesisSignalLab />
         </div>
       )}
     </div>
