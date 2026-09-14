@@ -10,6 +10,7 @@ export type TabKey =
   | 'logs'
   | 'bench'
   | 'spectra'
+  | 'oculus'
   | 'infrastructure'
   | 'monographs'
   | 'vault'
@@ -51,6 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
     { key: 'monographs', label: 'MONOGRAPHS', count: archiveStats.totalMonographs },
     { key: 'bench', label: 'ACOUSTIC BENCH' },
     { key: 'spectra', label: 'SPECTRA//LAB' },
+    { key: 'oculus', label: 'VOID//OCULUS' },
     { key: 'infrastructure', label: 'FIELD STATIONS', count: archiveStats.totalFieldSites },
     { key: 'vault', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, alert: true },
     { key: 'personnel', label: 'FELLOWS & INVENTORS', count: archiveStats.totalPersonnel },
@@ -153,11 +155,15 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'bg-red-950/80 text-red-200 border-b-2 border-red-500 font-bold shadow-sm'
                     : tab.key === 'spectra'
                     ? 'bg-cyan-950/80 text-cyan-200 border-b-2 border-cyan-400 font-bold shadow-sm'
+                    : tab.key === 'oculus'
+                    ? 'bg-violet-950/80 text-violet-200 border-b-2 border-violet-400 font-bold shadow-sm'
                     : 'bg-[#121926] text-[#dfb76c] border-b-2 border-[#dfb76c] font-bold shadow-sm'
                   : tab.alert
                   ? 'text-red-400/80 hover:text-red-200 hover:bg-red-950/30'
                   : tab.key === 'spectra'
                   ? 'text-cyan-400/80 hover:text-cyan-200 hover:bg-cyan-950/30'
+                  : tab.key === 'oculus'
+                  ? 'text-violet-400/80 hover:text-violet-200 hover:bg-violet-950/30'
                   : 'text-zinc-400 hover:text-zinc-100 hover:bg-[#090f17]'
               }`}
             >
