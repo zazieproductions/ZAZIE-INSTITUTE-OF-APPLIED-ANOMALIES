@@ -4,7 +4,7 @@ import { loadFieldSites, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { SubterraneanArraySchematic } from '../components/TechnicalSchematics';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, faqPageSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { MapPin, ArrowRight } from 'lucide-react';
 
@@ -32,7 +32,21 @@ export const FieldInfrastructure: React.FC = () => {
             path: '/field-stations',
             about: ['sound technology', 'audio research'],
             items: fieldSites.map(s => ({ name: `${s.codename} — ${s.name}`, path: recordPath('site', s.id) }))
-          })
+          }),
+          faqPageSchema([
+            {
+              q: 'What is a ZIAA field station?',
+              a: 'A remote listening post — desert array, hydrophone string, subterranean vault or coastal pavilion — that gathers acoustic, seismic and electromagnetic telemetry as research and compositional material. Sixteen stations are indexed, each with a canonical dossier listing channel count, bandwidth, footprint, coordinates and instrumentation.'
+            },
+            {
+              q: 'Can I visit a ZIAA field station?',
+              a: 'Some stations host seasonal fellowships and open to visiting sound artists (currently the Mojave desert array and the coastal pavilion); others are engineering sites with restricted access. Each station dossier states its public-access protocol.'
+            },
+            {
+              q: 'What do ZIAA field stations record?',
+              a: 'Environmental acoustic and electromagnetic telemetry — ground-coupled seismic and geophone data, wideband VLF radio loops, hydrophone strings and multichannel microphone arrays. Data feed the Institute’s research notes and the Signal Archaeology and Acoustic Architecture divisions.'
+            }
+          ])
         ]}
       />
 
@@ -91,6 +105,37 @@ export const FieldInfrastructure: React.FC = () => {
           </li>
         ))}
       </ul>
+
+      <section aria-labelledby="stations-faq" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
+        <h2 id="stations-faq" className="text-sm font-bold text-white tracking-wide">Field stations — questions &amp; answers</h2>
+        <dl className="space-y-4 text-sm">
+          <div className="border-l-2 border-amber-500/60 pl-4">
+            <dt className="font-bold text-zinc-100">What is a ZIAA field station?</dt>
+            <dd className="text-zinc-300 leading-relaxed mt-1">
+              A remote listening post — desert array, hydrophone string, subterranean vault or coastal pavilion — that
+              gathers acoustic, seismic and electromagnetic telemetry as research and compositional material. Sixteen
+              stations are indexed, each with a canonical dossier listing channel count, bandwidth, footprint,
+              coordinates and instrumentation.
+            </dd>
+          </div>
+          <div className="border-l-2 border-amber-500/60 pl-4">
+            <dt className="font-bold text-zinc-100">Can I visit a ZIAA field station?</dt>
+            <dd className="text-zinc-300 leading-relaxed mt-1">
+              Some stations host seasonal fellowships and open to visiting sound artists (currently the Mojave desert
+              array and the coastal pavilion); others are engineering sites with restricted access. Each station dossier
+              states its public-access protocol.
+            </dd>
+          </div>
+          <div className="border-l-2 border-amber-500/60 pl-4">
+            <dt className="font-bold text-zinc-100">What do ZIAA field stations record?</dt>
+            <dd className="text-zinc-300 leading-relaxed mt-1">
+              Environmental acoustic and electromagnetic telemetry — ground-coupled seismic and geophone data, wideband
+              VLF radio loops, hydrophone strings and multichannel microphone arrays. Data feed the Institute’s research
+              notes and the Signal Archaeology and Acoustic Architecture divisions.
+            </dd>
+          </div>
+        </dl>
+      </section>
     </div>
   );
 };

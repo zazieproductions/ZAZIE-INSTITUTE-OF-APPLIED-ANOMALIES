@@ -1,5 +1,6 @@
 import React from 'react';
 import { ENTITY, absoluteUrl, buildTitle, snippet } from './site';
+import { CITATION } from './canonicalFacts';
 
 export interface SeoProps {
   /** Page-specific title (entity suffix is appended automatically; may be clipped to the SERP budget). */
@@ -25,6 +26,7 @@ export interface SeoProps {
     publicationDate?: string;
     journalTitle?: string;
     volume?: string;
+    issn?: string;
     pdfUrl?: string;
     doi?: string;
   };
@@ -102,7 +104,8 @@ export const Seo: React.FC<SeoProps> = ({
       {citation?.volume && <meta name="citation_volume" content={citation.volume} />}
       {citation?.pdfUrl && <meta name="citation_pdf_url" content={citation.pdfUrl} />}
       {citation?.doi && <meta name="citation_doi" content={citation.doi} />}
-      {citation && <meta name="citation_publisher" content={`${ENTITY.name} — ${ENTITY.abbreviation} Press`} />}
+      {citation && <meta name="citation_publisher" content={CITATION.publisher} />}
+      {citation?.issn && <meta name="citation_issn" content={citation.issn} />}
       {citation && <meta name="citation_language" content="en" />}
       {citation && <meta name="dc.identifier" content={canonical} />}
       {/* Extra links (sitemap hints, scholar alternates) */}

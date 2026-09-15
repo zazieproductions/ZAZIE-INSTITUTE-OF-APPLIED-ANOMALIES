@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { archiveStats } from '../data/archive';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, collectionPageSchema, organizationSchema } from '../seo/schema';
-import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PageHeader } from '../components/PageHeader';
 import { DISCIPLINE_SLUGS } from '../seo/site';
 
@@ -29,7 +28,7 @@ export const DisciplinesIndex: React.FC = () => {
   return (
     <div className="space-y-6 font-serif">
       <Seo
-        title="Research Divisions & Interdisciplinary Studios (8 Laboratories)"
+        title="Research Divisions & Interdisciplinary Studios"
         description="The 8 research divisions of the Zazie Institute of Applied Anomalies: Applied Anomalies, Experimental Audio Systems, Computational Creativity, Speculative Engineering, Perceptual Interfaces, Generative Software, Signal Archaeology and Acoustic Architecture — with prototypes, patents and monographs per division."
         path="/disciplines"
         keywords={['ZIAA research divisions', 'interdisciplinary studios', 'experimental audio research lab', 'applied anomalies institute', ...Object.keys(DISCIPLINE_SLUGS)]}
@@ -38,7 +37,7 @@ export const DisciplinesIndex: React.FC = () => {
           organizationSchema(),
           collectionPageSchema({
             name: 'ZIAA Research Divisions & Interdisciplinary Studios',
-            description: 'Eight canonical research divisions of the Zazie Institute of Applied Anomalies, each with a curated prototype and patent cluster, editorial overview and FAQ for AI-Overview and PAA surfaces.',
+            description: 'The eight research divisions of the Zazie Institute of Applied Anomalies. Each hub documents the division’s research program and lists its complete cluster of prototypes and defensive disclosures.',
             path: '/disciplines',
             about: ['experimental technology', 'audio research', 'computational creativity', 'speculative engineering'],
             items: disciplineEntries.map(([name, slug]) => ({
@@ -55,7 +54,7 @@ export const DisciplinesIndex: React.FC = () => {
         stamp="RESEARCH DIVISIONS"
         kicker="8 INTERDISCIPLINARY LABORATORIES · 2021–2026"
         title={<>Research Divisions & Interdisciplinary Studios (8 Laboratories)</>}
-        lede="Each division is a durable topical hub: one canonical URL, one long-form editorial, one FAQ, and a complete cluster of prototypes and speculative patents — engineered to accumulate authority for long-tail academic queries while routing both humans and crawlers deep into the archive."
+        lede="The Institute is organized into eight research divisions. Each division maintains a canonical hub documenting its research program, its method, and its complete cluster of prototypes, defensive disclosures and related Transactions volumes."
         aside={
           <div className="text-right text-xs font-mono text-zinc-300 bg-[#020509] px-3.5 py-2.5 border border-[#1b2636] rounded-md shrink-0">
             <div className="text-white font-bold">{disciplineEntries.length} Divisions · {archiveStats.totalPrototypes} Prototypes</div>
@@ -100,29 +99,33 @@ export const DisciplinesIndex: React.FC = () => {
 
         <div className="pt-4 border-t border-[#1b2636] grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
           <div className="p-3 bg-[#03060a] border border-[#1b2738] rounded-lg">
-            <div className="text-[11px] font-mono font-bold text-[#dfb76c] uppercase">For crawlers</div>
-            <p className="text-zinc-400 mt-1 leading-relaxed">One canonical URL per division eliminates parameter-faceting dilution (formerly ?discipline=…). Each hub is in the sitemap with changefreq weekly and maximal internal link equity.</p>
+            <div className="text-[11px] font-mono font-bold text-[#dfb76c] uppercase">Research program</div>
+            <p className="text-zinc-400 mt-1 leading-relaxed">Each hub carries the division&apos;s long-form method statement, core investigations, and the monographs that treat its results in the Transactions series.</p>
           </div>
           <div className="p-3 bg-[#03060a] border border-[#1b2738] rounded-lg">
-            <div className="text-[11px] font-mono font-bold text-cyan-400 uppercase">For humans</div>
-            <p className="text-zinc-400 mt-1 leading-relaxed">Long-form editorial, playable prototypes and cross-linked patents — designed for dwell time, not doorway-page thinness. Every card links with descriptive anchor text.</p>
+            <div className="text-[11px] font-mono font-bold text-cyan-400 uppercase">The record</div>
+            <p className="text-zinc-400 mt-1 leading-relaxed">Every division lists its complete prototype and defensive-disclosure cluster with canonical record pages — the archive is organized by division, not by filter.</p>
           </div>
           <div className="p-3 bg-[#03060a] border border-[#1b2738] rounded-lg">
-            <div className="text-[11px] font-mono font-bold text-emerald-400 uppercase">For AI Overviews</div>
-            <p className="text-zinc-400 mt-1 leading-relaxed">FAQPage + ResearchProject + CollectionPage JSON-LD per division targets People Also Ask and LLM citation surfaces without cloaking.</p>
+            <div className="text-[11px] font-mono font-bold text-emerald-400 uppercase">Reference</div>
+            <p className="text-zinc-400 mt-1 leading-relaxed">The <Link to="/lexicon" className="text-emerald-300 hover:underline">Institute Lexicon</Link> publishes the canonical definition of each division and method term used across the archive.</p>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="cite-hubs" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-6 space-y-3">
-        <h2 id="cite-hubs" className="text-sm font-bold text-white">Why divisions exist — and why they’re not filters</h2>
-        <p className="text-sm text-zinc-300 leading-relaxed">
-          Earlier the archive exposed disciplines only as <code className="px-1.5 py-0.5 bg-[#0c1420] border border-[#1b2738] rounded text-xs font-mono text-cyan-300">?discipline=</code> query-state on <code className="text-zinc-200">/prototypes</code>. That saved sitemap hygiene but forfeited the strongest topical signal academic search rewards: a dedicated, editorially-maintained landing page per research area with stable H1, lede and citation graph. The SEO_SITEMAP_AUDIT flagged this as the primary gap. This index and its 8 children close it without doorway inflation — each page is a legitimate institutional division, not a search-spawned faceted duplicate.
+      <section aria-labelledby="divisional-system" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-6 space-y-3">
+        <h2 id="divisional-system" className="text-sm font-bold text-white">The divisional system</h2>
+        <p className="text-sm text-zinc-300 leading-relaxed max-w-3xl">
+          The divisions are the Institute’s primary organizational units — each corresponds to a named laboratory
+          program with its own bench, its own publication line, and its own fellows. A record belongs to the division
+          that built it; cross-cutting work is co-listed where two programs contributed. The archive has been organized
+          by division since the 2023 archival reclassification, which fixed the current eight-division structure.
         </p>
         <p className="text-xs font-mono text-zinc-500">
-          See also: <Link to="/about" className="text-[#dfb76c] hover:underline">About the Institute — mission & fact sheet</Link> ·{' '}
+          See also: <Link to="/about" className="text-[#dfb76c] hover:underline">About the Institute — mission &amp; fact sheet</Link> ·{' '}
+          <Link to="/lexicon" className="text-emerald-300 hover:underline">Lexicon — institutional vocabulary</Link> ·{' '}
           <Link to="/prototypes" className="text-cyan-400 hover:underline">Prototype archive ({archiveStats.totalPrototypes})</Link> ·{' '}
-          <Link to="/monographs" className="text-violet-300 hover:underline">Transactions & monographs</Link>
+          <Link to="/monographs" className="text-violet-300 hover:underline">Transactions &amp; monographs</Link>
         </p>
       </section>
 

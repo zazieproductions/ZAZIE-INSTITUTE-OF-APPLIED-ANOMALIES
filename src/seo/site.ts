@@ -11,10 +11,16 @@ export const ENTITY = {
   legalParent: 'Zazie Productions LLC',
   founded: '2021',
   foundingLocation: 'Mojave Basin, California, USA',
-  type: 'Independent interdisciplinary research and creative-technology initiative',
+  /** Canonical entity-type label — kept in sync with src/seo/canonicalFacts.ts. */
+  type: 'Independent research institute and open research archive',
   tagline: 'Applied Anomalies · Experimental Systems · Audio Technology · Computational Creativity',
+  /**
+   * Canonical entity description (no counts — count-bearing variants are
+   * produced by canonicalFacts.prestigeLead(stats) and must stay consistent
+   * with this base string; scripts/geo-check.mjs enforces the overlap).
+   */
   shortDescription:
-    'The Zazie Institute of Applied Anomalies (ZIAA) is an independent interdisciplinary research and creative-technology initiative focused on applied anomalies, experimental audio systems, computational creativity, speculative engineering, prototypes, software and research notes.',
+    'The Zazie Institute of Applied Anomalies (ZIAA) is an independent research institute and open archive, founded in 2021 in the Mojave Basin, California, and operated by Zazie Productions LLC. Organized into eight research divisions, the Institute develops experimental sound technology, perceptual interfaces and computational instruments, and publishes its work as a permanent, citable research archive.',
   // Expanded topical cluster for entity disambiguation and long-tail capture —
   // maps to knowsAbout / about / keywords across every schema.
   fields: [
@@ -81,7 +87,7 @@ export const disciplineBySlug = (slug: string) =>
  * @param keep       identifier part (record id, codename) that is never clipped, e.g. "PAT-2021-001"
  */
 export function buildTitle(pageTitle?: string, keep?: string): string {
-  if (!pageTitle) return `${ENTITY.name} (ZIAA) — Experimental Research & Creative Technology`;
+  if (!pageTitle) return `${ENTITY.name} (${ENTITY.abbreviation}) — Research Archive`;
   const tail = keep ? ` (${keep})` : '';
   // Title budget ≈ 70 chars: full brand suffix when it fits, short "· ZIAA" suffix otherwise,
   // clipping the page part at a word boundary if it is still too long. H1s keep the full title.

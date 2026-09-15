@@ -4,9 +4,10 @@ import { loadMonographs, monographPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import type { Monograph } from '../data/types';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema, creativeWorkSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, monographSchema, periodicalSchema, faqPageSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SITE_URL } from '../seo/site';
+import { CITATION, recordCitation } from '../seo/canonicalFacts';
 import { Share2, Award, Printer, Copy, Check, Bookmark } from 'lucide-react';
 
 const BASE_CRUMBS = [
@@ -29,7 +30,7 @@ export const Monographs: React.FC = () => {
   const selectedId = shown.id;
   const isIndex = !active;
   const crumbs = isIndex ? BASE_CRUMBS : [...BASE_CRUMBS, { name: shown.title, path: monographPath(shown.id) }];
-  const indexDescription = `${archiveStats.totalMonographs} peer-reviewed working monographs from the Zazie Institute of Applied Anomalies on audio technology, computational creativity, speculative engineering and interdisciplinary invention.`;
+  const indexDescription = `${archiveStats.totalMonographs} working monographs from the Zazie Institute of Applied Anomalies (ZIAA Transactions on Applied Anomalies & Experimental Systems, ISSN ${CITATION.issnForm}) on audio technology, computational creativity, speculative engineering and interdisciplinary invention, reviewed by the fellow panel.`;
 
   const getCitationText = (m: Monograph, fmt: string) => {
     const authors = [m.author, ...(m.coAuthors || [])].join(', ');
@@ -74,13 +75,28 @@ export const Monographs: React.FC = () => {
           keywords={['research monographs', 'working papers', 'audio technology research', 'computational creativity', 'speculative engineering']}
           jsonLd={[
             breadcrumbSchema(crumbs),
+            periodicalSchema(),
             collectionPageSchema({
-              name: 'ZIAA Transactions on Applied Anomalies & Experimental Systems',
+              name: CITATION.journalTitle,
               description: indexDescription,
               path: '/monographs',
               about: ['audio research', 'computational creativity', 'speculative engineering'],
               items: monographs.map(m => ({ name: m.title, path: monographPath(m.id) }))
-            })
+            }),
+            faqPageSchema([
+              {
+                q: 'What is the ZIAA Transactions series?',
+                a: `The monograph series of the Zazie Institute of Applied Anomalies: ${archiveStats.totalMonographs} working treatises on applied anomalies, experimental audio systems, computational creativity and speculative engineering. ISSN ${CITATION.issnForm}.`
+              },
+              {
+                q: 'Are ZIAA monographs peer-reviewed?',
+                a: 'Monographs are reviewed by the Institute’s fellow panel before accession. ZIAA is an independent research institute, not an accredited university, and its review process is the Institute’s own.'
+              },
+              {
+                q: 'How do I cite a ZIAA monograph?',
+                a: 'Each monograph page provides a formatted citation in APA, BibTeX or Chicago with the volume, year and canonical URL. The Institute’s full citation policy is at /cite.'
+              }
+            ])
           ]}
         />
       ) : (
@@ -96,27 +112,24 @@ export const Monographs: React.FC = () => {
             title: shown.title,
             authors: [shown.author, ...(shown.coAuthors || [])],
             publicationDate: shown.date.replace(/-/g, '/'),
-            journalTitle: 'ZIAA Transactions on Applied Anomalies & Experimental Systems',
+            journalTitle: CITATION.journalTitle,
             volume: shown.volume,
+            issn: CITATION.issn,
             pdfUrl: `${SITE_URL}/papers/${shown.id.toLowerCase()}.pdf`
           }}
           jsonLd={[
             breadcrumbSchema(crumbs),
-            creativeWorkSchema({
-              type: 'ScholarlyArticle',
+            periodicalSchema(),
+            monographSchema({
               path: monographPath(shown.id),
-              name: shown.title,
-              description: shown.abstract,
-              identifier: shown.id,
-              datePublished: shown.date,
+              id: shown.id,
+              title: shown.title,
+              abstract: shown.abstract,
+              date: shown.date,
               authors: [shown.author, ...(shown.coAuthors || [])],
+              volume: shown.volume,
               keywords: ['applied anomalies', 'experimental audio', 'speculative engineering'],
-              extra: {
-                isPartOf: { '@type': 'PublicationVolume', name: shown.volume },
-                pageStart: undefined,
-                articleSection: shown.sections?.map(s => s.heading),
-                citation: shown.references
-              }
+              sections: shown.sections?.map(s => s.heading)
             })
           ]}
         />
@@ -129,7 +142,7 @@ export const Monographs: React.FC = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="archival-stamp text-[9.5px] font-mono">
-              PEER-REVIEWED MONOGRAPHS
+              FELLOW-REVIEWED MONOGRAPHS
             </span>
             <span className="text-[10.5px] font-mono text-zinc-400">
               ISSN: 2834-9180 (Online) · OPEN RESEARCH
@@ -145,8 +158,9 @@ export const Monographs: React.FC = () => {
             </p>
           )}
           <p className="text-zinc-300 text-xs md:text-sm mt-1 max-w-3xl leading-relaxed">
-            Peer-reviewed working papers, research monographs, and theoretical treatises on audio technology,
-            computational creativity, speculative engineering, and interdisciplinary invention ({monographs.length} Volumes).
+            Working papers, research monographs and theoretical treatises on audio technology, computational
+            creativity, speculative engineering and interdisciplinary invention, reviewed by the Institute’s fellow
+            panel ({monographs.length} Volumes).
           </p>
         </div>
 
@@ -210,7 +224,7 @@ export const Monographs: React.FC = () => {
               <div className="border-b border-[#1b2636] pb-5 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-[#c5a059]">
                   <span className="archival-stamp font-mono text-[9.5px]">
-                    OFFICIAL PEER-REVIEWED TREATISE
+                    FELLOW-REVIEWED TREATISE
                   </span>
                   <span>{shown.volume} · Published <time dateTime={shown.date}>{shown.date}</time></span>
                 </div>
@@ -233,7 +247,7 @@ export const Monographs: React.FC = () => {
                 <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-500 pt-1">
                   <span>Accession: <span className="text-cyan-400">{shown.id}</span></span>
                   <span aria-hidden="true">·</span>
-                  <span>Review Committee: Certified Unanimous</span>
+                  <span>Fellow Panel: Review Certified</span>
                 </div>
               </div>
 
@@ -245,6 +259,42 @@ export const Monographs: React.FC = () => {
                 </div>
                 <p className="italic text-zinc-300 leading-relaxed">
                   {shown.abstract}
+                </p>
+              </div>
+
+              {/* Visible citation — parity with the citation_* meta in the document head */}
+              <div className="p-4 bg-[#03060a] border border-[#1b2738] rounded-lg text-xs font-mono">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="text-[10px] text-zinc-400 uppercase tracking-wider">Cite this treatise (APA)</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard?.writeText(recordCitation({
+                        identifier: shown.id,
+                        title: shown.title,
+                        authors: [shown.author, ...(shown.coAuthors || [])],
+                        year: shown.date.slice(0, 4),
+                        url: `${SITE_URL}${monographPath(shown.id)}`,
+                        container: `${CITATION.journalTitle}, ${shown.volume}`
+                      }, 'apa'));
+                    }}
+                    className="flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-mono bg-[#09121d] hover:bg-[#122238] border border-[#263c59] text-[#dfb76c] rounded transition-colors"
+                  >
+                    <Copy className="w-3 h-3" aria-hidden="true" /> Copy
+                  </button>
+                </div>
+                <p className="text-zinc-300 leading-relaxed">
+                  {recordCitation({
+                    identifier: shown.id,
+                    title: shown.title,
+                    authors: [shown.author, ...(shown.coAuthors || [])],
+                    year: shown.date.slice(0, 4),
+                    url: `${SITE_URL}${monographPath(shown.id)}`,
+                    container: `${CITATION.journalTitle}, ${shown.volume}`
+                  }, 'apa')}
+                </p>
+                <p className="text-[10.5px] text-zinc-500 mt-2">
+                  BibTeX and Chicago on request via <Link to="/cite" className="text-[#dfb76c] hover:underline">Citation Policy</Link> · ISSN {CITATION.issnForm} · PDF: /papers/{shown.id.toLowerCase()}.pdf
                 </p>
               </div>
 

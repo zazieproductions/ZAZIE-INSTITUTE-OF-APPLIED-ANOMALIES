@@ -21,3 +21,9 @@ export async function render(url: string): Promise<string> {
 }
 
 export { ROUTE_MANIFEST } from './routes/manifest';
+// Re-exported for scripts/prerender.mjs so llms.txt is always generated from
+// the same canonical facts the rendered pages emit (no drift between the
+// machine-readable grounding document and the HTML).
+// eslint-disable-next-line react-refresh/only-export-components -- server entry, not a component module
+export { renderLlmsTxt, CANONICAL, prestigeLead, DISALLOWED_PHRASES, CONTAMINATION_EXEMPT_PATHS, type LlmContext } from './seo/canonicalFacts';
+export { ENTITY } from './seo/site';
