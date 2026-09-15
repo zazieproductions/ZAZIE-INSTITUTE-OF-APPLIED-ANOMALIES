@@ -5,7 +5,7 @@ import { ENTITY } from '../seo/site';
 import { aboutPageSchema, breadcrumbSchema, organizationSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
-import { archiveStats, disciplines, facilities } from '../data/archive';
+import { archiveStats, disciplines, facilities, recordPath, monographPath } from '../data/archive';
 import { Cpu, FileText, Activity, BookOpen, Users, MapPin, AlertTriangle, Layers, Mail, ArrowRight } from 'lucide-react';
 
 const CRUMBS = [
@@ -160,6 +160,54 @@ export const About: React.FC = () => (
           </li>
         ))}
       </ul>
+    </section>
+
+    <section aria-labelledby="featured-dossiers" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
+      <h2 id="featured-dossiers" className="text-lg font-bold text-white">Representative technical dossiers — descriptive reading</h2>
+      <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl">
+        For researchers arriving via search, these representative dossiers illustrate the Institute&apos;s three longest-run concerns — material acoustics, signal archaeology, and generative composition — and are linked here with descriptive anchor text to aid discovery alongside the sitemap.
+      </p>
+      <ul className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+        <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-025 — Signal Archaeology · prototype dossier</div>
+            <div className="font-bold text-zinc-100 mt-1">Non-contact laser profilometer for historical grooved audio carriers</div>
+            <div className="text-zinc-400 mt-1.5 leading-relaxed">Optical scanning and artifact-isolation techniques for fragile recordings.</div>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2 font-mono text-[11px]">
+            <Link to={recordPath('prototype', 'PROT-025')} className="text-[#dfb76c] hover:underline">View PROT-025 dossier →</Link>
+            <span className="text-zinc-600">·</span>
+            <Link to={monographPath('ESSAY-2023-02')} className="text-cyan-400 hover:underline">ESSAY-2023-02: media archaeology of inscribed sound →</Link>
+          </div>
+        </li>
+        <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-017 — Perceptual Interfaces · tactile acoustics</div>
+            <div className="font-bold text-zinc-100 mt-1">128-point tactile somatosensory floor array for whole-body listening</div>
+            <div className="text-zinc-400 mt-1.5 leading-relaxed">Psychoacoustic research on vibrotactile spatialisation and whole-body perception.</div>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2 font-mono text-[11px]">
+            <Link to={recordPath('prototype', 'PROT-017')} className="text-[#dfb76c] hover:underline">View PROT-017 dossier →</Link>
+            <span className="text-zinc-600">·</span>
+            <Link to={monographPath('ESSAY-2024-03')} className="text-cyan-400 hover:underline">ESSAY-2024-03: spatial psychoacoustics →</Link>
+          </div>
+        </li>
+        <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-042 — Computational Creativity · generative software</div>
+            <div className="font-bold text-zinc-100 mt-1">Real-time neural latent audio resynthesizer with multi-vector joystick</div>
+            <div className="text-zinc-400 mt-1.5 leading-relaxed">Generative composition via neural audio morphing and procedural scoring.</div>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2 font-mono text-[11px]">
+            <Link to={recordPath('prototype', 'PROT-042')} className="text-[#dfb76c] hover:underline">View PROT-042 dossier →</Link>
+            <span className="text-zinc-600">·</span>
+            <Link to={monographPath('ESSAY-2025-05')} className="text-cyan-400 hover:underline">ESSAY-2025-05: autonomous audio agents →</Link>
+          </div>
+        </li>
+      </ul>
+      <p className="text-[11px] font-mono text-zinc-500 pt-2 border-t border-[#1b2636]">
+        Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench — Web Audio DSP workstation with oscilloscope</Link> · <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB — audiovisual 64-band spectral console</Link> · <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL — Three.js audio-reactive environment</Link>
+      </p>
     </section>
 
     <section aria-labelledby="faq" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">

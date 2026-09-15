@@ -204,6 +204,49 @@ export const PrototypesArchive: React.FC = () => {
       </ul>
       {pager.hasMore && <ShowMoreButton remaining={pager.remaining} onMore={pager.showMore} onAll={pager.showAll} label="prototypes" />}
 
+      {/* Crawlable complete index — every prototype dossier is linked in the prerendered HTML so deep signal-archaeology, perceptual-interface and acoustic-architecture instruments are discoverable without client-side paging. */}
+      <section aria-labelledby="complete-prototype-index" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-5 md:p-6 space-y-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#1b2636] pb-3">
+          <h2 id="complete-prototype-index" className="text-sm font-bold text-white tracking-wide">Complete prototype index — every record, crawlable</h2>
+          <p className="text-[11px] font-mono text-zinc-400">All {prototypes.length} dossiers · grouped alphabetically by accession</p>
+        </div>
+        <p className="text-xs text-zinc-400 leading-relaxed">
+          The card grid above is paged for interactive browsing; the index below lists the full five-year archive as plain, crawlable links. Every dossier — including deeply archived signal-archaeology, generative-software and acoustic-bench instruments — is reachable in a single crawl with descriptive anchor text.
+        </p>
+        <details className="group/details">
+          <summary className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#091322] hover:bg-[#122238] border border-[#2b3e58] rounded-md text-xs font-mono text-[#dfb76c] cursor-pointer select-none list-none">
+            <span aria-hidden="true" className="transition-transform group-open/details:rotate-90">▸</span>
+            Expand complete A–Z index ({prototypes.length} records)
+          </summary>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            {[...prototypes].sort((a, b) => a.id.localeCompare(b.id)).map(p => (
+              <Link
+                key={p.id}
+                to={recordPath('prototype', p.id)}
+                className="block px-3 py-2 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded text-xs group/link"
+              >
+                <span className="font-mono font-bold text-[#dfb76c] group-hover/link:text-white">{p.id}</span>
+                <span className="text-zinc-600 font-mono"> · </span>
+                <span className="font-semibold text-zinc-200 group-hover/link:text-white">{p.codeName}</span>
+                <span className="block text-[11px] text-zinc-400 truncate mt-0.5">{p.title} — {p.discipline}</span>
+              </Link>
+            ))}
+          </div>
+        </details>
+        <noscript>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            {[...prototypes].sort((a, b) => a.id.localeCompare(b.id)).map(p => (
+              <li key={p.id}>
+                <Link to={recordPath('prototype', p.id)} className="block px-3 py-2 bg-[#03060a] border border-[#1b2738] rounded text-xs">
+                  <span className="font-mono font-bold text-[#dfb76c]">{p.id} — {p.codeName}</span>
+                  <span className="block text-[11px] text-zinc-400 truncate">{p.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </noscript>
+      </section>
+
       {filtered.length === 0 && (
         <p className="py-16 text-center text-zinc-300 bg-[#04070d] border border-[#213045] rounded-xl font-serif">
           No experimental prototypes match the selected query. Please refine your filter parameters.
