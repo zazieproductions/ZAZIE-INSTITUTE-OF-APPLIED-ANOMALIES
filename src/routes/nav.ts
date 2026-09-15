@@ -4,7 +4,7 @@ export interface NavItem {
   to: string;
   label: string;
   count?: number;
-  tone?: 'default' | 'alert' | 'cyan' | 'violet' | 'signal';
+  tone?: 'default' | 'alert' | 'cyan' | 'violet' | 'signal' | 'spectrum';
 }
 
 export const NAV_ITEMS: NavItem[] = [
@@ -18,6 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/spectra-lab', label: 'SPECTRA//LAB', tone: 'cyan' },
   { to: '/void-oculus', label: 'VOID//OCULUS', tone: 'violet' },
   { to: '/synthesis-signal', label: 'SYNTHESIS//SIGNAL', tone: 'signal' },
+  { to: '/emotion-spectrum', label: 'EMOTION//SPECTRUM', tone: 'spectrum' },
   { to: '/disciplines', label: 'RESEARCH DIVISIONS', tone: 'cyan' as const },
   { to: '/field-stations', label: 'FIELD STATIONS', count: archiveStats.totalFieldSites },
   { to: '/post-mortems', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, tone: 'alert' },

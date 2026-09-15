@@ -56,6 +56,11 @@
       "permanent": true
     },
     {
+      "source": "/spectrum",
+      "destination": "/emotion-spectrum",
+      "permanent": true
+    },
+    {
       "source": "/legal",
       "destination": "/legal/institutional-status",
       "permanent": true
