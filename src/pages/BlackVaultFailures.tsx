@@ -1,7 +1,9 @@
 import React from 'react';
 import { failures } from '../data/archive';
 import { FailedIncident } from '../data/types';
-import { AlertTriangle, ShieldAlert, Skull, Flame, FileWarning, ArrowRight } from 'lucide-react';
+import { StatusBadge } from '../components/StatusBadge';
+import { getFailureStatusLabel } from '../data/projectStatus';
+import { AlertTriangle, ShieldAlert, Skull, Flame, FileWarning, ArrowRight, Info } from 'lucide-react';
 
 interface BlackVaultFailuresProps {
   onSelectFailure: (id: string) => void;
@@ -34,6 +36,24 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
         </div>
       </div>
 
+      {/* Mandatory Design Fiction Disclaimer */}
+      <div className="bg-[#0f0404] border border-red-900/50 rounded-xl p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2 text-zinc-300">
+          <Info className="w-4 h-4 text-red-400 shrink-0" />
+          <span className="leading-relaxed">
+            <strong className="text-red-300">Narrative Scope:</strong> Post-mortem failure dossiers represent 
+            <strong> design fiction</strong> and ARG worldbuilding case studies examining theoretical failure thresholds.
+          </span>
+        </div>
+        <a
+          href="#disclaimer"
+          className="text-red-400 hover:underline font-mono text-[11px] whitespace-nowrap shrink-0 flex items-center gap-1"
+        >
+          <span>Speculation Disclaimer</span>
+          <ArrowRight className="w-3 h-3" />
+        </a>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {failures.map(f => (
           <div
@@ -55,6 +75,10 @@ export const BlackVaultFailures: React.FC<BlackVaultFailuresProps> = ({ onSelect
                 <span className="shrink-0 px-2 py-0.5 rounded text-[9.5px] font-mono bg-red-950 text-red-300 border border-red-800">
                   {f.hazardClassification}
                 </span>
+              </div>
+
+              <div className="mb-2">
+                <StatusBadge label={getFailureStatusLabel(f)} size="xs" />
               </div>
 
               <div className="text-xs text-zinc-400 font-mono mb-2">

@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { labLogs, facilities } from '../data/archive';
 import { LabLog } from '../data/types';
+import { StatusBadge } from '../components/StatusBadge';
+import { getLabLogStatusLabel } from '../data/projectStatus';
 import { Search, Activity, ShieldAlert, Radio, Filter, Clock, ArrowRight, AlertTriangle } from 'lucide-react';
 
 interface LabLogsStreamProps {
@@ -114,10 +116,11 @@ export const LabLogsStream: React.FC<LabLogsStreamProps> = ({ onSelectLog }) => 
             className="p-4 bg-[#05080f] border border-[#1c2a3b] hover:border-emerald-500/80 rounded-xl cursor-pointer transition-all group shadow-sm hover:shadow-emerald-950/20"
           >
             <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-2">
-              <div className="flex items-center gap-2.5">
+              <div className="flex flex-wrap items-center gap-2.5">
                 <span className="font-mono text-emerald-400 font-bold text-xs tracking-wider group-hover:text-emerald-300">
                   {log.id}
                 </span>
+                <StatusBadge label={getLabLogStatusLabel(log)} size="xs" />
                 <span className="text-zinc-600 font-mono">·</span>
                 <span className="text-xs font-mono text-cyan-300">{log.facility}</span>
                 {log.anomalyAlert && (

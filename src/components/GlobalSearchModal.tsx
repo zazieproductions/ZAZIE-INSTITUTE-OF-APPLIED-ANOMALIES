@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { searchArchive } from '../data/archive';
-import { Search, X, FileText, Cpu, AlertTriangle, User, Compass, ArrowRight } from 'lucide-react';
+import { StatusBadge } from './StatusBadge';
+import { getPrototypeStatusLabel, getPatentStatusLabel } from '../data/projectStatus';
+import { Search, X, FileText, Cpu, AlertTriangle, User } from 'lucide-react';
 
 interface GlobalSearchModalProps {
   isOpen: boolean;
@@ -100,8 +102,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                         className="p-2 bg-[#04070a] hover:bg-emerald-950/40 border border-emerald-950/70 hover:border-emerald-600/60 rounded cursor-pointer flex justify-between items-center transition-colors group"
                       >
                         <div>
-                          <div className="font-bold text-white group-hover:text-emerald-300">
-                            {p.id}: {p.codeName}
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-white group-hover:text-emerald-300">
+                              {p.id}: {p.codeName}
+                            </span>
+                            <StatusBadge label={getPrototypeStatusLabel(p)} size="xs" />
                           </div>
                           <div className="text-[11px] text-zinc-400 truncate max-w-lg">
                             {p.title}
@@ -134,8 +139,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
                         className="p-2 bg-[#04070a] hover:bg-cyan-950/40 border border-cyan-950/70 hover:border-cyan-600/60 rounded cursor-pointer flex justify-between items-center transition-colors group"
                       >
                         <div>
-                          <div className="font-bold text-white group-hover:text-cyan-300">
-                            {pat.patentNumber}
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-white group-hover:text-cyan-300">
+                              {pat.patentNumber}
+                            </span>
+                            <StatusBadge label={getPatentStatusLabel(pat)} size="xs" />
                           </div>
                           <div className="text-[11px] text-zinc-400 truncate max-w-lg">
                             {pat.title}

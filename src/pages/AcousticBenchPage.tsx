@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AcousticBench } from '../components/AcousticBench';
 import { SpectraLabConsole } from '../components/SpectraLabConsole';
 import { SynthesisSignalLab } from '../components/SynthesisSignalLab';
+import { StatusBadge } from '../components/StatusBadge';
 import { Activity, Zap, Layers, Sparkles, Box } from 'lucide-react';
 
 export const AcousticBenchPage: React.FC = () => {
@@ -12,11 +13,12 @@ export const AcousticBenchPage: React.FC = () => {
       {/* Header with Workstation Switcher */}
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3 bg-[#05080c] border border-emerald-950 p-4 rounded-lg">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
             <h1 className="text-base font-bold text-white tracking-wider">
               INTERACTIVE DSP ACOUSTIC WORKSTATIONS
             </h1>
+            <StatusBadge label="Operational" size="xs" />
           </div>
           <p className="text-zinc-400 text-[11px] mt-1">
             Real-time DSP synthesis engines, acoustic oscilloscope profiling, harmonic analysis, and interactive parameter modulation.

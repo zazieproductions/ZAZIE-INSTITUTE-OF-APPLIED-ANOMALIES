@@ -2,7 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { prototypes, disciplines, clearances, statuses } from '../data/archive';
 import { Prototype } from '../data/types';
 import { audioEngine } from '../audio/audioEngine';
-import { Search, Play, Square, Cpu, Sliders, Filter, Sparkles, Volume2, ArrowRight, ShieldCheck } from 'lucide-react';
+import { StatusBadge } from '../components/StatusBadge';
+import { getPrototypeStatusLabel, ALL_PROJECT_STATUSES } from '../data/projectStatus';
+import { Search, Play, Square, ArrowRight, Tag } from 'lucide-react';
 
 interface PrototypesArchiveProps {
   onSelectPrototype: (id: string) => void;
@@ -12,6 +14,7 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
   const [search, setSearch] = useState<string>('');
   const [selectedDiscipline, setSelectedDiscipline] = useState<string>('ALL');
   const [selectedStatus, setSelectedStatus] = useState<string>('ALL');
+  const [selectedProjectStatus, setSelectedProjectStatus] = useState<string>('ALL');
   const [selectedClearance, setSelectedClearance] = useState<string>('ALL');
   const [selectedYear, setSelectedYear] = useState<string>('ALL');
   const [playingId, setPlayingId] = useState<string | null>(null);
@@ -32,9 +35,12 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
       const matchesClearance = selectedClearance === 'ALL' || p.clearance === selectedClearance;
       const matchesYear = selectedYear === 'ALL' || p.year.toString() === selectedYear;
 
-      return matchesSearch && matchesDiscipline && matchesStatus && matchesClearance && matchesYear;
+      const projectStatus = getPrototypeStatusLabel(p);
+      const matchesProjectStatus = selectedProjectStatus === 'ALL' || projectStatus === selectedProjectStatus;
+
+      return matchesSearch && matchesDiscipline && matchesStatus && matchesClearance && matchesYear && matchesProjectStatus;
     });
-  }, [search, selectedDiscipline, selectedStatus, selectedClearance, selectedYear]);
+  }, [search, selectedDiscipline, selectedStatus, selectedClearance, selectedYear, selectedProjectStatus]);
 
   const handleToggleAudio = (e: React.MouseEvent, p: Prototype) => {
     e.stopPropagation();
@@ -46,6 +52,15 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
       setPlayingId(p.id);
     }
   };
+
+  const statusCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    prototypes.forEach(p => {
+      const s = getPrototypeStatusLabel(p);
+      counts[s] = (counts[s] || 0) + 1;
+    });
+    return counts;
+  }, []);
 
   return (
     <div className="space-y-6 font-serif">
@@ -74,6 +89,44 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
         </div>
       </div>
 
+      {/* Quick Status Classification Pills Row */}
+      <div className="p-3.5 bg-[#03060c] border border-[#1a2638] rounded-xl flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+        <div className="flex items-center gap-2 text-zinc-400 text-[11px]">
+          <Tag className="w-3.5 h-3.5 text-[#dfb76c]" />
+          <span className="uppercase font-bold tracking-wider text-zinc-300">Project Classification:</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1.5">
+          <button
+            onClick={() => setSelectedProjectStatus('ALL')}
+            className={`px-2 py-0.5 rounded text-[10px] border transition-colors ${
+              selectedProjectStatus === 'ALL'
+                ? 'bg-zinc-800 text-white border-zinc-600'
+                : 'bg-zinc-950/60 text-zinc-400 border-zinc-800 hover:text-zinc-200'
+            }`}
+          >
+            ALL ({prototypes.length})
+          </button>
+          {ALL_PROJECT_STATUSES.map(s => {
+            const isSelected = selectedProjectStatus === s;
+            return (
+              <button
+                key={s}
+                onClick={() => setSelectedProjectStatus(isSelected ? 'ALL' : s)}
+                className={`flex items-center gap-1 transition-all ${isSelected ? 'ring-1 ring-[#dfb76c] rounded' : 'opacity-85 hover:opacity-100'}`}
+              >
+                <StatusBadge label={s} size="xs" showPrefix={false} />
+                <span className="text-[9px] font-mono text-zinc-500">({statusCounts[s] || 0})</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <span className="text-[9.5px] text-zinc-500 italic hidden xl:inline">
+          * Internal ZIAA research taxonomy — not external credentials
+        </span>
+      </div>
+
       {/* Filter and Search Toolbar */}
       <div className="bg-[#04070d] border border-[#213045] p-4 rounded-xl space-y-3 shadow-md">
         {/* Search Input */}
@@ -94,7 +147,7 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
         </div>
 
         {/* Dropdown filters */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-xs font-mono">
           <div>
             <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">DISCIPLINE</label>
             <select
@@ -110,13 +163,27 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
           </div>
 
           <div>
-            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">STATUS</label>
+            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">PROJECT STATUS</label>
+            <select
+              value={selectedProjectStatus}
+              onChange={e => setSelectedProjectStatus(e.target.value)}
+              className="w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-2 focus:outline-none focus:border-[#dfb76c]"
+            >
+              <option value="ALL">ALL STATUSES ({ALL_PROJECT_STATUSES.length})</option>
+              {ALL_PROJECT_STATUSES.map(s => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="text-zinc-400 text-[10px] block mb-1 uppercase tracking-wider font-bold">ARCHIVE STATE</label>
             <select
               value={selectedStatus}
               onChange={e => setSelectedStatus(e.target.value)}
               className="w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-2 focus:outline-none focus:border-[#dfb76c]"
             >
-              <option value="ALL">ALL STATUSES</option>
+              <option value="ALL">ALL STATES</option>
               {statuses.map(s => (
                 <option key={s} value={s}>{s.replace(/_/g, ' ')}</option>
               ))}
@@ -157,6 +224,7 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map(p => {
           const isThisPlaying = playingId === p.id;
+          const statusLabel = getPrototypeStatusLabel(p);
           return (
             <div
               key={p.id}
@@ -165,7 +233,7 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
             >
               <div>
                 {/* Top ID & Badges */}
-                <div className="flex justify-between items-start gap-2 mb-2">
+                <div className="flex justify-between items-start gap-2 mb-1.5">
                   <div>
                     <div className="text-[#dfb76c] font-bold text-xs tracking-wider group-hover:text-white font-mono">
                       {p.id} // {p.codeName}
@@ -175,9 +243,14 @@ export const PrototypesArchive: React.FC<PrototypesArchiveProps> = ({ onSelectPr
                     </div>
                   </div>
 
-                  <span className="shrink-0 px-2 py-0.5 rounded text-[9.5px] font-mono bg-[#0b1522] text-cyan-300 border border-cyan-800/60">
+                  <span className="shrink-0 px-2 py-0.5 rounded text-[9px] font-mono bg-[#0b1522] text-zinc-400 border border-zinc-800">
                     {p.clearance}
                   </span>
+                </div>
+
+                {/* Status Badge */}
+                <div className="mb-2.5">
+                  <StatusBadge label={statusLabel} size="xs" />
                 </div>
 
                 {/* Abstract snippet */}

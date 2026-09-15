@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Volume2, BookOpen, Clock, Award } from 'lucide-react';
+import { Search, Volume2, Clock, Award, Shield } from 'lucide-react';
 import { archiveStats } from '../data/archive';
 import { InstitutionalCrest } from './InstitutionalCrest';
 
@@ -15,7 +15,12 @@ export type TabKey =
   | 'infrastructure'
   | 'monographs'
   | 'vault'
-  | 'audit';
+  | 'audit'
+  | 'legal'
+  | 'institutional-status'
+  | 'disclaimer'
+  | 'terms'
+  | 'privacy';
 
 interface HeaderProps {
   activeTab: TabKey;
@@ -44,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  const tabs: Array<{ key: TabKey; label: string; count?: number; alert?: boolean; subtitle?: string }> = [
+  const tabs: Array<{ key: TabKey; label: string; count?: number; alert?: boolean; subtitle?: string; isLegal?: boolean }> = [
     { key: 'dashboard', label: 'OVERVIEW' },
     { key: 'prototypes', label: 'PROTOTYPES', count: archiveStats.totalPrototypes },
     { key: 'patents', label: 'SPECULATIVE PATENTS', count: archiveStats.totalPatents },
@@ -56,8 +61,16 @@ export const Header: React.FC<HeaderProps> = ({
     { key: 'oculus', label: 'VOID//OCULUS' },
     { key: 'infrastructure', label: 'FIELD STATIONS', count: archiveStats.totalFieldSites },
     { key: 'vault', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, alert: true },
-    { key: 'audit', label: 'SYSTEM AUDIT', count: archiveStats.totalRevisions }
+    { key: 'audit', label: 'SYSTEM AUDIT', count: archiveStats.totalRevisions },
+    { key: 'legal', label: 'DISCLOSURES & LEGAL', isLegal: true }
   ];
+
+  const isLegalActive =
+    activeTab === 'legal' ||
+    activeTab === 'institutional-status' ||
+    activeTab === 'disclaimer' ||
+    activeTab === 'terms' ||
+    activeTab === 'privacy';
 
   return (
     <header className="bg-[#03060a] border-b border-[#253245]/70 sticky top-0 z-40 text-zinc-300 shadow-xl shadow-black/50">
@@ -73,9 +86,13 @@ export const Header: React.FC<HeaderProps> = ({
             CREATIVE-TECHNOLOGY INITIATIVE · SPECULATIVE ENGINEERING & EXPERIMENTAL AUDIO
           </span>
           <span className="hidden xl:inline text-zinc-600">|</span>
-          <span className="hidden xl:inline text-zinc-500 font-mono">
-            ISSN: 2834-9180 · DOI: 10.1088/ZIAA
-          </span>
+          <button
+            onClick={() => onSelectTab('institutional-status')}
+            className="hidden xl:inline text-zinc-400 hover:text-[#dfb76c] transition-colors underline decoration-zinc-700 font-mono"
+            title="View Institutional Status Notice"
+          >
+            NOT ACCREDITED / EXPERIMENTAL R&D
+          </button>
         </div>
 
         <div className="flex items-center gap-3 font-mono text-[10px]">
@@ -92,9 +109,14 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <span className="hidden sm:inline text-zinc-600">·</span>
-          <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#0a121e] border border-[#23354d] text-cyan-400 font-semibold">
-            STATUS: ACTIVE ARCHIVE
-          </span>
+          <button
+            onClick={() => onSelectTab('legal')}
+            className="flex items-center gap-1 px-2 py-0.5 rounded bg-[#0b1320] hover:bg-[#142338] border border-[#23354d] hover:border-[#dfb76c] text-[#dfb76c] font-semibold transition-colors"
+            title="View Institutional Disclosures & Guardrails"
+          >
+            <Shield className="w-3 h-3 text-[#dfb76c]" />
+            <span>DISCLOSURES</span>
+          </button>
         </div>
       </div>
 
@@ -144,10 +166,11 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Primary Scholarly Tabs Navigation */}
       <nav className="flex items-center overflow-x-auto px-2 md:px-5 py-1 gap-1 text-[11.5px] scrollbar-none bg-[#020407]">
         {tabs.map(tab => {
-          const isActive = activeTab === tab.key;
+          const isActive = tab.isLegal ? isLegalActive : activeTab === tab.key;
           const isSynthesis = tab.key === 'synthesis';
           const isSpectra = tab.key === 'spectra';
           const isOculus = tab.key === 'oculus';
+          const isLegal = tab.isLegal;
           return (
             <button
               key={tab.key}
@@ -162,6 +185,8 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'bg-violet-950/80 text-violet-200 border-b-2 border-violet-400 font-bold shadow-sm'
                     : isSpectra
                     ? 'bg-cyan-950/80 text-cyan-200 border-b-2 border-cyan-400 font-bold shadow-sm'
+                    : isLegal
+                    ? 'bg-[#181d29] text-[#e0b96e] border-b-2 border-[#dfb76c] font-bold shadow-sm'
                     : 'bg-[#121926] text-[#dfb76c] border-b-2 border-[#dfb76c] font-bold shadow-sm'
                   : tab.alert
                   ? 'text-red-400/80 hover:text-red-200 hover:bg-red-950/30'
@@ -171,9 +196,12 @@ export const Header: React.FC<HeaderProps> = ({
                   ? 'text-violet-400/80 hover:text-violet-200 hover:bg-violet-950/30'
                   : isSpectra
                   ? 'text-cyan-400/80 hover:text-cyan-200 hover:bg-cyan-950/30'
+                  : isLegal
+                  ? 'text-zinc-400 hover:text-[#dfb76c] hover:bg-[#0d1420]'
                   : 'text-zinc-400 hover:text-zinc-100 hover:bg-[#090f17]'
               }`}
             >
+              {isLegal && <Shield className="w-3 h-3 text-[#dfb76c]" />}
               <span>{tab.label}</span>
               {tab.count !== undefined && (
                 <span

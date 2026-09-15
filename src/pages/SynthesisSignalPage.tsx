@@ -1,5 +1,6 @@
 import React from 'react';
 import { SynthesisSignalLab } from '../components/SynthesisSignalLab';
+import { StatusBadge } from '../components/StatusBadge';
 import { 
   Cpu, ExternalLink, Box, Waves, FileAudio, 
   Layers, Activity, Zap, BookOpen, Terminal,
@@ -19,6 +20,7 @@ export const SynthesisSignalPage: React.FC = () => {
             <span className="px-2.5 py-0.5 rounded text-[10px] bg-[#00ffcc]/10 border border-[#00ffcc]/30 text-[#00ffcc] tracking-widest">
               EXTERNAL PROTOTYPE RECOVERY
             </span>
+            <StatusBadge label="Operational" size="xs" />
             <span className="px-2.5 py-0.5 rounded text-[10px] bg-[#161309] border border-[#8c6d31]/60 text-[#dfb76c] tracking-widest">
               INTEGRATION STATUS: ACTIVE
             </span>

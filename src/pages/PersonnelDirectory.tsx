@@ -1,7 +1,6 @@
 import React from 'react';
 import { personnel } from '../data/archive';
-import { Personnel } from '../data/types';
-import { User, Shield, BookOpen, Cpu, Fingerprint, Award, ArrowRight } from 'lucide-react';
+import { Fingerprint, ArrowRight } from 'lucide-react';
 
 interface PersonnelDirectoryProps {
   onSelectFellow: (id: string) => void;
@@ -32,6 +31,14 @@ export const PersonnelDirectory: React.FC<PersonnelDirectoryProps> = ({ onSelect
         <div className="text-right text-xs font-mono text-zinc-400 bg-[#020509] px-3.5 py-2 border border-[#1b2636] rounded-md shrink-0">
           Total Fellows: <strong className="text-[#dfb76c]">{personnel.length} Core Researchers</strong>
         </div>
+      </div>
+
+      {/* Institutional Notice */}
+      <div className="bg-[#03060c] border border-[#1e2a3b] rounded-xl p-3 text-xs font-mono text-zinc-400 flex items-center justify-between gap-3">
+        <span>* Fellow and Investigator titles designate creative research roles within Zazie Productions LLC (Not university tenure or academic faculty appointments).</span>
+        <a href="#institutional-status" className="text-[#dfb76c] hover:underline whitespace-nowrap text-[11px]">
+          Status Notice →
+        </a>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
