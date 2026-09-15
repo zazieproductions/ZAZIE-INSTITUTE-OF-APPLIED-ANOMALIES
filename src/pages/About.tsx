@@ -39,7 +39,7 @@ const FAQ = [
   },
   {
     q: 'Can I use the interactive instruments?',
-    a: 'Yes. The Acoustic Bench, SPECTRA//LAB, SYNTHESIS//SIGNAL and VOID//OCULUS run entirely in the browser using the Web Audio API, Canvas and WebGL, with no account or download required.'
+    a: 'Yes. The Acoustic Bench, SPECTRA//LAB, SYNTHESIS//SIGNAL, EMOTION//SPECTRUM and VOID//OCULUS run entirely in the browser using the Web Audio API, Canvas and WebGL, with no account or download required.'
   },
   {
     q: 'How do I cite an archive record?',
@@ -206,7 +206,7 @@ export const About: React.FC = () => (
         </li>
       </ul>
       <p className="text-[11px] font-mono text-zinc-500 pt-2 border-t border-[#1b2636]">
-        Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench — Web Audio DSP workstation with oscilloscope</Link> · <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB — audiovisual 64-band spectral console</Link> · <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL — Three.js audio-reactive environment</Link>
+        Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench — Web Audio DSP workstation with oscilloscope</Link> · <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB — audiovisual 64-band spectral console</Link> · <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL — Three.js audio-reactive environment</Link> · <Link to="/emotion-spectrum" className="text-[#b7a8ff] hover:underline">EMOTION//SPECTRUM — playable electromagnetic emotion ribbon</Link>
       </p>
     </section>
 

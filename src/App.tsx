@@ -16,6 +16,7 @@ const AcousticBenchPage = lazy(() => import('./pages/AcousticBenchPage'));
 const SpectraLabPage = lazy(() => import('./pages/SpectraLabPage'));
 const VoidOculusPage = lazy(() => import('./pages/VoidOculusPage'));
 const SynthesisSignalPage = lazy(() => import('./pages/SynthesisSignalPage'));
+const EmotionSpectrumPage = lazy(() => import('./pages/EmotionSpectrumPage'));
 const LegalDisclosuresPage = lazy(() => import('./pages/LegalDisclosuresPage'));
 const FieldInfrastructure = lazy(() => import('./pages/FieldInfrastructure'));
 const BlackVaultFailures = lazy(() => import('./pages/BlackVaultFailures'));
@@ -105,6 +106,7 @@ export function App() {
             <Route path="/spectra-lab" element={<SpectraLabPage />} />
             <Route path="/void-oculus" element={<VoidOculusPage />} />
             <Route path="/synthesis-signal" element={<SynthesisSignalPage />} />
+            <Route path="/emotion-spectrum" element={<EmotionSpectrumPage />} />
             <Route path="/legal" element={<Navigate to="/legal/institutional-status" replace />} />
             <Route path="/legal/:section" element={<LegalDisclosuresPage />} />
 
@@ -133,6 +135,7 @@ export function App() {
             <Route path="/spectra" element={<Navigate to="/spectra-lab" replace />} />
             <Route path="/oculus" element={<Navigate to="/void-oculus" replace />} />
             <Route path="/synthesis" element={<Navigate to="/synthesis-signal" replace />} />
+            <Route path="/spectrum" element={<Navigate to="/emotion-spectrum" replace />} />
             <Route path="/infrastructure" element={<Navigate to="/field-stations" replace />} />
             <Route path="/vault" element={<Navigate to="/post-mortems" replace />} />
             <Route path="/failures" element={<Navigate to="/post-mortems" replace />} />

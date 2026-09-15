@@ -1,0 +1,50 @@
+/* ------------------------------------------------------------------
+   EMOTION//SPECTRUM — instrument-scoped styles.
+   Ported from the standalone instrument's index.css. Global rules that
+   applied to <body> were dropped; typography is re-established as scoped
+   utility classes so nothing outside .emotion-spectrum is affected.
+
+   "Unbounded" is self-hosted through @fontsource (same convention as the
+   archive's STIX Two Text) and only these two weights are shipped.
+   ------------------------------------------------------------------ */
+@import "@fontsource/unbounded/latin-400.css";
+@import "@fontsource/unbounded/latin-600.css";
+@import "@fontsource/unbounded/latin-800.css";
+
+.emotion-spectrum .es-font-display {
+  font-family: "Unbounded", ui-sans-serif, system-ui, sans-serif;
+}
+
+.emotion-spectrum .es-font-mono {
+  font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+.emotion-spectrum .es-font-serif {
+  font-family: var(--font-academic, Georgia, serif);
+}
+
+/* Thin custom scrollbar for the ribbon strip. */
+.emotion-spectrum .spectrum-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.emotion-spectrum .spectrum-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+.emotion-spectrum .spectrum-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+}
+
+@keyframes esFloatGrain {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-40px, -30px);
+  }
+}
+
+.emotion-spectrum .es-float-grain {
+  animation: esFloatGrain 12s linear infinite alternate;
+}

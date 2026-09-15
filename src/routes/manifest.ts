@@ -46,6 +46,7 @@ export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/spectra-lab', changefreq: 'monthly', priority: 0.7 },
   { path: '/void-oculus', changefreq: 'monthly', priority: 0.6 },
   { path: '/synthesis-signal', changefreq: 'monthly', priority: 0.7 },
+  { path: '/emotion-spectrum', changefreq: 'monthly', priority: 0.7 },
   { path: '/legal/institutional-status', changefreq: 'yearly', priority: 0.4 },
   { path: '/legal/disclaimer', changefreq: 'yearly', priority: 0.4 },
   { path: '/legal/terms', changefreq: 'yearly', priority: 0.3 },

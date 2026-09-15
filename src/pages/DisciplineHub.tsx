@@ -500,6 +500,7 @@ export const DisciplineHub: React.FC = () => {
         Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench — Web Audio DSP workstation</Link> ·{' '}
         <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB — 64-band spectral console</Link> ·{' '}
         <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL — audio-reactive Three.js</Link> ·{' '}
+        <Link to="/emotion-spectrum" className="text-[#b7a8ff] hover:underline">EMOTION//SPECTRUM — electromagnetic emotion ribbon</Link> ·{' '}
         <Link to="/void-oculus" className="text-violet-300 hover:underline">VOID//OCULUS — spatial canvas</Link>
       </p>
     </div>

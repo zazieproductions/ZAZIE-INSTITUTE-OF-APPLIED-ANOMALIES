@@ -24,7 +24,8 @@ const TOOL_LINKS = [
   { to: '/acoustic-bench', label: 'Acoustic Bench (Web Audio DSP)' },
   { to: '/spectra-lab', label: 'SPECTRA//LAB Audiovisual Console' },
   { to: '/void-oculus', label: 'VOID//OCULUS Spatial Canvas' },
-  { to: '/synthesis-signal', label: 'SYNTHESIS//SIGNAL Audio-Reactive 3D' }
+  { to: '/synthesis-signal', label: 'SYNTHESIS//SIGNAL Audio-Reactive 3D' },
+  { to: '/emotion-spectrum', label: 'EMOTION//SPECTRUM Playable Frequency Ribbon' }
 ];
 const LEGAL_LINKS = [
   { to: '/legal/institutional-status', label: 'Institutional Status' },
