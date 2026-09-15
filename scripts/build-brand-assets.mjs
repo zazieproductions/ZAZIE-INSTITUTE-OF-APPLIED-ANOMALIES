@@ -51,13 +51,34 @@ function crestSvg({ size = 512, withText = true, background = true, padding = 0 
 </svg>`;
 }
 
-/** Simplified mark for tiny favicon sizes: shield + ring, thicker strokes. */
+/**
+ * Simplified crest mark for tab/favicon sizes: identical geometry to
+ * src/components/InstitutionalCrest.tsx (rings, quartered shield, laurels,
+ * banner) with the inscription text dropped and strokes thickened so the
+ * mark still reads at 16px.
+ */
 function markSvg(size) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="18" fill="${BG}"/>
-  <circle cx="50" cy="50" r="42" fill="none" stroke="${GOLD}" stroke-width="3"/>
-  <path d="M 32 30 Q 50 26 68 30 V 54 Q 68 70 50 78 Q 32 70 32 54 Z" fill="#04070b" stroke="${GOLD}" stroke-width="3.5"/>
-  <path d="M 38 52 Q 44 38 50 52 T 62 52" fill="none" stroke="${AMBER}" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="50" cy="50" r="47" fill="none" stroke="${GOLD}" stroke-width="1.8" stroke-dasharray="4 2.4"/>
+  <circle cx="50" cy="50" r="43" fill="none" stroke="${GOLD}" stroke-width="1.4"/>
+  <path d="M 32 30 Q 50 27 68 30 V 54 Q 68 70 50 78 Q 32 70 32 54 Z" fill="#04070b" stroke="${GOLD}" stroke-width="2.4"/>
+  <line x1="50" y1="30" x2="50" y2="78" stroke="${GOLD}" stroke-width="1.1" stroke-dasharray="2.4 1.6" opacity="0.8"/>
+  <line x1="32" y1="50" x2="68" y2="50" stroke="${GOLD}" stroke-width="1.1" stroke-dasharray="2.4 1.6" opacity="0.8"/>
+  <path d="M 36 41 Q 40 34 43 41 T 47 41" fill="none" stroke="${AMBER}" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="59" cy="40" r="4.5" fill="none" stroke="${AMBER}" stroke-width="1.4"/>
+  <line x1="59" y1="35.5" x2="59" y2="44.5" stroke="${AMBER}" stroke-width="1"/>
+  <line x1="54.5" y1="40" x2="63.5" y2="40" stroke="${AMBER}" stroke-width="1"/>
+  <ellipse cx="41" cy="60" rx="5" ry="2.2" transform="rotate(-30 41 60)" fill="none" stroke="${AMBER}" stroke-width="1.2"/>
+  <ellipse cx="41" cy="60" rx="5" ry="2.2" transform="rotate(30 41 60)" fill="none" stroke="${AMBER}" stroke-width="1.2"/>
+  <circle cx="41" cy="60" r="1.4" fill="${AMBER}"/>
+  <path d="M 54 57 L 64 57 L 62 65 L 54 65 Z" fill="none" stroke="${AMBER}" stroke-width="1.4"/>
+  <line x1="64" y1="56" x2="56" y2="67" stroke="${GOLD}" stroke-width="1.4"/>
+  <path d="M 27 64 C 23 54 24 38 31 31" fill="none" stroke="${GOLD}" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="25" cy="58" r="1.5" fill="${GOLD}"/><circle cx="24" cy="50" r="1.5" fill="${GOLD}"/><circle cx="25" cy="42" r="1.5" fill="${GOLD}"/><circle cx="28" cy="35" r="1.5" fill="${GOLD}"/>
+  <path d="M 73 64 C 77 54 76 38 69 31" fill="none" stroke="${GOLD}" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="75" cy="58" r="1.5" fill="${GOLD}"/><circle cx="76" cy="50" r="1.5" fill="${GOLD}"/><circle cx="75" cy="42" r="1.5" fill="${GOLD}"/><circle cx="72" cy="35" r="1.5" fill="${GOLD}"/>
+  <path d="M 26 80 Q 50 85 74 80 L 72 87 Q 50 91 28 87 Z" fill="#080c12" stroke="${GOLD}" stroke-width="1.5"/>
 </svg>`;
 }
 
