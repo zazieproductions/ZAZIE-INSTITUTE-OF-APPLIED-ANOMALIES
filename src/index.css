@@ -1,31 +1,72 @@
-@import "@fontsource/stix-two-text/400.css";
-@import "@fontsource/stix-two-text/500.css";
-@import "@fontsource/stix-two-text/600.css";
-@import "@fontsource/stix-two-text/700.css";
-@import "@fontsource/stix-two-text/400-italic.css";
-@import "@fontsource/stix-two-text/600-italic.css";
-
-@import "@fontsource/eb-garamond/400.css";
-@import "@fontsource/eb-garamond/500.css";
-@import "@fontsource/eb-garamond/600.css";
-@import "@fontsource/eb-garamond/700.css";
-@import "@fontsource/eb-garamond/400-italic.css";
+/* ------------------------------------------------------------------
+   Typography — STIX Two Text, self-hosted latin subset only.
+   Regular weight is preloaded from index.html (it renders LCP text);
+   the rest load with font-display: swap. A metric-matched fallback
+   keeps layout shift near zero while the web font is in flight.
+   ------------------------------------------------------------------ */
+@font-face {
+  font-family: "STIX Two Text";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/stix-two-text-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "STIX Two Text";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/stix-two-text-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "STIX Two Text";
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url("/fonts/stix-two-text-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "STIX Two Text";
+  font-style: normal;
+  font-weight: 700 800;
+  font-display: swap;
+  src: url("/fonts/stix-two-text-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Metric-compatible fallback (Times-family) to minimise CLS during font swap. */
+@font-face {
+  font-family: "STIX Two Text Fallback";
+  src: local("Times New Roman"), local("Liberation Serif"), local("Tinos"), local("Times");
+  size-adjust: 104%;
+  ascent-override: 96%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
 
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
-  --font-sans: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
-  --font-mono: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --font-serif: "STIX Two Text", "STIX Two Text Fallback", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --font-sans: "STIX Two Text", "STIX Two Text Fallback", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --font-mono: "STIX Two Text", "STIX Two Text Fallback", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
 }
 
 :root {
-  --font-academic: "STIX Two Text", "EB Garamond", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  --font-academic: "STIX Two Text", "STIX Two Text Fallback", "Times New Roman", Times, "Liberation Serif", Georgia, serif;
   --gold-accent: #c5a059;
   --gold-light: #dfb76c;
   --gold-dark: #8c6d31;
   --emerald-academic: #10b981;
   font-family: var(--font-academic);
+  color-scheme: dark;
+}
+
+html {
+  background-color: #030508;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -37,9 +78,33 @@ body {
   color: #d1d5db;
 }
 
+/* Visible keyboard focus everywhere (brand gold). */
+:focus-visible {
+  outline: 2px solid #dfb76c;
+  outline-offset: 2px;
+}
+
+/* Honour reduced-motion preferences: stop decorative pulses/pings. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide horizontal scrollbars on the tab strip without disabling scrolling. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Subtle academic cartesian grid background */
 .academic-grid-bg {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(197, 160, 89, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(197, 160, 89, 0.03) 1px, transparent 1px);
   background-size: 32px 32px;

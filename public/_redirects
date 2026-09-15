@@ -1,0 +1,17 @@
+/dashboard            /                     301
+/overview             /                     301
+/logs                 /research-notes       301
+/logs/*               /research-notes/:splat 301
+/lab-logs             /research-notes       301
+/bench                /acoustic-bench       301
+/spectra              /spectra-lab          301
+/oculus               /void-oculus          301
+/synthesis            /synthesis-signal     301
+/legal                /legal/institutional-status 301
+/infrastructure       /field-stations       301
+/vault                /post-mortems         301
+/failures             /post-mortems         301
+/personnel            /fellows              301
+/personnel/*          /fellows/:splat       301
+/audit                /system-audit         301
+/*                    /404.html             404

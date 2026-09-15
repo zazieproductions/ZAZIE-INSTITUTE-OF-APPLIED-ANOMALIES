@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Volume2, Play, Square, Activity, Radio, Cpu, RefreshCw, Zap, Sliders, Layers } from 'lucide-react';
 
 export const SpectraLabConsole: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [tempo, setTempo] = useState<number>(128);
   const [masterGain, setMasterGain] = useState<number>(62);
   const [pitch, setPitch] = useState<number>(50);
-  const [activeKnobs, setActiveKnobs] = useState({
+  const [activeKnobs] = useState({
     size: 340,
     dens: 0.72,
     pitch: 7,

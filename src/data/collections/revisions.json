@@ -1,0 +1,1042 @@
+[
+  {
+    "commitHash": "git-8d245211f116",
+    "timestamp": "2021-01-01 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-001",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-001)"
+  },
+  {
+    "commitHash": "git-924d2fdc8b8d",
+    "timestamp": "2021-02-03 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-002",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-002)"
+  },
+  {
+    "commitHash": "git-24e9a67a96d1",
+    "timestamp": "2021-03-05 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-003",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-003)"
+  },
+  {
+    "commitHash": "git-7027b784b2dd",
+    "timestamp": "2021-04-07 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-004",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-004)"
+  },
+  {
+    "commitHash": "git-4118ab076ce5",
+    "timestamp": "2021-05-09 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-005",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-005)"
+  },
+  {
+    "commitHash": "git-35028e31a52c",
+    "timestamp": "2021-06-11 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-006",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-006)"
+  },
+  {
+    "commitHash": "git-8a7ca234305f",
+    "timestamp": "2021-07-13 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-007",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-007)"
+  },
+  {
+    "commitHash": "git-c751cefa27cd",
+    "timestamp": "2021-08-15 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-008",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-008)"
+  },
+  {
+    "commitHash": "git-b5fad2aaac5c",
+    "timestamp": "2021-09-17 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-009",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-009)"
+  },
+  {
+    "commitHash": "git-52d5fa96b2aa",
+    "timestamp": "2021-10-19 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-010",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-010)"
+  },
+  {
+    "commitHash": "git-92872ee5f4bc",
+    "timestamp": "2021-11-21 14:00 UTC",
+    "author": "Dr. Hawa Mansour",
+    "targetRecord": "PROT-011",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-011)"
+  },
+  {
+    "commitHash": "git-a47d4384d2d5",
+    "timestamp": "2021-12-23 14:00 UTC",
+    "author": "Prof. Dr. Julian Vance",
+    "targetRecord": "PROT-012",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-012)"
+  },
+  {
+    "commitHash": "git-926c5fc9f7fd",
+    "timestamp": "2021-01-25 14:00 UTC",
+    "author": "Dr. Miriam Al-Haddad",
+    "targetRecord": "PROT-013",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-013)"
+  },
+  {
+    "commitHash": "git-01d756c804f5",
+    "timestamp": "2021-02-27 14:00 UTC",
+    "author": "Dr. Kenji Takahashi",
+    "targetRecord": "PROT-014",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-014)"
+  },
+  {
+    "commitHash": "git-cf175d941d01",
+    "timestamp": "2021-03-01 14:00 UTC",
+    "author": "Dr. Evelyn O'Connor",
+    "targetRecord": "PROT-015",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-015)"
+  },
+  {
+    "commitHash": "git-fd21bc5eebd0",
+    "timestamp": "2021-04-03 14:00 UTC",
+    "author": "Dr. Soren Lindqvist",
+    "targetRecord": "PROT-016",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-016)"
+  },
+  {
+    "commitHash": "git-3383fa4a05a3",
+    "timestamp": "2021-05-05 14:00 UTC",
+    "author": "Dr. Amara Patel",
+    "targetRecord": "PROT-017",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-017)"
+  },
+  {
+    "commitHash": "git-f791f38398f2",
+    "timestamp": "2021-06-07 14:00 UTC",
+    "author": "Camille Laurent",
+    "targetRecord": "PROT-018",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-018)"
+  },
+  {
+    "commitHash": "git-7672e032e541",
+    "timestamp": "2021-07-09 14:00 UTC",
+    "author": "Rowan Vance",
+    "targetRecord": "PROT-019",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-019)"
+  },
+  {
+    "commitHash": "git-1154cf04aebd",
+    "timestamp": "2021-08-11 14:00 UTC",
+    "author": "Isolde Chen",
+    "targetRecord": "PROT-020",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-020)"
+  },
+  {
+    "commitHash": "git-2986fb2c8015",
+    "timestamp": "2021-09-13 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-021",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-021)"
+  },
+  {
+    "commitHash": "git-87daae5c7e45",
+    "timestamp": "2021-10-15 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-022",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-022)"
+  },
+  {
+    "commitHash": "git-e10e5e31b73b",
+    "timestamp": "2022-11-17 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-023",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-023)"
+  },
+  {
+    "commitHash": "git-e30cc76a0e10",
+    "timestamp": "2022-12-19 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-024",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-024)"
+  },
+  {
+    "commitHash": "git-3cffb5a31a45",
+    "timestamp": "2022-01-21 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-025",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-025)"
+  },
+  {
+    "commitHash": "git-12025469d7f8",
+    "timestamp": "2022-02-23 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-026",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-026)"
+  },
+  {
+    "commitHash": "git-f7cd046473d3",
+    "timestamp": "2022-03-25 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-027",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-027)"
+  },
+  {
+    "commitHash": "git-9d16fe3237cb",
+    "timestamp": "2022-04-27 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-028",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-028)"
+  },
+  {
+    "commitHash": "git-a342ce137a79",
+    "timestamp": "2022-05-01 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-029",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-029)"
+  },
+  {
+    "commitHash": "git-ab4ea6e4ab5e",
+    "timestamp": "2022-06-03 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-030",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-030)"
+  },
+  {
+    "commitHash": "git-e9a865d3bda2",
+    "timestamp": "2022-07-05 14:00 UTC",
+    "author": "Dr. Hawa Mansour",
+    "targetRecord": "PROT-031",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-031)"
+  },
+  {
+    "commitHash": "git-823f81ac76a0",
+    "timestamp": "2022-08-07 14:00 UTC",
+    "author": "Prof. Dr. Julian Vance",
+    "targetRecord": "PROT-032",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-032)"
+  },
+  {
+    "commitHash": "git-99485197129d",
+    "timestamp": "2022-09-09 14:00 UTC",
+    "author": "Dr. Miriam Al-Haddad",
+    "targetRecord": "PROT-033",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-033)"
+  },
+  {
+    "commitHash": "git-40e677963bb4",
+    "timestamp": "2022-10-11 14:00 UTC",
+    "author": "Dr. Kenji Takahashi",
+    "targetRecord": "PROT-034",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-034)"
+  },
+  {
+    "commitHash": "git-6f45d42896a4",
+    "timestamp": "2022-11-13 14:00 UTC",
+    "author": "Dr. Evelyn O'Connor",
+    "targetRecord": "PROT-035",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-035)"
+  },
+  {
+    "commitHash": "git-aa4c90a74ec6",
+    "timestamp": "2022-12-15 14:00 UTC",
+    "author": "Dr. Soren Lindqvist",
+    "targetRecord": "PROT-036",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-036)"
+  },
+  {
+    "commitHash": "git-f5bacc22a152",
+    "timestamp": "2022-01-17 14:00 UTC",
+    "author": "Dr. Amara Patel",
+    "targetRecord": "PROT-037",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-037)"
+  },
+  {
+    "commitHash": "git-b4a847c01a48",
+    "timestamp": "2022-02-19 14:00 UTC",
+    "author": "Camille Laurent",
+    "targetRecord": "PROT-038",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-038)"
+  },
+  {
+    "commitHash": "git-e7aa4092fdb7",
+    "timestamp": "2022-03-21 14:00 UTC",
+    "author": "Rowan Vance",
+    "targetRecord": "PROT-039",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-039)"
+  },
+  {
+    "commitHash": "git-6491b6fdb318",
+    "timestamp": "2022-04-23 14:00 UTC",
+    "author": "Isolde Chen",
+    "targetRecord": "PROT-040",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-040)"
+  },
+  {
+    "commitHash": "git-25818de4cc43",
+    "timestamp": "2022-05-25 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-041",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-041)"
+  },
+  {
+    "commitHash": "git-0cf9e7ca1bdb",
+    "timestamp": "2022-06-27 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-042",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-042)"
+  },
+  {
+    "commitHash": "git-b656e3426395",
+    "timestamp": "2022-07-01 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-043",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-043)"
+  },
+  {
+    "commitHash": "git-bdb8cad054ce",
+    "timestamp": "2022-08-03 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-044",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-044)"
+  },
+  {
+    "commitHash": "git-cec3044f3f5b",
+    "timestamp": "2023-09-05 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-045",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-045)"
+  },
+  {
+    "commitHash": "git-2aa80db69684",
+    "timestamp": "2023-10-07 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-046",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-046)"
+  },
+  {
+    "commitHash": "git-34b44f11c557",
+    "timestamp": "2023-11-09 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-047",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-047)"
+  },
+  {
+    "commitHash": "git-9fbe1adc7456",
+    "timestamp": "2023-12-11 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-048",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-048)"
+  },
+  {
+    "commitHash": "git-6936af05f751",
+    "timestamp": "2023-01-13 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-049",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-049)"
+  },
+  {
+    "commitHash": "git-35e3915785a5",
+    "timestamp": "2023-02-15 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-050",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-050)"
+  },
+  {
+    "commitHash": "git-711b8d82f78e",
+    "timestamp": "2023-03-17 14:00 UTC",
+    "author": "Dr. Hawa Mansour",
+    "targetRecord": "PROT-051",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-051)"
+  },
+  {
+    "commitHash": "git-24e711442fc3",
+    "timestamp": "2023-04-19 14:00 UTC",
+    "author": "Prof. Dr. Julian Vance",
+    "targetRecord": "PROT-052",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-052)"
+  },
+  {
+    "commitHash": "git-1202503243fc",
+    "timestamp": "2023-05-21 14:00 UTC",
+    "author": "Dr. Miriam Al-Haddad",
+    "targetRecord": "PROT-053",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-053)"
+  },
+  {
+    "commitHash": "git-5887ae120da6",
+    "timestamp": "2023-06-23 14:00 UTC",
+    "author": "Dr. Kenji Takahashi",
+    "targetRecord": "PROT-054",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-054)"
+  },
+  {
+    "commitHash": "git-d6ed9707dd97",
+    "timestamp": "2023-07-25 14:00 UTC",
+    "author": "Dr. Evelyn O'Connor",
+    "targetRecord": "PROT-055",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-055)"
+  },
+  {
+    "commitHash": "git-059e381df063",
+    "timestamp": "2023-08-27 14:00 UTC",
+    "author": "Dr. Soren Lindqvist",
+    "targetRecord": "PROT-056",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-056)"
+  },
+  {
+    "commitHash": "git-6cba7932c79e",
+    "timestamp": "2023-09-01 14:00 UTC",
+    "author": "Dr. Amara Patel",
+    "targetRecord": "PROT-057",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-057)"
+  },
+  {
+    "commitHash": "git-ed07b68cc418",
+    "timestamp": "2023-10-03 14:00 UTC",
+    "author": "Camille Laurent",
+    "targetRecord": "PROT-058",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-058)"
+  },
+  {
+    "commitHash": "git-62c7fc973191",
+    "timestamp": "2023-11-05 14:00 UTC",
+    "author": "Rowan Vance",
+    "targetRecord": "PROT-059",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-059)"
+  },
+  {
+    "commitHash": "git-70a99c47f9ad",
+    "timestamp": "2023-12-07 14:00 UTC",
+    "author": "Isolde Chen",
+    "targetRecord": "PROT-060",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-060)"
+  },
+  {
+    "commitHash": "git-c1622e900f99",
+    "timestamp": "2023-01-09 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-061",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-061)"
+  },
+  {
+    "commitHash": "git-034c119bc66e",
+    "timestamp": "2023-02-11 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-062",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-062)"
+  },
+  {
+    "commitHash": "git-1ff441b57240",
+    "timestamp": "2023-03-13 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-063",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-063)"
+  },
+  {
+    "commitHash": "git-253f7491a088",
+    "timestamp": "2023-04-15 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-064",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-064)"
+  },
+  {
+    "commitHash": "git-f7a529df65d5",
+    "timestamp": "2023-05-17 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-065",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-065)"
+  },
+  {
+    "commitHash": "git-1517f10ebb35",
+    "timestamp": "2024-06-19 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-066",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-066)"
+  },
+  {
+    "commitHash": "git-7053bdbceb3b",
+    "timestamp": "2024-07-21 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-067",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-067)"
+  },
+  {
+    "commitHash": "git-3f97994987b5",
+    "timestamp": "2024-08-23 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-068",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-068)"
+  },
+  {
+    "commitHash": "git-f76cc09e2353",
+    "timestamp": "2024-09-25 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-069",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-069)"
+  },
+  {
+    "commitHash": "git-1c6fbb90b55f",
+    "timestamp": "2024-10-27 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-070",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-070)"
+  },
+  {
+    "commitHash": "git-64c72b9b0497",
+    "timestamp": "2024-11-01 14:00 UTC",
+    "author": "Dr. Hawa Mansour",
+    "targetRecord": "PROT-071",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-071)"
+  },
+  {
+    "commitHash": "git-68c62a11ccf9",
+    "timestamp": "2024-12-03 14:00 UTC",
+    "author": "Prof. Dr. Julian Vance",
+    "targetRecord": "PROT-072",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-072)"
+  },
+  {
+    "commitHash": "git-bb503e3ea289",
+    "timestamp": "2024-01-05 14:00 UTC",
+    "author": "Dr. Miriam Al-Haddad",
+    "targetRecord": "PROT-073",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-073)"
+  },
+  {
+    "commitHash": "git-64b85efa6846",
+    "timestamp": "2024-02-07 14:00 UTC",
+    "author": "Dr. Kenji Takahashi",
+    "targetRecord": "PROT-074",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-074)"
+  },
+  {
+    "commitHash": "git-c258af9dc726",
+    "timestamp": "2024-03-09 14:00 UTC",
+    "author": "Dr. Evelyn O'Connor",
+    "targetRecord": "PROT-075",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-075)"
+  },
+  {
+    "commitHash": "git-2e10445672a7",
+    "timestamp": "2024-04-11 14:00 UTC",
+    "author": "Dr. Soren Lindqvist",
+    "targetRecord": "PROT-076",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-076)"
+  },
+  {
+    "commitHash": "git-d4790711787c",
+    "timestamp": "2024-05-13 14:00 UTC",
+    "author": "Dr. Amara Patel",
+    "targetRecord": "PROT-077",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-077)"
+  },
+  {
+    "commitHash": "git-3bfa412fbdda",
+    "timestamp": "2024-06-15 14:00 UTC",
+    "author": "Camille Laurent",
+    "targetRecord": "PROT-078",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-078)"
+  },
+  {
+    "commitHash": "git-f46e4ee46f0e",
+    "timestamp": "2024-07-17 14:00 UTC",
+    "author": "Rowan Vance",
+    "targetRecord": "PROT-079",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-079)"
+  },
+  {
+    "commitHash": "git-24a3217f6435",
+    "timestamp": "2024-08-19 14:00 UTC",
+    "author": "Isolde Chen",
+    "targetRecord": "PROT-080",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-080)"
+  },
+  {
+    "commitHash": "git-44288a09795b",
+    "timestamp": "2024-09-21 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-081",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-081)"
+  },
+  {
+    "commitHash": "git-b6512516eca4",
+    "timestamp": "2024-10-23 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-082",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-082)"
+  },
+  {
+    "commitHash": "git-4f64e02ba6a2",
+    "timestamp": "2024-11-25 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-083",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-083)"
+  },
+  {
+    "commitHash": "git-4d55fb497903",
+    "timestamp": "2024-12-27 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-084",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-084)"
+  },
+  {
+    "commitHash": "git-a6cd7d255a94",
+    "timestamp": "2024-01-01 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-085",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-085)"
+  },
+  {
+    "commitHash": "git-acee0ca1e3f1",
+    "timestamp": "2024-02-03 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-086",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-086)"
+  },
+  {
+    "commitHash": "git-8fe6e381d144",
+    "timestamp": "2024-03-05 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-087",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-087)"
+  },
+  {
+    "commitHash": "git-ccbcff24bb6d",
+    "timestamp": "2025-04-07 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-088",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-088)"
+  },
+  {
+    "commitHash": "git-638a4e284cd8",
+    "timestamp": "2025-05-09 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-089",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-089)"
+  },
+  {
+    "commitHash": "git-ee5b9782ba9c",
+    "timestamp": "2025-06-11 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-090",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-090)"
+  },
+  {
+    "commitHash": "git-65e5dc622c13",
+    "timestamp": "2025-07-13 14:00 UTC",
+    "author": "Dr. Hawa Mansour",
+    "targetRecord": "PROT-091",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-091)"
+  },
+  {
+    "commitHash": "git-d4bad33a0e9e",
+    "timestamp": "2025-08-15 14:00 UTC",
+    "author": "Prof. Dr. Julian Vance",
+    "targetRecord": "PROT-092",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-092)"
+  },
+  {
+    "commitHash": "git-445b113c3313",
+    "timestamp": "2025-09-17 14:00 UTC",
+    "author": "Dr. Miriam Al-Haddad",
+    "targetRecord": "PROT-093",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-093)"
+  },
+  {
+    "commitHash": "git-eac9c13bae3f",
+    "timestamp": "2025-10-19 14:00 UTC",
+    "author": "Dr. Kenji Takahashi",
+    "targetRecord": "PROT-094",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-094)"
+  },
+  {
+    "commitHash": "git-1586bea26ad1",
+    "timestamp": "2025-11-21 14:00 UTC",
+    "author": "Dr. Evelyn O'Connor",
+    "targetRecord": "PROT-095",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-095)"
+  },
+  {
+    "commitHash": "git-5ae9fc4b0862",
+    "timestamp": "2025-12-23 14:00 UTC",
+    "author": "Dr. Soren Lindqvist",
+    "targetRecord": "PROT-096",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-096)"
+  },
+  {
+    "commitHash": "git-923282dca5d2",
+    "timestamp": "2025-01-25 14:00 UTC",
+    "author": "Dr. Amara Patel",
+    "targetRecord": "PROT-097",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-097)"
+  },
+  {
+    "commitHash": "git-6f8c90b00827",
+    "timestamp": "2025-02-27 14:00 UTC",
+    "author": "Camille Laurent",
+    "targetRecord": "PROT-098",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-098)"
+  },
+  {
+    "commitHash": "git-838ad5c8f40a",
+    "timestamp": "2025-03-01 14:00 UTC",
+    "author": "Rowan Vance",
+    "targetRecord": "PROT-099",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-099)"
+  },
+  {
+    "commitHash": "git-0a18a4fb71c6",
+    "timestamp": "2025-04-03 14:00 UTC",
+    "author": "Isolde Chen",
+    "targetRecord": "PROT-100",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-100)"
+  },
+  {
+    "commitHash": "git-a6f84bba51a4",
+    "timestamp": "2025-05-05 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-101",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-101)"
+  },
+  {
+    "commitHash": "git-1fcf0dd1cdea",
+    "timestamp": "2025-06-07 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-102",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-102)"
+  },
+  {
+    "commitHash": "git-396641d6fef2",
+    "timestamp": "2025-07-09 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-103",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-103)"
+  },
+  {
+    "commitHash": "git-31afb1ec16e3",
+    "timestamp": "2025-08-11 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-104",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-104)"
+  },
+  {
+    "commitHash": "git-0154344cfb76",
+    "timestamp": "2025-09-13 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-105",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-105)"
+  },
+  {
+    "commitHash": "git-dc21dc4c46c2",
+    "timestamp": "2025-10-15 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-106",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-106)"
+  },
+  {
+    "commitHash": "git-1f60250b45ed",
+    "timestamp": "2025-11-17 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-107",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-107)"
+  },
+  {
+    "commitHash": "git-826a05b19bf3",
+    "timestamp": "2025-12-19 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-108",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-108)"
+  },
+  {
+    "commitHash": "git-8e7af12fbc50",
+    "timestamp": "2025-01-21 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-109",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-109)"
+  },
+  {
+    "commitHash": "git-525dbcc09698",
+    "timestamp": "2026-02-23 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-110",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-110)"
+  },
+  {
+    "commitHash": "git-1bae1fbe0546",
+    "timestamp": "2026-03-25 14:00 UTC",
+    "author": "Dr. Hawa Mansour",
+    "targetRecord": "PROT-111",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-111)"
+  },
+  {
+    "commitHash": "git-ee38f7e1e696",
+    "timestamp": "2026-04-27 14:00 UTC",
+    "author": "Prof. Dr. Julian Vance",
+    "targetRecord": "PROT-112",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-112)"
+  },
+  {
+    "commitHash": "git-3658267d69ad",
+    "timestamp": "2026-05-01 14:00 UTC",
+    "author": "Dr. Miriam Al-Haddad",
+    "targetRecord": "PROT-113",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-113)"
+  },
+  {
+    "commitHash": "git-4bfd4628ab93",
+    "timestamp": "2026-06-03 14:00 UTC",
+    "author": "Dr. Kenji Takahashi",
+    "targetRecord": "PROT-114",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-114)"
+  },
+  {
+    "commitHash": "git-1e0311fc7afc",
+    "timestamp": "2026-07-05 14:00 UTC",
+    "author": "Dr. Evelyn O'Connor",
+    "targetRecord": "PROT-115",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-115)"
+  },
+  {
+    "commitHash": "git-06f014c48239",
+    "timestamp": "2026-08-07 14:00 UTC",
+    "author": "Dr. Soren Lindqvist",
+    "targetRecord": "PROT-116",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-116)"
+  },
+  {
+    "commitHash": "git-76e1a1e4f5d4",
+    "timestamp": "2026-09-09 14:00 UTC",
+    "author": "Dr. Amara Patel",
+    "targetRecord": "PROT-117",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-117)"
+  },
+  {
+    "commitHash": "git-2266df42f12e",
+    "timestamp": "2026-10-11 14:00 UTC",
+    "author": "Camille Laurent",
+    "targetRecord": "PROT-118",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-118)"
+  },
+  {
+    "commitHash": "git-4bf48b31c659",
+    "timestamp": "2026-11-13 14:00 UTC",
+    "author": "Rowan Vance",
+    "targetRecord": "PROT-119",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-119)"
+  },
+  {
+    "commitHash": "git-baa94c6e3466",
+    "timestamp": "2026-12-15 14:00 UTC",
+    "author": "Isolde Chen",
+    "targetRecord": "PROT-120",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-120)"
+  },
+  {
+    "commitHash": "git-9c0800259784",
+    "timestamp": "2026-01-17 14:00 UTC",
+    "author": "Dr. V. Aris Thorne",
+    "targetRecord": "PROT-121",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Refactor spatial ambisonic decoding matrix to eliminate inter-channel phase smearing (PROT-121)"
+  },
+  {
+    "commitHash": "git-1074b0377e42",
+    "timestamp": "2026-02-19 14:00 UTC",
+    "author": "Elena Mstislav",
+    "targetRecord": "PROT-122",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Update firmware PID loop on motorized faders to suppress mechanical chatter (PROT-122)"
+  },
+  {
+    "commitHash": "git-d35fed7ae42c",
+    "timestamp": "2026-03-21 14:00 UTC",
+    "author": "Dr. Tamsin Callow",
+    "targetRecord": "PROT-123",
+    "changeType": "HARDWARE_CAD",
+    "message": "Calibrate optical laser triangulator against NIST-traceable surface roughness standards (PROT-123)"
+  },
+  {
+    "commitHash": "git-cea23ff3ecf8",
+    "timestamp": "2026-04-23 14:00 UTC",
+    "author": "Kaveh Danesh",
+    "targetRecord": "PROT-124",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Optimize real-time C++ audio worklet kernel for zero-allocation performance (PROT-124)"
+  },
+  {
+    "commitHash": "git-69154296b8cf",
+    "timestamp": "2026-05-25 14:00 UTC",
+    "author": "Mireille O’Connor",
+    "targetRecord": "PROT-125",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Enhance analog soft-clipping JFET limiter stage in acoustic feedback module (PROT-125)"
+  },
+  {
+    "commitHash": "git-ad2138f9ee34",
+    "timestamp": "2026-06-27 14:00 UTC",
+    "author": "Soren Lindqvist",
+    "targetRecord": "PROT-126",
+    "changeType": "FIRMWARE_UPDATE",
+    "message": "Implement microtonal Just-Intonation dynamic tuning table in DSP core (PROT-126)"
+  },
+  {
+    "commitHash": "git-3de6c4fd99a8",
+    "timestamp": "2026-07-01 14:00 UTC",
+    "author": "Dr. Yuna Takahashi",
+    "targetRecord": "PROT-127",
+    "changeType": "DSP_ALGORITHM",
+    "message": "Add automated thermal shutdown watchdog to high-power tactile floor amplifier (PROT-127)"
+  },
+  {
+    "commitHash": "git-4bb02fdf5386",
+    "timestamp": "2026-08-03 14:00 UTC",
+    "author": "Nils Holst",
+    "targetRecord": "PROT-128",
+    "changeType": "HARDWARE_CAD",
+    "message": "Update Dante IP audio routing configuration for 32-channel geodesic dome (PROT-128)"
+  },
+  {
+    "commitHash": "git-a798ff9c592c",
+    "timestamp": "2026-09-05 14:00 UTC",
+    "author": "Lucian Mercer",
+    "targetRecord": "PROT-129",
+    "changeType": "CALIBRATION_SPEC",
+    "message": "Calibrate piezoelectric contact pickups on basalt tone bar assembly (PROT-129)"
+  },
+  {
+    "commitHash": "git-518e055e3091",
+    "timestamp": "2026-10-07 14:00 UTC",
+    "author": "Marcus Brody",
+    "targetRecord": "PROT-130",
+    "changeType": "SAFETY_INTERLOCK",
+    "message": "Integrate double-precision arithmetic into autonomous generative Markov engine (PROT-130)"
+  }
+]

@@ -1,6 +1,20 @@
-import React from 'react';
-import { SynthesisSignalLab } from '../components/SynthesisSignalLab';
+import React, { Suspense, lazy } from 'react';
 import { StatusBadge } from '../components/StatusBadge';
+import { Seo } from '../seo/Seo';
+import { breadcrumbSchema, softwareAppSchema } from '../seo/schema';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { Loading } from '../components/Loading';
+
+// Three.js + WebGL scene: loaded on demand so the archive shell stays light.
+const SynthesisSignalLab = lazy(() => import('../components/SynthesisSignalLab').then(m => ({ default: m.SynthesisSignalLab })));
+
+const CRUMBS = [
+  { name: 'ZIAA', path: '/' },
+  { name: 'SYNTHESIS//SIGNAL', path: '/synthesis-signal' }
+];
+const DESCRIPTION =
+  'SYNTHESIS//SIGNAL is a browser-based audiovisual instrument from the Zazie Institute of Applied Anomalies: uploaded audio drives a reactive Three.js composition, 2048-point FFT spectrum analyser and oscilloscope, all processed locally.';
+
 import { 
   Cpu, ExternalLink, Box, Waves, FileAudio, 
   Layers, Activity, Zap, BookOpen, Terminal,
@@ -10,12 +24,29 @@ import {
 export const SynthesisSignalPage: React.FC = () => {
   return (
     <div className="space-y-6 font-mono text-xs">
+      <Seo
+        title="SYNTHESIS//SIGNAL — Audio-Reactive 3D Visualiser"
+        description={DESCRIPTION}
+        path="/synthesis-signal"
+        keywords={['audio visualizer', 'Three.js', 'Web Audio API', 'FFT spectrum analyser', 'creative coding', 'computational creativity']}
+        jsonLd={[
+          breadcrumbSchema(CRUMBS),
+          softwareAppSchema({
+            path: '/synthesis-signal',
+            name: 'SYNTHESIS//SIGNAL Audiovisual Environment',
+            description: DESCRIPTION,
+            category: 'MultimediaApplication',
+            features: ['MP3/WAV input', '2048-point FFT', 'Reactive torus-knot geometry', 'Particle field', 'Spectrum analyser', 'Oscilloscope', 'Local-only processing']
+          })
+        ]}
+      />
       {/* Header */}
-      <div className="relative bg-gradient-to-b from-[#060a12] via-[#05080f] to-[#03060a] border border-[#2b3d54] rounded-xl p-6 overflow-hidden">
+      <header className="relative bg-gradient-to-b from-[#060a12] via-[#05080f] to-[#03060a] border border-[#2b3d54] rounded-xl p-6 overflow-hidden">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#00ffcc]/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#ff00ff]/5 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10">
+          <div className="mb-3"><Breadcrumbs crumbs={CRUMBS} /></div>
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="px-2.5 py-0.5 rounded text-[10px] bg-[#00ffcc]/10 border border-[#00ffcc]/30 text-[#00ffcc] tracking-widest">
               EXTERNAL PROTOTYPE RECOVERY
@@ -25,7 +56,7 @@ export const SynthesisSignalPage: React.FC = () => {
               INTEGRATION STATUS: ACTIVE
             </span>
             <span className="px-2.5 py-0.5 rounded text-[10px] bg-[#0a1a14] border border-emerald-800/60 text-emerald-300 tracking-widest flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
               INTERACTIVE LAB ONLINE
             </span>
           </div>
@@ -79,36 +110,38 @@ export const SynthesisSignalPage: React.FC = () => {
                 <li className="flex items-center gap-2"><Layers className="w-3 h-3 text-violet-400" /> Node-editor-inspired interface</li>
                 <li className="flex items-center gap-2"><Eye className="w-3 h-3 text-[#dfb76c]" /> Transport + visual parameter controls</li>
               </ul>
-              <div className="pt-2 border-t border-[#1b2636] text-[10px] text-zinc-500 leading-relaxed">
+              <div className="pt-2 border-t border-[#1b2636] text-[10px] text-zinc-400 leading-relaxed">
                 <span className="text-[#dfb76c]">Design direction:</span> Treats audio analysis as expressive visual material rather than background effect. Interface borrows from DAWs, modular patching, VJ software, and realtime graphics workstations.
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* The Interactive Lab */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs">
-            <span className="w-2 h-2 rounded-full bg-[#00ffcc] animate-pulse shadow-[0_0_8px_#00ffcc]" />
+            <span className="w-2 h-2 rounded-full bg-[#00ffcc] animate-pulse shadow-[0_0_8px_#00ffcc]" aria-hidden="true" />
             <span className="font-bold tracking-widest text-white">INTERACTIVE LABORATORY INSTANCE // ZIAA-SYNTH-161</span>
             <span className="px-2 py-0.5 rounded bg-[#0a1a14] border border-emerald-800/50 text-emerald-300 text-[10px]">WEBGL2 • WEBAUDIO • LOCAL PROCESSING ONLY</span>
           </div>
-          <div className="text-[10px] text-zinc-500 hidden md:block">
+          <div className="text-[10px] text-zinc-400 hidden md:block">
             Upload MP3/WAV → Play → Modulate Complexity/Displacement → Observe FFT-driven geometry
           </div>
         </div>
         
-        <SynthesisSignalLab />
+        <Suspense fallback={<Loading />}>
+          <SynthesisSignalLab />
+        </Suspense>
       </div>
 
       {/* Documentation */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="bg-[#05080c] border border-[#1a1f33] rounded-lg p-4 space-y-2">
-          <h3 className="text-xs font-bold text-[#00ffcc] tracking-widest uppercase flex items-center gap-2">
+          <h2 className="text-xs font-bold text-[#00ffcc] tracking-widest uppercase flex items-center gap-2">
             <BookOpen className="w-3.5 h-3.5" /> How To Use
-          </h3>
+          </h2>
           <ol className="text-[11px] text-zinc-400 space-y-1.5 list-decimal list-inside leading-relaxed">
             <li>Load an MP3 or WAV file using <span className="text-white">Source Input</span> panel</li>
             <li>Press <span className="text-[#00ffcc]">PLAY</span> to activate audio-reactive environment</li>
@@ -120,25 +153,25 @@ export const SynthesisSignalPage: React.FC = () => {
         </div>
 
         <div className="bg-[#05080c] border border-[#1a1f33] rounded-lg p-4 space-y-2">
-          <h3 className="text-xs font-bold text-[#ff00ff] tracking-widest uppercase flex items-center gap-2">
+          <h2 className="text-xs font-bold text-[#ff00ff] tracking-widest uppercase flex items-center gap-2">
             <Terminal className="w-3.5 h-3.5" /> Technical Integration Notes
-          </h3>
+          </h2>
           <div className="text-[11px] text-zinc-400 space-y-2 leading-relaxed">
             <p>Original prototype was a single <code className="px-1 py-0.5 bg-[#111] border border-[#333] rounded text-[#00ffcc]">index.html</code> file with Tailwind CDN and Three.js r128 global. This integration:</p>
-            <ul className="space-y-1 list-disc list-inside text-zinc-500">
+            <ul className="space-y-1 list-disc list-inside text-zinc-400">
               <li>Ported to React + TypeScript with <code className="text-[#dfb76c]">three@latest</code> ES modules</li>
               <li>Preserved 2048-point FFT, torus-knot displacement, 3K particle field</li>
               <li>Added ZIAA archival framing, transport progress, and geometry switching</li>
               <li>Local-only processing — uploaded files never leave browser</li>
-              <li>Integrated into ZIAA tab system as <code className="text-[#00ffcc]">SYNTHESIS//SIGNAL</code></li>
+              <li>Integrated into the ZIAA archive at <code className="text-[#00ffcc]">SYNTHESIS//SIGNAL</code></li>
             </ul>
           </div>
         </div>
 
         <div className="bg-[#05080c] border border-[#1a1f33] rounded-lg p-4 space-y-2">
-          <h3 className="text-xs font-bold text-[#facc15] tracking-widest uppercase flex items-center gap-2">
+          <h2 className="text-xs font-bold text-[#facc15] tracking-widest uppercase flex items-center gap-2">
             <Zap className="w-3.5 h-3.5" /> Roadmap & Archive Context
-          </h3>
+          </h2>
           <div className="text-[11px] text-zinc-400 space-y-2 leading-relaxed">
             <p>From original repository roadmap:</p>
             <ul className="space-y-1 list-disc list-inside">
@@ -148,7 +181,7 @@ export const SynthesisSignalPage: React.FC = () => {
               <li>Additional geometry modes</li>
               <li>Configurable FFT resolution</li>
             </ul>
-            <p className="pt-2 border-t border-[#1a1f33] text-zinc-500">
+            <p className="pt-2 border-t border-[#1a1f33] text-zinc-400">
               Within ZIAA, this prototype is classified as <span className="text-[#dfb76c]">PROT-161 // SYNTHESIS-SIGNAL</span> — a computational creativity and audiovisual DSP workstation, complementary to existing <span className="text-cyan-300">SPECTRA//LAB</span> and <span className="text-emerald-300">ACOUSTIC BENCH</span>.
             </p>
           </div>
@@ -157,3 +190,5 @@ export const SynthesisSignalPage: React.FC = () => {
     </div>
   );
 };
+
+export default SynthesisSignalPage;

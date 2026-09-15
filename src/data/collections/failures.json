@@ -1,0 +1,420 @@
+[
+  {
+    "id": "INC-2021-01",
+    "projectCode": "ORPHEUS-FEEDBACK",
+    "projectTitle": "Spatial Array Recursive Feedback Cascade",
+    "year": 2021,
+    "leadInvestigator": "Dr. V. Aris Thorne",
+    "hazardClassification": "ACOUSTIC_OVERLOAD_THERMAL",
+    "incidentDate": "2021-06-14",
+    "summary": "An uncalibrated recursive delay algorithm locked into room resonant mode at 116 dB during an open gallery trial, triggering thermal cutoffs on four Class-D power amplifiers.",
+    "incidentNarrative": "During a private evaluation of prototype PROT-006 (Spatial Feedback Loop Array) in Studio A, an unintended positive feedback loop formed between the central 16-channel microphone tree and perimeter horn drivers. The algorithm's automatic gain limiter experienced a 120ms latency delay, allowing an 840 Hz room resonance mode to escalate into continuous acoustic saturation at 116 dB SPL. The test session was immediately aborted via master emergency stop.",
+    "rootCauseAnalysis": "A race condition between the Max/MSP DSP scheduler and the Dante network audio driver delayed gain reduction packets by 6 buffer cycles, disabling software limiting during transient peaks.",
+    "containmentProtocol": "Hardware analog optocoupler limiters were permanently spliced directly into power amplifier input stages, bypassing software control.",
+    "decommissionStatus": "RESTORED_WITH_HARDWARE_FAILSAFE",
+    "salvagedComponents": [
+      "16-Channel Microphone Tree",
+      "Aluminum Horn Driver Housings",
+      "Dante Network Switch"
+    ]
+  },
+  {
+    "id": "INC-2021-02",
+    "projectCode": "TAPE-TENSION",
+    "projectTitle": "Speculative Continuous Tape Transport Motor Seizure",
+    "year": 2021,
+    "leadInvestigator": "Kaveh Danesh",
+    "hazardClassification": "MECHANICAL_THERMAL_BINDING",
+    "incidentDate": "2021-11-20",
+    "summary": "Prolonged 72-hour tension stress test resulted in capstan motor overheating, causing magnetic tape binding and thermal fusion against the read head block.",
+    "incidentNarrative": "In an endurance evaluation of the continuous magnetic loop transport (PROT-007), the dual stepper motor drive ran uninterrupted for 68 hours. Increased bearing friction in the tension pulley led to elevated drive motor temperatures (reaching 78°C). The magnetic tape softened, bound in the capstan nip roller, and melted against the permalloy playback head.",
+    "rootCauseAnalysis": "Inadequate passive heatsinking on stepper motor driver circuits and lack of automated thermal shutdown sensors on the transport chassis.",
+    "containmentProtocol": "Fitted dual ball-bearing tension guides, aluminum heatsinks with low-noise brushless cooling fans, and automated thermocouple cutoffs.",
+    "decommissionStatus": "REDESIGNED_SYSTEM_OPERATIONAL",
+    "salvagedComponents": [
+      "8-Head Permalloy Playback Block",
+      "Optical Tachometer Sensors",
+      "Chassis Mounting Plate"
+    ]
+  },
+  {
+    "id": "INC-2022-03",
+    "projectCode": "BASALT-SHEAR",
+    "projectTitle": "Piezoelectric Resonance Shear in Monolithic Basalt Slab",
+    "year": 2022,
+    "leadInvestigator": "Dr. Kenji Takahashi",
+    "hazardClassification": "STRUCTURAL_MATERIAL_FATIGUE",
+    "incidentDate": "2022-03-08",
+    "summary": "Driven at exact mechanical resonant frequency (842 Hz) at high amplitude, causing micro-fracturing along natural mineral fault lines in prototype lithophone slab.",
+    "incidentNarrative": "During high-amplitude resonant testing of a 1.2-meter sintered basalt tone slab (PROT-002), high-output piezoelectric actuators swept through a continuous 800–900 Hz frequency range. At 842 Hz, internal mechanical resonance concentrated stress along a microscopic olivine vein, causing the stone slab to fracture cleanly into two unequal segments.",
+    "rootCauseAnalysis": "Natural geological inclusions in raw basalt concentrate mechanical strain under continuous acoustic excitation. Resonance drive lacked dynamic amplitude throttling.",
+    "containmentProtocol": "Ultrasound non-destructive testing now required for all mineral specimens prior to cutting. Maximum drive amplitude capped at 65% of mechanical shear limits.",
+    "decommissionStatus": "MATERIAL_RETIRED_EXHIBITED_AS_SPECIMEN",
+    "salvagedComponents": [
+      "Piezoelectric Disc Actuators",
+      "Hydraulic Clamping Rig",
+      "Laser Vibrometer Mounts"
+    ]
+  },
+  {
+    "id": "INC-2022-04",
+    "projectCode": "NEURAL-DRIFT",
+    "projectTitle": "Buffer Allocation Starvation in Neural Audio Latent Synthesizer",
+    "year": 2022,
+    "leadInvestigator": "Dr. Miriam Al-Haddad",
+    "hazardClassification": "DSP_SOFTWARE_CORRUPTION",
+    "incidentDate": "2022-08-16",
+    "summary": "Continuous 48-hour generative audio inference caused gradual heap fragmentation on the embedded Linux DSP unit, leading to unexpected digital stutter and audio dropouts.",
+    "incidentNarrative": "During a public installation run of the neural latent resynthesizer (PROT-026), dynamic tensor allocations in the real-time C++ inference loop gradually fragmented system memory. After 41 hours of continuous generative audio output, the operating system kernel began dropping audio buffer callbacks, generating loud digital glitch bursts at 0 dBFS.",
+    "rootCauseAnalysis": "Dynamic memory reallocation inside real-time audio threads instead of fixed pre-allocated circular ring buffers.",
+    "containmentProtocol": "Refactored DSP audio engine to guarantee zero-allocation execution during real-time processing threads.",
+    "decommissionStatus": "RESOLVED_FIRMWARE_PATCHED",
+    "salvagedComponents": [
+      "Raspberry Pi Compute Module 4",
+      "Wolfson Audio Card",
+      "OLED Display Module"
+    ]
+  },
+  {
+    "id": "INC-2022-05",
+    "projectCode": "HORN-CANCEL",
+    "projectTitle": "Phase Cancellation Anomaly in Concentric Waveguide Horn",
+    "year": 2022,
+    "leadInvestigator": "Soren Lindqvist",
+    "hazardClassification": "ACOUSTIC_PHASE_NULL",
+    "incidentDate": "2022-12-04",
+    "summary": "Dimensional machining error in the acoustic horn throat produced complete destructive interference between 1.2 kHz and 2.4 kHz, neutralizing vocal range clarity.",
+    "incidentNarrative": "A prototype concentric exponential horn speaker (PROT-015) fabricated from spun aluminum exhibited a severe, unexpected 38 dB notch filter across the core human vocal band during anechoic chamber measurements. Listening subjects reported extreme perceptual isolation and hollow speech intelligibility.",
+    "rootCauseAnalysis": "CNC lathe path calculation error introduced a 2.4mm step in the internal throat expansion profile, creating a standing wave anti-node that canceled mid-range frequencies.",
+    "containmentProtocol": "3D acoustic simulation in COMSOL now precedes all physical horn machining. Throat profile re-turned to true continuous exponential curvature.",
+    "decommissionStatus": "DEFECTIVE_HORN_RECYCLED_REBUILT",
+    "salvagedComponents": [
+      "Compression Driver Unit",
+      "Cast Iron Mounting Flange",
+      "Crossover Network"
+    ]
+  },
+  {
+    "id": "INC-2023-06",
+    "projectCode": "HAPTIC-RUNAWAY",
+    "projectTitle": "Motorized Fader Haptic Feedback Oscillation Runaway",
+    "year": 2023,
+    "leadInvestigator": "Dr. Tamsin Callow",
+    "hazardClassification": "MECHANICAL_CONTROL_RUNAWAY",
+    "incidentDate": "2023-04-19",
+    "summary": "A positive feedback loop in the PID haptic controller caused mechanical faders to violently oscillate against physical travel stops during microtonal pitch-bending trials.",
+    "incidentNarrative": "While testing an experimental 16-channel microtonal keyboard console (PROT-035), a software developer increased derivative gain parameters in the motorized fader PID loop. When an operator depressed two adjacent keys simultaneously, the fader motors entered high-frequency mechanical oscillation, chattering violently against aluminum end-stops.",
+    "rootCauseAnalysis": "Derivative kick caused by capacitive touch sensor noise feeding into the position error loop without low-pass smoothing.",
+    "containmentProtocol": "Added a 40 Hz digital biquad filter to touch sensor readings and implemented hardware current limiters on motor driver H-bridges.",
+    "decommissionStatus": "FIRMWARE_REVISED_BENCH_CERTIFIED",
+    "salvagedComponents": [
+      "16 Motorized ALPS Faders",
+      "Capacitive Brass Touchplates",
+      "Teensy 4.1 Microcontroller"
+    ]
+  },
+  {
+    "id": "INC-2023-07",
+    "projectCode": "STRUCTURAL-SHAKER",
+    "projectTitle": "Sub-Bass Cavitation Coupling in Suspended Ceiling Plaster",
+    "year": 2023,
+    "leadInvestigator": "Marcus Brody",
+    "hazardClassification": "FACILITY_ACOUSTIC_DAMAGE",
+    "incidentDate": "2023-09-02",
+    "summary": "Low-frequency testing of a 14 Hz tactile floor transducer excited building structural nodes, dislodging acoustic insulation tiles in the adjacent control room.",
+    "incidentNarrative": "During calibration of a high-power somatosensory tactile floor array (PROT-023) designed for whole-body listening, continuous 14 Hz sine waves were injected into the timber sub-floor. Unknown to technicians, 14.2 Hz matched the mechanical resonant frequency of the building's suspended ceiling grid, causing ceiling tiles to rattle loose and fall.",
+    "rootCauseAnalysis": "Failure to isolate the acoustic test platform from building architectural structure using elastomeric vibration dampening pads.",
+    "containmentProtocol": "Mounted all tactile transducers onto decoupled dual-layer Sylomer acoustic isolation mats. Infrasonic sine sweeps capped at 95 dB.",
+    "decommissionStatus": "FACILITY_REPAIRED_ISOLATION_INSTALLED",
+    "salvagedComponents": [
+      "4 High-Power Tactile Shakers",
+      "Crown Power Amplifier",
+      "DSP Crossover"
+    ]
+  },
+  {
+    "id": "INC-2023-08",
+    "projectCode": "OPTICAL-SATURATION",
+    "projectTitle": "Optical Sensor Saturation from Solar Flare Reflection",
+    "year": 2023,
+    "leadInvestigator": "Dr. Yuna Takahashi",
+    "hazardClassification": "OPTICAL_DATA_CORRUPTION",
+    "incidentDate": "2023-10-18",
+    "summary": "Archival disc laser scanner optics were blinded by direct afternoon solar reflection through an unshaded skylight, corrupting 14 minutes of transcribed groove data.",
+    "incidentNarrative": "During a high-resolution optical scan of an unplayable 1904 wax cylinder in Studio C, unshielded afternoon sunlight reflected off an adjacent stainless steel tool tray directly into the linear CMOS camera's optical path. The sensor saturated to whiteout levels, truncating groove data.",
+    "rootCauseAnalysis": "Inadequate light baffling on the optical scanning rig and lack of automated sensor clipping detection in the recording daemon.",
+    "containmentProtocol": "Installed opaque anodized aluminum shroud enclosures around all optical sensor stages and added an automated sunlight interlock.",
+    "decommissionStatus": "SYSTEM_SHIELDED_CYLINDER_RE-SCANNED",
+    "salvagedComponents": [
+      "Laser Diode Module",
+      "Linear CMOS Camera",
+      "Rotary Air-Bearing Stage"
+    ]
+  },
+  {
+    "id": "INC-2024-09",
+    "projectCode": "DANTE-JITTER",
+    "projectTitle": "Clock Synchronization Jitter between Remote Dante Nodes",
+    "year": 2024,
+    "leadInvestigator": "Nils Holst",
+    "hazardClassification": "NETWORK_SYNC_FAILURE",
+    "incidentDate": "2024-02-11",
+    "summary": "A network switch queue failure caused intermittent 40ms clock slip between desert field station microphones and central recorders, creating comb-filtering artifacts.",
+    "incidentNarrative": "During a 24-hour synchronized field recording across the Mojave Desert Sanctuary, an auxiliary network switch dropped IEEE 1588 PTP clock sync packets during a routine buffer burst. Field microphones slipped out of phase with main array recorders, introducing severe acoustic comb-filtering.",
+    "rootCauseAnalysis": "Energy-efficient Ethernet (EEE 802.3az) power saving features on an unmanaged switch caused intermittent micro-delays in PTP timing packets.",
+    "containmentProtocol": "Replaced all field switches with enterprise managed Cisco switches with hardware PTP boundary clocking and disabled all low-power sleep states.",
+    "decommissionStatus": "NETWORK_UPGRADED_SYNCHRONIZED",
+    "salvagedComponents": [
+      "Dante Audio PCIe Card",
+      "Outdoor Cat6A Shielded Reels",
+      "PTP Grandmaster Clock"
+    ]
+  },
+  {
+    "id": "INC-2024-10",
+    "projectCode": "SPRING-FATIGUE",
+    "projectTitle": "Spring Reverb Tank Mechanical Suspension Collapse",
+    "year": 2024,
+    "leadInvestigator": "Lucian Mercer",
+    "hazardClassification": "MECHANICAL_COMPONENT_FAILURE",
+    "incidentDate": "2024-05-27",
+    "summary": "Extended high-amplitude impulse response measurements snapped the primary phosphor-bronze tension spring inside custom 3-meter mechanical reverb tank.",
+    "incidentNarrative": "While measuring acoustic impulse response curves on a custom 3-meter architectural spring reverb tank (PROT-041), excessive continuous test tone levels excited the spring into violent lateral whipping motion. The primary phosphor-bronze coil experienced metal fatigue at the drive transducer clamp and fractured.",
+    "rootCauseAnalysis": "Continuous test tone duty cycles exceeded mechanical tensile fatigue thresholds of hand-wound phosphor-bronze alloys.",
+    "containmentProtocol": "Upgraded spring alloy to high-tensile music wire steel and added magnetic eddy-current dampers to limit maximum lateral spring excursions.",
+    "decommissionStatus": "REVERB_TANK_RE-STRUNG_OPERATIONAL",
+    "salvagedComponents": [
+      "Electromagnetic Drive Coils",
+      "Piezo Pickup Bridges",
+      "Heavy Walnut Acoustic Enclosure"
+    ]
+  },
+  {
+    "id": "INC-2024-11",
+    "projectCode": "ELECTROSTATIC-ARC",
+    "projectTitle": "Electrostatic Speaker Diaphragm Arching in High Humidity",
+    "year": 2024,
+    "leadInvestigator": "Isolde Chen",
+    "hazardClassification": "ELECTRICAL_DIELECTRIC_BREAKDOWN",
+    "incidentDate": "2024-08-30",
+    "summary": "Relative humidity in the field pavilion reached 94%, causing localized dielectric breakdown and electrical arcing across the tensioned Mylar membrane.",
+    "incidentNarrative": "During an outdoor summer sound art pavilion deployment, sudden maritime coastal fog raised local humidity to 94%. High polarization bias voltage (3.5 kV) across the electrostatic speaker's stator grid ionized air moisture, creating visible electrical spark discharges that burned micro-pinholes in the ultra-thin Mylar diaphragm.",
+    "rootCauseAnalysis": "Lack of automatic ambient humidity sensors to dynamically throttle polarization bias voltage during foggy conditions.",
+    "containmentProtocol": "Added a relative humidity interlock circuit that automatically powers down high-voltage bias supplies when humidity exceeds 80%.",
+    "decommissionStatus": "MYLAR_MEMBRANE_REPLACED_SEALED",
+    "salvagedComponents": [
+      "Perforated Stator Grids",
+      "High-Voltage Step-Up Transformers",
+      "Solid Oak Frame"
+    ]
+  },
+  {
+    "id": "INC-2024-12",
+    "projectCode": "MARKOV-SATURATION",
+    "projectTitle": "Generative Composition Pitch-Drift Saturation",
+    "year": 2024,
+    "leadInvestigator": "Mireille O’Connor",
+    "hazardClassification": "ALGORITHMIC_CONVERGENCE_ERROR",
+    "incidentDate": "2024-11-09",
+    "summary": "An unsupervised markov composition algorithm accumulated micro-interval floating point rounding errors, causing all melodic voices to converge into a dense 1 kHz sine drone.",
+    "incidentNarrative": "An autonomous algorithmic sound installation running continuously in the ZIAA foyer began sounding increasingly uniform over a 3-week exhibition. By day 18, all 12 independent generative voices had collapsed into a single monotonous 1,024 Hz harmonic cluster.",
+    "rootCauseAnalysis": "Markov probability matrices were recursively normalized using single-precision floats, accumulating rounding biases that favored a single absorbing state.",
+    "containmentProtocol": "Switched to double-precision arithmetic and implemented automated entropy watchdogs that re-seed pitch tables if variance falls below threshold.",
+    "decommissionStatus": "CODEBASE_UPDATED_RE-DEVOIR",
+    "salvagedComponents": [
+      "Embedded Intel NUC Server",
+      "D/A Converter Unit",
+      "Foyer Monitor Speakers"
+    ]
+  },
+  {
+    "id": "INC-2025-13",
+    "projectCode": "EMI-CASCADE",
+    "projectTitle": "Electromagnetic Interference Cascade from Unshielded Switching Supply",
+    "year": 2025,
+    "leadInvestigator": "Elena Mstislav",
+    "hazardClassification": "ELECTRICAL_NOISE_CONTAMINATION",
+    "incidentDate": "2025-01-22",
+    "summary": "A prototype modular synth power supply radiated 48 kHz harmonic noise directly into adjacent high-gain contact microphone preamps.",
+    "incidentNarrative": "During high-resolution archival audio digitization in Studio C, audio recordings were found contaminated with a high-pitched 48 kHz carrier tone and audible 12 kHz aliased tones. Investigation traced the noise to a newly installed modular synthesizer bench supply in the adjoining room.",
+    "rootCauseAnalysis": "Unshielded switching power supply coils radiated high-frequency electromagnetic noise along common laboratory mains wiring.",
+    "containmentProtocol": "Mandated linear toroidal power supplies for all archival and precision metrology benches. Enclosed all switching regulators in copper mu-metal cages.",
+    "decommissionStatus": "POWER_GRID_ISOLATED_NOMINAL",
+    "salvagedComponents": [
+      "Modular Synth Rack Frame",
+      "Linear Power Regulators",
+      "High-Gain Preamps"
+    ]
+  },
+  {
+    "id": "INC-2025-14",
+    "projectCode": "VOICE-COIL-THERMAL",
+    "projectTitle": "Tactile Resonator Voice-Coil Overheating in Gallery Floor",
+    "year": 2025,
+    "leadInvestigator": "Dr. Tamsin Callow",
+    "hazardClassification": "THERMAL_VOICE_COIL_WARPING",
+    "incidentDate": "2025-04-05",
+    "summary": "Extended continuous sine sweeps during a public sound exhibition caused voice coil thermal deformation inside four subterranean floor shakers.",
+    "incidentNarrative": "During a weekend public sound festival, an invited guest composer programmed sustained 22 Hz sine tones at high power for 4 consecutive hours. Poor air circulation under the exhibition platform prevented adequate cooling of tactile transducer voice coils, causing the coils to rub against pole pieces and distort.",
+    "rootCauseAnalysis": "Continuous low-frequency test tones have zero cooling air displacement in sealed enclosures, rapidly accumulating internal heat.",
+    "containmentProtocol": "Installed active ducted ventilation under floor installations and programmed automatic thermal throttling in the DSP audio processor.",
+    "decommissionStatus": "VOICE_COILS_RE-WOUND_COOLED",
+    "salvagedComponents": [
+      "Neodymium Magnet Assemblies",
+      "Mounting Brackets",
+      "Heavy-Gauge Speaker Cables"
+    ]
+  },
+  {
+    "id": "INC-2025-15",
+    "projectCode": "HYDROPHONE-SEAL",
+    "projectTitle": "Hydrophone Pressure Housing Seal Failure at 300m Depth",
+    "year": 2025,
+    "leadInvestigator": "Marcus Brody",
+    "hazardClassification": "MARINE_ENVIRONMENTAL_INGRESS",
+    "incidentDate": "2025-07-14",
+    "summary": "O-ring deformation during sub-glacial Arctic deployment allowed seawater ingress, shorting the internal ultra-low-noise FET preamplifier.",
+    "incidentNarrative": "During deployment of an acoustic monitoring string into an Arctic fjord at Station Ice-Epsilon, hydrophone unit H-03 ceased data transmission at 285 meters depth. Upon retrieval, saltwater droplets were found inside the titanium electronics pod.",
+    "rootCauseAnalysis": "Sub-zero sea temperatures caused standard nitrile O-rings to harden, compromising the pressure seal under 30 bar water pressure.",
+    "containmentProtocol": "Switched all Arctic marine seals to low-temperature fluorosilicone O-rings with dual redundant sealing grooves.",
+    "decommissionStatus": "TITANIUM_POD_REBUILT_CERTIFIED",
+    "salvagedComponents": [
+      "Titanium Housing Tube",
+      "Piezo Ceramic Element",
+      "Armor Cable Harness"
+    ]
+  },
+  {
+    "id": "INC-2025-16",
+    "projectCode": "LASER-WALK",
+    "projectTitle": "Laser Vibrometer Interferometer Alignment Drift",
+    "year": 2025,
+    "leadInvestigator": "Dr. Yuna Takahashi",
+    "hazardClassification": "OPTICAL_THERMAL_DRIFT",
+    "incidentDate": "2025-09-29",
+    "summary": "Thermal expansion of the optical breadboard caused the reference laser beam to walk off the photodiode target during an overnight 12-hour ceramic scan.",
+    "incidentNarrative": "An overnight scan of an ancient Grecian ceramic urn shard was invalidated when ambient room temperature dropped 4°C between midnight and 5:00 AM. The aluminum breadboard contracted slightly, causing the 632.8 nm helium-neon reference beam to misalign with the balance photodiode.",
+    "rootCauseAnalysis": "Using an uninsulated aluminum breadboard in a room without precision closed-loop HVAC temperature stabilization.",
+    "containmentProtocol": "Replaced aluminum breadboard with Invar zero-expansion alloy table and installed precision ±0.2°C temperature environmental controls in Studio C.",
+    "decommissionStatus": "BENCH_UPGRADED_SCAN_COMPLETED",
+    "salvagedComponents": [
+      "HeNe Laser Head",
+      "Photodiode Detector Circuit",
+      "Optical Mirrors"
+    ]
+  },
+  {
+    "id": "INC-2025-17",
+    "projectCode": "DSP-NAN-EXPLODE",
+    "projectTitle": "Recursive Convolution Kernel Numerical Explosion",
+    "year": 2025,
+    "leadInvestigator": "Elena Mstislav",
+    "hazardClassification": "DIGITAL_AUDIO_CLIPPING_NAN",
+    "incidentDate": "2025-11-18",
+    "summary": "A real-time FIR filter feedback loop calculated infinite impulse response coefficients, resulting in full-scale floating point NaN clipping across master DAC.",
+    "incidentNarrative": "While experimenting with recursive spatial convolution in a live performance patch, a mathematical feedback coefficient exceeded 1.0001 due to unconstrained modulation LFO values. Within 4 audio blocks, output buffers exploded into floating-point NaN (Not a Number) values, muting the audio interface.",
+    "rootCauseAnalysis": "Absence of hard mathematical clamping on feedback coefficient parameters in custom C++ DSP externals.",
+    "containmentProtocol": "Implemented hard coefficient clamping and automatic NaN sanitization wrappers in the core audio DSP library.",
+    "decommissionStatus": "DSP_EXTERNAL_PATCHED_BENCH_TESTED",
+    "salvagedComponents": [
+      "RME Audio Interface",
+      "Mac Studio M2 Host",
+      "Reference Studio Monitors"
+    ]
+  },
+  {
+    "id": "INC-2026-18",
+    "projectCode": "VLF-GRID-HUM",
+    "projectTitle": "VLF Atmospheric Induction Coil Ground Loop Humming",
+    "year": 2026,
+    "leadInvestigator": "Rowan Vance",
+    "hazardClassification": "SIGNAL_GROUND_LOOP_NOISE",
+    "incidentDate": "2026-01-30",
+    "summary": "High-voltage power grid transmission lines 4 km away induced a persistent 60 Hz hum with 23 harmonics, masking natural atmospheric radio emission signals.",
+    "incidentNarrative": "Initial recordings at the Joshua Tree Natural Radio Pod showed overwhelming 60 Hz grid interference despite the remote desert location. Ground currents from agricultural pump stations 4 km away were traveling through dry desert soil into the receiver grounding rod.",
+    "rootCauseAnalysis": "Direct galvanic connection between battery charger ground and antenna preamp ground formed an expansive ground loop.",
+    "containmentProtocol": "Installed high-speed optical isolation couplers between antenna preamps and recording digitizers, eliminating all galvanic ground paths.",
+    "decommissionStatus": "ISOLATION_INSTALLED_NOISE_REDUCED",
+    "salvagedComponents": [
+      "Orthogonal Loop Antennas",
+      "JFET Differential Preamp",
+      "Solar Power System"
+    ]
+  },
+  {
+    "id": "INC-2026-19",
+    "projectCode": "BRASS-STATIC",
+    "projectTitle": "Capacitive Touch Sensing Crosstalk on Brass Controller Surface",
+    "year": 2026,
+    "leadInvestigator": "Dr. Tamsin Callow",
+    "hazardClassification": "TOUCH_SENSOR_CROSSTALK",
+    "incidentDate": "2026-03-22",
+    "summary": "Static charge buildup from dry desert air caused spurious multi-touch trigger events across an experimental microtonal keyboard.",
+    "incidentNarrative": "During outdoor field testing of a 72-tone microtonal brass touch controller, extremely low ambient humidity (8%) allowed static electricity on performer hands to falsely trigger adjacent capacitive sensor pads without physical contact.",
+    "rootCauseAnalysis": "Capacitive touch baseline tracking algorithm was tuned for humid indoor studio environments and failed to adapt to sudden electrostatic discharge spikes.",
+    "containmentProtocol": "Added a grounded conductive wristband for performers and implemented an adaptive baseline filtering algorithm that discards instantaneous static steps.",
+    "decommissionStatus": "CALIBRATED_FIRMWARE_CERTIFIED",
+    "salvagedComponents": [
+      "72-Note Brass Touch Surface",
+      "MPR121 Capacitive Driver ICs",
+      "Hardwood Case"
+    ]
+  },
+  {
+    "id": "INC-2026-20",
+    "projectCode": "GRANULAR-OVERFLOW",
+    "projectTitle": "Granular Synthesis Cloud Voice Memory Exhaustion",
+    "year": 2026,
+    "leadInvestigator": "Mireille O’Connor",
+    "hazardClassification": "SOFTWARE_VOICE_OVERLOAD",
+    "incidentDate": "2026-05-14",
+    "summary": "Max/MSP buffer allocation hit ceiling when spawning 10,000 simultaneous audio grains during an orchestral installation performance.",
+    "incidentNarrative": "An unconstrained stochastic generative patch spawned granular audio voices faster than their decay envelopes finished. When voice count passed 8,192 simultaneous grain instances, the host operating system starved the audio callback thread, causing 2 seconds of high-jitter audio dropouts.",
+    "rootCauseAnalysis": "Generative density parameter lacked a strict hard ceiling tied to available DSP processing time per audio block.",
+    "containmentProtocol": "Hard-capped maximum concurrent granular voices to 2,048 with dynamic voice stealing based on lowest perceptual energy.",
+    "decommissionStatus": "DSP_ALGORITHM_OPTIMIZED",
+    "salvagedComponents": [
+      "Audio Engine Host PC",
+      "Dante Controller Interface",
+      "Studio Monitors"
+    ]
+  },
+  {
+    "id": "INC-2026-21",
+    "projectCode": "ULTRASONIC-TRAP",
+    "projectTitle": "Acoustic Levitator Particle Dispersion Shockwave",
+    "year": 2026,
+    "leadInvestigator": "Dr. V. Aris Thorne",
+    "hazardClassification": "ACOUSTIC_DISPERSION_CLEANUP",
+    "incidentDate": "2026-07-08",
+    "summary": "Power fluctuation in phased ultrasonic transducer array dropped acoustic trapping force instantaneously, scattering quartz silica particles across optical bench.",
+    "incidentNarrative": "A 40 kHz phased ultrasonic levitation array holding suspended acoustic micro-particles in mid-air experienced a momentary DC power dip. The acoustic trapping well collapsed instantaneously, causing suspended reflective particles to disperse across the precision laser measurement optics.",
+    "rootCauseAnalysis": "DC power supply lacked an uninterruptible capacitor reserve bank to buffer against laboratory line-voltage transients.",
+    "containmentProtocol": "Added a 48V supercapacitor buffer bank and installed a transparent sealed optical containment chamber around the acoustic trapping zone.",
+    "decommissionStatus": "OPTICS_CLEANED_ENCLOSURE_ADDED",
+    "salvagedComponents": [
+      "40 kHz Ultrasonic Transducers",
+      "FPGA Phase Driver Board",
+      "High-Speed Macro Camera"
+    ]
+  },
+  {
+    "id": "INC-2026-22",
+    "projectCode": "AMBISONIC-INVERT",
+    "projectTitle": "Ambisonic Decoder Spatial Matrix Inversion Error",
+    "year": 2026,
+    "leadInvestigator": "Camille Laurent",
+    "hazardClassification": "PSYCHOACOUSTIC_LOCALIZATION_ERROR",
+    "incidentDate": "2026-08-19",
+    "summary": "Swapped polarities on left-rear elevation channels caused severe psychoacoustic disorientation and localization fatigue among listening evaluation subjects.",
+    "incidentNarrative": "During listening evaluations of a new 5th-order ambisonic decoding matrix in Studio A, an engineer inadvertently swapped polarity (+/-) on four overhead height speakers. Subjects reported confusing auditory sensations, head pressure, and difficulty pin-pointing sound source trajectories.",
+    "rootCauseAnalysis": "Manual wire termination error during speaker patching combined with lack of an automated pink-noise phase validation script.",
+    "containmentProtocol": "Developed an automated phase and delay calibration script that tests every loudspeaker node before each evaluation session.",
+    "decommissionStatus": "WIRING_CORRECTED_CALIBRATION_AUTOMATED",
+    "salvagedComponents": [
+      "32 Active Studio Monitors",
+      "Audio Interface Breakout Box",
+      "Measurement Microphones"
+    ]
+  }
+]

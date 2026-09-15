@@ -1,4 +1,4 @@
-import { Prototype, Patent, FailedIncident, Monograph, FieldSite, LabLog } from './types';
+import type { Prototype, Patent, FailedIncident, Monograph, FieldSite, LabLog } from './types';
 
 export type ProjectStatusLabel =
   | 'Operational'

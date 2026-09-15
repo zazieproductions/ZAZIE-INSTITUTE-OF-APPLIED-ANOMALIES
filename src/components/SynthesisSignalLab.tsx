@@ -1,8 +1,12 @@
+/* Ported audiovisual lab (zazieproductions/SYNTHESIS-SIGNAL). The Three.js scene is driven
+   imperatively through refs at animation-frame rate; the compiler purity/ref rules do not fit
+   this pattern, so they are relaxed for this file only. */
+/* eslint-disable react-hooks/refs, react-hooks/purity */
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { 
-  Play, Pause, Square, Upload, Cpu, Activity, 
-  Radio, Layers, Zap, ExternalLink, FileAudio, 
+  Play, Pause, Square, Upload,
+  Radio, Layers, ExternalLink, FileAudio, 
   Terminal, Box, Waves, Grid3X3, Eye
 } from 'lucide-react';
 
@@ -39,7 +43,7 @@ export const SynthesisSignalLab: React.FC = () => {
   const mainMeshRef = useRef<THREE.Mesh | null>(null);
   const particlesMeshRef = useRef<THREE.Points | null>(null);
   const particlesGeoRef = useRef<THREE.BufferGeometry | null>(null);
-  const mainGeoRef = useRef<THREE.TorusKnotGeometry | null>(null);
+  const mainGeoRef = useRef<THREE.BufferGeometry | null>(null);
   const originalVerticesRef = useRef<THREE.Vector3[]>([]);
   const animFrameRef = useRef<number | null>(null);
 
@@ -57,8 +61,9 @@ export const SynthesisSignalLab: React.FC = () => {
   const [fps, setFps] = useState<number>(60);
   const [cpuLoad, setCpuLoad] = useState<number>(12);
   const [hasAudio, setHasAudio] = useState<boolean>(false);
-  const [matrixCells, setMatrixCells] = useState<boolean[]>(() => 
-    Array.from({ length: 32 }, () => Math.random() > 0.75)
+  const [matrixCells, setMatrixCells] = useState<boolean[]>(() =>
+    // deterministic seed keeps SSR/CSR markup identical
+    Array.from({ length: 32 }, (_, i) => (i * 7) % 4 === 0)
   );
   const [activeGeometry, setActiveGeometry] = useState<'torusKnot' | 'torus' | 'icosahedron'>('torusKnot');
   const [colorMode, setColorMode] = useState<number>(0);
@@ -71,7 +76,7 @@ export const SynthesisSignalLab: React.FC = () => {
   // Initialize audio context
   const initAudio = useCallback(() => {
     if (!audioCtxRef.current) {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       audioCtxRef.current = new AudioCtx();
       analyserRef.current = audioCtxRef.current.createAnalyser();
       analyserRef.current.fftSize = 2048;
@@ -87,8 +92,8 @@ export const SynthesisSignalLab: React.FC = () => {
   const releaseSource = useCallback(() => {
     if (!sourceRef.current) return;
     sourceRef.current.onended = null;
-    try { sourceRef.current.stop(); } catch {}
-    try { sourceRef.current.disconnect(); } catch {}
+    try { sourceRef.current.stop(); } catch { /* already stopped */ }
+    try { sourceRef.current.disconnect(); } catch { /* already disconnected */ }
     sourceRef.current = null;
   }, []);
 
@@ -116,7 +121,7 @@ export const SynthesisSignalLab: React.FC = () => {
 
     src.onended = () => {
       if (sourceRef.current) {
-        try { sourceRef.current.disconnect(); } catch {}
+        try { sourceRef.current.disconnect(); } catch { /* already disconnected */ }
         sourceRef.current = null;
       }
       // Check if still playing (not paused)
@@ -218,7 +223,7 @@ export const SynthesisSignalLab: React.FC = () => {
     const posAttr = geometry.attributes.position;
     const originals: THREE.Vector3[] = [];
     for (let i = 0; i < posAttr.count; i++) {
-      originals.push(new THREE.Vector3().fromBufferAttribute(posAttr as any, i));
+      originals.push(new THREE.Vector3().fromBufferAttribute(posAttr as THREE.BufferAttribute, i));
     }
     originalVerticesRef.current = originals;
 
@@ -306,12 +311,12 @@ export const SynthesisSignalLab: React.FC = () => {
     const mainMesh = new THREE.Mesh(geometry, material);
     scene.add(mainMesh);
     mainMeshRef.current = mainMesh;
-    mainGeoRef.current = geometry as any;
+    mainGeoRef.current = geometry;
 
     const posAttr = geometry.attributes.position;
     const originals: THREE.Vector3[] = [];
     for (let i = 0; i < posAttr.count; i++) {
-      originals.push(new THREE.Vector3().fromBufferAttribute(posAttr as any, i));
+      originals.push(new THREE.Vector3().fromBufferAttribute(posAttr as THREE.BufferAttribute, i));
     }
     originalVerticesRef.current = originals;
   }, [activeGeometry]);
@@ -357,8 +362,8 @@ export const SynthesisSignalLab: React.FC = () => {
 
       if (analyserRef.current && freqDataRef.current && timeDataRef.current) {
         if (isPlaying) {
-          analyserRef.current.getByteFrequencyData(freqDataRef.current as any);
-          analyserRef.current.getByteTimeDomainData(timeDataRef.current as any);
+          analyserRef.current.getByteFrequencyData(freqDataRef.current as Uint8Array<ArrayBuffer>);
+          analyserRef.current.getByteTimeDomainData(timeDataRef.current as Uint8Array<ArrayBuffer>);
 
           // Calculate bands
           const binCount = analyserRef.current.frequencyBinCount;
@@ -909,7 +914,7 @@ export const SynthesisSignalLab: React.FC = () => {
               <div className="space-y-1 text-[9px] font-mono">
                 <div className="flex justify-between"><span className="text-[#555]">FFT_SIZE</span><span className="text-[#00ffcc]">2048</span></div>
                 <div className="flex justify-between"><span className="text-[#555]">SMOOTHING</span><span className="text-[#00ffcc]">0.85</span></div>
-                <div className="flex justify-between"><span className="text-[#555]">GEO_VERTS</span><span className="text-[#ff00ff]">{mainGeoRef.current ? (mainGeoRef.current.attributes.position as any)?.count || 0 : 0}</span></div>
+                <div className="flex justify-between"><span className="text-[#555]">GEO_VERTS</span><span className="text-[#ff00ff]">{mainGeoRef.current ? mainGeoRef.current.attributes.position?.count || 0 : 0}</span></div>
                 <div className="flex justify-between"><span className="text-[#555]">PARTICLES</span><span className="text-[#facc15]">{particleCount}</span></div>
                 <div className="flex justify-between"><span className="text-[#555]">RENDERER</span><span className="text-white">WebGL2</span></div>
               </div>

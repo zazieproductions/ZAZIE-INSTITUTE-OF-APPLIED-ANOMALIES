@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
+import { Seo } from '../seo/Seo';
+import { breadcrumbSchema } from '../seo/schema';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { ENTITY } from '../seo/site';
 import {
   Scale,
   Lock,
@@ -7,46 +12,40 @@ import {
   Info,
   CheckCircle2,
   Printer,
-  ArrowLeft,
   Award
 } from 'lucide-react';
 
-export type LegalSectionKey = 'status' | 'disclaimer' | 'terms' | 'privacy';
+import { LEGAL_SLUGS, legalPath, type LegalSectionKey } from '../routes/legal';
 
-interface LegalDisclosuresPageProps {
-  initialSection?: LegalSectionKey;
-  onSelectSection?: (section: LegalSectionKey) => void;
-  onReturnToArchive?: () => void;
-}
-
-export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
-  initialSection = 'status',
-  onSelectSection,
-  onReturnToArchive
-}) => {
-  const [prevInitial, setPrevInitial] = useState(initialSection);
-  const [activeSection, setActiveSection] = useState<LegalSectionKey>(initialSection);
-
-  if (prevInitial !== initialSection) {
-    setPrevInitial(initialSection);
-    setActiveSection(initialSection);
+const SEO: Record<LegalSectionKey, { title: string; description: string }> = {
+  status: {
+    title: 'Institutional Status & Organizational Notice',
+    description: 'Institutional status of the Zazie Institute of Applied Anomalies (ZIAA): an independent, non-accredited research and creative-technology initiative operated by Zazie Productions LLC. Legal structure and governance disclosures.'
+  },
+  disclaimer: {
+    title: 'Research & Speculation Disclaimer',
+    description: 'Disclaimer for ZIAA materials: experimental research, artistic research, speculative engineering, design fiction and ARG elements published by the Zazie Institute of Applied Anomalies are not peer-reviewed findings or issued patents.'
+  },
+  terms: {
+    title: 'Terms of Use',
+    description: 'Terms of use for zazieinstitute.org: archival access licence, intellectual property in ZIAA prototypes, dossiers and software, and limitations of liability for the Zazie Institute of Applied Anomalies.'
+  },
+  privacy: {
+    title: 'Privacy Policy',
+    description: 'Privacy policy for zazieinstitute.org: ZIAA instruments process audio and files locally in the browser, collect no telemetry and store session data only on your device. Data protection notice from Zazie Productions LLC.'
   }
+};
 
-  const handleSelectSection = (key: LegalSectionKey) => {
-    setActiveSection(key);
-    if (onSelectSection) {
-      onSelectSection(key);
-    }
-    // Update hash for direct linkability
-    const hashMapping: Record<LegalSectionKey, string> = {
-      status: '#institutional-status',
-      disclaimer: '#disclaimer',
-      terms: '#terms',
-      privacy: '#privacy'
-    };
-    window.history.replaceState(null, '', hashMapping[key]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+export const LegalDisclosuresPage: React.FC = () => {
+  const { section = 'institutional-status' } = useParams<{ section: string }>();
+  const activeSection = (Object.keys(LEGAL_SLUGS) as LegalSectionKey[]).find(k => LEGAL_SLUGS[k] === section);
+  if (!activeSection) return <Navigate to="/404" replace />;
+  const meta = SEO[activeSection];
+  const crumbs = [
+    { name: 'ZIAA', path: '/' },
+    { name: 'Legal & Disclosures', path: legalPath('status') },
+    { name: meta.title, path: legalPath(activeSection) }
+  ];
 
   const handlePrint = () => {
     window.print();
@@ -90,15 +89,33 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
   ];
 
   return (
-    <div className="space-y-8 font-serif text-zinc-300 max-w-5xl mx-auto pb-16">
+    <article className="space-y-8 font-serif text-zinc-300 max-w-5xl mx-auto pb-16">
+      <Seo
+        title={`${meta.title} — Legal & Disclosures`}
+        description={meta.description}
+        path={legalPath(activeSection)}
+        jsonLd={[
+          breadcrumbSchema(crumbs),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: meta.title,
+            description: meta.description,
+            url: `https://zazieinstitute.org${legalPath(activeSection)}`,
+            isPartOf: { '@type': 'WebSite', url: 'https://zazieinstitute.org/', name: ENTITY.name },
+            publisher: { '@type': 'Organization', name: ENTITY.legalParent }
+          }
+        ]}
+      />
       {/* Top Banner / Masthead */}
-      <div className="bg-gradient-to-b from-[#060a12] via-[#05080f] to-[#03060a] border border-[#2b3d54] rounded-xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <header className="bg-gradient-to-b from-[#060a12] via-[#05080f] to-[#03060a] border border-[#2b3d54] rounded-xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
         <div className="absolute -right-8 -top-8 opacity-5 pointer-events-none">
-          <InstitutionalCrest size={320} variant="gold" />
+          <InstitutionalCrest size={320} variant="gold" decorative />
         </div>
 
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2">
+            <Breadcrumbs crumbs={crumbs} />
             <div className="flex flex-wrap items-center gap-2">
               <span className="archival-stamp font-mono text-[9px]">
                 OFFICIAL DISCLOSURE REGISTRY
@@ -111,9 +128,8 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
               </span>
             </div>
 
-            <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-              Legal, Institutional & Speculative Disclosures
-            </h1>
+            <p className="text-[10px] font-mono uppercase tracking-widest text-[#c5a059]">Legal, Institutional &amp; Speculative Disclosures</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{meta.title}</h1>
 
             <p className="text-xs md:text-sm text-zinc-400 max-w-3xl leading-relaxed">
               Mandatory disclosures regarding the institutional status, experimental research scope, speculative 
@@ -124,16 +140,8 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
           </div>
 
           <div className="flex items-center gap-2.5 shrink-0">
-            {onReturnToArchive && (
-              <button
-                onClick={onReturnToArchive}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#09121d] hover:bg-[#122238] border border-[#263c59] text-zinc-300 hover:text-white text-xs font-mono transition-colors"
-              >
-                <ArrowLeft className="w-3.5 h-3.5 text-[#dfb76c]" />
-                <span>Return to Archive</span>
-              </button>
-            )}
             <button
+              type="button"
               onClick={handlePrint}
               className="flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#070e17] hover:bg-[#0c1827] border border-[#2b3e58] text-[#dfb76c] text-xs font-mono transition-colors"
               title="Print disclosure document"
@@ -161,17 +169,18 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
             represent ZIAA's internal classifications.
           </p>
         </div>
-      </div>
+      </header>
 
-      {/* Navigation Tabs Bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+      {/* Section navigation */}
+      <nav aria-label="Disclosure documents" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
         {sections.map(s => {
           const isActive = activeSection === s.key;
           const Icon = s.icon;
           return (
-            <button
+            <Link
               key={s.key}
-              onClick={() => handleSelectSection(s.key)}
+              to={legalPath(s.key)}
+              aria-current={isActive ? 'page' : undefined}
               className={`p-3.5 rounded-lg border text-left transition-all flex flex-col justify-between group ${
                 isActive
                   ? 'bg-[#0a121e] border-[#dfb76c] shadow-[0_0_15px_rgba(223,183,108,0.15)] ring-1 ring-[#dfb76c]/40'
@@ -180,22 +189,22 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <span className={`text-[9px] font-mono tracking-wider ${isActive ? 'text-[#dfb76c]' : 'text-zinc-500'}`}>
+                  <span className={`text-[9px] font-mono tracking-wider ${isActive ? 'text-[#dfb76c]' : 'text-zinc-400'}`}>
                     {s.code}
                   </span>
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#dfb76c]' : 'text-zinc-500 group-hover:text-zinc-300'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#dfb76c]' : 'text-zinc-400 group-hover:text-zinc-300'}`} />
                 </div>
                 <div className={`text-xs font-bold font-serif ${isActive ? 'text-white' : 'text-zinc-300 group-hover:text-white'}`}>
                   {s.label}
                 </div>
               </div>
-              <p className="text-[10.5px] text-zinc-500 group-hover:text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
+              <p className="text-[10.5px] text-zinc-400 group-hover:text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
                 {s.description}
               </p>
-            </button>
+            </Link>
           );
         })}
-      </div>
+      </nav>
 
       {/* Main Document Content Container */}
       <div className="bg-[#05080f] border border-[#213045] rounded-xl p-6 md:p-10 shadow-xl space-y-10">
@@ -204,7 +213,7 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
           <section className="space-y-8 animate-fadeIn">
             {/* Document Header */}
             <div className="border-b border-[#1b2636] pb-6 space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-500">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-400">
                 <span>DOCUMENT NO: ZIAA-DISCL-001-INST</span>
                 <span>REVISION: 2026.09-FINAL</span>
                 <span>AUTHORITY: ZAZIE PRODUCTIONS LLC</span>
@@ -304,7 +313,7 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
               <div className="p-4 rounded-lg bg-[#020509] border border-[#1b2636] font-mono text-xs text-zinc-300 space-y-1">
                 <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC</div>
                 <div>Directorate of Administration & Legal Affairs</div>
-                <div className="text-zinc-500">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
+                <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
                 <div className="text-cyan-400">Web: zazieinstitute.org · zazieproductions.com</div>
               </div>
             </div>
@@ -315,7 +324,7 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
         {activeSection === 'disclaimer' && (
           <section className="space-y-8 animate-fadeIn">
             <div className="border-b border-[#1b2636] pb-6 space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-500">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-400">
                 <span>DOCUMENT NO: ZIAA-DISCL-002-RSPEC</span>
                 <span>SCOPE: SITE-WIDE DISCLOSURE</span>
                 <span>STATUS: ACTIVE MANDATORY</span>
@@ -478,7 +487,7 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
         {activeSection === 'terms' && (
           <section className="space-y-8 animate-fadeIn">
             <div className="border-b border-[#1b2636] pb-6 space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-500">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-400">
                 <span>DOCUMENT NO: ZIAA-DISCL-003-TERMS</span>
                 <span>EFFECTIVE: SEPTEMBER 2026</span>
                 <span>JURISDICTION: CALIFORNIA, USA</span>
@@ -589,7 +598,7 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
         {activeSection === 'privacy' && (
           <section className="space-y-8 animate-fadeIn">
             <div className="border-b border-[#1b2636] pb-6 space-y-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-500">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-400">
                 <span>DOCUMENT NO: ZIAA-DISCL-004-PRIV</span>
                 <span>EFFECTIVE: SEPTEMBER 2026</span>
                 <span>STANDARD: ZERO-TELEMETRY ETHOS</span>
@@ -689,7 +698,7 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
               <div className="p-4 rounded-lg bg-[#020509] border border-[#1b2636] font-mono text-xs text-zinc-300 space-y-1">
                 <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC — DATA GOVERNANCE</div>
                 <div>Attention: Directorate of Privacy & Digital Ethics</div>
-                <div className="text-zinc-500">Initiative: Zazie Institute of Applied Anomalies</div>
+                <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies</div>
                 <div className="text-cyan-400">URL: zazieinstitute.org</div>
               </div>
             </div>
@@ -698,14 +707,14 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
       </div>
 
       {/* Bottom Certifications & Archival Stamp */}
-      <div className="p-5 rounded-xl bg-[#03060a] border border-[#1a2536] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500">
+      <div className="p-5 rounded-xl bg-[#03060a] border border-[#1a2536] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-400">
         <div className="flex items-center gap-3">
           <InstitutionalCrest size={32} variant="gold" />
           <div>
             <div className="text-zinc-300 font-bold text-[11px]">
               ZAZIE PRODUCTIONS LLC // LEGAL REGISTRY
             </div>
-            <div className="text-[10px] text-zinc-500">
+            <div className="text-[10px] text-zinc-400">
               Audited Repository Cycle 2021–2026 · All Rights Reserved
             </div>
           </div>
@@ -719,6 +728,8 @@ export const LegalDisclosuresPage: React.FC<LegalDisclosuresPageProps> = ({
           <span className="text-[#dfb76c]">STATUS: FULL COMPLIANCE</span>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
+
+export default LegalDisclosuresPage;

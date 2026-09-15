@@ -1,211 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Prototype,
-  Patent,
-  FailedIncident,
-  Personnel,
-  FieldSite,
-  LabLog
-} from '../data/types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import type { Prototype, Patent, FailedIncident, Personnel, FieldSite, LabLog } from '../data/types';
 import { TechnicalSchematics } from './TechnicalSchematics';
 import { AcousticBench } from './AcousticBench';
-import { InstitutionalCrest } from './InstitutionalCrest';
-import { StatusBadge } from './StatusBadge';
-import {
-  getPrototypeStatusLabel,
-  getPatentStatusLabel,
-  getFailureStatusLabel,
-  getFieldSiteStatusLabel,
-  getLabLogStatusLabel
-} from '../data/projectStatus';
-import {
-  X,
-  Printer,
-  ShieldAlert,
-  Share2,
-  Check
-} from 'lucide-react';
+import { recordPath, hasRecord } from '../data/archive';
+import { humanize } from '../lib/format';
+import { ShieldAlert } from 'lucide-react';
 
-interface DossierModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  record: Prototype | Patent | FailedIncident | Personnel | FieldSite | LabLog | null;
-  recordType: 'prototype' | 'patent' | 'failure' | 'personnel' | 'site' | 'log';
-  onNavigateRecord?: (type: string, id: string) => void;
-}
-
-export const DossierModal: React.FC<DossierModalProps> = ({
-  isOpen,
-  onClose,
-  record,
-  recordType,
-  onNavigateRecord
-}) => {
-  const [copiedCitation, setCopiedCitation] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen || !record) return null;
-
-  const handlePrint = () => {
-    window.print();
-  };
-
-  const handleCopyCitation = () => {
-    const id = 'id' in record ? record.id : 'RECORD';
-    const title = 'title' in record ? record.title : 'name' in record ? record.name : 'summary' in record ? record.summary : id;
-    const citation = `Zazie Institute of Applied Anomalies. (2026). Archival Record ${id}: ${title}. Division of Applied Anomalies & Speculative Systems, Zazie Productions LLC. DOI: 10.1088/ziaa.2026.${id.toLowerCase()}`;
-    navigator.clipboard.writeText(citation);
-    setCopiedCitation(true);
-    setTimeout(() => setCopiedCitation(false), 2000);
-  };
-
-  let headerStatusBadge: React.ReactNode = null;
-  if (recordType === 'prototype') {
-    headerStatusBadge = <StatusBadge label={getPrototypeStatusLabel(record as Prototype)} size="xs" />;
-  } else if (recordType === 'patent') {
-    headerStatusBadge = <StatusBadge label={getPatentStatusLabel(record as Patent)} size="xs" />;
-  } else if (recordType === 'failure') {
-    headerStatusBadge = <StatusBadge label={getFailureStatusLabel(record as FailedIncident)} size="xs" />;
-  } else if (recordType === 'site') {
-    headerStatusBadge = <StatusBadge label={getFieldSiteStatusLabel(record as FieldSite)} size="xs" />;
-  } else if (recordType === 'log') {
-    headerStatusBadge = <StatusBadge label={getLabLogStatusLabel(record as LabLog)} size="xs" />;
-  }
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-[#060910] border border-[#2b3e58] rounded-xl shadow-2xl overflow-hidden font-serif text-zinc-300 my-auto max-h-[92vh] flex flex-col">
-        {/* Dossier Header */}
-        <div className="flex items-center justify-between px-5 py-3.5 bg-[#03060a] border-b border-[#1b2636] shrink-0">
-          <div className="flex items-center gap-3">
-            <InstitutionalCrest size={34} variant="gold" />
-            <div>
-              <div className="text-[10px] font-mono text-[#c5a059] uppercase tracking-widest flex items-center gap-1.5">
-                <span>ZAZIE INSTITUTE OF APPLIED ANOMALIES // ARCHIVE DOSSIER</span>
-                <span>·</span>
-                <span className="text-zinc-400">CREATIVE-TECH INITIATIVE</span>
-              </div>
-              <div className="text-sm font-bold text-white tracking-wider flex flex-wrap items-center gap-2">
-                <span className="font-mono">{'id' in record ? record.id : 'DOSSIER'}</span>
-                <span className="text-xs px-2 py-0.5 rounded font-mono bg-[#0c1827] border border-[#223b5c] text-cyan-300 uppercase">
-                  {recordType}
-                </span>
-                {headerStatusBadge}
-                <span className="hidden sm:inline-block archival-stamp text-[8.5px] font-mono py-0.2">
-                  INTERNAL RECORD
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleCopyCitation}
-              className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono bg-[#09121d] hover:bg-[#122238] border border-[#263c59] text-[#dfb76c] rounded transition-colors"
-              title="Copy Formal Archival Citation"
-            >
-              {copiedCitation ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="hidden sm:inline">Copied</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Cite</span>
-                </>
-              )}
-            </button>
-            <button
-              onClick={handlePrint}
-              className="p-1.5 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded transition-colors"
-              title="Print Dossier (PDF)"
-            >
-              <Printer className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onClose}
-              className="p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-950/40 rounded transition-colors"
-              title="Close (Esc)"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Scrollable Content */}
-        <div className="p-6 overflow-y-auto space-y-6 text-xs">
-          {/* PROTOTYPE VIEW */}
-          {recordType === 'prototype' && (
-            <PrototypeDossier
-              p={record as Prototype}
-              onNavigate={onNavigateRecord}
-            />
-          )}
-
-          {/* PATENT VIEW */}
-          {recordType === 'patent' && (
-            <PatentDossier
-              p={record as Patent}
-              onNavigate={onNavigateRecord}
-            />
-          )}
-
-          {/* FAILURE / BLACK VAULT VIEW */}
-          {recordType === 'failure' && (
-            <FailureDossier f={record as FailedIncident} />
-          )}
-
-          {/* PERSONNEL VIEW */}
-          {recordType === 'personnel' && (
-            <PersonnelDossier p={record as Personnel} />
-          )}
-
-          {/* FIELD SITE VIEW */}
-          {recordType === 'site' && (
-            <FieldSiteDossier s={record as FieldSite} />
-          )}
-
-          {/* LAB LOG VIEW */}
-          {recordType === 'log' && (
-            <LabLogDossier l={record as LabLog} onNavigate={onNavigateRecord} />
-          )}
-        </div>
-
-        {/* Footer */}
-        <div className="px-5 py-2.5 bg-[#040608] border-t border-emerald-950/80 text-[10px] text-zinc-500 flex flex-wrap justify-between items-center gap-2 shrink-0 font-mono">
-          <span>RESEARCH & PROTOTYPE ARCHIVE // ZAZIE PRODUCTIONS LLC</span>
-          <div className="flex items-center gap-3">
-            <span>CLASSIFICATION: VERIFIED INTERNAL RECORD</span>
-            <span>·</span>
-            <a
-              href="#disclaimer"
-              onClick={onClose}
-              className="text-zinc-400 hover:text-[#dfb76c] underline"
-            >
-              INSTITUTIONAL DISCLOSURES
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+/** Inline link to another archive record; falls back to plain text when the referenced record is not in the archive. */
+const RecordLink: React.FC<{ type: Parameters<typeof recordPath>[0]; id: string; className: string }> = ({ type, id, className }) =>
+  hasRecord(type, id) ? (
+    <Link to={recordPath(type, id)} className={className}>{id}</Link>
+  ) : (
+    <span className="text-zinc-400" title="Referenced record is not held in the public archive">{id}</span>
   );
-};
 
 // Sub-component: Prototype Dossier
-const PrototypeDossier: React.FC<{
-  p: Prototype;
-  onNavigate?: (type: string, id: string) => void;
-}> = ({ p, onNavigate }) => (
+export const PrototypeDossier: React.FC<{ p: Prototype }> = ({ p }) => (
   <div className="space-y-6">
     {/* Title & Metadata Strip */}
     <div>
@@ -213,65 +24,59 @@ const PrototypeDossier: React.FC<{
         <span className="text-emerald-400 text-lg font-bold">
           {p.id}: {p.codeName}
         </span>
-        <StatusBadge label={getPrototypeStatusLabel(p)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800">
           CLEARANCE: {p.clearance}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
-          INTERNAL STATE: {p.status}
+          STATUS: {humanize(p.status)}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
           YEAR: {p.year}
         </span>
       </div>
-      <h2 className="text-zinc-200 text-sm font-semibold">{p.title}</h2>
-      <div className="text-zinc-400 text-[11px] mt-1 flex flex-wrap items-center justify-between gap-2">
-        <span>
-          Discipline: <span className="text-cyan-400">{p.discipline}</span> · Lead Researcher: <span className="text-zinc-200">{p.leadResearcher}</span>
-        </span>
-        <span className="text-[10px] text-zinc-500 font-mono italic">
-          * Internal ZIAA research classification · Creative & experimental scope
-        </span>
+      <p className="text-zinc-200 text-sm font-semibold">{p.title}</p>
+      <div className="text-zinc-400 text-[11px] mt-1">
+        Discipline: <span className="text-cyan-400">{p.discipline}</span> · Lead Researcher: <span className="text-zinc-200">{p.leadResearcher}</span>
       </div>
     </div>
 
     {/* Abstract & Technical Summary */}
     <div className="space-y-3 bg-[#04070a] border border-emerald-950/80 p-4 rounded-md">
       <div>
-        <div className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-1">
+        <h2 className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider mb-1">
           OPERATIONAL ABSTRACT
-        </div>
+        </h2>
         <p className="text-zinc-300 leading-relaxed">{p.abstract}</p>
       </div>
 
       <div className="pt-2 border-t border-emerald-950/60">
-        <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
+        <h2 className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
           TECHNICAL SUMMARY & TRANSDUCTION DYNAMICS
-        </div>
+        </h2>
         <p className="text-zinc-300 leading-relaxed">{p.technicalSummary}</p>
       </div>
     </div>
 
     {/* Technical Specifications Grid */}
     <div>
-      <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
+      <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
         ENGINEERING SPECIFICATIONS
-      </div>
+      </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
         <div className="p-2.5 bg-[#04070a] border border-emerald-950/60 rounded">
-          <div className="text-zinc-500 text-[10px]">DIMENSIONS</div>
+          <div className="text-zinc-400 text-[10px]">DIMENSIONS</div>
           <div className="text-zinc-200 font-bold mt-0.5">{p.dimensions}</div>
         </div>
         <div className="p-2.5 bg-[#04070a] border border-emerald-950/60 rounded">
-          <div className="text-zinc-500 text-[10px]">OPERATIONAL BANDWIDTH</div>
+          <div className="text-zinc-400 text-[10px]">OPERATIONAL BANDWIDTH</div>
           <div className="text-cyan-400 font-bold mt-0.5">{p.operationalBandwidth}</div>
         </div>
         <div className="p-2.5 bg-[#04070a] border border-emerald-950/60 rounded">
-          <div className="text-zinc-500 text-[10px]">POWER CONSUMPTION</div>
+          <div className="text-zinc-400 text-[10px]">POWER CONSUMPTION</div>
           <div className="text-amber-400 font-bold mt-0.5">{p.powerConsumption}</div>
         </div>
         <div className="p-2.5 bg-[#04070a] border border-emerald-950/60 rounded">
-          <div className="text-zinc-500 text-[10px]">SIGNAL-TO-NOISE</div>
+          <div className="text-zinc-400 text-[10px]">SIGNAL-TO-NOISE</div>
           <div className="text-emerald-400 font-bold mt-0.5">{p.signalToNoise}</div>
         </div>
       </div>
@@ -280,37 +85,37 @@ const PrototypeDossier: React.FC<{
     {/* Transducer & Computational Core */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div className="p-3 bg-[#04070a] border border-emerald-950/60 rounded">
-        <div className="text-zinc-500 text-[10px] uppercase">PRIMARY TRANSDUCER</div>
+        <div className="text-zinc-400 text-[10px] uppercase">PRIMARY TRANSDUCER</div>
         <div className="text-emerald-300 font-bold mt-1">{p.primaryTransducer}</div>
       </div>
       <div className="p-3 bg-[#04070a] border border-emerald-950/60 rounded">
-        <div className="text-zinc-500 text-[10px] uppercase">COMPUTATIONAL CORE / DSP</div>
+        <div className="text-zinc-400 text-[10px] uppercase">COMPUTATIONAL CORE / DSP</div>
         <div className="text-violet-300 font-bold mt-1">{p.computationalCore}</div>
       </div>
     </div>
 
     {/* Vector Technical Schematic Diagram */}
     <div>
-      <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
+      <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
         VECTOR TECHNICAL SCHEMATIC // BLUEPRINT
-      </div>
+      </h2>
       <TechnicalSchematics type={p.schematicType} codeName={p.codeName} />
     </div>
 
     {/* Interactive Acoustic Bench (Audio Simulator for this prototype) */}
     <div>
-      <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
+      <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
         PLAYABLE PROTOTYPE ACOUSTIC EMISSION BENCH
-      </div>
+      </h2>
       <AcousticBench initialProfile={p.audioProfile} initialPrototype={p} compact />
     </div>
 
     {/* Bill of Materials */}
     {p.billOfMaterials && p.billOfMaterials.length > 0 && (
       <div>
-        <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
+        <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
           BILL OF MATERIALS (BOM) & COMPONENT TOLERANCES
-        </div>
+        </h2>
         <div className="border border-emerald-950 rounded overflow-hidden">
           <table className="w-full text-left text-[11px]">
             <thead className="bg-[#030508] border-b border-emerald-950 text-zinc-400">
@@ -340,8 +145,8 @@ const PrototypeDossier: React.FC<{
     {p.hazardWarnings && p.hazardWarnings.length > 0 && (
       <div className="p-3 bg-amber-950/20 border border-amber-900/50 rounded-md">
         <div className="flex items-center gap-2 text-amber-400 font-bold mb-1">
-          <ShieldAlert className="w-4 h-4" />
-          <span>BENCH & FIELD OPERATION NOTES</span>
+          <ShieldAlert className="w-4 h-4" aria-hidden="true" />
+          <h2>BENCH &amp; FIELD OPERATION NOTES</h2>
         </div>
         <ul className="list-disc list-inside space-y-1 text-zinc-300">
           {p.hazardWarnings.map((h, i) => (
@@ -355,37 +160,25 @@ const PrototypeDossier: React.FC<{
     <div className="pt-3 border-t border-emerald-950 flex flex-wrap gap-4 text-xs">
       {p.linkedPatents && p.linkedPatents.length > 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-zinc-500">SPECULATIVE PATENTS:</span>
+          <span className="text-zinc-400">SPECULATIVE PATENTS:</span>
           {p.linkedPatents.map(patId => (
-            <button
-              key={patId}
-              onClick={() => onNavigate && onNavigate('patent', patId)}
-              className="text-cyan-400 underline hover:text-cyan-300"
-            >
-              {patId}
-            </button>
+            <RecordLink key={patId} type="patent" id={patId} className="text-cyan-400 underline hover:text-cyan-300" />
           ))}
         </div>
       )}
 
       {p.linkedLogs && p.linkedLogs.length > 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-zinc-500">TELEMETRY LOGS:</span>
+          <span className="text-zinc-400">TELEMETRY LOGS:</span>
           {p.linkedLogs.map(logId => (
-            <button
-              key={logId}
-              onClick={() => onNavigate && onNavigate('log', logId)}
-              className="text-emerald-400 underline hover:text-emerald-300"
-            >
-              {logId}
-            </button>
+            <RecordLink key={logId} type="log" id={logId} className="text-emerald-400 underline hover:text-emerald-300" />
           ))}
         </div>
       )}
 
       {p.fieldDeployments && p.fieldDeployments.length > 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-zinc-500">FIELD SITES:</span>
+          <span className="text-zinc-400">FIELD SITES:</span>
           <span className="text-amber-400">{p.fieldDeployments.join(', ')}</span>
         </div>
       )}
@@ -394,48 +187,39 @@ const PrototypeDossier: React.FC<{
 );
 
 // Sub-component: Patent Dossier
-const PatentDossier: React.FC<{
-  p: Patent;
-  onNavigate?: (type: string, id: string) => void;
-}> = ({ p, onNavigate }) => (
+export const PatentDossier: React.FC<{ p: Patent }> = ({ p }) => (
   <div className="space-y-6">
     <div>
       <div className="flex flex-wrap items-center gap-2 mb-1.5">
         <span className="text-cyan-400 text-lg font-bold">
           {p.patentNumber}
         </span>
-        <StatusBadge label={getPatentStatusLabel(p)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-cyan-950 text-cyan-300 border border-cyan-800">
-          INTERNAL REGISTRY: {p.status}
+          STATUS: {humanize(p.status)}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
-          FILING: {p.filingDate}
+          FILING: <time dateTime={p.filingDate}>{p.filingDate}</time>
         </span>
       </div>
-      <h2 className="text-zinc-100 text-sm font-semibold">{p.title}</h2>
-      <div className="text-zinc-400 text-[11px] mt-1 flex flex-wrap items-center justify-between gap-2">
-        <span>
-          Assignee: <span className="text-zinc-200">{p.assignee}</span> · Inventors: <span className="text-emerald-400">{p.inventors.join(', ')}</span>
-        </span>
-        <span className="text-[10px] text-zinc-500 font-mono italic">
-          * Speculative defensive disclosure / Design fiction · Not an issued governmental patent
-        </span>
+      <p className="text-zinc-100 text-sm font-semibold">{p.title}</p>
+      <div className="text-zinc-400 text-[11px] mt-1">
+        Assignee: <span className="text-zinc-200">{p.assignee}</span> · Inventors: <span className="text-emerald-400">{p.inventors.join(', ')}</span>
       </div>
     </div>
 
     {/* Abstract */}
     <div className="bg-[#04070a] border border-cyan-950/80 p-4 rounded-md">
-      <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
+      <h2 className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
         PATENT ABSTRACT & METHOD DISCLOSURE
-      </div>
+      </h2>
       <p className="text-zinc-300 leading-relaxed">{p.abstract}</p>
     </div>
 
     {/* Independent & Dependent Claims */}
     <div className="space-y-3">
-      <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+      <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
         LEGAL CLAIMS SCHEDULE
-      </div>
+      </h2>
       <div className="space-y-2 bg-[#04070a] border border-cyan-950/60 p-3 rounded">
         {p.independentClaims && p.independentClaims.map((claim, idx) => (
           <div key={idx} className="text-zinc-200 leading-relaxed pb-2 border-b border-zinc-800/60 last:border-none">
@@ -461,11 +245,11 @@ const PatentDossier: React.FC<{
     {/* Prior Art Critique & Legal Memo */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div className="p-3 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px] uppercase font-bold mb-1">PRIOR ART CRITIQUE</div>
+        <h2 className="text-zinc-400 text-[10px] uppercase font-bold mb-1">PRIOR ART CRITIQUE</h2>
         <p className="text-zinc-300 text-[11px] leading-relaxed">{p.priorArtCritique}</p>
       </div>
       <div className="p-3 bg-[#080d14] border border-cyan-950 rounded">
-        <div className="text-cyan-400 text-[10px] uppercase font-bold mb-1">COUNSEL SECRECY MEMO</div>
+        <h2 className="text-cyan-400 text-[10px] uppercase font-bold mb-1">COUNSEL MEMO</h2>
         <p className="text-cyan-200/90 text-[11px] leading-relaxed">{p.legalCounselMemo}</p>
       </div>
     </div>
@@ -486,15 +270,9 @@ const PatentDossier: React.FC<{
 
     {p.linkedPrototypes && p.linkedPrototypes.length > 0 && (
       <div className="flex items-center gap-2 pt-2 border-t border-zinc-800">
-        <span className="text-zinc-500">ASSOCIATED PROTOTYPES:</span>
+        <span className="text-zinc-400">ASSOCIATED PROTOTYPES:</span>
         {p.linkedPrototypes.map(protId => (
-          <button
-            key={protId}
-            onClick={() => onNavigate && onNavigate('prototype', protId)}
-            className="text-emerald-400 underline hover:text-emerald-300"
-          >
-            {protId}
-          </button>
+          <RecordLink key={protId} type="prototype" id={protId} className="text-emerald-400 underline hover:text-emerald-300" />
         ))}
       </div>
     )}
@@ -502,53 +280,49 @@ const PatentDossier: React.FC<{
 );
 
 // Sub-component: Black Vault Failure Dossier
-const FailureDossier: React.FC<{ f: FailedIncident }> = ({ f }) => (
+export const FailureDossier: React.FC<{ f: FailedIncident }> = ({ f }) => (
   <div className="space-y-5">
     <div>
       <div className="flex flex-wrap items-center gap-2 mb-1">
         <span className="text-red-400 text-lg font-bold">{f.id}</span>
-        <StatusBadge label={getFailureStatusLabel(f)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-red-950 text-red-300 border border-red-800">
           HAZARD: {f.hazardClassification}
         </span>
         <span className="px-2 py-0.5 rounded text-[10px] bg-zinc-900 text-zinc-300 border border-zinc-700">
           STATUS: {f.decommissionStatus}
         </span>
-        <span className="text-zinc-500 text-[11px]">INCIDENT DATE: {f.incidentDate}</span>
+        <span className="text-zinc-400 text-[11px]">INCIDENT DATE: <time dateTime={f.incidentDate}>{f.incidentDate}</time></span>
       </div>
-      <h2 className="text-zinc-100 text-base font-semibold">
+      <p className="text-zinc-100 text-base font-semibold">
         {f.projectCode}: {f.projectTitle}
-      </h2>
-      <div className="text-zinc-400 text-[11px] mt-0.5 flex flex-wrap items-center justify-between gap-2">
-        <span>Lead Investigator: <span className="text-zinc-200">{f.leadInvestigator}</span></span>
-        <span className="text-[10px] text-zinc-500 font-mono italic">
-          * Design fiction & speculative post-mortem case study
-        </span>
+      </p>
+      <div className="text-zinc-400 text-[11px] mt-0.5">
+        Lead Investigator: <span className="text-zinc-200">{f.leadInvestigator}</span>
       </div>
     </div>
 
     <div className="p-3.5 bg-red-950/20 border border-red-900/60 rounded">
-      <div className="text-red-400 font-bold uppercase text-[10px] mb-1">INCIDENT NARRATIVE</div>
+      <h2 className="text-red-400 font-bold uppercase text-[10px] mb-1">INCIDENT NARRATIVE</h2>
       <p className="text-zinc-200 leading-relaxed text-xs">{f.incidentNarrative}</p>
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
       <div className="p-3 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px] uppercase font-bold mb-1">ROOT CAUSE ANALYSIS</div>
+        <h2 className="text-zinc-400 text-[10px] uppercase font-bold mb-1">ROOT CAUSE ANALYSIS</h2>
         <p className="text-zinc-300 leading-relaxed text-xs">{f.rootCauseAnalysis}</p>
       </div>
 
       <div className="p-3 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px] uppercase font-bold mb-1">CONTAINMENT PROTOCOL</div>
+        <h2 className="text-zinc-400 text-[10px] uppercase font-bold mb-1">CONTAINMENT PROTOCOL</h2>
         <p className="text-zinc-300 leading-relaxed text-xs">{f.containmentProtocol}</p>
       </div>
     </div>
 
     {f.salvagedComponents && f.salvagedComponents.length > 0 && (
       <div>
-        <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
+        <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
           SALVAGED / REASSIGNED HARDWARE
-        </div>
+        </h2>
         <div className="flex flex-wrap gap-2">
           {f.salvagedComponents.map((c, i) => (
             <span key={i} className="px-2.5 py-1 bg-zinc-900 border border-zinc-800 rounded text-zinc-300 text-xs">
@@ -562,7 +336,7 @@ const FailureDossier: React.FC<{ f: FailedIncident }> = ({ f }) => (
 );
 
 // Sub-component: Personnel Dossier
-const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
+export const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
   <div className="space-y-5">
     <div className="flex items-start justify-between">
       <div>
@@ -571,45 +345,39 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
           <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800">
             {p.clearance}
           </span>
-          <span className="px-2 py-0.5 rounded text-[9.5px] font-mono bg-[#161309] text-[#dfb76c] border border-[#8c6d31]/60">
-            INVESTIGATOR
-          </span>
         </div>
         <div className="text-zinc-300 font-semibold">{p.title}</div>
         <div className="text-cyan-400 text-xs mt-0.5">Specialization: {p.specialization}</div>
-        <div className="text-[10px] text-zinc-500 font-mono italic mt-1">
-          * Research title at Zazie Productions LLC creative R&D. Not a university-conferred academic professorship or tenure.
-        </div>
       </div>
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
       <div className="p-2.5 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">FACILITY ASSIGNMENT</div>
+        <div className="text-zinc-400 text-[10px]">FACILITY ASSIGNMENT</div>
         <div className="text-zinc-200 mt-0.5 font-bold">{p.facilityAssignment}</div>
       </div>
       <div className="p-2.5 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">ACTIVE PROTOTYPES</div>
+        <div className="text-zinc-400 text-[10px]">ACTIVE PROTOTYPES</div>
         <div className="text-emerald-400 mt-0.5 font-bold">{p.activePrototypesCount} Projects</div>
       </div>
       <div className="p-2.5 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">JOINED INSTITUTE</div>
-        <div className="text-zinc-200 mt-0.5 font-bold">Anno {p.joinedYear}</div>
+        <div className="text-zinc-400 text-[10px]">JOINED INSTITUTE</div>
+        <div className="text-zinc-200 mt-0.5 font-bold">{p.joinedYear}</div>
       </div>
     </div>
 
     <div className="p-3.5 bg-[#04070a] border border-zinc-800 rounded leading-relaxed text-zinc-300">
-      <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1">
+      <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1">
         CURRICULUM & BIOGRAPHY
-      </div>
+      </h2>
       <p>{p.biography}</p>
     </div>
 
     {p.selectedPublications && p.selectedPublications.length > 0 && (
       <div>
-        <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
+        <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
           SELECTED SCIENTIFIC PUBLICATIONS
-        </div>
+        </h2>
         <ul className="space-y-1.5">
           {p.selectedPublications.map((pub, idx) => (
             <li key={idx} className="p-2 bg-zinc-900/60 border border-zinc-800/60 rounded text-zinc-300 text-xs">
@@ -620,24 +388,23 @@ const PersonnelDossier: React.FC<{ p: Personnel }> = ({ p }) => (
       </div>
     )}
 
-    <div className="p-2.5 bg-[#030508] border border-zinc-900 rounded text-[10px] text-zinc-500 font-mono">
+    <div className="p-2.5 bg-[#030508] border border-zinc-900 rounded text-[10px] text-zinc-400 font-mono">
       VOICEPRINT RECOGNITION HASH: {p.voiceprintHash}
     </div>
   </div>
 );
 
 // Sub-component: Field Site Dossier
-const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
+export const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
   <div className="space-y-5">
     <div>
-      <div className="flex flex-wrap items-center gap-2 mb-1">
+      <div className="flex items-center gap-2 mb-1">
         <span className="text-amber-400 text-lg font-bold">{s.codename}</span>
-        <StatusBadge label={getFieldSiteStatusLabel(s)} size="sm" />
         <span className="px-2 py-0.5 rounded text-[10px] bg-amber-950 text-amber-300 border border-amber-800">
           STATUS: {s.activeStatus}
         </span>
       </div>
-      <h2 className="text-zinc-100 text-base font-semibold">{s.name}</h2>
+      <p className="text-zinc-100 text-base font-semibold">{s.name}</p>
       <div className="text-zinc-400 text-xs mt-0.5">
         Location: <span className="text-zinc-200">{s.location}</span> · Coordinates: <span className="text-cyan-400">{s.coordinates}</span>
       </div>
@@ -645,42 +412,42 @@ const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
       <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">CHANNELS</div>
+        <div className="text-zinc-400 text-[10px]">CHANNELS</div>
         <div className="text-emerald-400 font-bold mt-0.5">{s.channelCount} Transducers</div>
       </div>
       <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">FREQUENCY RANGE</div>
+        <div className="text-zinc-400 text-[10px]">FREQUENCY RANGE</div>
         <div className="text-cyan-400 font-bold mt-0.5">{s.frequencyRange}</div>
       </div>
       <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">ESTABLISHED</div>
+        <div className="text-zinc-400 text-[10px]">ESTABLISHED</div>
         <div className="text-zinc-200 font-bold mt-0.5">{s.establishedYear}</div>
       </div>
       <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-        <div className="text-zinc-500 text-[10px]">FOOTPRINT</div>
+        <div className="text-zinc-400 text-[10px]">FOOTPRINT</div>
         <div className="text-zinc-200 font-bold mt-0.5">{s.physicalFootprint}</div>
       </div>
     </div>
 
     <div className="p-3 bg-[#04070a] border border-zinc-800 rounded text-zinc-300 leading-relaxed text-xs">
-      <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-1">
+      <h2 className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-1">
         FACILITY INFRASTRUCTURE OVERVIEW
-      </div>
+      </h2>
       <p>{s.description}</p>
     </div>
 
     <div className="p-3 bg-[#04070a] border border-zinc-800 rounded text-zinc-300 leading-relaxed text-xs">
-      <div className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
+      <h2 className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider mb-1">
         PUBLIC ACCESS & LISTENING PROTOCOL
-      </div>
+      </h2>
       <p>{s.publicAccessProtocol}</p>
     </div>
 
     {s.instrumentationList && s.instrumentationList.length > 0 && (
       <div>
-        <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
+        <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-1.5">
           DEPLOYED INSTRUMENTATION CLUSTER
-        </div>
+        </h2>
         <ul className="space-y-1">
           {s.instrumentationList.map((inst, i) => (
             <li key={i} className="p-2 bg-zinc-900 border border-zinc-800 rounded text-zinc-300 text-xs">
@@ -694,16 +461,12 @@ const FieldSiteDossier: React.FC<{ s: FieldSite }> = ({ s }) => (
 );
 
 // Sub-component: Lab Log Dossier
-const LabLogDossier: React.FC<{
-  l: LabLog;
-  onNavigate?: (type: string, id: string) => void;
-}> = ({ l, onNavigate }) => (
+export const LabLogDossier: React.FC<{ l: LabLog }> = ({ l }) => (
   <div className="space-y-5">
     <div>
-      <div className="flex flex-wrap items-center gap-2 mb-1">
+      <div className="flex items-center gap-2 mb-1">
         <span className="text-emerald-400 text-lg font-bold">{l.id}</span>
-        <StatusBadge label={getLabLogStatusLabel(l)} size="sm" />
-        <span className="text-zinc-400 text-xs">{l.displayDate}</span>
+        <time dateTime={l.timestamp} className="text-zinc-400 text-xs">{l.displayDate}</time>
         {l.anomalyAlert && (
           <span className="px-2 py-0.5 rounded text-[10px] bg-red-950 text-red-400 border border-red-800 font-bold animate-pulse">
             ANOMALY CONFIRMED
@@ -718,32 +481,32 @@ const LabLogDossier: React.FC<{
 
     {/* Environmental Telemetry Sensors */}
     <div>
-      <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
+      <h2 className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">
         TELEMETRY SENSOR MATRIX READOUT
-      </div>
+      </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-          <div className="text-zinc-500 text-[10px]">AMBIENT TEMP</div>
+          <div className="text-zinc-400 text-[10px]">AMBIENT TEMP</div>
           <div className="text-zinc-200 font-bold mt-0.5">{l.telemetry.ambientTempC}°C</div>
         </div>
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-          <div className="text-zinc-500 text-[10px]">SOUND PRESSURE</div>
+          <div className="text-zinc-400 text-[10px]">SOUND PRESSURE</div>
           <div className="text-emerald-400 font-bold mt-0.5">{l.telemetry.splDecibels} dB SPL</div>
         </div>
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-          <div className="text-zinc-500 text-[10px]">REL HUMIDITY</div>
+          <div className="text-zinc-400 text-[10px]">REL HUMIDITY</div>
           <div className="text-cyan-400 font-bold mt-0.5">{l.telemetry.relativeHumidityPct}%</div>
         </div>
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-          <div className="text-zinc-500 text-[10px]">MAG FLUX</div>
+          <div className="text-zinc-400 text-[10px]">MAG FLUX</div>
           <div className="text-violet-400 font-bold mt-0.5">{l.telemetry.magneticFluxMicroTesla} μT</div>
         </div>
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-          <div className="text-zinc-500 text-[10px]">MAINS DRIFT</div>
+          <div className="text-zinc-400 text-[10px]">MAINS DRIFT</div>
           <div className="text-amber-400 font-bold mt-0.5">{l.telemetry.mainsDriftHz} Hz</div>
         </div>
         <div className="p-2 bg-[#04070a] border border-zinc-800 rounded">
-          <div className="text-zinc-500 text-[10px]">COHERENCE</div>
+          <div className="text-zinc-400 text-[10px]">COHERENCE</div>
           <div className="text-emerald-300 font-bold mt-0.5">{l.telemetry.spectralCoherence}</div>
         </div>
       </div>
@@ -757,15 +520,9 @@ const LabLogDossier: React.FC<{
     {/* Equipment links */}
     {l.equipmentIds && l.equipmentIds.length > 0 && (
       <div className="flex items-center gap-2 pt-2 border-t border-zinc-800">
-        <span className="text-zinc-500">ASSOCIATED EQUIPMENT:</span>
+        <span className="text-zinc-400">ASSOCIATED EQUIPMENT:</span>
         {l.equipmentIds.map(eq => (
-          <button
-            key={eq}
-            onClick={() => onNavigate && onNavigate('prototype', eq)}
-            className="text-emerald-400 underline hover:text-emerald-300 text-xs"
-          >
-            {eq}
-          </button>
+          <RecordLink key={eq} type="prototype" id={eq} className="text-emerald-400 underline hover:text-emerald-300 text-xs" />
         ))}
       </div>
     )}
