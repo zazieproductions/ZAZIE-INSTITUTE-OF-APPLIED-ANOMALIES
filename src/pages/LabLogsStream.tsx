@@ -168,6 +168,48 @@ export const LabLogsStream: React.FC = () => {
         </div>
       )}
 
+      {/* Crawlable complete index — every research note linked so bench calibrations, field recordings and anomaly telemetry are discoverable without paging. */}
+      <section aria-labelledby="complete-log-index" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-5 md:p-6 space-y-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#1b2636] pb-3">
+          <h2 id="complete-log-index" className="text-sm font-bold text-white tracking-wide">Complete research-notes index — every log, crawlable</h2>
+          <p className="text-[11px] font-mono text-zinc-400">All {labLogs.length} notes · chronological, earliest first</p>
+        </div>
+        <p className="text-xs text-zinc-400 leading-relaxed">
+          The chronological stream above is paged for reading; the index below lists the full 2021–2026 run as plain links. Every field-station listening log and confirmed anomaly event is reachable in the static HTML with descriptive anchor text.
+        </p>
+        <details className="group/details">
+          <summary className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#091322] hover:bg-[#122238] border border-[#2b3e58] rounded-md text-xs font-mono text-emerald-300 cursor-pointer select-none list-none">
+            <span aria-hidden="true" className="transition-transform group-open/details:rotate-90">▸</span>
+            Expand complete chronological index ({labLogs.length} notes)
+          </summary>
+          <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-1.5 max-h-[32rem] overflow-auto pr-1">
+            {[...labLogs].sort((a, b) => a.timestamp.localeCompare(b.timestamp)).map(l => (
+              <Link
+                key={l.id}
+                to={recordPath('log', l.id)}
+                className="flex items-center gap-2 px-3 py-1.5 bg-[#03060a] border border-[#1b2738] hover:border-emerald-500/60 rounded text-xs group/link"
+              >
+                <span className="font-mono font-bold text-emerald-400 group-hover/link:text-white shrink-0">{l.id}</span>
+                <span className="text-zinc-600 font-mono shrink-0">· {l.displayDate.slice(0, 10)}</span>
+                <span className="text-zinc-300 group-hover/link:text-white truncate">{l.summary.slice(0, 110)}</span>
+              </Link>
+            ))}
+          </div>
+        </details>
+        <noscript>
+          <ul className="grid grid-cols-1 lg:grid-cols-2 gap-1.5">
+            {[...labLogs].sort((a, b) => a.timestamp.localeCompare(b.timestamp)).map(l => (
+              <li key={l.id}>
+                <Link to={recordPath('log', l.id)} className="block px-3 py-1.5 bg-[#03060a] border border-[#1b2738] rounded text-xs">
+                  <span className="font-mono font-bold text-emerald-400">{l.id}</span>
+                  <span className="block text-[11px] text-zinc-400 truncate">{l.summary}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </noscript>
+      </section>
+
       {filtered.length === 0 && (
         <p className="py-16 text-center text-zinc-300 bg-[#04070d] border border-[#213045] rounded-xl font-serif">
           No research notes match the current filters.

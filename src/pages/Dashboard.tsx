@@ -314,6 +314,97 @@ export const Dashboard: React.FC = () => {
       {/* Knowledge graph */}
       <NetworkGraph />
 
+      {/* Curated deep archive — descriptive internal linking to high-value, otherwise underlinked dossiers */}
+      <section aria-labelledby="deep-archive-heading" className="bg-[#05080f] border border-[#213045] rounded-xl p-5 md:p-6 space-y-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#1b2636] pb-3">
+          <div>
+            <div className="archival-stamp text-[9px] font-mono mb-1">CURATED READING PATHS</div>
+            <h2 id="deep-archive-heading" className="text-lg font-bold text-white tracking-wide">From the laboratory archives — curated deep reading</h2>
+          </div>
+          <Link to="/about" className="text-xs font-mono text-zinc-400 hover:text-[#dfb76c]">About the Institute →</Link>
+        </div>
+        <p className="text-xs text-zinc-400 leading-relaxed max-w-3xl">
+          The cards above surface flagship prototypes and the most recent research notes. The dossiers below are longer-run investigations — signal archaeology of archival audio, perceptual-interface acoustics, material hysteresis and remote field listening — that live on deeper pages and are now cross-linked with descriptive titles so both readers and crawlers can discover them without relying on paged browsing.
+        </p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-xs">
+          <nav aria-labelledby="deep-proto-heading">
+            <h3 id="deep-proto-heading" className="text-[11px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">Signal archaeology & material-acoustics prototypes</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to={recordPath('prototype', 'PROT-025')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group">
+                  <span className="font-mono font-bold text-[#dfb76c] group-hover:text-white">PROT-025 · OPTICAL-SCANNER</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Non-contact laser profilometer for historical grooved audio carriers — Signal Archaeology</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={recordPath('prototype', 'PROT-026')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group">
+                  <span className="font-mono font-bold text-[#dfb76c] group-hover:text-white">PROT-026 · VLF-RECEIVER</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Wideband VLF inductive loop receiver for natural atmospheric radio listening</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={recordPath('prototype', 'PROT-030')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group">
+                  <span className="font-mono font-bold text-[#dfb76c] group-hover:text-white">PROT-030 · SUBTERRANEAN-VAULT</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Underground resonant vault with 18.4 s natural reverberation — Acoustic Architecture</span>
+                </Link>
+              </li>
+              <li><Link to="/prototypes" className="text-[#dfb76c] hover:underline font-mono text-[11px]">Browse all 160 prototypes →</Link></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="deep-patent-heading">
+            <h3 id="deep-patent-heading" className="text-[11px] font-mono font-bold text-cyan-300 uppercase tracking-wider mb-2">Speculative patents & monographs</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to={recordPath('patent', 'PAT-2024-004')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-cyan-500/60 rounded group">
+                  <span className="font-mono font-bold text-cyan-400 group-hover:text-white">PAT-2024-004</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Continuous multi-head magnetic tape transport with modulated thermal bias — Speculative Engineering</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={monographPath('ESSAY-2023-02')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-cyan-500/60 rounded group">
+                  <span className="font-mono font-bold text-cyan-400 group-hover:text-white">ESSAY-2023-02</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Media archaeology of inscribed sound — optical reconstruction of fragile historical recordings</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={monographPath('ESSAY-2024-03')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-cyan-500/60 rounded group">
+                  <span className="font-mono font-bold text-cyan-400 group-hover:text-white">ESSAY-2024-03</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Spatial psychoacoustics and missing fundamentals — perceptual illusions in generative composition</span>
+                </Link>
+              </li>
+              <li><Link to="/monographs" className="text-cyan-400 hover:underline font-mono text-[11px]">Read all 8 treatises →</Link></li>
+            </ul>
+          </nav>
+          <nav aria-labelledby="deep-field-heading">
+            <h3 id="deep-field-heading" className="text-[11px] font-mono font-bold text-amber-300 uppercase tracking-wider mb-2">Field listening stations & fellows</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to={recordPath('site', 'SITE-07')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-amber-500/60 rounded group">
+                  <span className="font-mono font-bold text-amber-400 group-hover:text-white">SITE-07 · ARASHIYAMA</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Kyoto bamboo-canopy listening post — distributed acoustic observatory</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={recordPath('site', 'SITE-01')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-amber-500/60 rounded group">
+                  <span className="font-mono font-bold text-amber-400 group-hover:text-white">SITE-01 · MOJAVE DESERT</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Mojave Desert acoustic sanctuary — 32-channel ground-plane array</span>
+                </Link>
+              </li>
+              <li>
+                <Link to={recordPath('personnel', 'FELLOW-001')} className="block p-2.5 bg-[#03060a] border border-[#1b2738] hover:border-violet-400/60 rounded group">
+                  <span className="font-mono font-bold text-violet-300 group-hover:text-white">FELLOW-001 · Dr. V. Aris Thorne</span>
+                  <span className="block text-zinc-300 mt-0.5 leading-snug">Director of Research — acoustic feedback dynamics & speculative sound hardware</span>
+                </Link>
+              </li>
+              <li className="flex gap-3 font-mono text-[11px]">
+                <Link to="/field-stations" className="text-amber-400 hover:underline">All field stations →</Link>
+                <Link to="/fellows" className="text-violet-300 hover:underline">All fellows →</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
       {/* Facilities */}
       <section aria-labelledby="facilities-heading" className="bg-[#05080f] border border-[#213045] rounded-xl p-5">
         <h2 id="facilities-heading" className="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider mb-3">
