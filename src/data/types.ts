@@ -181,6 +181,134 @@ export interface FieldSite {
   instrumentationList: string[];
 }
 
+/* ---------- institutional spine (schema.org entity graph) ---------- */
+
+/** A research division or department. `kind` decides which schema.org node it becomes. */
+export interface Department {
+  id: string;
+  kind: 'division' | 'department';
+  code: string;
+  /** URL-safe identifier; also the fragment used for the node's @id. */
+  slug: string;
+  name: string;
+  alternateName: string;
+  /** Set on divisions. */
+  departmentIds?: string[];
+  /** Set on departments. */
+  divisionId?: string;
+  /** Maps 1:1 onto a value of `Prototype.discipline`. */
+  discipline?: string;
+  establishedYear: number;
+  /** Personnel id of the department or division head. */
+  headId: string;
+  /**
+   * Explicit departmental membership. Deliberately NOT derived from facility
+   * assignment: two departments can share a home facility, and inferring
+   * membership from that would assert affiliations the data does not state.
+   */
+  fellowIds?: string[];
+  homeFacility: string;
+  mission: string;
+  focusAreas: string[];
+}
+
+export type GrantStatus = 'ACTIVE' | 'CLOSED_REPORTED';
+export type FunderKind = 'parent' | 'endowment' | 'reserve' | 'discretionary';
+
+/**
+ * An internal funding allocation. Modelled as schema.org MonetaryGrant.
+ * Funders are deliberately internal to the Institute and its parent company;
+ * no external or real-world funding body is asserted.
+ */
+export interface Grant {
+  id: string;
+  code: string;
+  name: string;
+  funderName: string;
+  funderKind: FunderKind;
+  amount: number;
+  currency: string;
+  periodStart: string;
+  periodEnd: string;
+  status: GrantStatus;
+  description: string;
+  programIds: string[];
+}
+
+export type ProgramStatus = 'ACTIVE' | 'COMPLETED' | 'WINDING_DOWN' | 'SUSPENDED';
+
+/** A research programme. Modelled as schema.org ResearchProject. */
+export interface Program {
+  id: string;
+  code: string;
+  title: string;
+  departmentId: string;
+  principalInvestigatorId: string;
+  coInvestigatorIds: string[];
+  status: ProgramStatus;
+  startDate: string;
+  endDate: string;
+  description: string;
+  keywords: string[];
+  /** Record collections this programme is expected to produce. */
+  outputTypes: string[];
+}
+
+export interface CourseInstanceData {
+  startDate: string;
+  endDate: string;
+  courseMode: 'onsite' | 'online' | 'blended';
+  /** Null for fully online delivery. */
+  facility: string | null;
+  /** ISO 8601 duration, e.g. "PT16H". */
+  workload: string;
+}
+
+export interface SyllabusSection {
+  name: string;
+  description: string;
+}
+
+/**
+ * An internal, non-accredited seminar. Modelled as schema.org Course.
+ * `educationalCredentialAwarded` is intentionally never set: the Institute
+ * is non-accredited and awards no credentials (see /legal/institutional-status).
+ */
+export interface Course {
+  id: string;
+  courseCode: string;
+  title: string;
+  departmentId: string;
+  instructorId: string;
+  educationalLevel: string;
+  timeRequired: string;
+  occupationalCategory: string;
+  description: string;
+  prerequisites: string[];
+  teaches: string[];
+  assesses: string[];
+  syllabusSections: SyllabusSection[];
+  instances: CourseInstanceData[];
+}
+
+export interface DefinedTermEntry {
+  termCode: string;
+  name: string;
+  departmentId: string;
+  description: string;
+}
+
+/** The Institute's controlled vocabulary, plus its terms. */
+export interface TermSet {
+  id: string;
+  code: string;
+  name: string;
+  alternateName: string;
+  description: string;
+  inLanguage: string;
+  terms: DefinedTermEntry[];
+}
+
 export interface ArchiveDatabase {
   prototypes: Prototype[];
   patents: Patent[];
@@ -190,6 +318,11 @@ export interface ArchiveDatabase {
   failures: FailedIncident[];
   personnel: Personnel[];
   fieldSites: FieldSite[];
+  departments: Department[];
+  programs: Program[];
+  grants: Grant[];
+  courses: Course[];
+  terms: TermSet;
   disciplines: string[];
   clearances: SecurityClearance[];
   statuses: PrototypeStatus[];

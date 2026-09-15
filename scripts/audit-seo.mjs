@@ -93,6 +93,45 @@ const robotsTxt = readFileSync(join(dist, 'robots.txt'), 'utf8');
 if (!robotsTxt.includes(`Sitemap: ${SITE}/sitemap.xml`)) errors.push('robots.txt does not reference sitemap');
 
 console.log(`[audit] ${pages.length} pages, ${indexable.size} indexable, ${locs.length} sitemap URLs`);
+
+/* ---------- JSON-LD entity-graph integrity ---------- */
+const { auditGraph } = await import('./lib/jsonld-graph.mjs');
+const graph = auditGraph(root);
+errors.push(...graph.errors.map(e => `[graph] ${e}`));
+
+const s = graph.stats;
+console.log(
+  `[graph] ${s.blocks} JSON-LD blocks across ${s.pages} pages · ` +
+    `${s.declaredNodes} declared nodes · ${s.referencedIds} @id pointers · ` +
+    `${s.resolvedEdges} resolved cross-node edges · ${s.dangling} dangling`
+);
+console.log(`[graph] ${s.typesUsed} distinct schema.org types used (vocabulary: ${s.vocabulary.types} types, ${s.vocabulary.props} properties)`);
+
+// Entity-class census: evidence that the institutional graph is actually interlocking.
+const census = new Map();
+for (const id of graph.declared.keys()) {
+  const cls = id.includes('#department-') ? 'Department'
+    : id.includes('#division-') ? 'Division'
+    : id.includes('#program-') ? 'ResearchProject'
+    : id.includes('#grant-') ? 'MonetaryGrant'
+    : id.includes('#course-') ? 'Course/CourseInstance'
+    : id.includes('#term-') ? 'DefinedTerm'
+    : id.includes('#facility-') ? 'Place (facility)'
+    : id.includes('#person') ? 'Person'
+    : id.includes('#work') ? 'CreativeWork'
+    : id.includes('#place') ? 'Place (field station)'
+    : id.includes('#app') ? 'SoftwareApplication'
+    : id.includes('#dataset') ? 'Dataset'
+    : id.includes('#collection') ? 'CollectionPage'
+    : id.includes('#vocabulary') ? 'DefinedTermSet'
+    : id.includes('#catalog') ? 'DataCatalog'
+    : id === `${SITE}/#organization` ? 'ResearchOrganization'
+    : id === `${SITE}/#website` ? 'WebSite'
+    : 'Other';
+  census.set(cls, (census.get(cls) ?? 0) + 1);
+}
+console.log('[graph] declared node census: ' + [...census.entries()].sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k}=${v}`).join(', '));
+
 for (const w of warnings.slice(0, +(process.env.AUDIT_MAX_WARN ?? 40))) console.warn('  warn', w);
 if (warnings.length > 40) console.warn(`  … ${warnings.length - 40} more warnings`);
 for (const e of errors) console.error('  ERROR', e);

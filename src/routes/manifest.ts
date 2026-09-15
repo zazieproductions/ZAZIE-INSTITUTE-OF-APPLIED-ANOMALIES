@@ -27,6 +27,7 @@ const LAST_LOG = [...labLogs].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1
 export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0, lastmod: LAST_LOG },
   { path: '/about', changefreq: 'monthly', priority: 0.9 },
+  { path: '/institute', changefreq: 'monthly', priority: 0.9 },
   { path: '/prototypes', changefreq: 'weekly', priority: 0.9 },
   { path: '/patents', changefreq: 'monthly', priority: 0.8 },
   { path: '/research-notes', changefreq: 'weekly', priority: 0.8, lastmod: LAST_LOG },

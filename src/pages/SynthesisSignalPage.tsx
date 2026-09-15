@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { StatusBadge } from '../components/StatusBadge';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, softwareAppSchema } from '../seo/schema';
+import { instrumentRelations } from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loading } from '../components/Loading';
 
@@ -36,9 +37,9 @@ export const SynthesisSignalPage: React.FC = () => {
             name: 'SYNTHESIS//SIGNAL Audiovisual Environment',
             description: DESCRIPTION,
             category: 'MultimediaApplication',
-            features: ['MP3/WAV input', '2048-point FFT', 'Reactive torus-knot geometry', 'Particle field', 'Spectrum analyser', 'Oscilloscope', 'Local-only processing']
-          })
-        ]}
+            features: ['MP3/WAV input', '2048-point FFT', 'Reactive torus-knot geometry', 'Particle field', 'Spectrum analyser', 'Oscilloscope', 'Local-only processing'],
+            extra: instrumentRelations('generative-software')
+          })        ]}
       />
       {/* Header */}
       <header className="relative bg-gradient-to-b from-[#060a12] via-[#05080f] to-[#03060a] border border-[#2b3d54] rounded-xl p-6 overflow-hidden">

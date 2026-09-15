@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadPersonnel, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, collectionDatasetSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { Fingerprint, ArrowRight } from 'lucide-react';
 
@@ -31,6 +31,13 @@ export const PersonnelDirectory: React.FC = () => {
             path: '/fellows',
             about: ['interdisciplinary research', 'computational creativity'],
             items: personnel.map(p => ({ name: `${p.name} — ${p.title}`, path: recordPath('personnel', p.id) }))
+          }),
+          collectionDatasetSchema({
+            path: '/fellows',
+            name: 'ZIAA fellows and inventors',
+            description,
+            count: personnel.length,
+            variables: ['Name and role', 'Specialisation', 'Clearance tier', 'Facility assignment', 'Selected publications']
           })
         ]}
       />

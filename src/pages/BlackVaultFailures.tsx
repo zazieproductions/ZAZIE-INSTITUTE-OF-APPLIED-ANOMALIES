@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadFailures, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, collectionDatasetSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { ArrowRight } from 'lucide-react';
 
@@ -31,6 +31,13 @@ export const BlackVaultFailures: React.FC = () => {
             path: '/post-mortems',
             about: ['experimental technology', 'speculative engineering'],
             items: failures.map(f => ({ name: `${f.id}: ${f.projectTitle}`, path: recordPath('failure', f.id) }))
+          }),
+          collectionDatasetSchema({
+            path: '/post-mortems',
+            name: 'ZIAA anomaly post-mortems',
+            description,
+            count: failures.length,
+            variables: ['Incident identifier and date', 'Project code and title', 'Hazard classification', 'Root-cause analysis', 'Containment protocol and decommission status']
           })
         ]}
       />

@@ -15,6 +15,11 @@ import type {
   FailedIncident,
   Personnel,
   FieldSite,
+  Department,
+  Program,
+  Grant,
+  Course,
+  TermSet,
   SecurityClearance,
   PrototypeStatus,
   AudioProfile
@@ -27,6 +32,12 @@ import clearancesJson from './collections/clearances.json';
 import statusesJson from './collections/statuses.json';
 import facilitiesJson from './collections/facilities.json';
 import recordIdsJson from './derived/recordIds.json';
+import departmentsJson from './collections/departments.json';
+import programsJson from './collections/programs.json';
+import grantsJson from './collections/grants.json';
+import coursesJson from './collections/courses.json';
+import termsJson from './collections/terms.json';
+import instituteJson from './derived/institute.json';
 
 export interface ArchiveStats {
   totalPrototypes: number;
@@ -99,6 +110,67 @@ export const disciplines = disciplinesJson as string[];
 export const clearances = clearancesJson as SecurityClearance[];
 export const statuses = statusesJson as PrototypeStatus[];
 export const facilities = facilitiesJson as string[];
+
+/* ---------- institutional spine (small, statically imported: the SEO graph needs it everywhere) ---------- */
+export const departments = departmentsJson as Department[];
+export const programs = programsJson as Program[];
+export const grants = grantsJson as Grant[];
+export const courses = coursesJson as Course[];
+export const termSet = termsJson as TermSet;
+
+export interface InstituteIndex {
+  facilities: { name: string; slug: string }[];
+  disciplineDept: Record<string, string>;
+  personnelByName: Record<string, string>;
+  /** Personnel id → display name. */
+  personnelNames: Record<string, string>;
+  departmentWorks: Record<
+    string,
+    {
+      prototypes: string[];
+      prototypeCount: number;
+      patents: string[];
+      patentCount: number;
+      monographs: string[];
+      monographCount: number;
+      failures: string[];
+      failureCount: number;
+      logCount: number;
+      fellowIds: string[];
+    }
+  >;
+  fellowWorks: Record<
+    string,
+    {
+      prototypes: string[];
+      patents: string[];
+      monographs: string[];
+      failures: string[];
+      logCount: number;
+      leadsProgramIds: string[];
+      coProgramIds: string[];
+      instructsCourseIds: string[];
+    }
+  >;
+  facilityWorks: Record<
+    string,
+    { name: string; logCount: number; prototypes: string[]; fellowIds: string[] }
+  >;
+  counts: {
+    divisions: number;
+    departments: number;
+    programs: number;
+    grants: number;
+    courses: number;
+    courseInstances: number;
+    terms: number;
+    facilities: number;
+  };
+}
+export const institute = instituteJson as InstituteIndex;
+
+/** Normalises the typographic apostrophes that appear in some personnel names. */
+export const normaliseName = (name: string) => name.replace(/[\u2018\u2019\u02BC']/g, "'").trim();
 
 /* ---------- lazy collection loaders (one chunk per collection) ---------- */
 const cache = new Map<string, Promise<unknown>>();

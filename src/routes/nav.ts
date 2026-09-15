@@ -21,6 +21,7 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/post-mortems', label: 'ANOMALY POST-MORTEMS', count: archiveStats.totalFailures, tone: 'alert' },
   { to: '/fellows', label: 'FELLOWS & INVENTORS', count: archiveStats.totalPersonnel },
   { to: '/system-audit', label: 'SYSTEM AUDIT', count: archiveStats.totalRevisions },
+  { to: '/institute', label: 'THE INSTITUTE' },
   { to: '/about', label: 'ABOUT ZIAA' }
 ];
 

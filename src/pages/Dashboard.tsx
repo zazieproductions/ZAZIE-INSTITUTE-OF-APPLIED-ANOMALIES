@@ -7,6 +7,7 @@ import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { Seo } from '../seo/Seo';
 import { ENTITY } from '../seo/site';
 import { organizationSchema, websiteSchema } from '../seo/schema';
+import { homeGraph } from '../seo/graph';
 import {
   Activity, Cpu, FileText, AlertTriangle, ArrowRight, Layers, Radio, Zap, BookOpen, Users, MapPin
 } from 'lucide-react';
@@ -40,7 +41,7 @@ export const Dashboard: React.FC = () => {
         description={`${ENTITY.name} (ZIAA): independent research & creative-technology archive of ${archiveStats.totalPrototypes} experimental prototypes, ${archiveStats.totalPatents} speculative patents, ${archiveStats.totalLogs} research notes and ${archiveStats.totalMonographs} monographs on audio technology, computational creativity and speculative engineering.`}
         path="/"
         keywords={[...ENTITY.fields, 'ZIAA', 'Zazie Institute']}
-        jsonLd={[organizationSchema(), websiteSchema()]}
+        jsonLd={[organizationSchema(), websiteSchema(), ...homeGraph()]}
       />
 
       {/* Hero */}

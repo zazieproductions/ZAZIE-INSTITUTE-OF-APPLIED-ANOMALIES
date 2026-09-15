@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Eye, ExternalLink, Maximize2, ShieldCheck, Play } from 'lucide-react';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, softwareAppSchema } from '../seo/schema';
+import { instrumentRelations } from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 const CRUMBS = [
@@ -35,9 +36,9 @@ export const VoidOculusPage: React.FC = () => {
             name: 'VOID//OCULUS Spatial Canvas',
             description: DESCRIPTION,
             category: 'DesignApplication',
-            features: ['Infinite pan/zoom board', 'Procedural eye entities', 'Linked research cards', 'In-place text editing', 'Local session persistence', 'Keyboard shortcuts']
-          })
-        ]}
+            features: ['Infinite pan/zoom board', 'Procedural eye entities', 'Linked research cards', 'In-place text editing', 'Local session persistence', 'Keyboard shortcuts'],
+            extra: instrumentRelations('generative-software')
+          })        ]}
       />
 
       <header className="rounded-xl border border-[#352067] bg-gradient-to-br from-[#090611] via-[#07080f] to-[#04100e] p-4 md:p-5 shadow-lg shadow-violet-950/10 space-y-3">

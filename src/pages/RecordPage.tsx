@@ -9,6 +9,10 @@ import type { Prototype, Patent, LabLog, FailedIncident, Personnel, FieldSite } 
 import { Seo } from '../seo/Seo';
 import { ENTITY, SITE_URL } from '../seo/site';
 import { breadcrumbSchema, creativeWorkSchema, personSchema, placeSchema, parseDms, type Crumb } from '../seo/schema';
+import {
+  prototypeRelations, patentRelations, logRelations, failureRelations,
+  fellowRelations, siteRelations
+} from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import {
@@ -58,6 +62,13 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
   switch (type) {
     case 'prototype': {
       const p = rec as Prototype;
+      const rel = prototypeRelations({
+        discipline: p.discipline,
+        leadResearcher: p.leadResearcher,
+        linkedPatents: p.linkedPatents,
+        linkedLogs: p.linkedLogs,
+        fieldDeployments: p.fieldDeployments
+      });
       return {
         title: p.title, titleId: p.id,
         heading: p.title,
@@ -77,7 +88,13 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
           keywords: [p.discipline, ...p.interfaceProtocols],
           genre: 'Experimental prototype specification',
           extra: {
-            about: { '@type': 'Product', name: `${p.codeName} (${p.id})`, description: p.technicalSummary, category: p.discipline },
+            ...rel,
+            // Keep the Product node the page is nominally about, alongside the
+            // department's controlled-vocabulary terms supplied by `rel.about`.
+            about: [
+              { '@type': 'Product', name: `${p.codeName} (${p.id})`, description: p.technicalSummary, category: p.discipline },
+              ...(rel.about as { '@id': string }[])
+            ],
             proficiencyLevel: 'Expert',
             dependencies: p.computationalCore
           }
@@ -104,7 +121,15 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
           keywords: [p.primaryDiscipline],
           additionalType: 'https://schema.org/TechArticle',
           genre: 'Speculative patent disclosure (design fiction)',
-          extra: { copyrightHolder: { '@type': 'Organization', name: p.assignee }, creativeWorkStatus: humanize(p.status) }
+          extra: {
+            copyrightHolder: { '@type': 'Organization', name: p.assignee },
+            creativeWorkStatus: humanize(p.status),
+            ...patentRelations({
+              primaryDiscipline: p.primaryDiscipline,
+              inventors: p.inventors,
+              linkedPrototypes: p.linkedPrototypes
+            })
+          }
         })
       };
     }
@@ -127,7 +152,10 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
           authors: [l.author],
           keywords: l.tags,
           genre: 'Laboratory research note',
-          extra: { locationCreated: { '@type': 'Place', name: l.facility } }
+          extra: {
+            ...logRelations({ author: l.author, facility: l.facility, equipmentIds: l.equipmentIds }),
+            spatialCoverage: { '@type': 'Place', name: l.facility }
+          }
         })
       };
     }
@@ -149,7 +177,8 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
           datePublished: f.incidentDate,
           authors: [f.leadInvestigator],
           keywords: [f.hazardClassification, 'root cause analysis'],
-          genre: 'Anomaly post-mortem case study'
+          genre: 'Anomaly post-mortem case study',
+          extra: failureRelations({ leadInvestigator: f.leadInvestigator })
         })
       };
     }
@@ -166,7 +195,12 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
           name: p.name,
           jobTitle: p.title,
           description: p.biography,
-          knowsAbout: [p.specialization, ...ENTITY.fields.slice(0, 4)]
+          knowsAbout: [p.specialization, ...ENTITY.fields.slice(0, 4)],
+          extra: fellowRelations(p.id, {
+            title: p.title,
+            joinedYear: p.joinedYear,
+            specialization: p.specialization
+          })
         })
       };
     }
@@ -186,7 +220,13 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
           description: s.description,
           address: s.location,
           latitude: geo?.latitude,
-          longitude: geo?.longitude
+          longitude: geo?.longitude,
+          extra: siteRelations({
+            channelCount: s.channelCount,
+            frequencyRange: s.frequencyRange,
+            physicalFootprint: s.physicalFootprint,
+            instrumentationList: s.instrumentationList
+          })
         })
       };
     }

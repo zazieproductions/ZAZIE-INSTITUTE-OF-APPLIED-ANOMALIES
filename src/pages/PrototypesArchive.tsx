@@ -7,7 +7,7 @@ import { useCollection } from '../lib/useCollection';
 import type { Prototype } from '../data/types';
 import { audioEngine } from '../audio/audioEngine';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, collectionDatasetSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { humanize } from '../lib/format';
 import { Search, Play, Square, ArrowRight } from 'lucide-react';
@@ -86,6 +86,13 @@ export const PrototypesArchive: React.FC = () => {
             path: '/prototypes',
             about: ['experimental technology', 'audio research', 'prototypes'],
             items: prototypes.map(p => ({ name: `${p.id} ${p.codeName} — ${p.title}`, path: recordPath('prototype', p.id) }))
+          }),
+          collectionDatasetSchema({
+            path: '/prototypes',
+            name: 'ZIAA prototype archive',
+            description,
+            count: prototypes.length,
+            variables: ['Prototype identifier and codename', 'Discipline and year', 'Status and clearance tier', 'Technical specification and bill of materials', 'Linked patents, notes and field deployments']
           })
         ]}
       />

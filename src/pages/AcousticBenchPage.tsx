@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AcousticBench } from '../components/AcousticBench';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, softwareAppSchema } from '../seo/schema';
+import { instrumentRelations } from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Zap, ArrowRight } from 'lucide-react';
 
@@ -28,9 +29,9 @@ export const AcousticBenchPage: React.FC = () => (
           name: 'ZIAA Acoustic Synthesis Test Bench',
           description: DESCRIPTION,
           category: 'MultimediaApplication',
-          features: ['Binaural oscillator pair', 'FM modulation', 'Resonant biquad filter', 'Cavitation noise generator', 'Time-domain oscilloscope', '64-band spectral analyser', 'Prototype presets']
-        })
-      ]}
+          features: ['Binaural oscillator pair', 'FM modulation', 'Resonant biquad filter', 'Cavitation noise generator', 'Time-domain oscilloscope', '64-band spectral analyser', 'Prototype presets'],
+          extra: instrumentRelations('generative-software')
+        })      ]}
     />
 
     <header className="bg-[#05080c] border border-emerald-950 p-4 rounded-lg space-y-3">

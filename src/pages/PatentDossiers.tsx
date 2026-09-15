@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadPatents, disciplines, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, collectionDatasetSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { humanize } from '../lib/format';
 import { useShowMore } from '../lib/useShowMore';
@@ -55,6 +55,13 @@ export const PatentDossiers: React.FC = () => {
             path: '/patents',
             about: ['speculative engineering', 'experimental technology'],
             items: patents.map(p => ({ name: `${p.patentNumber} — ${p.title}`, path: recordPath('patent', p.id) }))
+          }),
+          collectionDatasetSchema({
+            path: '/patents',
+            name: 'ZIAA speculative patent dossiers',
+            description,
+            count: patents.length,
+            variables: ['Patent number and filing date', 'Independent and dependent claims', 'Inventorship and assignee', 'Prior-art critique', 'Linked prototypes']
           })
         ]}
       />

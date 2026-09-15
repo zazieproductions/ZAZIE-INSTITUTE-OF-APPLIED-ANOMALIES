@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadLabLogs, facilities, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, collectionDatasetSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { Search, ArrowRight, AlertTriangle } from 'lucide-react';
 
@@ -50,6 +50,13 @@ export const LabLogsStream: React.FC = () => {
             path: '/research-notes',
             about: ['audio research', 'experimental technology'],
             items: labLogs.map(l => ({ name: `${l.id}: ${l.summary}`, path: recordPath('log', l.id) }))
+          }),
+          collectionDatasetSchema({
+            path: '/research-notes',
+            name: 'ZIAA research notes and lab telemetry',
+            description,
+            count: labLogs.length,
+            variables: ['Note identifier and timestamp', 'Author and facility', 'Environmental telemetry', 'Narrative log body', 'Equipment referenced and anomaly flag']
           })
         ]}
       />

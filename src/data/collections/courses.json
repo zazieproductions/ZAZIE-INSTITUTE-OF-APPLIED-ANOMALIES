@@ -1,0 +1,276 @@
+[
+  {
+    "id": "CRS-AA-101",
+    "courseCode": "ZIAA/AA-101",
+    "title": "Applied Anomalies I: Reading Unstable Systems",
+    "departmentId": "DEPT-APPLIED-ANOMALIES",
+    "instructorId": "FELLOW-001",
+    "educationalLevel": "Introductory",
+    "timeRequired": "PT12H",
+    "occupationalCategory": "Acoustic research technician",
+    "description": "Internal seminar on identifying, logging and characterising acoustic and computational edge cases. Covers feedback onset, hysteresis loops, boundary instability and the discipline of writing an anomaly note that someone else can act on.",
+    "prerequisites": ["Working knowledge of signal flow and gain staging", "Familiarity with the ZIAA research-note format"],
+    "teaches": [
+      "Recognising the onset conditions of electroacoustic feedback",
+      "Characterising hysteresis as a measurable, repeatable parameter",
+      "Writing an actionable anomaly research note with telemetry attached"
+    ],
+    "assesses": ["Anomaly characterisation exercise on bench hardware", "Written research note to archive standard"],
+    "syllabusSections": [
+      { "name": "What counts as an anomaly", "description": "Distinguishing edge-case behaviour from ordinary fault, and why the Institute treats the former as material." },
+      { "name": "Onset conditions", "description": "Gain structure, delay, room coupling and the geometry of feedback onset." },
+      { "name": "Hysteresis measurement", "description": "Sweeping a system up and down to separate reversible from irreversible behaviour." },
+      { "name": "Writing it down", "description": "Telemetry, reproducibility and the archive's research-note standard." }
+    ],
+    "instances": [
+      { "startDate": "2025-09-15", "endDate": "2025-09-26", "courseMode": "onsite", "facility": "Studio A (Anechoic Chamber & Spatial Stage)", "workload": "PT12H" },
+      { "startDate": "2026-04-13", "endDate": "2026-04-24", "courseMode": "blended", "facility": "Studio A (Anechoic Chamber & Spatial Stage)", "workload": "PT14H" }
+    ]
+  },
+  {
+    "id": "CRS-CC-210",
+    "courseCode": "ZIAA/CC-210",
+    "title": "Autonomous Agents & Procedural Scoring",
+    "departmentId": "DEPT-COMPUTATIONAL-CREATIVITY",
+    "instructorId": "FELLOW-005",
+    "educationalLevel": "Advanced",
+    "timeRequired": "PT18H",
+    "occupationalCategory": "Computational music researcher",
+    "description": "Builds generative systems that make musical decisions in real time, and confronts the evaluation problem: how to tell whether an agent's output is interesting, merely novel, or noise.",
+    "prerequisites": ["CRS-GS-201 or equivalent DSP experience", "Comfort with a scripting language for audio"],
+    "teaches": [
+      "Designing decision loops that stay musically legible over long time spans",
+      "Implementing procedural scoring under real-time constraints",
+      "Constructing an evaluation protocol for generative output"
+    ],
+    "assesses": ["A live agent performing for twenty minutes without operator intervention", "Written evaluation protocol"],
+    "syllabusSections": [
+      { "name": "Agency and legibility", "description": "What makes a generative system read as intentional rather than random." },
+      { "name": "Decision architectures", "description": "Markov processes, constraint grammars, learned policies." },
+      { "name": "Real-time discipline", "description": "Budgeting CPU, avoiding allocation in the audio path, deterministic scheduling." },
+      { "name": "Evaluation", "description": "Protocols for judging output, including the negative-result case." }
+    ],
+    "instances": [
+      { "startDate": "2025-11-03", "endDate": "2025-11-21", "courseMode": "onsite", "facility": "Studio D (Computational Creativity & Generative Software)", "workload": "PT18H" },
+      { "startDate": "2026-06-01", "endDate": "2026-06-19", "courseMode": "onsite", "facility": "Studio D (Computational Creativity & Generative Software)", "workload": "PT18H" }
+    ]
+  },
+  {
+    "id": "CRS-GS-201",
+    "courseCode": "ZIAA/GS-201",
+    "title": "Real-Time DSP in the Browser",
+    "departmentId": "DEPT-GENERATIVE-SOFTWARE",
+    "instructorId": "FELLOW-002",
+    "educationalLevel": "Intermediate",
+    "timeRequired": "PT16H",
+    "occupationalCategory": "Creative software engineer",
+    "description": "The Institute's core software seminar. AudioWorklet processors, buffer discipline, latency budgeting and WebAssembly DSP cores, taught against the code that runs the public browser instruments.",
+    "prerequisites": ["JavaScript or TypeScript", "Basic understanding of sampling and filters"],
+    "teaches": [
+      "Writing an AudioWorklet processor that never allocates on the audio thread",
+      "Budgeting and measuring end-to-end latency",
+      "Calling a WebAssembly DSP core from a worklet without copying"
+    ],
+    "assesses": ["A working browser instrument passing the Institute's latency and dropout budget", "Code review against the archive's software standard"],
+    "syllabusSections": [
+      { "name": "The audio graph", "description": "Nodes, rendering quanta and what actually happens per block." },
+      { "name": "Worklet discipline", "description": "Allocation, locking and the cost of a single branch in the render path." },
+      { "name": "Latency accounting", "description": "Input-to-output measurement, base latency, output compensation." },
+      { "name": "WebAssembly cores", "description": "Shared buffers, SIMD and avoiding the copy." }
+    ],
+    "instances": [
+      { "startDate": "2025-10-06", "endDate": "2025-10-24", "courseMode": "online", "facility": null, "workload": "PT16H" },
+      { "startDate": "2026-02-09", "endDate": "2026-02-27", "courseMode": "blended", "facility": "Studio D (Computational Creativity & Generative Software)", "workload": "PT16H" }
+    ]
+  },
+  {
+    "id": "CRS-SA-305",
+    "courseCode": "ZIAA/SA-305",
+    "title": "Signal Archaeology: Recovering Unplayable Media",
+    "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY",
+    "instructorId": "FELLOW-007",
+    "educationalLevel": "Advanced",
+    "timeRequired": "PT20H",
+    "occupationalCategory": "Audio preservation specialist",
+    "description": "Hands-on recovery practice: optical scanning of groove geometry, magnetic remanence readout, and the reconstruction pipelines that turn a scan into listenable audio — with the ethics of intervening in a damaged original.",
+    "prerequisites": ["CRS-AA-101 or equivalent", "Prior contact with archival media handling"],
+    "teaches": [
+      "Choosing a non-destructive readout method for a given carrier",
+      "Optical scan capture and groove-geometry reconstruction",
+      "Documenting intervention so a recovery remains auditable"
+    ],
+    "assesses": ["Recovery of a provided damaged carrier to a documented, reproducible result"],
+    "syllabusSections": [
+      { "name": "Carrier triage", "description": "Assessing lacquer, wax, shellac and magnetic carriers before any contact." },
+      { "name": "Optical extraction", "description": "Scanning geometry, registration and depth recovery." },
+      { "name": "Magnetic readout", "description": "Remanence imaging and transport-free reconstruction." },
+      { "name": "Provenance and audit", "description": "Recording every intervention so the recovery can be reviewed." }
+    ],
+    "instances": [
+      { "startDate": "2026-03-02", "endDate": "2026-03-27", "courseMode": "onsite", "facility": "Studio C (Signal Archaeology & Archival Audio Lab)", "workload": "PT20H" }
+    ]
+  },
+  {
+    "id": "CRS-PI-220",
+    "courseCode": "ZIAA/PI-220",
+    "title": "Physical Interfaces: Haptics, Floors & Microtonal Surfaces",
+    "departmentId": "DEPT-PERCEPTUAL-INTERFACES",
+    "instructorId": "FELLOW-003",
+    "educationalLevel": "Intermediate",
+    "timeRequired": "PT14H",
+    "occupationalCategory": "Interface fabricator",
+    "description": "Fabrication and calibration of performance surfaces, from transducer-driven tactile panels to motorised haptic controllers, with the metrology needed to make a surface repeatable enough to perform on.",
+    "prerequisites": ["Basic machining or fabrication experience", "CRS-EAS-150 recommended"],
+    "teaches": [
+      "Coupling transducers to a surface without destroying its acoustic identity",
+      "Calibrating a motorised controller to sub-millimetre repeatability",
+      "Designing microtonal layout for a player who cannot see the fretboard"
+    ],
+    "assesses": ["A fabricated surface meeting the Institute's repeatability tolerance"],
+    "syllabusSections": [
+      { "name": "Surface acoustics", "description": "What a panel does to a transducer, and vice versa." },
+      { "name": "Actuation", "description": "Solenoids, motors and the mechanics of controllable force." },
+      { "name": "Metrology", "description": "Measuring repeatability, backlash and drift." },
+      { "name": "Playability", "description": "Layout, feedback and the performer's mental model." }
+    ],
+    "instances": [
+      { "startDate": "2026-05-11", "endDate": "2026-05-29", "courseMode": "onsite", "facility": "Studio B (Physical Computing & Speculative Hardware)", "workload": "PT14H" }
+    ]
+  },
+  {
+    "id": "CRS-EAS-150",
+    "courseCode": "ZIAA/EAS-150",
+    "title": "Bench Practice: Analog Signal Paths & Resonant Materials",
+    "departmentId": "DEPT-EXPERIMENTAL-AUDIO",
+    "instructorId": "FELLOW-014",
+    "educationalLevel": "Introductory",
+    "timeRequired": "PT10H",
+    "occupationalCategory": "Instrument maker",
+    "description": "Foundational bench seminar on discrete analog signal paths and the acoustic behaviour of resonant materials — resonant woods, mineral lithophones and contact transduction.",
+    "prerequisites": ["None; safety briefing delivered in the first session"],
+    "teaches": [
+      "Building and debugging a discrete analog signal path",
+      "Measuring the resonant behaviour of a material sample",
+      "Mounting and matching contact transducers"
+    ],
+    "assesses": ["A working bench signal path with a documented noise floor"],
+    "syllabusSections": [
+      { "name": "Signal path basics", "description": "Gain stages, impedance and where noise actually comes from." },
+      { "name": "Material resonance", "description": "Modes, damping and why wood and stone disagree." },
+      { "name": "Contact transduction", "description": "Coupling, mounting pressure and matching." },
+      { "name": "Documentation", "description": "Bill of materials, tolerance and the archive record." }
+    ],
+    "instances": [
+      { "startDate": "2025-08-04", "endDate": "2025-08-15", "courseMode": "onsite", "facility": "Studio B (Physical Computing & Speculative Hardware)", "workload": "PT10H" },
+      { "startDate": "2026-09-07", "endDate": "2026-09-18", "courseMode": "onsite", "facility": "Studio B (Physical Computing & Speculative Hardware)", "workload": "PT10H" }
+    ]
+  },
+  {
+    "id": "CRS-ARC-330",
+    "courseCode": "ZIAA/ARC-330",
+    "title": "Spatial Systems: Ambisonics & Loudspeaker Geometry",
+    "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE",
+    "instructorId": "FELLOW-006",
+    "educationalLevel": "Advanced",
+    "timeRequired": "PT16H",
+    "occupationalCategory": "Spatial sound engineer",
+    "description": "High-order ambisonics, decoder design for non-ideal rooms, and the compositional consequences of committing to a fixed three-dimensional loudspeaker geometry.",
+    "prerequisites": ["CRS-GS-201", "Working knowledge of multichannel audio"],
+    "teaches": [
+      "Choosing an ambisonic order for a given room and array",
+      "Designing and measuring a decoder for a non-ideal space",
+      "Composing for a fixed geometry without treating it as a limitation"
+    ],
+    "assesses": ["A measured decoder for the Institute's dome, with a listening report"],
+    "syllabusSections": [
+      { "name": "Spherical harmonics in practice", "description": "Orders, truncation and what you lose at each step." },
+      { "name": "Decoder design", "description": "All-round, in-phase and the trade-offs nobody advertises." },
+      { "name": "Room interaction", "description": "Reflections, modes and why the room is part of the decoder." },
+      { "name": "Composing the array", "description": "Writing for a fixed geometry as a compositional resource." }
+    ],
+    "instances": [
+      { "startDate": "2026-01-19", "endDate": "2026-02-06", "courseMode": "onsite", "facility": "Studio A (Anechoic Chamber & Spatial Stage)", "workload": "PT16H" }
+    ]
+  },
+  {
+    "id": "CRS-SE-240",
+    "courseCode": "ZIAA/SE-240",
+    "title": "Speculative Engineering & the Design-Fiction Disclosure",
+    "departmentId": "DEPT-SPECULATIVE-ENGINEERING",
+    "instructorId": "FELLOW-012",
+    "educationalLevel": "Intermediate",
+    "timeRequired": "PT12H",
+    "occupationalCategory": "Speculative designer",
+    "description": "How to write a design-fiction disclosure that is rigorous enough to be useful and clearly enough framed not to be mistaken for a legal filing. Claim structure, prior-art critique and the register of patent literature.",
+    "prerequisites": ["CRS-AA-101 recommended", "Interest in critical hardware practice"],
+    "teaches": [
+      "Structuring an independent claim and its dependent tree",
+      "Writing a prior-art critique that is honest about what exists",
+      "Framing speculative work so it cannot be mistaken for a legal instrument"
+    ],
+    "assesses": ["One complete speculative patent dossier passing the Institute's disclosure review"],
+    "syllabusSections": [
+      { "name": "The register", "description": "How patent literature reads, and what to borrow from it." },
+      { "name": "Claims", "description": "Independent and dependent structure, scope and the over-claiming trap." },
+      { "name": "Prior art", "description": "Researching honestly and writing critique that holds up." },
+      { "name": "Disclosure ethics", "description": "Keeping design fiction visibly separate from legal filing." }
+    ],
+    "instances": [
+      { "startDate": "2026-03-16", "endDate": "2026-03-27", "courseMode": "online", "facility": null, "workload": "PT12H" }
+    ]
+  },
+  {
+    "id": "CRS-FLD-410",
+    "courseCode": "ZIAA/FLD-410",
+    "title": "Remote Station Deployment & Unattended Listening",
+    "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY",
+    "instructorId": "FELLOW-010",
+    "educationalLevel": "Advanced",
+    "timeRequired": "PT24H",
+    "occupationalCategory": "Field systems engineer",
+    "description": "Field practice for the listening estate: site survey, hydrophone and infrasound installation, power plant sizing, environmental hardening, and designing a station to survive a year without a visit.",
+    "prerequisites": ["CRS-EAS-150", "Field safety certification delivered on site"],
+    "teaches": [
+      "Surveying a site for acoustic and electromagnetic noise before installing",
+      "Sizing power and storage for a year of unattended operation",
+      "Designing telemetry and failure reporting for a station nobody can reach"
+    ],
+    "assesses": ["A deployment plan and power budget for a nominated site", "Supervised installation exercise"],
+    "syllabusSections": [
+      { "name": "Site survey", "description": "Noise floors, access, and the constraints that decide everything else." },
+      { "name": "Sensor installation", "description": "Hydrophones, infrasound lines and grounding." },
+      { "name": "Power and survival", "description": "Solar, battery, thermal design and the winter margin." },
+      { "name": "Telemetry", "description": "Backhaul, watchdogs and knowing a station is dying from far away." }
+    ],
+    "instances": [
+      { "startDate": "2026-07-06", "endDate": "2026-07-31", "courseMode": "onsite", "facility": "Field Station Alpha (Desert Listening Sanctuary)", "workload": "PT24H" }
+    ]
+  },
+  {
+    "id": "CRS-ARC-115",
+    "courseCode": "ZIAA/ARC-115",
+    "title": "Listening Practice & Soundscape Field Method",
+    "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE",
+    "instructorId": "FELLOW-016",
+    "educationalLevel": "Introductory",
+    "timeRequired": "PT8H",
+    "occupationalCategory": "Soundscape researcher",
+    "description": "Training in disciplined listening: soundscape walks, baselining anthropogenic noise, and the note-taking method that turns subjective listening into data another researcher can compare against.",
+    "prerequisites": ["None"],
+    "teaches": [
+      "Conducting a repeatable soundscape walk",
+      "Baselining anthropogenic noise at a site",
+      "Writing listening notes that are comparable across observers"
+    ],
+    "assesses": ["A documented soundscape walk with baseline measurements"],
+    "syllabusSections": [
+      { "name": "Disciplined listening", "description": "Attention, expectation and the observer effect." },
+      { "name": "Baselining", "description": "What to measure, for how long, and when." },
+      { "name": "Notation", "description": "Making subjective listening comparable." },
+      { "name": "Ecology", "description": "Bioacoustic markers and what they indicate." }
+    ],
+    "instances": [
+      { "startDate": "2026-05-04", "endDate": "2026-05-08", "courseMode": "onsite", "facility": "Field Station Epsilon (Sub-Glacial Hydrophone Array)", "workload": "PT8H" }
+    ]
+  }
+]

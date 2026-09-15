@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { SpectraLabConsole } from '../components/SpectraLabConsole';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, softwareAppSchema } from '../seo/schema';
+import { instrumentRelations } from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Activity, ArrowRight } from 'lucide-react';
 
@@ -28,9 +29,9 @@ export const SpectraLabPage: React.FC = () => (
           name: 'SPECTRA//LAB Audiovisual DSP Console',
           description: DESCRIPTION,
           category: 'MultimediaApplication',
-          features: ['Volumetric spectral field canvas', 'Particle physics renderer', '64-band FFT analysis', '8x8 modulation matrix', 'Automated parameter curves', 'Spectrogram']
-        })
-      ]}
+          features: ['Volumetric spectral field canvas', 'Particle physics renderer', '64-band FFT analysis', '8x8 modulation matrix', 'Automated parameter curves', 'Spectrogram'],
+          extra: instrumentRelations('generative-software')
+        })      ]}
     />
 
     <header className="bg-[#05080c] border border-cyan-950 p-4 rounded-lg space-y-3">

@@ -4,7 +4,8 @@ import { loadMonographs, monographPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import type { Monograph } from '../data/types';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema, creativeWorkSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, creativeWorkSchema, collectionDatasetSchema } from '../seo/schema';
+import { monographRelations } from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SITE_URL } from '../seo/site';
 import { Share2, Award, Printer, Copy, Check, Bookmark } from 'lucide-react';
@@ -80,6 +81,13 @@ export const Monographs: React.FC = () => {
               path: '/monographs',
               about: ['audio research', 'computational creativity', 'speculative engineering'],
               items: monographs.map(m => ({ name: m.title, path: monographPath(m.id) }))
+            }),
+            collectionDatasetSchema({
+              path: '/monographs',
+              name: 'ZIAA research monographs',
+              description: indexDescription,
+              count: monographs.length,
+              variables: ['Title and volume', 'Authorship', 'Abstract and key theorems', 'Section headings', 'Reference list']
             })
           ]}
         />
@@ -104,10 +112,13 @@ export const Monographs: React.FC = () => {
               authors: [shown.author, ...(shown.coAuthors || [])],
               keywords: ['applied anomalies', 'experimental audio', 'speculative engineering'],
               extra: {
+                ...monographRelations({
+                  author: shown.author,
+                  coAuthors: shown.coAuthors || [],
+                  citations: shown.references || []
+                }),
                 isPartOf: { '@type': 'PublicationVolume', name: shown.volume },
-                pageStart: undefined,
-                articleSection: shown.sections?.map(s => s.heading),
-                citation: shown.references
+                articleSection: shown.sections?.map(s => s.heading)
               }
             })
           ]}

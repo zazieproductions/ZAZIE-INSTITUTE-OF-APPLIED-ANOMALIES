@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema } from '../seo/schema';
+import { parentCompanyNode } from '../seo/graph';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ENTITY } from '../seo/site';
 import {
@@ -104,7 +105,8 @@ export const LegalDisclosuresPage: React.FC = () => {
             url: `https://zazieinstitute.org${legalPath(activeSection)}`,
             isPartOf: { '@type': 'WebSite', url: 'https://zazieinstitute.org/', name: ENTITY.name },
             publisher: { '@type': 'Organization', name: ENTITY.legalParent }
-          }
+          },
+          ...(activeSection === 'status' ? [parentCompanyNode()] : [])
         ]}
       />
       {/* Top Banner / Masthead */}

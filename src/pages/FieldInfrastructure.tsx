@@ -4,7 +4,7 @@ import { loadFieldSites, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { SubterraneanArraySchematic } from '../components/TechnicalSchematics';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, collectionDatasetSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { MapPin, ArrowRight } from 'lucide-react';
 
@@ -32,6 +32,13 @@ export const FieldInfrastructure: React.FC = () => {
             path: '/field-stations',
             about: ['sound technology', 'audio research'],
             items: fieldSites.map(s => ({ name: `${s.codename} — ${s.name}`, path: recordPath('site', s.id) }))
+          }),
+          collectionDatasetSchema({
+            path: '/field-stations',
+            name: 'ZIAA field stations and sound observatories',
+            description,
+            count: fieldSites.length,
+            variables: ['Station name and codename', 'Location and coordinates', 'Channel count and frequency range', 'Instrumentation list', 'Access protocol']
           })
         ]}
       />

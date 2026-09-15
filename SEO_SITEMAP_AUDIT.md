@@ -161,5 +161,76 @@ Footer already provides exhaustive hub links (archive holds, institute, interact
 
 The sitemap itself was *not* inflated; its purpose remains discovery, canonical clarity and crawl efficiency — not ranking manipulation. No `priority`/`changefreq` games were introduced.
 
+
+---
+
+## 9. Entity-graph pass (2026-09-15, second revision)
+
+This revision adds a relational structured-data layer on top of the per-page schema described above.
+It supersedes §1's URL count: the sitemap now holds **675** indexable URLs (676 prerendered + 404 fallback).
+
+### 9.1 What was added
+
+| Addition | Route | Node classes introduced |
+|---|---|---|
+| `/institute` institutional spine page | `/institute` | `Organization` ×11 (3 divisions, 8 departments), `ResearchProject` ×16, `MonetaryGrant` ×10, `Course` ×10 + `CourseInstance` ×14, `DefinedTermSet` ×1 + `DefinedTerm` ×46, `Place` ×8 (facilities), `Dataset`, `DataCatalog` |
+| Relational bundles on every record page | all 656 detail pages | `OrganizationRole`, `EmployeeRole`, `Occupation`, `MonetaryAmount`, `PropertyValue`, `Syllabus`, `Chapter`, `VirtualLocation`, `FundingScheme`, `LocationFeatureSpecification` |
+| Collection datasets on the 7 hub pages | `/prototypes`, `/patents`, `/research-notes`, `/monographs`, `/fellows`, `/field-stations`, `/post-mortems` | `Dataset` + `DataDownload` |
+| Parent-company node, declared once | `/legal/institutional-status` | `Corporation` |
+
+Measured from `dist/` after `npm run build`: **1431 JSON-LD blocks**, **796 declared nodes**,
+**635 `@id` pointers, 635 resolved, 0 dangling**, **46 distinct schema.org types**.
+
+### 9.2 Corrections to commonly-recommended type names
+
+Three types frequently recommended for institutional SEO do not exist in schema.org
+(all three return HTTP 404 from `schema.org`) and were rejected by the audit when tested:
+
+| Recommended name | Status | Correct construction used |
+|---|---|---|
+| `CourseOffering` | 404 — not a type | `Course` + `hasCourseInstance` → `CourseInstance` (`courseMode`, `courseWorkload`, `instructor`) |
+| `ResearchGrant` | 404 — not a type | `MonetaryGrant` with `amount` (`MonetaryAmount`), `funder`, `fundedItem` |
+| `FacultyAffiliation` | 404 — not a type | `OrganizationRole` / `EmployeeRole` as the value of `Person.memberOf` / `Person.worksFor` |
+
+`masthead` and `missionCoveragePrioritiesPolicy` were also excluded: they are `NewsMediaOrganization`
+properties and are not valid on a `ResearchOrganization`.
+
+### 9.3 Enforcement
+
+`scripts/audit-seo.mjs` now imports `scripts/lib/jsonld-graph.mjs`, which fails the build on:
+unparseable JSON-LD, unknown `@type`, unknown property, dangling `@id`, and non-canonical `@id`.
+The vocabulary is read at runtime from the installed `schema-dts` devDependency
+(939 types / 1509 properties) rather than a hand-maintained allowlist.
+
+The validator was verified to have teeth by injecting a `ResearchGrant` node carrying a
+`sponsorship` property and a pointer to a non-existent programme: the audit reported all three
+faults and exited 1.
+
+### 9.4 Content defects surfaced (not silently absorbed)
+
+The graph validator exposed a pre-existing data inconsistency: **80 of the 120 distinct patent IDs
+referenced by `prototypes.json#linkedPatents` have no corresponding record in `patents.json`.**
+`RecordDossier.tsx` already filtered these out of the visible UI via `hasRecord`; the new structured
+data applies the same guard so JSON-LD never points at a 404. The gap is now reported on every build
+by `scripts/build-derived.mjs`:
+
+```
+[build-derived] WARN 80 unresolved prototypeToPatent cross-reference(s) in source data
+                (filtered from UI and JSON-LD); first: PAT-2025-001, PAT-2026-002, PAT-2021-003
+```
+
+The three other cross-reference sets (`prototypeToLog`, `patentToPrototype`, `logEquipment`) are clean.
+The 80 missing dossiers are a content gap to close, not a markup bug; creating them would add 80 URLs
+and is out of scope for this revision.
+
+### 9.5 Deliberate omissions
+
+The Institute is non-accredited and publishes design fiction. Verified absent from all 1431 blocks:
+`educationalCredentialAwarded`, `occupationalCredentialAwarded`, `hasCredential`, `alumniOf`,
+`sameAs`, `award`, `aggregateRating`, `review`, and any ORCID/DOI/ISNI/ROR/Wikidata identifier.
+Every `MonetaryGrant` funder is internal (`ZIAA Internal Research Endowment`, `ZIAA Field Operations
+Reserve`, `ZIAA Fellows' Discretionary Fund`, `ZIAA Black Vault Remediation Reserve`) or the legal
+parent `Zazie Productions LLC`.
+
 ---
 *Note: This audit was generated mechanically from `dist/` + source and should be resubmitted after each `npm run build`. The authoritative validator is `npm run audit:seo` (fails on any sitemap/indexable mismatch).*

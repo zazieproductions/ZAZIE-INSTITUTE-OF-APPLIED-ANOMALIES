@@ -8,6 +8,7 @@ import { audioEngine } from './audio/audioEngine';
 
 /* Route-level code splitting: each section (and its data) is its own chunk. */
 const About = lazy(() => import('./pages/About'));
+const Institute = lazy(() => import('./pages/Institute'));
 const PrototypesArchive = lazy(() => import('./pages/PrototypesArchive'));
 const PatentDossiers = lazy(() => import('./pages/PatentDossiers'));
 const LabLogsStream = lazy(() => import('./pages/LabLogsStream'));
@@ -85,6 +86,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/about" element={<About />} />
+            <Route path="/institute" element={<Institute />} />
 
             <Route path="/prototypes" element={<PrototypesArchive />} />
             <Route path="/prototypes/:id" element={<RecordPage type="prototype" />} />

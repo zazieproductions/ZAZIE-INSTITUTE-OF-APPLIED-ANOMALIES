@@ -152,6 +152,8 @@ export const personSchema = (opts: {
   description: string;
   knowsAbout: string[];
   worksFor?: string;
+  /** Relational properties from src/seo/graph.ts (roles, occupation, funding…). */
+  extra?: Record<string, unknown>;
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -164,7 +166,8 @@ export const personSchema = (opts: {
   knowsAbout: opts.knowsAbout,
   affiliation: { '@id': ORG_ID },
   worksFor: { '@id': ORG_ID },
-  memberOf: { '@id': ORG_ID }
+  memberOf: { '@id': ORG_ID },
+  ...opts.extra
 });
 
 export const placeSchema = (opts: {
@@ -175,6 +178,8 @@ export const placeSchema = (opts: {
   address: string;
   latitude?: number;
   longitude?: number;
+  /** Relational properties from src/seo/graph.ts (maintainer, features…). */
+  extra?: Record<string, unknown>;
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'Place',
@@ -191,7 +196,8 @@ export const placeSchema = (opts: {
   containedInPlace: undefined,
   publicAccess: false,
   isAccessibleForFree: false,
-  maintainer: { '@id': ORG_ID }
+  maintainer: { '@id': ORG_ID },
+  ...opts.extra
 });
 
 export const softwareAppSchema = (opts: {
@@ -200,6 +206,8 @@ export const softwareAppSchema = (opts: {
   description: string;
   category: string;
   features: string[];
+  /** Relational properties from src/seo/graph.ts (owning department…). */
+  extra?: Record<string, unknown>;
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
@@ -212,9 +220,45 @@ export const softwareAppSchema = (opts: {
   browserRequirements: 'Requires JavaScript and the Web Audio API',
   featureList: opts.features.join(', '),
   isAccessibleForFree: true,
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  offers: { '@type': 'Offer', category: 'Free', price: '0', priceCurrency: 'USD' },
   publisher: { '@id': ORG_ID },
-  creator: { '@id': ORG_ID }
+  creator: { '@id': ORG_ID },
+  ...opts.extra
+});
+
+/**
+ * The machine-readable aspect of a collection hub. Declared on the hub page and
+ * referenced from the Institute's DataCatalog, so the catalogue and the pages
+ * that actually hold the records agree on one @id.
+ */
+export const collectionDatasetSchema = (opts: {
+  path: string;
+  name: string;
+  description: string;
+  count: number;
+  variables: string[];
+  departmentSlug?: string;
+}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${absoluteUrl(opts.path)}#dataset`,
+  url: absoluteUrl(opts.path),
+  name: opts.name,
+  description: opts.description,
+  inLanguage: 'en',
+  size: opts.count,
+  creator: { '@id': ORG_ID },
+  publisher: { '@id': ORG_ID },
+  maintainer: { '@id': ORG_ID },
+  sourceOrganization: opts.departmentSlug
+    ? { '@id': `${absoluteUrl('/institute')}#department-${opts.departmentSlug}` }
+    : { '@id': ORG_ID },
+  variableMeasured: opts.variables,
+  distribution: {
+    '@type': 'DataDownload',
+    encodingFormat: 'text/html',
+    contentUrl: absoluteUrl(opts.path)
+  }
 });
 
 /** Parse `35°00'42.1"N 115°28'19.4"W` into decimal degrees. */

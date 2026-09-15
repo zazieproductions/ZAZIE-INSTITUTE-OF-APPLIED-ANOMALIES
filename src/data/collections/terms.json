@@ -1,0 +1,64 @@
+{
+  "id": "DTS-ZIAA-CORE",
+  "code": "ZIAA-DTS-CORE",
+  "name": "ZIAA Core Research Vocabulary",
+  "alternateName": "ZIAA Controlled Vocabulary",
+  "description": "The Institute's controlled vocabulary for applied-anomalies research. Every prototype, patent, research note, monograph and post-mortem in the archive is indexed against these terms, so that related records can be retrieved by concept rather than by keyword.",
+  "inLanguage": "en",
+  "terms": [
+    { "termCode": "ZIAA-T-001", "name": "Electroacoustic feedback", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "The closed loop formed when a transducer's output re-enters its own input path. Treated at ZIAA as an instrument to be tuned rather than a fault to be suppressed." },
+    { "termCode": "ZIAA-T-002", "name": "Physical hysteresis", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "Path-dependent response in which a system's output depends on the direction of approach. Used as an expressive, repeatable performance parameter." },
+    { "termCode": "ZIAA-T-003", "name": "Boundary-condition instability", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "Runaway or oscillatory behaviour arising at the limits of a system's operating envelope, particularly where acoustic and structural boundaries interact." },
+    { "termCode": "ZIAA-T-004", "name": "Self-regulating instrument", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "An instrument that finds and holds its own stable operating regime through negative feedback, without continuous operator correction." },
+    { "termCode": "ZIAA-T-005", "name": "Phantom fundamental", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "The percept of a pitch whose fundamental frequency is absent from the spectrum, reconstructed by the auditory system from its harmonics." },
+    { "termCode": "ZIAA-T-006", "name": "Spatial masking", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "Reduced audibility of one source caused by the presence and location of another, exploited in multichannel composition and concealment studies." },
+
+    { "termCode": "ZIAA-T-010", "name": "Wave-terrain synthesis", "departmentId": "DEPT-EXPERIMENTAL-AUDIO", "description": "Two-dimensional wavetable synthesis in which a trajectory is traced across a surface, producing timbral motion unavailable to one-dimensional wavetables." },
+    { "termCode": "ZIAA-T-011", "name": "Resonant material substrate", "departmentId": "DEPT-EXPERIMENTAL-AUDIO", "description": "A solid body — resonant wood, mineral lithophone, cast metal — used as the primary sound-producing element rather than as a loudspeaker cabinet." },
+    { "termCode": "ZIAA-T-012", "name": "Contact transduction", "departmentId": "DEPT-EXPERIMENTAL-AUDIO", "description": "Pickup of structural vibration by direct mechanical coupling, as distinct from airborne acoustic capture by a diaphragm." },
+    { "termCode": "ZIAA-T-013", "name": "Discrete analog signal path", "departmentId": "DEPT-EXPERIMENTAL-AUDIO", "description": "A synthesis or conditioning chain built from individual components rather than integrated circuits, prized for its auditable behaviour under overload." },
+    { "termCode": "ZIAA-T-014", "name": "Transducer calibration", "departmentId": "DEPT-EXPERIMENTAL-AUDIO", "description": "The metrology process that establishes a transducer's sensitivity and frequency response to a documented tolerance." },
+
+    { "termCode": "ZIAA-T-020", "name": "High-order ambisonics", "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE", "description": "Spherical-harmonic spatial audio representation above first order, giving tighter localisation at the cost of array size and decoder complexity." },
+    { "termCode": "ZIAA-T-021", "name": "Loudspeaker dome geometry", "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE", "description": "A hemispherical or full-sphere loudspeaker array whose geometry determines the achievable decoder and the composer's available spatial vocabulary." },
+    { "termCode": "ZIAA-T-022", "name": "Subterranean resonant volume", "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE", "description": "An underground chamber whose low-frequency modal behaviour is used as a fixed acoustic instrument, as at the Salton Basin vault." },
+    { "termCode": "ZIAA-T-023", "name": "Architectural reverberation", "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE", "description": "The reverberant signature contributed by a building's structure and finishes, treated as an irreplaceable component of a site-specific work." },
+    { "termCode": "ZIAA-T-024", "name": "Site-specific sound installation", "departmentId": "DEPT-ACOUSTIC-ARCHITECTURE", "description": "A work whose meaning depends on the acoustics and social context of its location and cannot be relocated without loss." },
+
+    { "termCode": "ZIAA-T-030", "name": "Autonomous musical agent", "departmentId": "DEPT-COMPUTATIONAL-CREATIVITY", "description": "A software system that makes musical decisions in real time under constraints, without per-event operator input." },
+    { "termCode": "ZIAA-T-031", "name": "Procedural scoring", "departmentId": "DEPT-COMPUTATIONAL-CREATIVITY", "description": "Generation of notated or performed musical structure by rule during performance rather than in advance." },
+    { "termCode": "ZIAA-T-032", "name": "Neural audio resynthesis", "departmentId": "DEPT-COMPUTATIONAL-CREATIVITY", "description": "Reconstruction of audio through a learned model, as distinct from analysis-resynthesis using an explicit signal model." },
+    { "termCode": "ZIAA-T-033", "name": "Latent audio space", "departmentId": "DEPT-COMPUTATIONAL-CREATIVITY", "description": "The continuous internal representation of a generative audio model, navigated directly as a compositional surface." },
+    { "termCode": "ZIAA-T-034", "name": "Generative evaluation protocol", "departmentId": "DEPT-COMPUTATIONAL-CREATIVITY", "description": "A stated procedure for judging whether generative output is musically usable, including criteria for recording a negative result." },
+
+    { "termCode": "ZIAA-T-040", "name": "AudioWorklet processor", "departmentId": "DEPT-GENERATIVE-SOFTWARE", "description": "A user-supplied audio processing unit running on the browser's audio thread, requiring allocation-free and lock-free implementation." },
+    { "termCode": "ZIAA-T-041", "name": "Low-latency audio pipeline", "departmentId": "DEPT-GENERATIVE-SOFTWARE", "description": "An input-to-output signal path engineered to a stated and measured latency budget, including base latency and output compensation." },
+    { "termCode": "ZIAA-T-042", "name": "WebAssembly DSP core", "departmentId": "DEPT-GENERATIVE-SOFTWARE", "description": "A compiled signal-processing module invoked from the audio thread through a shared buffer, avoiding per-block copying." },
+    { "termCode": "ZIAA-T-043", "name": "Micro-buffer wavetable interpolation", "departmentId": "DEPT-GENERATIVE-SOFTWARE", "description": "Interpolation technique for reading wavetables at very small block sizes without introducing audible aliasing or discontinuity." },
+    { "termCode": "ZIAA-T-044", "name": "Ambisonic convolution", "departmentId": "DEPT-GENERATIVE-SOFTWARE", "description": "Application of spherical-harmonic impulse responses to a multichannel signal, a principal cost centre in real-time spatial rendering." },
+
+    { "termCode": "ZIAA-T-050", "name": "Tactile acoustic floor", "departmentId": "DEPT-PERCEPTUAL-INTERFACES", "description": "A transducer-driven walking surface that conveys audio as whole-body vibration and can be played as an interface." },
+    { "termCode": "ZIAA-T-051", "name": "Motorised haptic controller", "departmentId": "DEPT-PERCEPTUAL-INTERFACES", "description": "A physical control whose position or resistance is driven by the system, creating a bidirectional tactile channel." },
+    { "termCode": "ZIAA-T-052", "name": "Microtonal touch surface", "departmentId": "DEPT-PERCEPTUAL-INTERFACES", "description": "A continuous playing surface supporting intervals outside twelve-tone equal temperament, with layout legible without sight." },
+    { "termCode": "ZIAA-T-053", "name": "Spatial gesture tracking", "departmentId": "DEPT-PERCEPTUAL-INTERFACES", "description": "Capture of performer movement in three dimensions for control of spatialised sound, including its drift and calibration problems." },
+    { "termCode": "ZIAA-T-054", "name": "Kinetic acoustic actuator", "departmentId": "DEPT-PERCEPTUAL-INTERFACES", "description": "A motorised mechanism that physically strikes, bows or excites a resonant body, as in the Institute's percussion automata." },
+
+    { "termCode": "ZIAA-T-060", "name": "Non-contact optical audio extraction", "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY", "description": "Recovery of audio from a grooved carrier by optically scanning its geometry, with no stylus contact and therefore no further wear." },
+    { "termCode": "ZIAA-T-061", "name": "Magnetic remanence imaging", "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY", "description": "Reading residual magnetisation from a tape carrier without transport contact, used where the binder has physically failed." },
+    { "termCode": "ZIAA-T-062", "name": "Atmospheric VLF listening", "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY", "description": "Long-duration monitoring in the very-low-frequency band for natural and anthropogenic phenomena below the audible range." },
+    { "termCode": "ZIAA-T-063", "name": "Infrasound monitoring", "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY", "description": "Continuous capture below roughly 20 Hz, requiring specialised sensors and long integration windows to be interpretable." },
+    { "termCode": "ZIAA-T-064", "name": "Hydrophone array", "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY", "description": "A distributed set of underwater microphones used for localisation and long-duration monitoring, as at the sub-glacial station." },
+    { "termCode": "ZIAA-T-065", "name": "Soundscape ecology", "departmentId": "DEPT-SIGNAL-ARCHAEOLOGY", "description": "Study of the biological, geophysical and anthropogenic components of an acoustic environment and their interaction." },
+
+    { "termCode": "ZIAA-T-070", "name": "Kinetic percussion automaton", "departmentId": "DEPT-SPECULATIVE-ENGINEERING", "description": "A self-playing mechanism that excites percussion bodies, built both as an instrument and as a critique of automation in performance." },
+    { "termCode": "ZIAA-T-071", "name": "Multi-head tape transport", "departmentId": "DEPT-SPECULATIVE-ENGINEERING", "description": "A transport with several read or write heads at fixed spacings, producing delay structures determined by the machine's geometry." },
+    { "termCode": "ZIAA-T-072", "name": "Design fiction", "departmentId": "DEPT-SPECULATIVE-ENGINEERING", "description": "The practice of producing artefacts and documents from an imagined future to make a present possibility arguable. Explicitly not a legal or factual claim." },
+    { "termCode": "ZIAA-T-073", "name": "Speculative patent disclosure", "departmentId": "DEPT-SPECULATIVE-ENGINEERING", "description": "A dossier written in the register of patent literature, documenting an invention as design fiction. Not a legal filing." },
+    { "termCode": "ZIAA-T-074", "name": "Prior-art critique", "departmentId": "DEPT-SPECULATIVE-ENGINEERING", "description": "The section of a disclosure that states honestly what already exists and how the proposal differs." },
+
+    { "termCode": "ZIAA-T-080", "name": "Anomaly containment protocol", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "The documented procedure invoked when an experimental system enters an uncontrolled state, covering isolation, verification and release." },
+    { "termCode": "ZIAA-T-081", "name": "Root-cause analysis", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "The investigation that establishes why an incident occurred, published as a post-mortem so the negative result remains citable." },
+    { "termCode": "ZIAA-T-082", "name": "Salvaged component quarantine", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "Isolation of components recovered from a failed system pending assessment, with chain-of-custody recorded in the revision ledger." },
+    { "termCode": "ZIAA-T-083", "name": "Clearance tier", "departmentId": "DEPT-APPLIED-ANOMALIES", "description": "The Institute's access classification for a record, from 1-ALPHA through 4-DELTA to BLACK-BOX, governing who may consult the full dossier." }
+  ]
+}

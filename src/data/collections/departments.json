@@ -1,0 +1,269 @@
+[
+  {
+    "id": "DIV-A",
+    "kind": "division",
+    "code": "ZIAA-DIV-A",
+    "slug": "acoustic-material-systems",
+    "name": "Division of Acoustic & Material Systems",
+    "alternateName": "DIV-A",
+    "establishedYear": 2021,
+    "headId": "FELLOW-006",
+    "homeFacility": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "mission": "Studies sound as a physical and material phenomenon: nonlinear feedback, boundary resonance, mineral and vegetal substrates, and the architectural envelopes that condition them.",
+    "focusAreas": [
+      "nonlinear acoustic feedback",
+      "boundary and room-mode resonance",
+      "material acoustics and lithophones",
+      "high-order ambisonics",
+      "architectural reverberation"
+    ],
+    "departmentIds": [
+      "DEPT-APPLIED-ANOMALIES",
+      "DEPT-EXPERIMENTAL-AUDIO",
+      "DEPT-ACOUSTIC-ARCHITECTURE"
+    ]
+  },
+  {
+    "id": "DIV-C",
+    "kind": "division",
+    "code": "ZIAA-DIV-C",
+    "slug": "computation-interface",
+    "name": "Division of Computation & Interface",
+    "alternateName": "DIV-C",
+    "establishedYear": 2021,
+    "headId": "FELLOW-002",
+    "homeFacility": "Studio D (Computational Creativity & Generative Software)",
+    "mission": "Builds the computational layer of the Institute: real-time DSP engines, generative and autonomous compositional systems, and the tactile and spatial interfaces through which they are played.",
+    "focusAreas": [
+      "real-time DSP and low-latency audio",
+      "autonomous musical agents",
+      "neural audio resynthesis",
+      "haptic and microtonal interfaces",
+      "browser-based creative tooling"
+    ],
+    "departmentIds": [
+      "DEPT-COMPUTATIONAL-CREATIVITY",
+      "DEPT-GENERATIVE-SOFTWARE",
+      "DEPT-PERCEPTUAL-INTERFACES"
+    ]
+  },
+  {
+    "id": "DIV-S",
+    "kind": "division",
+    "code": "ZIAA-DIV-S",
+    "slug": "signal-speculative-research",
+    "name": "Division of Signal & Speculative Research",
+    "alternateName": "DIV-S",
+    "establishedYear": 2022,
+    "headId": "FELLOW-007",
+    "homeFacility": "Studio C (Signal Archaeology & Archival Audio Lab)",
+    "mission": "Recovers signals from degraded and marginal media, maintains the remote listening estate, and formalises the Institute's design-fiction practice into reviewable disclosures.",
+    "focusAreas": [
+      "non-contact optical audio extraction",
+      "magnetic media recovery",
+      "atmospheric VLF and infrasound listening",
+      "autonomous remote acoustic monitoring",
+      "speculative patent drafting"
+    ],
+    "departmentIds": [
+      "DEPT-SIGNAL-ARCHAEOLOGY",
+      "DEPT-SPECULATIVE-ENGINEERING"
+    ]
+  },
+  {
+    "id": "DEPT-APPLIED-ANOMALIES",
+    "kind": "department",
+    "code": "ZIAA-DEPT-AA",
+    "slug": "applied-anomalies",
+    "name": "Department of Applied Anomalies",
+    "alternateName": "Applied Anomalies Group",
+    "divisionId": "DIV-A",
+    "discipline": "Applied Anomalies",
+    "establishedYear": 2021,
+    "headId": "FELLOW-001",
+    "fellowIds": [
+      "FELLOW-001",
+      "FELLOW-011"
+    ],
+    "homeFacility": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "mission": "Treats edge-case acoustic and computational phenomena — feedback, hysteresis, phantom fundamentals, runaway resonance — as design material rather than as defects to be suppressed.",
+    "focusAreas": [
+      "intentional electroacoustic feedback",
+      "physical hysteresis as expressive parameter",
+      "boundary-condition instability",
+      "self-regulating acoustic instruments"
+    ]
+  },
+  {
+    "id": "DEPT-EXPERIMENTAL-AUDIO",
+    "kind": "department",
+    "code": "ZIAA-DEPT-EAS",
+    "slug": "experimental-audio-systems",
+    "name": "Department of Experimental Audio Systems",
+    "alternateName": "Experimental Audio Systems Group",
+    "divisionId": "DIV-A",
+    "discipline": "Experimental Audio Systems",
+    "establishedYear": 2021,
+    "headId": "FELLOW-014",
+    "fellowIds": [
+      "FELLOW-014",
+      "FELLOW-009",
+      "FELLOW-020"
+    ],
+    "homeFacility": "Studio B (Physical Computing & Speculative Hardware)",
+    "mission": "Designs and builds the Institute's synthesis hardware: analog signal paths, wave-terrain sources, physical resonators and reactive acoustic devices, from bench mock-up to calibrated instrument.",
+    "focusAreas": [
+      "analog and discrete synthesis circuits",
+      "wave-terrain modelling",
+      "resonant wood and mineral substrates",
+      "contact transduction and calibration"
+    ]
+  },
+  {
+    "id": "DEPT-ACOUSTIC-ARCHITECTURE",
+    "kind": "department",
+    "code": "ZIAA-DEPT-ARC",
+    "slug": "acoustic-architecture",
+    "name": "Department of Acoustic Architecture",
+    "alternateName": "Acoustic Architecture Group",
+    "divisionId": "DIV-A",
+    "discipline": "Acoustic Architecture",
+    "establishedYear": 2022,
+    "headId": "FELLOW-006",
+    "fellowIds": [
+      "FELLOW-006",
+      "FELLOW-018"
+    ],
+    "homeFacility": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "mission": "Works at the scale of the room: multichannel loudspeaker geometries, subterranean resonant volumes, and site-specific installations whose acoustics are part of the instrument.",
+    "focusAreas": [
+      "multichannel loudspeaker domes and arrays",
+      "subterranean resonant vaults",
+      "site-specific sound installation",
+      "architectural reverberation control"
+    ]
+  },
+  {
+    "id": "DEPT-COMPUTATIONAL-CREATIVITY",
+    "kind": "department",
+    "code": "ZIAA-DEPT-CC",
+    "slug": "computational-creativity",
+    "name": "Department of Computational Creativity",
+    "alternateName": "Computational Creativity Group",
+    "divisionId": "DIV-C",
+    "discipline": "Computational Creativity",
+    "establishedYear": 2021,
+    "headId": "FELLOW-005",
+    "fellowIds": [
+      "FELLOW-005",
+      "FELLOW-013"
+    ],
+    "homeFacility": "Studio D (Computational Creativity & Generative Software)",
+    "mission": "Researches machine agency in composition: autonomous musical agents, procedural scoring, neural resynthesis and the evaluation problem of judging generative output.",
+    "focusAreas": [
+      "autonomous musical agents",
+      "real-time procedural scoring",
+      "neural audio resynthesis",
+      "latent audio space navigation"
+    ]
+  },
+  {
+    "id": "DEPT-GENERATIVE-SOFTWARE",
+    "kind": "department",
+    "code": "ZIAA-DEPT-GS",
+    "slug": "generative-software",
+    "name": "Department of Generative Software",
+    "alternateName": "Generative Software Group",
+    "divisionId": "DIV-C",
+    "discipline": "Generative Software",
+    "establishedYear": 2021,
+    "headId": "FELLOW-002",
+    "fellowIds": [
+      "FELLOW-002",
+      "FELLOW-015"
+    ],
+    "homeFacility": "Studio D (Computational Creativity & Generative Software)",
+    "mission": "Ships the Institute's public software: browser DSP engines, WebAssembly synthesis cores, live-coding systems and the interactive instruments published on this archive.",
+    "focusAreas": [
+      "Web Audio and AudioWorklet pipelines",
+      "WebAssembly DSP cores",
+      "ambisonic spatialisation engines",
+      "live-coding and networked performance"
+    ]
+  },
+  {
+    "id": "DEPT-PERCEPTUAL-INTERFACES",
+    "kind": "department",
+    "code": "ZIAA-DEPT-PI",
+    "slug": "perceptual-interfaces",
+    "name": "Department of Perceptual Interfaces",
+    "alternateName": "Perceptual Interfaces Group",
+    "divisionId": "DIV-C",
+    "discipline": "Perceptual Interfaces",
+    "establishedYear": 2022,
+    "headId": "FELLOW-003",
+    "fellowIds": [
+      "FELLOW-003",
+      "FELLOW-017"
+    ],
+    "homeFacility": "Studio B (Physical Computing & Speculative Hardware)",
+    "mission": "Builds the surface between performer and system: tactile acoustic floors, motorised haptic controllers, microtonal touch surfaces and gesture-tracked spatial control.",
+    "focusAreas": [
+      "tactile acoustic floor arrays",
+      "motorised haptic controllers",
+      "microtonal touch surfaces",
+      "spatial gesture tracking"
+    ]
+  },
+  {
+    "id": "DEPT-SIGNAL-ARCHAEOLOGY",
+    "kind": "department",
+    "code": "ZIAA-DEPT-SA",
+    "slug": "signal-archaeology",
+    "name": "Department of Signal Archaeology",
+    "alternateName": "Signal Archaeology Group",
+    "divisionId": "DIV-S",
+    "discipline": "Signal Archaeology",
+    "establishedYear": 2022,
+    "headId": "FELLOW-007",
+    "fellowIds": [
+      "FELLOW-007",
+      "FELLOW-010",
+      "FELLOW-016",
+      "FELLOW-019"
+    ],
+    "homeFacility": "Studio C (Signal Archaeology & Archival Audio Lab)",
+    "mission": "Recovers audio from media that can no longer be played: optical scanning of lacquer and wax, magnetic remanence imaging, and long-duration listening for weak atmospheric signals.",
+    "focusAreas": [
+      "non-contact optical audio extraction",
+      "magnetic media recovery",
+      "atmospheric VLF listening",
+      "infrasound and hydrophone monitoring"
+    ]
+  },
+  {
+    "id": "DEPT-SPECULATIVE-ENGINEERING",
+    "kind": "department",
+    "code": "ZIAA-DEPT-SE",
+    "slug": "speculative-engineering",
+    "name": "Department of Speculative Engineering",
+    "alternateName": "Speculative Engineering Group",
+    "divisionId": "DIV-S",
+    "discipline": "Speculative Engineering",
+    "establishedYear": 2022,
+    "headId": "FELLOW-004",
+    "fellowIds": [
+      "FELLOW-004",
+      "FELLOW-012",
+      "FELLOW-008"
+    ],
+    "homeFacility": "Studio B (Physical Computing & Speculative Hardware)",
+    "mission": "Produces the Institute's design-fiction output: kinetic automata, impossible transports and critical hardware, documented as reviewable disclosures rather than as products.",
+    "focusAreas": [
+      "kinetic percussion automata",
+      "multi-head tape transports",
+      "experimental lutherie",
+      "critical hardware and design fiction"
+    ]
+  }
+]
