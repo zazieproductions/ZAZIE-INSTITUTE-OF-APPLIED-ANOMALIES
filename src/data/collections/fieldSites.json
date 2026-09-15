@@ -1,0 +1,323 @@
+[
+  {
+    "id": "SITE-01",
+    "name": "Mojave Desert Acoustic Sanctuary",
+    "codename": "STATION-DESERT-ALPHA",
+    "location": "Mojave Basin, California, USA",
+    "coordinates": "35°00'42.1\"N 115°28'19.4\"W",
+    "establishedYear": 2021,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 32,
+    "frequencyRange": "0.05 Hz – 48.0 kHz",
+    "physicalFootprint": "1.2 km perimeter distributed array",
+    "description": "An isolated desert research compound equipped with ground-coupled geophones, wideband VLF radio loops, and acoustic wind-sheltered microphone pods. Serves as a primary test bed for low-noise environmental recording and long-range acoustic propagation studies.",
+    "publicAccessProtocol": "Restricted field station; open to visiting sound artists by seasonal fellowship.",
+    "instrumentationList": [
+      "Triaxial Solenoid Geophones",
+      "VLF Loop Receivers",
+      "Ultrasonic Bat Detectors",
+      "Low-Noise Preamplifiers",
+      "Solar Battery Banks"
+    ]
+  },
+  {
+    "id": "SITE-02",
+    "name": "Svalbard Arctic Hydrophone Array",
+    "codename": "STATION-ICE-EPSILON",
+    "location": "Longyearbyen, Svalbard, Norway",
+    "coordinates": "78°13'12.0\"N 15°38'42.0\"E",
+    "establishedYear": 2022,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 16,
+    "frequencyRange": "0.1 Hz – 96.0 kHz",
+    "physicalFootprint": "300m sub-surface glacial borehole string",
+    "description": "An Arctic hydrophone and seismometer string lowered into sub-glacial wells and fjord waters to track acoustic calving, sea-ice fracture dynamics, and marine mammal vocalizations.",
+    "publicAccessProtocol": "Open scientific data stream accessible via university research network.",
+    "instrumentationList": [
+      "Cryogenic Benthic Hydrophones",
+      "Piezo Borehole Seismometers",
+      "Fiber-Optic Data Line",
+      "Thermal De-Icing Wellhead"
+    ]
+  },
+  {
+    "id": "SITE-03",
+    "name": "Salton Basin Subterranean Acoustic Vault",
+    "codename": "STATION-VAULT-7",
+    "location": "Imperial Valley, California, USA",
+    "coordinates": "33°19'58.2\"N 115°50'14.6\"W",
+    "establishedYear": 2021,
+    "activeStatus": "ACTIVE_BENCH_TESTING",
+    "channelCount": 64,
+    "frequencyRange": "1.0 Hz – 24.0 kHz",
+    "physicalFootprint": "2,400 sq meter underground reinforced bunker",
+    "description": "A subterranean concrete installation vault featuring an 18.4-second natural acoustic reverberation time. Utilized for extreme acoustic feedback tests, high-order ambisonic sound staging, and physical modeling calibration.",
+    "publicAccessProtocol": "Classified engineering test site; access managed by ZIAA Director of Research.",
+    "instrumentationList": [
+      "64-Channel Genelec Array",
+      "High-SPL Bass Waveguides",
+      "Laser Doppler Vibrometer",
+      "Environmental Dehumidification"
+    ]
+  },
+  {
+    "id": "SITE-04",
+    "name": "Atacama Infrasound Array",
+    "codename": "STATION-ATACAMA-OBS",
+    "location": "Antofagasta Region, Chile",
+    "coordinates": "23°51'48.0\"S 67°45'22.0\"W",
+    "establishedYear": 2022,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 12,
+    "frequencyRange": "0.01 Hz – 20.0 Hz",
+    "physicalFootprint": "4 km equilateral triangular array",
+    "description": "An ultra-low frequency micro-barometer array situated at 4,200 meters elevation in the high Andes, monitoring atmospheric waves, volcanic rumbles, and stratospheric wind shears.",
+    "publicAccessProtocol": "Real-time infrasound telemetry published to international geophysical archives.",
+    "instrumentationList": [
+      "Differential Micro-Barometers",
+      "Porous Acoustic Hose Filters",
+      "Satellite Uplink Transceiver",
+      "Low-Temp Lithium Cells"
+    ]
+  },
+  {
+    "id": "SITE-05",
+    "name": "Kallio Granite Resonant Cavern",
+    "codename": "STATION-KALLIO-ROCK",
+    "location": "Helsinki, Finland",
+    "coordinates": "60°11'06.0\"N 24°57'02.0\"E",
+    "establishedYear": 2023,
+    "activeStatus": "ACTIVE_BENCH_TESTING",
+    "channelCount": 24,
+    "frequencyRange": "10.0 Hz – 30.0 kHz",
+    "physicalFootprint": "800 sq meter bedrock quarry cavern",
+    "description": "A solid bedrock granite chamber carved into Finnish shield rock, used for physical lithophone testing, stone resonance analysis, and acoustic boundary reflections.",
+    "publicAccessProtocol": "Open for sound artist residencies during biennial creative workshops.",
+    "instrumentationList": [
+      "Hydraulic Basalt Clamps",
+      "Contact Piezo Pickups",
+      "High-Resolution Ambisonic Mic",
+      "Temperature Stabilizer"
+    ]
+  },
+  {
+    "id": "SITE-06",
+    "name": "Orford Ness Coastal Listening Pavilion",
+    "codename": "STATION-ORFORD-COAST",
+    "location": "Suffolk, United Kingdom",
+    "coordinates": "52°05'49.0\"N 1°34'32.0\"E",
+    "establishedYear": 2022,
+    "activeStatus": "SEASONAL_OPERATION",
+    "channelCount": 16,
+    "frequencyRange": "2.0 Hz – 40.0 kHz",
+    "physicalFootprint": "Decommissioned coastal concrete pagoda",
+    "description": "A coastal architectural sound pavilion exploring ocean wave reflection, wind excitation of structural concrete cavities, and maritime signal archaeology.",
+    "publicAccessProtocol": "Open to the public during scheduled summer listening sessions.",
+    "instrumentationList": [
+      "Acoustic Parabolic Reflectors",
+      "Binaural Dummy Head",
+      "Hydrophone String",
+      "Weatherproof Dante Interface"
+    ]
+  },
+  {
+    "id": "SITE-07",
+    "name": "Kyoto Bamboo Canopy Listening Post",
+    "codename": "STATION-ARASHIYAMA-POST",
+    "location": "Kyoto Prefecture, Japan",
+    "coordinates": "35°00'58.0\"N 135°40'05.0\"E",
+    "establishedYear": 2023,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 8,
+    "frequencyRange": "20.0 Hz – 50.0 kHz",
+    "physicalFootprint": "Autonomous tree-mounted sensor node",
+    "description": "A solar-powered canopy listening node sonifying natural wind friction across bamboo stalks, ultrasonic insect calls, and seasonal rain dynamics.",
+    "publicAccessProtocol": "Live audio stream broadcast via ZIAA creative web portal.",
+    "instrumentationList": [
+      "Ultra-Low-Noise Mic Pods",
+      "Ultrasonic Bio-Acoustic Sensor",
+      "Solar Canopy Harvest Unit",
+      "Low-Power Wi-Fi Bridge"
+    ]
+  },
+  {
+    "id": "SITE-08",
+    "name": "Cascadia Tectonic Listening Array",
+    "codename": "STATION-CASCADE-SEISMIC",
+    "location": "Olympic Peninsula, Washington, USA",
+    "coordinates": "47°48'14.0\"N 123°40'28.0\"W",
+    "establishedYear": 2022,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 18,
+    "frequencyRange": "0.005 Hz – 100.0 Hz",
+    "physicalFootprint": "5-point borehole array along Olympic range",
+    "description": "Deep borehole geophones capturing sub-audible crustal vibrations, translated via algorithmic pitch transposition into audible musical ranges in real time.",
+    "publicAccessProtocol": "Data fed directly into the ZIAA Generative Composition and DSP Bench.",
+    "instrumentationList": [
+      "Streckeisen Broadband Seismometers",
+      "24-Bit Seismic Digitizers",
+      "GPS Precision Timing",
+      "Continuous Cellular Uplink"
+    ]
+  },
+  {
+    "id": "SITE-09",
+    "name": "Reykjavik Geothermal Acoustic Rig",
+    "codename": "STATION-REYKJAVIK-STEAM",
+    "location": "Hellisheiði, Iceland",
+    "coordinates": "64°02'21.0\"N 21°24'05.0\"W",
+    "establishedYear": 2023,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 12,
+    "frequencyRange": "0.5 Hz – 20.0 kHz",
+    "physicalFootprint": "Direct coupling to geothermal borehole bypass",
+    "description": "High-temperature transducers mounted to geothermal wellheads, capturing the roaring acoustic pressure of pressurized volcanic steam and underground boiling brine.",
+    "publicAccessProtocol": "Collaborative research with Icelandic energy and sound art institutions.",
+    "instrumentationList": [
+      "High-Temp Pressure Transducers",
+      "Accelerometer Mounts",
+      "Heat-Shielded Cabling",
+      "Dante Audio Interface"
+    ]
+  },
+  {
+    "id": "SITE-10",
+    "name": "Berlin Teufelsberg Geodesic Listening Lab",
+    "codename": "STATION-TEUFELSBERG-DOME",
+    "location": "Berlin-Grunewald, Germany",
+    "coordinates": "52°29'51.0\"N 13°14'26.0\"E",
+    "establishedYear": 2022,
+    "activeStatus": "ACTIVE_BENCH_TESTING",
+    "channelCount": 32,
+    "frequencyRange": "5.0 Hz – 22.0 kHz",
+    "physicalFootprint": "Former cold-war geodesic radar dome",
+    "description": "A radome structure featuring extraordinary acoustic echo and multi-path flutter characteristics. Utilized for spatial ambisonic diffusion and acoustic impulse response profiling.",
+    "publicAccessProtocol": "Open for artistic sound performances by invitation.",
+    "instrumentationList": [
+      "32-Speaker Hemispherical Rig",
+      "Laser Distance Sensors",
+      "Multi-Pattern Condensers",
+      "Rotary Speaker Platform"
+    ]
+  },
+  {
+    "id": "SITE-11",
+    "name": "Bermuda Oceanic SOFAR Sound Station",
+    "codename": "STATION-BERMUDA-SOFAR",
+    "location": "Bermuda Channel, North Atlantic",
+    "coordinates": "32°20'00.0\"N 64°45'00.0\"W",
+    "establishedYear": 2023,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 8,
+    "frequencyRange": "5.0 Hz – 15.0 kHz",
+    "physicalFootprint": "Tethered mooring at 800m depth",
+    "description": "Deep-ocean hydrophone station moored within the oceanic SOFAR channel, capturing low-frequency acoustic signals traveling thousands of kilometers across the Atlantic basin.",
+    "publicAccessProtocol": "Open data for marine sound research and spatial sonification projects.",
+    "instrumentationList": [
+      "Titanium-Cased Hydrophones",
+      "Mooring Recovery Acoustic Release",
+      "Satellite Surface Buoy",
+      "Deep-Sea Batteries"
+    ]
+  },
+  {
+    "id": "SITE-12",
+    "name": "Joshua Tree Natural Radio Pod",
+    "codename": "STATION-VLF-NATURAL",
+    "location": "Joshua Tree National Park, California, USA",
+    "coordinates": "33°52'24.0\"N 116°02'48.0\"W",
+    "establishedYear": 2023,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 6,
+    "frequencyRange": "200 Hz – 30.0 kHz",
+    "physicalFootprint": "Dual 15-meter orthogonal loop antennas",
+    "description": "Radio listening station tuned to naturally occurring VLF emissions—lightning whistlers, dawn chorus, and magnetospheric chirps—without artificial power grid interference.",
+    "publicAccessProtocol": "Real-time audio feed streamed to ZIAA Spectral Lab for creative resynthesis.",
+    "instrumentationList": [
+      "Orthogonal Magnetic Loop Antennas",
+      "Ultra-Low-Noise JFET Preamp",
+      "Solar Regulators",
+      "High-Speed Audio Codec"
+    ]
+  },
+  {
+    "id": "SITE-13",
+    "name": "Gotthard Base Tunnel Acoustic Duct",
+    "codename": "STATION-ALPINE-DUCT",
+    "location": "Uri / Ticino, Switzerland",
+    "coordinates": "46°31'00.0\"N 8°42'00.0\"E",
+    "establishedYear": 2024,
+    "activeStatus": "PERIODIC_TESTING",
+    "channelCount": 16,
+    "frequencyRange": "0.2 Hz – 10.0 kHz",
+    "physicalFootprint": "1.5 km auxiliary cross-passage tunnel",
+    "description": "An elongated subterranean acoustic waveguide used for studying one-dimensional planar sound propagation, low-frequency wave reflection, and boundary layer attenuation.",
+    "publicAccessProtocol": "Access restricted to scheduled maintenance windows.",
+    "instrumentationList": [
+      "Line-Source Horn Drivers",
+      "Calibrated SPL Array",
+      "High-Precision Thermometers",
+      "Ethernet Fiber Link"
+    ]
+  },
+  {
+    "id": "SITE-14",
+    "name": "Namib Dune Singing Sand Observatory",
+    "codename": "STATION-NAMIB-BOOM",
+    "location": "Sossusvlei, Namib Desert, Namibia",
+    "coordinates": "24°44'00.0\"S 15°18'00.0\"W",
+    "establishedYear": 2024,
+    "activeStatus": "SEASONAL_OPERATION",
+    "channelCount": 10,
+    "frequencyRange": "40.0 Hz – 1.2 kHz",
+    "physicalFootprint": "Linear array across slip-face of Dune 45",
+    "description": "Specialized seismic and acoustic array recording the low-frequency acoustic drone ('singing sands') produced by synchronized shear avalanche motion of uniform quartz grains.",
+    "publicAccessProtocol": "Research archive documentation open under Creative Commons attribution.",
+    "instrumentationList": [
+      "Miniature Geophone Spikes",
+      "Infrasonic Condenser Mics",
+      "Sand-Proof Enclosures",
+      "Solar Battery Hub"
+    ]
+  },
+  {
+    "id": "SITE-15",
+    "name": "Edinburgh Vaults Spatial Sound Lab",
+    "codename": "STATION-EDINBURGH-STONE",
+    "location": "South Bridge Vaults, Edinburgh, Scotland",
+    "coordinates": "55°56'55.0\"N 3°11'15.0\"W",
+    "establishedYear": 2022,
+    "activeStatus": "ACTIVE_BENCH_TESTING",
+    "channelCount": 20,
+    "frequencyRange": "20.0 Hz – 22.0 kHz",
+    "physicalFootprint": "Interconnected 18th-century stone archways",
+    "description": "Historic sandstone chamber network utilized for complex multi-room convolution reverb profiling and sound spatialization experiments.",
+    "publicAccessProtocol": "Accessible for artist residencies and sound installation research.",
+    "instrumentationList": [
+      "Multichannel Genelec Monitors",
+      "Sine Sweep Generation System",
+      "Directional Measurement Microphones",
+      "Custom Reverb Convolver"
+    ]
+  },
+  {
+    "id": "SITE-16",
+    "name": "Oahu Benthic Bio-Acoustic Array",
+    "codename": "STATION-HAWAII-REEF",
+    "location": "Kaneohe Bay, Oahu, Hawaii, USA",
+    "coordinates": "21°26'15.0\"N 157°47'30.0\"W",
+    "establishedYear": 2024,
+    "activeStatus": "ACTIVE_CONTINUOUS",
+    "channelCount": 8,
+    "frequencyRange": "10.0 Hz – 80.0 kHz",
+    "physicalFootprint": "Reef-floor benthic hydrophone cluster",
+    "description": "Continuous underwater sound recording tracking coral reef health, snapping shrimp acoustic crackle, and seasonal humpback whale song migrations.",
+    "publicAccessProtocol": "Live underwater audio stream and open bio-acoustic dataset.",
+    "instrumentationList": [
+      "Broadband Hydrophone Cluster",
+      "Submerged Battery Vault",
+      "Shoreline Fiber Receiver",
+      "Automated Detection Classifier"
+    ]
+  }
+]

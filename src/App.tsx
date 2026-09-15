@@ -1,174 +1,145 @@
-import React, { useState, useEffect } from 'react';
-import { Header, TabKey } from './components/Header';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { Loading } from './components/Loading';
 import { Dashboard } from './pages/Dashboard';
-import { PrototypesArchive } from './pages/PrototypesArchive';
-import { PatentDossiers } from './pages/PatentDossiers';
-import { LabLogsStream } from './pages/LabLogsStream';
-import { AcousticBenchPage } from './pages/AcousticBenchPage';
-import { SpectraLabConsole } from './components/SpectraLabConsole';
-import { FieldInfrastructure } from './pages/FieldInfrastructure';
-import { Monographs } from './pages/Monographs';
-import { BlackVaultFailures } from './pages/BlackVaultFailures';
-import { PersonnelDirectory } from './pages/PersonnelDirectory';
-import { AuditRevisions } from './pages/AuditRevisions';
-import { VoidOculusPage } from './pages/VoidOculusPage';
-import { DossierModal } from './components/DossierModal';
-import { GlobalSearchModal } from './components/GlobalSearchModal';
-import {
-  getPrototypeById,
-  getPatentById,
-  getLabLogById,
-  getFailureById,
-  getPersonnelById,
-  getFieldSiteById
-} from './data/archive';
 import { audioEngine } from './audio/audioEngine';
 
-export function App() {
-  const [activeTab, setActiveTab] = useState<TabKey>('dashboard');
-  const [searchModalOpen, setSearchModalOpen] = useState<boolean>(false);
-  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+/* Route-level code splitting: each section (and its data) is its own chunk. */
+const About = lazy(() => import('./pages/About'));
+const PrototypesArchive = lazy(() => import('./pages/PrototypesArchive'));
+const PatentDossiers = lazy(() => import('./pages/PatentDossiers'));
+const LabLogsStream = lazy(() => import('./pages/LabLogsStream'));
+const Monographs = lazy(() => import('./pages/Monographs'));
+const AcousticBenchPage = lazy(() => import('./pages/AcousticBenchPage'));
+const SpectraLabPage = lazy(() => import('./pages/SpectraLabPage'));
+const VoidOculusPage = lazy(() => import('./pages/VoidOculusPage'));
+const FieldInfrastructure = lazy(() => import('./pages/FieldInfrastructure'));
+const BlackVaultFailures = lazy(() => import('./pages/BlackVaultFailures'));
+const PersonnelDirectory = lazy(() => import('./pages/PersonnelDirectory'));
+const AuditRevisions = lazy(() => import('./pages/AuditRevisions'));
+const RecordPage = lazy(() => import('./pages/RecordPage'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const GlobalSearchModal = lazy(() => import('./components/GlobalSearchModal'));
 
-  // Dossier modal state
-  const [dossierOpen, setDossierOpen] = useState<boolean>(false);
-  const [selectedRecord, setSelectedRecord] = useState<any>(null);
-  const [selectedRecordType, setSelectedRecordType] = useState<any>('prototype');
-
+/** Restore top-of-page on navigation (SPA default keeps scroll position). */
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const unsub = audioEngine.subscribe(playing => {
-      setIsAudioPlaying(playing);
-    });
-    return () => {
-      unsub();
-    };
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [pathname]);
+  return null;
+}
 
-  const openDossier = (type: any, id: string) => {
-    let rec: any = null;
-    if (type === 'prototype') rec = getPrototypeById(id);
-    else if (type === 'patent') rec = getPatentById(id);
-    else if (type === 'log') rec = getLabLogById(id);
-    else if (type === 'failure') rec = getFailureById(id);
-    else if (type === 'personnel') rec = getPersonnelById(id);
-    else if (type === 'site') rec = getFieldSiteById(id);
+/** Legacy hash/tab URLs (#prototypes, ?tab=vault) → canonical paths. */
+const LEGACY_TABS: Record<string, string> = {
+  dashboard: '/',
+  prototypes: '/prototypes',
+  patents: '/patents',
+  logs: '/research-notes',
+  bench: '/acoustic-bench',
+  spectra: '/spectra-lab',
+  oculus: '/void-oculus',
+  infrastructure: '/field-stations',
+  monographs: '/monographs',
+  vault: '/post-mortems',
+  personnel: '/fellows',
+  audit: '/system-audit'
+};
 
-    if (rec) {
-      setSelectedRecord(rec);
-      setSelectedRecordType(type);
-      setDossierOpen(true);
-    }
-  };
+function LegacyRedirect({ tab }: { tab: string }) {
+  return <Navigate to={LEGACY_TABS[tab] ?? '/'} replace />;
+}
+
+export function App() {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => audioEngine.subscribe(playing => setIsAudioPlaying(playing)), []);
+
+  // Legacy hash-tab support (#logs etc.)
+  const legacyHash = location.hash.replace('#', '');
+  if (location.pathname === '/' && legacyHash && LEGACY_TABS[legacyHash]) {
+    return <LegacyRedirect tab={legacyHash} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#030508] text-zinc-300 flex flex-col font-mono selection:bg-emerald-500 selection:text-black">
-      {/* Top Header */}
-      <Header
-        activeTab={activeTab}
-        onSelectTab={setActiveTab}
-        onOpenSearch={() => setSearchModalOpen(true)}
-        isAudioPlaying={isAudioPlaying}
-      />
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[#dfb76c] focus:text-black focus:font-bold focus:rounded"
+      >
+        Skip to main content
+      </a>
+      <ScrollToTop />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6">
-        {activeTab === 'dashboard' && (
-          <Dashboard
-            onSelectTab={setActiveTab}
-            onSelectRecord={openDossier}
-          />
-        )}
+      <Header onOpenSearch={() => setSearchOpen(true)} isAudioPlaying={isAudioPlaying} />
 
-        {activeTab === 'prototypes' && (
-          <PrototypesArchive
-            onSelectPrototype={id => openDossier('prototype', id)}
-          />
-        )}
+      <main id="main-content" tabIndex={-1} className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 outline-none">
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/about" element={<About />} />
 
-        {activeTab === 'patents' && (
-          <PatentDossiers
-            onSelectPatent={id => openDossier('patent', id)}
-          />
-        )}
+            <Route path="/prototypes" element={<PrototypesArchive />} />
+            <Route path="/prototypes/:id" element={<RecordPage type="prototype" />} />
 
-        {activeTab === 'logs' && (
-          <LabLogsStream
-            onSelectLog={id => openDossier('log', id)}
-          />
-        )}
+            <Route path="/patents" element={<PatentDossiers />} />
+            <Route path="/patents/:id" element={<RecordPage type="patent" />} />
 
-        {activeTab === 'bench' && (
-          <AcousticBenchPage />
-        )}
+            <Route path="/research-notes" element={<LabLogsStream />} />
+            <Route path="/research-notes/:id" element={<RecordPage type="log" />} />
 
-        {activeTab === 'spectra' && (
-          <div className="space-y-4">
-            <div className="flex justify-between items-center bg-[#05080c] border border-cyan-950 p-4 rounded-lg">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-                  <h1 className="text-base font-bold text-white tracking-wider">
-                    SPECTRA//LAB — AUDIOVISUAL DSP WORKSTATION
-                  </h1>
-                </div>
-                <p className="text-zinc-400 text-xs mt-1">
-                  Volumetric spectral field canvas, particle physics, 64-band FFT analysis, 8x8 mod matrix, and automated parameter curves.
-                </p>
-              </div>
-            </div>
-            <SpectraLabConsole />
-          </div>
-        )}
+            <Route path="/monographs" element={<Monographs />} />
+            <Route path="/monographs/:id" element={<Monographs />} />
 
-        {activeTab === 'oculus' && (
-          <VoidOculusPage />
-        )}
+            <Route path="/acoustic-bench" element={<AcousticBenchPage />} />
+            <Route path="/spectra-lab" element={<SpectraLabPage />} />
+            <Route path="/void-oculus" element={<VoidOculusPage />} />
 
-        {activeTab === 'infrastructure' && (
-          <FieldInfrastructure
-            onSelectSite={id => openDossier('site', id)}
-          />
-        )}
+            <Route path="/field-stations" element={<FieldInfrastructure />} />
+            <Route path="/field-stations/:id" element={<RecordPage type="site" />} />
 
-        {activeTab === 'monographs' && (
-          <Monographs />
-        )}
+            <Route path="/post-mortems" element={<BlackVaultFailures />} />
+            <Route path="/post-mortems/:id" element={<RecordPage type="failure" />} />
 
-        {activeTab === 'vault' && (
-          <BlackVaultFailures
-            onSelectFailure={id => openDossier('failure', id)}
-          />
-        )}
+            <Route path="/fellows" element={<PersonnelDirectory />} />
+            <Route path="/fellows/:id" element={<RecordPage type="personnel" />} />
 
-        {activeTab === 'personnel' && (
-          <PersonnelDirectory
-            onSelectFellow={id => openDossier('personnel', id)}
-          />
-        )}
+            <Route path="/system-audit" element={<AuditRevisions />} />
+            <Route path="/search" element={<SearchPage />} />
 
-        {activeTab === 'audit' && (
-          <AuditRevisions />
-        )}
+            {/* Redirects for earlier/alternate URL vocabulary */}
+            <Route path="/dashboard" element={<Navigate to="/" replace />} />
+            <Route path="/overview" element={<Navigate to="/" replace />} />
+            <Route path="/logs" element={<Navigate to="/research-notes" replace />} />
+            <Route path="/logs/:id" element={<RecordPage type="log" redirectTo="/research-notes" />} />
+            <Route path="/lab-logs" element={<Navigate to="/research-notes" replace />} />
+            <Route path="/bench" element={<Navigate to="/acoustic-bench" replace />} />
+            <Route path="/spectra" element={<Navigate to="/spectra-lab" replace />} />
+            <Route path="/oculus" element={<Navigate to="/void-oculus" replace />} />
+            <Route path="/infrastructure" element={<Navigate to="/field-stations" replace />} />
+            <Route path="/vault" element={<Navigate to="/post-mortems" replace />} />
+            <Route path="/failures" element={<Navigate to="/post-mortems" replace />} />
+            <Route path="/personnel" element={<Navigate to="/fellows" replace />} />
+            <Route path="/personnel/:id" element={<RecordPage type="personnel" redirectTo="/fellows" />} />
+            <Route path="/audit" element={<Navigate to="/system-audit" replace />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
 
-      {/* Footer */}
       <Footer />
 
-      {/* Classified Dossier Modal */}
-      <DossierModal
-        isOpen={dossierOpen}
-        onClose={() => setDossierOpen(false)}
-        record={selectedRecord}
-        recordType={selectedRecordType}
-        onNavigateRecord={(type, id) => openDossier(type, id)}
-      />
-
-      {/* Global OMNISearch Modal */}
-      <GlobalSearchModal
-        isOpen={searchModalOpen}
-        onClose={() => setSearchModalOpen(false)}
-        onSelectRecord={(type, id) => openDossier(type, id)}
-      />
+      {searchOpen && (
+        <Suspense fallback={null}>
+          <GlobalSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

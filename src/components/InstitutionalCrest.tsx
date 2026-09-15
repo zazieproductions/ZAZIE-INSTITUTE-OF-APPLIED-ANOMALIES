@@ -4,12 +4,15 @@ interface CrestProps {
   className?: string;
   size?: number;
   variant?: 'gold' | 'emerald' | 'monochrome';
+  /** Purely ornamental instance (watermark); hidden from assistive tech. */
+  decorative?: boolean;
 }
 
 export const InstitutionalCrest: React.FC<CrestProps> = ({
   className = '',
   size = 48,
-  variant = 'gold'
+  variant = 'gold',
+  decorative = false
 }) => {
   const strokeColor =
     variant === 'gold' ? '#d4af37' : variant === 'emerald' ? '#34d399' : '#a1a1aa';
@@ -24,7 +27,10 @@ export const InstitutionalCrest: React.FC<CrestProps> = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`shrink-0 ${className}`}
-      aria-label="Official Insignia of the Zazie Institute of Applied Anomalies"
+      role={decorative ? undefined : 'img'}
+      aria-hidden={decorative ? true : undefined}
+      aria-label={decorative ? undefined : 'Institutional crest of the Zazie Institute of Applied Anomalies (ZIAA)'}
+      focusable="false"
     >
       {/* Outer Decorative Ring */}
       <circle cx="50" cy="50" r="47" stroke={strokeColor} strokeWidth="1.2" strokeDasharray="3 1.5" />

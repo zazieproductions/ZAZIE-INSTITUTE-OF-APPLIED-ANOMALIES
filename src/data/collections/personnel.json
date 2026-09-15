@@ -1,0 +1,326 @@
+[
+  {
+    "id": "FELLOW-001",
+    "name": "Dr. V. Aris Thorne",
+    "title": "Director of Research & Applied Anomalies",
+    "specialization": "Acoustic Feedback Dynamics & Speculative Sound Hardware",
+    "clearance": "4-DELTA",
+    "joinedYear": 2021,
+    "facilityAssignment": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "biography": "Dr. Thorne directs the core applied anomalies research group at ZIAA. With a background in experimental physics and computer music, their work explores boundary acoustic phenomena: intentional electroacoustic feedback loops, material resonance in unconventional mineral substrates, and self-regulating acoustic instruments. Formerly a visiting researcher at IRCAM and CCRMA.",
+    "selectedPublications": [
+      "Thorne, V. A., 'Nonlinear Acoustic Feedback in Architectural Spaces,' ZIAA Press, 2022.",
+      "Thorne, V. A. & Lindqvist, S., 'Controlled Boundary Resonance in Large-Scale Sound Art,' Computer Music Journal, 2024.",
+      "Thorne, V. A., 'Physical Hysteresis as an Expressive Sonic Parameter,' NIME Proceedings, 2025."
+    ],
+    "activePrototypesCount": 14,
+    "voiceprintHash": "SHA256:7e8a9f2b1d3c5e4a6f8b0d2e4c6a8f0b2d4e6f8a"
+  },
+  {
+    "id": "FELLOW-002",
+    "name": "Elena Mstislav",
+    "title": "Principal DSP Architect & Creative Technologist",
+    "specialization": "Real-Time Audio Algorithms & Low-Latency Software Systems",
+    "clearance": "4-DELTA",
+    "joinedYear": 2021,
+    "facilityAssignment": "Studio D (Computational Creativity & Generative Software)",
+    "biography": "Elena Mstislav leads software architecture at the Institute, authoring custom C++ and WebAssembly digital signal processing engines. Her research focuses on low-latency audio pipelines, micro-buffer wavetable interpolation, and real-time spatial audio rendering engines for immersive multi-speaker environments.",
+    "selectedPublications": [
+      "Mstislav, E., 'Sub-Millisecond Ambisonic Convolution on Multi-Core Embedded Architectures,' DAFx Proceedings, 2023.",
+      "Mstislav, E. & Al-Haddad, M., 'Continuous Latent Sound Synthesis in Pure Data,' ICMC Proceedings, 2025.",
+      "Mstislav, E., 'Real-Time Audio Worklet Scheduling in Browser Environments,' Journal of the Audio Engineering Society, 2026."
+    ],
+    "activePrototypesCount": 18,
+    "voiceprintHash": "SHA256:3a1b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b"
+  },
+  {
+    "id": "FELLOW-003",
+    "name": "Dr. Tamsin Callow",
+    "title": "Head of Perceptual Interfaces & Physical Computing",
+    "specialization": "Haptic Audio Controllers & Microtonal Tactile Surfaces",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2021,
+    "facilityAssignment": "Studio B (Physical Computing & Speculative Hardware)",
+    "biography": "Dr. Callow designs novel physical instruments that translate microtonal tuning, polyphonic pressure, and tactile acoustic feedback into expressive performance systems. Her work merges traditional instrument luthiery with motorized haptic actuators and precision capacitance arrays.",
+    "selectedPublications": [
+      "Callow, T., 'Motorized Resistance in Microtonal Keyboard Layouts,' NIME Proceedings, 2023.",
+      "Callow, T. & Vance, J., 'Speculative Hardware Interfaces for Intangible Sound,' Leonardo Music Journal, 2024.",
+      "Callow, T., 'Whole-Body Tactile Perception of Low-Frequency Sound,' Perception & Psychophysics, 2026."
+    ],
+    "activePrototypesCount": 12,
+    "voiceprintHash": "SHA256:9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0d"
+  },
+  {
+    "id": "FELLOW-004",
+    "name": "Kaveh Danesh",
+    "title": "Lead Speculative Engineer & Mechanical Prototyper",
+    "specialization": "Analog Tape Delay Systems & Kinetic Acoustic Mechanisms",
+    "clearance": "4-DELTA",
+    "joinedYear": 2021,
+    "facilityAssignment": "Studio B (Physical Computing & Speculative Hardware)",
+    "biography": "Kaveh Danesh specializes in electro-mechanical sound apparatus, custom magnetic tape loop transports, and precision kinetic instruments. His research investigates physical wear, friction hysteresis, and mechanical sound degradation as fertile artistic mediums.",
+    "selectedPublications": [
+      "Danesh, K., 'Magnetic Tape Hysteresis and Physical Memory in Sound Installations,' ZIAA Monograph Series, 2026.",
+      "Danesh, K. & Thorne, V. A., 'Continuous Loop Tape Transports with Dynamic Mechanical Tension,' Journal of Sound and Vibration, 2024.",
+      "Danesh, K., 'Mechanical Solenoid Automata for Microtonal Percussion,' Organised Sound, 2025."
+    ],
+    "activePrototypesCount": 15,
+    "voiceprintHash": "SHA256:5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c"
+  },
+  {
+    "id": "FELLOW-005",
+    "name": "Mireille O’Connor",
+    "title": "Chair of Computational Creativity & Algorithmic Composition",
+    "specialization": "Autonomous Musical Agents & Procedural Scoring Engines",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2022,
+    "facilityAssignment": "Studio D (Computational Creativity & Generative Software)",
+    "biography": "Mireille O'Connor researches algorithmic musical composition and generative audio agents. She develops software architectures that autonomously navigate vast microtonal harmonic spaces, generating non-repeating orchestral and electronic compositions responsive to environmental parameters.",
+    "selectedPublications": [
+      "O’Connor, M., 'Non-Linear Harmonic Drift in Autonomous Music Generation,' ICMC Proceedings, 2024.",
+      "O’Connor, M. & Al-Haddad, M., 'Latent Space Interpolation for Algorithmic Orchestration,' Journal of Creative Technologies, 2025.",
+      "O’Connor, M., 'Procedural Scores for Indeterminate Spatial Ensembles,' ZIAA Working Papers, 2026."
+    ],
+    "activePrototypesCount": 11,
+    "voiceprintHash": "SHA256:1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c7b8a9f0e"
+  },
+  {
+    "id": "FELLOW-006",
+    "name": "Soren Lindqvist",
+    "title": "Senior Acoustic Architect & Spatial Systems Lead",
+    "specialization": "High-Order Ambisonics & Architectural Reverberation",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2022,
+    "facilityAssignment": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "biography": "Soren Lindqvist designs spatial sound systems for public pavilions, museums, and natural landscapes. His work combines architectural acoustics, binaural synthesis, and multi-channel beamforming to create sound fields that interact directly with physical space.",
+    "selectedPublications": [
+      "Lindqvist, S. & Laurent, C., 'Spatial Sound Diffusion in Resonant Architectural Spaces,' Applied Acoustics, 2023.",
+      "Lindqvist, S., 'Calibrating Multi-Channel Ambisonic Domes for Complex Geometries,' AES Convention, 2025.",
+      "Lindqvist, S., 'Acoustic Impulse Response Modeling in Subterranean Structures,' ZIAA Monographs, 2026."
+    ],
+    "activePrototypesCount": 13,
+    "voiceprintHash": "SHA256:4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c"
+  },
+  {
+    "id": "FELLOW-007",
+    "name": "Dr. Yuna Takahashi",
+    "title": "Head of Signal Archaeology & Archival Audio",
+    "specialization": "Non-Contact Optical Audio Extraction & Media Reconstruction",
+    "clearance": "4-DELTA",
+    "joinedYear": 2022,
+    "facilityAssignment": "Studio C (Signal Archaeology & Archival Audio Lab)",
+    "biography": "Dr. Takahashi develops optical and computational techniques for reading fragile, damaged, or unplayable sound recordings. Using laser triangulation, high-resolution confocal microscopy, and artifact-removal algorithms, her lab reconstructs historical soundscapes from decaying media.",
+    "selectedPublications": [
+      "Takahashi, Y., 'Optical Scanning of Historical Lacquer and Wax Cylinders,' Journal of Audio Engineering, 2023.",
+      "Takahashi, Y. & Brody, M., 'Non-Contact Audio Reconstruction of Fragile Grooved Discs,' Heritage Science, 2025.",
+      "Takahashi, Y., 'Machine Learning Approaches to Groove De-noising in Optical Audio Extraction,' Archival Studies Quarterly, 2026."
+    ],
+    "activePrototypesCount": 9,
+    "voiceprintHash": "SHA256:8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b"
+  },
+  {
+    "id": "FELLOW-008",
+    "name": "Nils Holst",
+    "title": "Embedded Systems & Firmware Engineer",
+    "specialization": "FPGA Audio Routing, ARM Microcontrollers & Dante Networks",
+    "clearance": "2-BETA",
+    "joinedYear": 2022,
+    "facilityAssignment": "Studio B (Physical Computing & Speculative Hardware)",
+    "biography": "Nils Holst builds the embedded hardware foundations for ZIAA prototypes. He develops custom bare-metal firmware for ARM Cortex-M7 and FPGA chips, enabling high-channel-count, zero-latency audio routing, OSC networking, and MIDI 2.0 integration.",
+    "selectedPublications": [
+      "Holst, N., 'Ultra-Low Jitter Dante Synchronization for Remote Acoustic Sensor Nodes,' AES Audio Engineering, 2024.",
+      "Holst, N., 'Bare-Metal C++ DSP on Modern Embedded Microcontrollers,' Embedded Systems Review, 2025."
+    ],
+    "activePrototypesCount": 16,
+    "voiceprintHash": "SHA256:2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d"
+  },
+  {
+    "id": "FELLOW-009",
+    "name": "Lucian Mercer",
+    "title": "Sound Designer & Modular Synthesis Fellow",
+    "specialization": "Analog Circuit Design, Wave-Terrain Synthesis & Expressive Controls",
+    "clearance": "2-BETA",
+    "joinedYear": 2023,
+    "facilityAssignment": "Studio E (Acoustic Bench & Rapid Prototyping)",
+    "biography": "Lucian Mercer designs analog synthesis circuitry and expressive performance modules. His work blends chaotic circuit topology with digital wave-shaping, producing unpredictable yet musically rich timbral behavior.",
+    "selectedPublications": [
+      "Mercer, L., 'Chaotic Feedback Topologies in Modular Synthesizer Design,' Sound on Sound Research, 2024.",
+      "Mercer, L. & Thorne, V. A., 'Nonlinear Wave-Terrain Synthesis via Optical Sensors,' Computer Music Notes, 2026."
+    ],
+    "activePrototypesCount": 8,
+    "voiceprintHash": "SHA256:6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f"
+  },
+  {
+    "id": "FELLOW-010",
+    "name": "Marcus Brody",
+    "title": "Field Systems Lead & Remote Sensing Specialist",
+    "specialization": "Autonomous Acoustic Monitoring & Environmental Hydrophones",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2023,
+    "facilityAssignment": "Field Station Alpha (Desert Listening Sanctuary)",
+    "biography": "Marcus Brody manages ZIAA's remote field stations, deploying autonomous, solar-powered listening posts in desert, marine, and sub-glacial environments. His engineering ensures reliable audio telemetry across harsh climatic conditions.",
+    "selectedPublications": [
+      "Brody, M., 'Solar-Powered Low-Noise Audio Telemetry in Arid Environments,' Environmental Monitoring Systems, 2024.",
+      "Brody, M. & Lindqvist, S., 'Long-Term Infrasound Monitoring of Atmospheric Turbulence,' Journal of Acoustical Ecology, 2026."
+    ],
+    "activePrototypesCount": 10,
+    "voiceprintHash": "SHA256:0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b"
+  },
+  {
+    "id": "FELLOW-011",
+    "name": "Dr. Hawa Mansour",
+    "title": "Psychoacoustics & Auditory Perception Researcher",
+    "specialization": "Phantom Fundamentals, Binaural Illusions & Spatial Masking",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2023,
+    "facilityAssignment": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "biography": "Dr. Mansour studies how the human brain reconstructs missing audio frequencies, interprets spatial cues, and perceives acoustic illusions. Her discoveries inform the design of compact spatial speakers and interactive sound installations.",
+    "selectedPublications": [
+      "Mansour, H., 'The Missing Fundamental in Sub-Architectural Cavities,' ZIAA Monograph Series, 2025.",
+      "Mansour, H. & Mstislav, E., 'Binaural Spatial Illusions in Interactive Virtual Environments,' Hearing Research, 2026."
+    ],
+    "activePrototypesCount": 7,
+    "voiceprintHash": "SHA256:4f5e6d7c8b9a0f1e2d3c4b5a6f7e8d9c0b1a2f3e"
+  },
+  {
+    "id": "FELLOW-012",
+    "name": "Prof. Dr. Julian Vance",
+    "title": "Senior Fellow in Speculative Design & Design Fiction",
+    "specialization": "Speculative Patents, Critical Hardware & Media History",
+    "clearance": "4-DELTA",
+    "joinedYear": 2021,
+    "facilityAssignment": "Studio B (Physical Computing & Speculative Hardware)",
+    "biography": "Professor Vance examines how speculative design, imaginary patents, and design fiction can provoke new ways of thinking about sound, memory, and technology. He oversees ZIAA's speculative patent archive and defensive disclosure strategy.",
+    "selectedPublications": [
+      "Vance, J., 'Speculative Patents as Critical Design Artifacts,' Design Issues, MIT Press, 2023.",
+      "Vance, J., 'Counterfactual Sound Technologies of the Twentieth Century,' Leonardo, 2025."
+    ],
+    "activePrototypesCount": 9,
+    "voiceprintHash": "SHA256:8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c"
+  },
+  {
+    "id": "FELLOW-013",
+    "name": "Dr. Miriam Al-Haddad",
+    "title": "Machine Learning & Neural Audio Specialist",
+    "specialization": "Neural Resynthesis, Latent Audio Spaces & Feature Extraction",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2023,
+    "facilityAssignment": "Studio D (Computational Creativity & Generative Software)",
+    "biography": "Dr. Al-Haddad builds real-time neural audio synthesizers and generative models that morph between distinct acoustic timbres while running smoothly on standard consumer hardware and embedded platforms.",
+    "selectedPublications": [
+      "Al-Haddad, M., 'Real-Time Neural Wavetable Resynthesis,' DAFx Conference, 2024.",
+      "Al-Haddad, M. & O’Connor, M., 'Generative Latent Sound Exploration in Interactive Performance,' ICMC, 2025."
+    ],
+    "activePrototypesCount": 11,
+    "voiceprintHash": "SHA256:1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b"
+  },
+  {
+    "id": "FELLOW-014",
+    "name": "Dr. Kenji Takahashi",
+    "title": "Electroacoustic Luthier & Acoustic Material Researcher",
+    "specialization": "Resonant Wood Physics, Mineral Lithophones & Contact Transducers",
+    "clearance": "2-BETA",
+    "joinedYear": 2023,
+    "facilityAssignment": "Studio B (Physical Computing & Speculative Hardware)",
+    "biography": "Dr. Kenji Takahashi combines traditional Japanese instrument-building traditions with modern sensor electronics. He develops custom contact microphones, internal bracing patterns, and physical resonators that blend acoustic and digital sound.",
+    "selectedPublications": [
+      "Takahashi, K., 'Resonance Profiling of Rare Tonewoods under Electromagnetic Excitation,' Journal of Musical Acoustics, 2024.",
+      "Takahashi, K., 'Building the Modern Lithophone: Mineral Resonators for Contemporary Percussion,' NIME, 2025."
+    ],
+    "activePrototypesCount": 8,
+    "voiceprintHash": "SHA256:3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e"
+  },
+  {
+    "id": "FELLOW-015",
+    "name": "Dr. Evelyn O'Connor",
+    "title": "Creative Software Systems Architect",
+    "specialization": "WebAudio, Open-Source Creative Tools & Networked Systems",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2022,
+    "facilityAssignment": "Studio D (Computational Creativity & Generative Software)",
+    "biography": "Dr. Evelyn O'Connor authors open-source software libraries for sound artists and creative technologists. Her frameworks for WebAudio, multichannel browser streaming, and distributed performance tools have been adopted worldwide.",
+    "selectedPublications": [
+      "O'Connor, E., 'Open Protocols for Distributed Multichannel Audio Performance,' Web Audio Conference, 2024.",
+      "O'Connor, E., 'Interactive Visualizations of High-Order Acoustic Fields,' IEEE Computer Graphics & Applications, 2025."
+    ],
+    "activePrototypesCount": 12,
+    "voiceprintHash": "SHA256:5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f"
+  },
+  {
+    "id": "FELLOW-016",
+    "name": "Dr. Soren Lindqvist",
+    "title": "Associate Fellow in Acoustic Ecology",
+    "specialization": "Soundscape Ecology, Bio-Acoustics & Anthropogenic Noise",
+    "clearance": "1-ALPHA",
+    "joinedYear": 2024,
+    "facilityAssignment": "Field Station Epsilon (Sub-Glacial Hydrophone Array)",
+    "biography": "Dr. Lindqvist studies changing acoustic environments in polar and marine habitats, investigating how shifting ice dynamics and human shipping corridors alter underwater acoustic soundscapes.",
+    "selectedPublications": [
+      "Lindqvist, S., 'Acoustic Mapping of Glacial Fracture Dynamics in Svalbard,' Polar Research, 2025.",
+      "Lindqvist, S., 'Underwater Noise Impacts on Arctic Cetacean Communication,' Marine Ecology Journal, 2026."
+    ],
+    "activePrototypesCount": 5,
+    "voiceprintHash": "SHA256:7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a"
+  },
+  {
+    "id": "FELLOW-017",
+    "name": "Dr. Amara Patel",
+    "title": "Kinetic Sound & Robotic Instrument Designer",
+    "specialization": "Automated Percussion Solenoids & Motorized Acoustic Actuators",
+    "clearance": "2-BETA",
+    "joinedYear": 2024,
+    "facilityAssignment": "Studio B (Physical Computing & Speculative Hardware)",
+    "biography": "Dr. Patel designs robotic musical instruments that mechanically strike, bow, and pluck physical acoustic objects with micro-second velocity accuracy, linking algorithmic composition directly to physical vibrating matter.",
+    "selectedPublications": [
+      "Patel, A., 'High-Speed Solenoid Actuation for Dynamic Percussive Performance,' Robotics in the Arts, 2025.",
+      "Patel, A., 'Kinetic Acoustic Resonance in Kinetic Sculpture,' Leonardo, 2026."
+    ],
+    "activePrototypesCount": 7,
+    "voiceprintHash": "SHA256:9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b"
+  },
+  {
+    "id": "FELLOW-018",
+    "name": "Camille Laurent",
+    "title": "Spatial Sound & Ambisonic Composition Fellow",
+    "specialization": "3D Loudspeaker Arrays & Site-Specific Sound Choreography",
+    "clearance": "2-BETA",
+    "joinedYear": 2024,
+    "facilityAssignment": "Studio A (Anechoic Chamber & Spatial Stage)",
+    "biography": "Camille Laurent is an artist and sound engineer composing spatial sound works for dome environments and historic architecture, utilizing custom trajectory-panning software.",
+    "selectedPublications": [
+      "Laurent, C., 'Composing for 64-Channel Hemispherical Loudspeaker Arrays,' Spatial Audio Conference, 2025."
+    ],
+    "activePrototypesCount": 6,
+    "voiceprintHash": "SHA256:0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c"
+  },
+  {
+    "id": "FELLOW-019",
+    "name": "Rowan Vance",
+    "title": "Bio-Acoustic & Environmental Transduction Fellow",
+    "specialization": "Plant Bio-Electricity to CV Modulation & Ecological Sonification",
+    "clearance": "1-ALPHA",
+    "joinedYear": 2024,
+    "facilityAssignment": "Field Station Alpha (Desert Listening Sanctuary)",
+    "biography": "Rowan Vance investigates subtle biological voltages in desert flora, converting circadian cellular rhythms into control voltages for analog modular synthesizers.",
+    "selectedPublications": [
+      "Vance, R., 'Bio-Capacitive Voltage Fluctuations in Succulent Plants as CV Modulators,' Biosensing & Art, 2025."
+    ],
+    "activePrototypesCount": 6,
+    "voiceprintHash": "SHA256:2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e"
+  },
+  {
+    "id": "FELLOW-020",
+    "name": "Isolde Chen",
+    "title": "Hardware Fabrication & Acoustic Metrology Engineer",
+    "specialization": "Precision CNC Machining, Transducer Calibration & Clean Assembly",
+    "clearance": "3-GAMMA",
+    "joinedYear": 2022,
+    "facilityAssignment": "Studio E (Acoustic Bench & Rapid Prototyping)",
+    "biography": "Isolde Chen leads physical prototyping fabrication at ZIAA, ensuring tight mechanical tolerances for custom acoustic horns, speaker enclosures, and delicate sensor housings.",
+    "selectedPublications": [
+      "Chen, I., 'Tolerancing and Resonance Damping in Custom Aluminum Audio Chassis,' Audio Prototyping Review, 2024."
+    ],
+    "activePrototypesCount": 10,
+    "voiceprintHash": "SHA256:4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a"
+  }
+]

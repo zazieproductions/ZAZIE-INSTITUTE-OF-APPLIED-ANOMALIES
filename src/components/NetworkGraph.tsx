@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { prototypes, patents, failures, fieldSites, disciplines, archiveStats } from '../data/archive';
+import { useNavigate } from 'react-router-dom';
+import { featured, disciplines, archiveStats, recordPath, type RecordType } from '../data/archive';
 
 interface Node {
   id: string;
@@ -18,11 +19,8 @@ interface Edge {
   color: string;
 }
 
-interface NetworkGraphProps {
-  onSelectRecord?: (type: 'prototype' | 'patent' | 'failure' | 'site', id: string) => void;
-}
-
-export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) => {
+export const NetworkGraph: React.FC = () => {
+  const navigate = useNavigate();
   const [selectedDiscipline, setSelectedDiscipline] = useState<string>('ALL');
   const [hoveredNode, setHoveredNode] = useState<Node | null>(null);
 
@@ -58,7 +56,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
   });
 
   // Select representative prototypes (first 36)
-  prototypes.slice(0, 36).forEach((p, idx) => {
+  featured.graph.prototypes.forEach((p, idx) => {
     const discIdx = discKeys.indexOf(p.discipline);
     const centerAngle = discIdx >= 0 ? (discIdx / discKeys.length) * Math.PI * 2 : 0;
     const subAngle = centerAngle + ((idx % 5) - 2) * 0.28;
@@ -86,17 +84,17 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
     }
 
     // Link to patents
-    if (p.linkedPatents && p.linkedPatents[0]) {
+    if (p.linkedPatent) {
       edges.push({
         source: p.id,
-        target: p.linkedPatents[0],
+        target: p.linkedPatent,
         color: 'rgba(56, 189, 248, 0.35)'
       });
     }
   });
 
   // Representative patents
-  patents.slice(0, 18).forEach((pat, idx) => {
+  featured.graph.patents.forEach((pat, idx) => {
     const angle = (idx / 18) * Math.PI * 2;
     const dist = 320;
     const x = 400 + Math.cos(angle) * dist;
@@ -114,7 +112,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
   });
 
   // Representative incidents
-  failures.slice(0, 8).forEach((f, idx) => {
+  featured.graph.failures.forEach((f, idx) => {
     const angle = (idx / 8) * Math.PI * 2 + 0.3;
     const dist = 110;
     nodes.push({
@@ -129,7 +127,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
   });
 
   // Representative Field Sites
-  fieldSites.slice(0, 6).forEach((s, idx) => {
+  featured.graph.sites.forEach((s, idx) => {
     const angle = (idx / 6) * Math.PI * 2 + 0.6;
     const dist = 280;
     nodes.push({
@@ -152,22 +150,22 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
   const filteredEdges = edges.filter(e => activeNodeIds.has(e.source) && activeNodeIds.has(e.target));
 
   const handleNodeClick = (node: Node) => {
-    if (onSelectRecord && node.category !== 'discipline') {
-      onSelectRecord(node.category, node.id);
+    if (node.category !== 'discipline') {
+      navigate(recordPath(node.category as RecordType, node.id));
     }
   };
 
   return (
-    <div className="bg-[#05070a] border border-emerald-950/80 rounded-lg p-5 font-mono text-zinc-300">
+    <section aria-labelledby="graph-heading" className="bg-[#05070a] border border-emerald-950/80 rounded-lg p-5 font-mono text-zinc-300">
       <div className="flex flex-wrap items-center justify-between pb-3 border-b border-emerald-950/90 gap-2 mb-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <h3 className="font-bold tracking-widest text-emerald-400 text-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" aria-hidden="true"></span>
+            <h2 id="graph-heading" className="font-bold tracking-widest text-emerald-400 text-sm">
               ZIAA INTERCONNECTED KNOWLEDGE & TAXONOMY GRAPH
-            </h3>
+            </h2>
           </div>
-          <p className="text-[11px] text-zinc-500 mt-0.5">
+          <p className="text-[11px] text-zinc-400 mt-0.5">
             CORRELATION MAP // PROTOTYPES ↔ SPECULATIVE PATENTS ↔ INCIDENTS ↔ FIELD INSTALLATIONS
           </p>
         </div>
@@ -202,7 +200,12 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
 
       {/* SVG Canvas */}
       <div className="relative w-full aspect-[8/5] max-h-[540px] bg-[#030508] border border-emerald-950/60 rounded-md overflow-hidden select-none">
-        <svg viewBox="0 0 800 520" className="w-full h-full">
+        <svg
+          viewBox="0 0 800 520"
+          className="w-full h-full"
+          role="img"
+          aria-label="Interactive graph linking ZIAA research disciplines, prototypes, speculative patents, anomaly post-mortems and field stations"
+        >
           {/* Background grid lines */}
           <defs>
             <radialGradient id="center-bg-glow" cx="50%" cy="50%" r="50%">
@@ -243,10 +246,21 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
               <g
                 key={node.id}
                 transform={`translate(${node.x}, ${node.y})`}
-                className="cursor-pointer transition-transform"
+                className="cursor-pointer transition-transform focus:outline-none"
+                role={node.category === 'discipline' ? undefined : 'link'}
+                tabIndex={node.category === 'discipline' ? -1 : 0}
+                aria-label={`${node.name} (${node.category})`}
                 onMouseEnter={() => setHoveredNode(node)}
                 onMouseLeave={() => setHoveredNode(null)}
+                onFocus={() => setHoveredNode(node)}
+                onBlur={() => setHoveredNode(null)}
                 onClick={() => handleNodeClick(node)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleNodeClick(node);
+                  }
+                }}
               >
                 {/* Glow ring */}
                 {isHovered && (
@@ -295,7 +309,7 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
             {hoveredNode.discipline && (
               <div className="text-[10px] text-emerald-400 mt-1">Discipline: {hoveredNode.discipline}</div>
             )}
-            <div className="text-[10px] text-zinc-500 mt-0.5">Click to view full dossier in archive.</div>
+            <div className="text-[10px] text-zinc-400 mt-0.5">Click to open the full archive record.</div>
           </div>
         )}
 
@@ -308,6 +322,6 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({ onSelectRecord }) =>
           <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-400"></span> <span>Field Stations ({archiveStats.totalFieldSites})</span></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -1,0 +1,152 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/dashboard",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/overview",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/logs",
+      "destination": "/research-notes",
+      "permanent": true
+    },
+    {
+      "source": "/logs/:id",
+      "destination": "/research-notes/:id",
+      "permanent": true
+    },
+    {
+      "source": "/lab-logs",
+      "destination": "/research-notes",
+      "permanent": true
+    },
+    {
+      "source": "/bench",
+      "destination": "/acoustic-bench",
+      "permanent": true
+    },
+    {
+      "source": "/spectra",
+      "destination": "/spectra-lab",
+      "permanent": true
+    },
+    {
+      "source": "/oculus",
+      "destination": "/void-oculus",
+      "permanent": true
+    },
+    {
+      "source": "/void-oculus/index.html",
+      "destination": "/void-oculus",
+      "permanent": true
+    },
+    {
+      "source": "/infrastructure",
+      "destination": "/field-stations",
+      "permanent": true
+    },
+    {
+      "source": "/vault",
+      "destination": "/post-mortems",
+      "permanent": true
+    },
+    {
+      "source": "/failures",
+      "destination": "/post-mortems",
+      "permanent": true
+    },
+    {
+      "source": "/personnel",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/personnel/:id",
+      "destination": "/fellows/:id",
+      "permanent": true
+    },
+    {
+      "source": "/audit",
+      "destination": "/system-audit",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(brand/.*|.*\\.(?:png|ico|svg|webmanifest))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/apps/void-oculus/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), geolocation=(), payment=()"
+        }
+      ]
+    }
+  ]
+}

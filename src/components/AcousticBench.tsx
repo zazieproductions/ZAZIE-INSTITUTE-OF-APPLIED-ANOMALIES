@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { audioEngine } from '../audio/audioEngine';
-import { AudioProfile, Prototype } from '../data/types';
-import { prototypes } from '../data/archive';
-import { Play, Square, Activity, Radio, Volume2, Sparkles, RefreshCw, AlertTriangle } from 'lucide-react';
+import type { AudioProfile, Prototype } from '../data/types';
+import { benchPresets } from '../data/archive';
+import { Play, Square, Activity, Radio, Volume2, AlertTriangle } from 'lucide-react';
 
 interface AcousticBenchProps {
   initialProfile?: AudioProfile;
@@ -65,7 +65,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
 
   const handleSelectPrototype = (protId: string) => {
     setSelectedProtId(protId);
-    const found = prototypes.find(p => p.id === protId);
+    const found = benchPresets.find(p => p.id === protId);
     if (found && found.audioProfile) {
       setProfile(found.audioProfile);
       if (isPlaying) {
@@ -224,6 +224,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
 
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={triggerAnomaly}
             className="flex items-center gap-1 px-2.5 py-1 bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-800/60 rounded text-xs transition-colors"
             title="Inject non-Hermitian acoustic cavitation anomaly"
@@ -233,6 +234,8 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </button>
 
           <button
+            type="button"
+            aria-pressed={isPlaying}
             onClick={handleToggle}
             className={`flex items-center gap-1.5 px-4 py-1.5 rounded font-bold transition-all shadow-md ${
               isPlaying
@@ -258,13 +261,14 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
       {/* Preset Selector */}
       <div className="mt-3 flex flex-wrap items-center gap-2 py-2 px-3 bg-[#030508] border border-emerald-950/70 rounded">
         <Radio className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-        <span className="text-zinc-500 text-xs">LOAD PROTOTYPE PRESET:</span>
+        <label htmlFor="bench-preset" className="text-zinc-400 text-xs">LOAD PROTOTYPE PRESET:</label>
         <select
+          id="bench-preset"
           value={selectedProtId}
           onChange={e => handleSelectPrototype(e.target.value)}
           className="bg-[#080d14] border border-emerald-900/80 text-emerald-300 text-xs rounded px-2.5 py-1 focus:outline-none focus:border-emerald-400 grow max-w-md"
         >
-          {prototypes.slice(0, 48).map(p => (
+          {benchPresets.map(p => (
             <option key={p.id} value={p.id}>
               {p.id} — {p.codeName} ({p.discipline})
             </option>
@@ -281,13 +285,15 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
         <div className="bg-[#030508] border border-emerald-950 rounded p-2.5 relative">
           <div className="flex justify-between items-center text-[10px] text-emerald-400/80 mb-1">
             <span>CH-A TIME-DOMAIN OSCILLOSCOPE (1024-PT)</span>
-            <span className="text-zinc-500">STEREO BINAURAL</span>
+            <span className="text-zinc-400">STEREO BINAURAL</span>
           </div>
           <canvas
             ref={waveCanvasRef}
             width={compact ? 360 : 480}
             height={compact ? 100 : 130}
             className="w-full h-24 md:h-28 rounded bg-[#020406] block border border-emerald-950/60"
+            role="img"
+            aria-label="Time-domain oscilloscope of the synthesized signal"
           />
         </div>
 
@@ -295,13 +301,15 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
         <div className="bg-[#030508] border border-emerald-950 rounded p-2.5 relative">
           <div className="flex justify-between items-center text-[10px] text-emerald-400/80 mb-1">
             <span>CH-B 64-BAND SPECTRAL OCTAVE DECOMPOSITION</span>
-            <span className="text-zinc-500">20 Hz – 20 kHz</span>
+            <span className="text-zinc-400">20 Hz – 20 kHz</span>
           </div>
           <canvas
             ref={freqCanvasRef}
             width={compact ? 360 : 480}
             height={compact ? 100 : 130}
             className="w-full h-24 md:h-28 rounded bg-[#020406] block border border-emerald-950/60"
+            role="img"
+            aria-label="64-band spectral decomposition of the synthesized signal"
           />
         </div>
       </div>
@@ -316,6 +324,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </div>
           <input
             type="range"
+            aria-label="Carrier frequency"
             min="20"
             max="1800"
             step="1"
@@ -333,6 +342,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </div>
           <input
             type="range"
+            aria-label="FM modulation rate"
             min="0"
             max="45"
             step="0.1"
@@ -354,6 +364,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
             max="18"
             step="0.1"
             value={profile.binauralDelta}
+            aria-label="Binaural frequency delta"
             onChange={e => handleUpdate({ binauralDelta: parseFloat(e.target.value) })}
             className="w-full accent-violet-400 h-1 mt-1 cursor-pointer"
           />
@@ -367,6 +378,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </div>
           <input
             type="range"
+            aria-label="Filter cutoff frequency"
             min="60"
             max="6000"
             step="10"
@@ -384,6 +396,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </div>
           <input
             type="range"
+            aria-label="Resonance Q"
             min="0.5"
             max="20"
             step="0.5"
@@ -401,6 +414,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </div>
           <input
             type="range"
+            aria-label="Cavitation noise level"
             min="0"
             max="1"
             step="0.02"
@@ -415,7 +429,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
       <div className="flex flex-wrap items-center justify-between gap-3 mt-3 pt-3 border-t border-emerald-950/70 text-xs">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1.5">
-            <span className="text-zinc-500">WAVE:</span>
+            <span className="text-zinc-400">WAVE:</span>
             {(['sine', 'triangle', 'sawtooth', 'square'] as const).map(w => (
               <button
                 key={w}
@@ -432,7 +446,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-zinc-500">FILTER:</span>
+            <span className="text-zinc-400">FILTER:</span>
             {(['bandpass', 'lowpass', 'notch', 'highpass'] as const).map(f => (
               <button
                 key={f}
@@ -464,7 +478,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
               audioEngine.setMasterGain(v);
             }}
             className="w-24 accent-emerald-400 h-1 cursor-pointer"
-            title="Master Gain"
+            aria-label="Master gain"
           />
           <span className="text-[11px] text-zinc-400 w-8">{Math.round(masterVolume * 100)}%</span>
         </div>

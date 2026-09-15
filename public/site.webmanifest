@@ -1,0 +1,54 @@
+{
+  "name": "Zazie Institute of Applied Anomalies (ZIAA)",
+  "short_name": "ZIAA",
+  "description": "Independent interdisciplinary research and creative-technology archive: experimental prototypes, audio research, computational creativity and speculative engineering.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#030508",
+  "theme_color": "#030508",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": [
+    "education",
+    "music",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Prototypes",
+      "url": "/prototypes",
+      "description": "Experimental prototype archive"
+    },
+    {
+      "name": "Research Notes",
+      "url": "/research-notes",
+      "description": "Chronological lab notes"
+    },
+    {
+      "name": "Acoustic Bench",
+      "url": "/acoustic-bench",
+      "description": "Web Audio DSP workstation"
+    }
+  ]
+}
