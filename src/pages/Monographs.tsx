@@ -92,6 +92,14 @@ export const Monographs: React.FC = () => {
           type="article"
           publishedTime={shown.date}
           keywords={['monograph', 'ZIAA', shown.volume]}
+          citation={{
+            title: shown.title,
+            authors: [shown.author, ...(shown.coAuthors || [])],
+            publicationDate: shown.date.replace(/-/g, '/'),
+            journalTitle: 'ZIAA Transactions on Applied Anomalies & Experimental Systems',
+            volume: shown.volume,
+            pdfUrl: `${SITE_URL}/papers/${shown.id.toLowerCase()}.pdf`
+          }}
           jsonLd={[
             breadcrumbSchema(crumbs),
             creativeWorkSchema({

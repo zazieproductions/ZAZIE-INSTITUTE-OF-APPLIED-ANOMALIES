@@ -24,6 +24,17 @@ export interface RouteEntry {
 const lower = (s: string) => s.toLowerCase();
 const LAST_LOG = [...labLogs].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))[0]?.timestamp.slice(0, 10);
 
+// Discipline slug helpers — must mirror src/seo/site.ts DISCIPLINE_SLUGS
+const disciplineSlug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const disciplinesList: string[] = [...new Set(prototypes.map(p => p.discipline))].sort();
+// Per-discipline lastmod: newest patent filingDate or prototype year in cluster, clamped in prerender
+const disciplineLastmod = (discipline: string): string | undefined => {
+  const protoYears = prototypes.filter(p => p.discipline === discipline).map(p => `${p.year}-12-31`);
+  const patentDates = patents.filter(p => p.primaryDiscipline === discipline).map(p => p.filingDate);
+  const candidates = [...protoYears, ...patentDates].sort();
+  return candidates.at(-1);
+};
+
 export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0, lastmod: LAST_LOG },
   { path: '/about', changefreq: 'monthly', priority: 0.9 },
@@ -43,6 +54,16 @@ export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/post-mortems', changefreq: 'monthly', priority: 0.7 },
   { path: '/fellows', changefreq: 'monthly', priority: 0.7 },
   { path: '/system-audit', changefreq: 'weekly', priority: 0.5 },
+  // Topical authority hubs — one canonical landing per research division (fixes §4 audit gap)
+  { path: '/disciplines', changefreq: 'weekly', priority: 0.8 },
+  ...disciplinesList.map(d => ({
+    path: `/disciplines/${disciplineSlug(d)}`,
+    changefreq: 'weekly' as const,
+    priority: 0.8,
+    lastmod: disciplineLastmod(d)
+  })),
+  // Heterogeneous academic surface — papers corpus (HTML index for 108 PDFs)
+  { path: '/papers', changefreq: 'monthly', priority: 0.8 },
   { path: '/search', changefreq: 'yearly', priority: 0.1, noindex: true },
   { path: '/404', changefreq: 'yearly', priority: 0.0, noindex: true }
 ];

@@ -2,7 +2,7 @@
  * schema.org JSON-LD builders. Every graph node references the same
  * Organization @id so search engines merge signals onto one entity.
  */
-import { ENTITY, SITE_URL, absoluteUrl } from './site';
+import { ENTITY, SITE_URL, absoluteUrl, DISCIPLINE_SLUGS } from './site';
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -18,19 +18,28 @@ export const organizationSchema = () => ({
     '@type': 'ImageObject',
     url: absoluteUrl(ENTITY.logoPath),
     width: 512,
-    height: 512
+    height: 512,
+    caption: `${ENTITY.name} institutional crest`
   },
   image: absoluteUrl(ENTITY.ogImagePath),
   description: ENTITY.shortDescription,
-  foundingDate: ENTITY.founded,
+  foundingDate: (ENTITY as any).foundingDateISO ?? ENTITY.founded,
+  foundingLocation: {
+    '@type': 'Place',
+    name: (ENTITY as any).foundingLocation ?? 'California, USA',
+    address: (ENTITY as any).address
+  },
   slogan: ENTITY.tagline,
   email: ENTITY.email,
   parentOrganization: {
     '@type': 'Organization',
-    name: ENTITY.legalParent
+    name: ENTITY.legalParent,
+    url: absoluteUrl('/legal/institutional-status')
   },
+  founder: ((ENTITY as any).founders ?? []).map((n: string) => ({ '@type': 'Person', name: n })),
   knowsAbout: [...ENTITY.fields],
-  areaServed: 'Worldwide'
+  areaServed: 'Worldwide',
+  ...( (ENTITY as any).sameAs?.length ? { sameAs: [...(ENTITY as any).sameAs] } : {})
 });
 
 export const websiteSchema = () => ({
@@ -74,6 +83,7 @@ export const collectionPageSchema = (opts: {
   path: string;
   items: { name: string; path: string }[];
   about?: string[];
+  maxItems?: number;
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -87,13 +97,58 @@ export const collectionPageSchema = (opts: {
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: opts.items.length,
-    itemListElement: opts.items.slice(0, 50).map((it, i) => ({
+    itemListElement: opts.items.slice(0, opts.maxItems ?? 50).map((it, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: it.name,
       url: absoluteUrl(it.path)
     }))
   }
+});
+
+// Discipline hub — single-typed ResearchProject (no dual-typing appetite)
+export const researchProjectSchema = (opts: {
+  path: string;
+  name: string;
+  description: string;
+  keywords: string[];
+  parentOrgId?: string;
+}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ResearchProject',
+  '@id': `${absoluteUrl(opts.path)}#research-project`,
+  url: absoluteUrl(opts.path),
+  name: opts.name,
+  description: opts.description,
+  keywords: opts.keywords.join(', '),
+  isPartOf: { '@id': WEBSITE_ID },
+  parentOrganization: { '@id': opts.parentOrgId ?? ORG_ID },
+  sponsor: { '@id': ORG_ID },
+  funder: { '@id': ORG_ID }
+});
+
+export const faqPageSchema = (faqs: { q: string; a: string }[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a }
+  }))
+});
+
+export const itemListSchema = (opts: { path: string; items: { name: string; path: string }[] }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${absoluteUrl(opts.path)}#itemlist`,
+  url: absoluteUrl(opts.path),
+  numberOfItems: opts.items.length,
+  itemListElement: opts.items.map((it, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: it.name,
+    url: absoluteUrl(it.path)
+  }))
 });
 
 export const aboutPageSchema = (path: string) => ({
@@ -215,6 +270,33 @@ export const softwareAppSchema = (opts: {
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@id': ORG_ID },
   creator: { '@id': ORG_ID }
+});
+
+export const datasetSchema = (opts: {
+  path: string;
+  name: string;
+  description: string;
+  keywords: string[];
+  distributionUrl?: string;
+}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${absoluteUrl(opts.path)}#dataset`,
+  url: absoluteUrl(opts.path),
+  name: opts.name,
+  description: opts.description,
+  keywords: opts.keywords.join(', '),
+  creator: { '@id': ORG_ID },
+  publisher: { '@id': ORG_ID },
+  distribution: opts.distributionUrl
+    ? {
+        '@type': 'DataDownload',
+        contentUrl: opts.distributionUrl,
+        encodingFormat: 'application/json'
+      }
+    : undefined,
+  isAccessibleForFree: true,
+  license: `${SITE_URL}/legal/terms`
 });
 
 /** Parse `35°00'42.1"N 115°28'19.4"W` into decimal degrees. */

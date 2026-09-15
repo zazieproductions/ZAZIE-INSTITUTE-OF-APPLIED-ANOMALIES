@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "node scripts/build-derived.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/build-derived.mjs && node scripts/build-brand-assets.mjs",
+    "prebuild": "node scripts/build-derived.mjs && node scripts/build-brand-assets.mjs && node scripts/build-pdfs.mjs",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -33,6 +33,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "pdfkit": "^0.20.2",
     "sharp": "^0.35.4",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",

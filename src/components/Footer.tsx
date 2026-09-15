@@ -15,6 +15,7 @@ const ARCHIVE_LINKS = [
 ];
 const INSTITUTE_LINKS = [
   { to: '/about', label: 'About the Institute' },
+  { to: '/disciplines', label: 'Research Divisions (8 Laboratories)' },
   { to: '/fellows', label: `Fellows & Inventors (${archiveStats.totalPersonnel})` },
   { to: '/field-stations', label: `Field Stations (${archiveStats.totalFieldSites})` },
   { to: '/search', label: 'Archive Search' }
@@ -94,9 +95,11 @@ export const Footer: React.FC = () => {
           <div>
             <h2 className="text-[10px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">Research Focus</h2>
             <p className="text-zinc-300 leading-relaxed">
-              Applied anomalies, experimental audio systems, computational creativity, speculative engineering,
-              creative tools, prototypes, software and interdisciplinary invention — documented as an open research
-              archive for creative technologists, sound artists, acoustic engineers and speculative designers.
+              <Link to="/disciplines" className="text-[#dfb76c] hover:underline">8 research divisions</Link> spanning applied anomalies, experimental audio systems, computational creativity, speculative
+              engineering and acoustic architecture — <Link to="/prototypes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalPrototypes} prototypes</Link>,{' '}
+              <Link to="/monographs" className="text-zinc-200 hover:text-white underline underline-offset-2">8 monographs</Link> and{' '}
+              <Link to="/research-notes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalLogs} research notes</Link> for creative technologists,
+              sound artists and speculative designers.
             </p>
             <a
               href={`mailto:${ENTITY.email}`}

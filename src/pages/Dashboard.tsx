@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { archiveStats, featured, facilities, disciplines, recordPath, monographPath } from '../data/archive';
+import { disciplinePath } from '../seo/site';
 import { NetworkGraph } from '../components/NetworkGraph';
 import { AcousticBench } from '../components/AcousticBench';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
@@ -148,7 +149,7 @@ export const Dashboard: React.FC = () => {
           {disciplines.map(d => (
             <li key={d}>
               <Link
-                to={`/prototypes?discipline=${encodeURIComponent(d)}`}
+                to={disciplinePath(d)}
                 className="block h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg transition-all group"
               >
                 <div className="flex justify-between items-start gap-2">

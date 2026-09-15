@@ -18,6 +18,18 @@ export interface SeoProps {
   /** One or more JSON-LD objects. */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   keywords?: string[];
+  /** Google Scholar / Open Graph academic citation meta (Highwire Press tags). */
+  citation?: {
+    title?: string;
+    authors?: string[];
+    publicationDate?: string;
+    journalTitle?: string;
+    volume?: string;
+    pdfUrl?: string;
+    doi?: string;
+  };
+  /** Additional <link> tags (e.g. alternate, scholar). */
+  extraLinks?: { rel: string; href: string; type?: string; title?: string }[];
 }
 
 /**
@@ -37,7 +49,9 @@ export const Seo: React.FC<SeoProps> = ({
   publishedTime,
   modifiedTime,
   jsonLd,
-  keywords
+  keywords,
+  citation,
+  extraLinks
 }) => {
   const fullTitle = buildTitle(title, titleId);
   // Social cards have a larger budget than SERP titles: keep the full page title there.
@@ -77,6 +91,24 @@ export const Seo: React.FC<SeoProps> = ({
       <meta name="twitter:description" content={desc} />
       <meta name="twitter:image" content={img} />
       <meta name="twitter:image:alt" content={imageAlt} />
+
+      {/* Google Scholar / Highwire Press — citation hacking surface for academic indexes */}
+      {citation?.title && <meta name="citation_title" content={citation.title} />}
+      {citation?.authors?.map(a => (
+        <meta key={a} name="citation_author" content={a} />
+      ))}
+      {citation?.publicationDate && <meta name="citation_publication_date" content={citation.publicationDate} />}
+      {citation?.journalTitle && <meta name="citation_journal_title" content={citation.journalTitle} />}
+      {citation?.volume && <meta name="citation_volume" content={citation.volume} />}
+      {citation?.pdfUrl && <meta name="citation_pdf_url" content={citation.pdfUrl} />}
+      {citation?.doi && <meta name="citation_doi" content={citation.doi} />}
+      {citation && <meta name="citation_publisher" content={`${ENTITY.name} — ${ENTITY.abbreviation} Press`} />}
+      {citation && <meta name="citation_language" content="en" />}
+      {citation && <meta name="dc.identifier" content={canonical} />}
+      {/* Extra links (sitemap hints, scholar alternates) */}
+      {extraLinks?.map((l, i) => (
+        <link key={i} rel={l.rel} href={l.href} type={l.type} title={l.title} />
+      ))}
 
       {ld.map((obj, i) => (
         <script
