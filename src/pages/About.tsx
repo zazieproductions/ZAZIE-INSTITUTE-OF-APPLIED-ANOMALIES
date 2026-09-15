@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Seo } from '../seo/Seo';
-import { ENTITY } from '../seo/site';
+import { ENTITY, disciplinePath } from '../seo/site';
 import { aboutPageSchema, breadcrumbSchema, organizationSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
@@ -114,7 +114,7 @@ export const About: React.FC = () => (
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
           {disciplines.map(d => (
             <li key={d}>
-              <Link to={`/prototypes?discipline=${encodeURIComponent(d)}`} className="flex items-center gap-1.5 text-zinc-200 hover:text-[#dfb76c]">
+              <Link to={disciplinePath(d)} className="flex items-center gap-1.5 text-zinc-200 hover:text-[#dfb76c]">
                 <ArrowRight className="w-3 h-3 text-[#dfb76c]" aria-hidden="true" /> {d}
               </Link>
             </li>

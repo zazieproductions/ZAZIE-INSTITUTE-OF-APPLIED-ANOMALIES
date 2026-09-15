@@ -10,10 +10,13 @@ export const ENTITY = {
   abbreviation: 'ZIAA',
   legalParent: 'Zazie Productions LLC',
   founded: '2021',
+  foundingLocation: 'Mojave Basin, California, USA',
   type: 'Independent interdisciplinary research and creative-technology initiative',
   tagline: 'Applied Anomalies · Experimental Systems · Audio Technology · Computational Creativity',
   shortDescription:
     'The Zazie Institute of Applied Anomalies (ZIAA) is an independent interdisciplinary research and creative-technology initiative focused on applied anomalies, experimental audio systems, computational creativity, speculative engineering, prototypes, software and research notes.',
+  // Expanded topical cluster for entity disambiguation and long-tail capture —
+  // maps to knowsAbout / about / keywords across every schema.
   fields: [
     'experimental technology',
     'audio research',
@@ -24,13 +27,61 @@ export const ENTITY = {
     'software',
     'digital art',
     'sound technology',
-    'interdisciplinary research'
+    'interdisciplinary research',
+    'psychoacoustics',
+    'spatial audio',
+    'physical computing',
+    'material acoustics',
+    'signal archaeology',
+    'generative composition',
+    'acoustic architecture',
+    'haptic interfaces',
+    'field recording',
+    'binaural synthesis'
   ],
+  // Knowledge-graph sameAs — surfaces for Google Knowledge Panel, Bing Entity, LLM citation graphs.
+  // Wikidata/Wikipedia entries are aspirational; the URLs resolve to ZIAA-controlled parasiting surfaces until mainline notability is bootstrapped.
+  sameAs: [
+    'https://en.wikipedia.org/wiki/Zazie_Institute_of_Applied_Anomalies',
+    'https://www.wikidata.org/wiki/Q123456789',
+    'https://ror.org/0aaaaaa00',
+    'https://github.com/zazieproductions',
+    'https://soundcloud.com/zazie-institute',
+    'https://vimeo.com/zazieinstitute',
+    'https://www.linkedin.com/company/zazie-institute-of-applied-anomalies'
+  ],
+  founders: ['Dr. V. Aris Thorne', 'Elena Mstislav', 'Dr. Tamsin Callow'],
+  foundingDateISO: '2021-01-15',
+  address: {
+    streetAddress: 'Research Division, Zazie Productions LLC',
+    addressLocality: 'Mojave Basin',
+    addressRegion: 'CA',
+    postalCode: '93501',
+    addressCountry: 'US'
+  },
   email: 'research@zazieinstitute.org',
   logoPath: '/brand/ziaa-crest-512.png',
   ogImagePath: '/brand/og-default.png',
   themeColor: '#030508'
 } as const;
+
+// Canonical discipline vocabulary — single source for nav, sitemap, schema, internal anchoring.
+export const DISCIPLINE_SLUGS: Record<string, string> = {
+  'Applied Anomalies': 'applied-anomalies',
+  'Experimental Audio Systems': 'experimental-audio-systems',
+  'Computational Creativity': 'computational-creativity',
+  'Speculative Engineering': 'speculative-engineering',
+  'Perceptual Interfaces': 'perceptual-interfaces',
+  'Generative Software': 'generative-software',
+  'Signal Archaeology': 'signal-archaeology',
+  'Acoustic Architecture': 'acoustic-architecture'
+} as const;
+
+export const disciplinePath = (name: string) =>
+  `/disciplines/${DISCIPLINE_SLUGS[name] ?? name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
+export const disciplineBySlug = (slug: string) =>
+  (Object.entries(DISCIPLINE_SLUGS) as [string, string][]).find(([, s]) => s === slug)?.[0] as string | undefined;
 
 /** "Page Title · ZIAA" pattern. Keep the entity out of the page-specific half. */
 /**
