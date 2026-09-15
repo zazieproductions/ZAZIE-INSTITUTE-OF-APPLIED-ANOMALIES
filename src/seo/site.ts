@@ -39,17 +39,9 @@ export const ENTITY = {
     'field recording',
     'binaural synthesis'
   ],
-  // Knowledge-graph sameAs — surfaces for Google Knowledge Panel, Bing Entity, LLM citation graphs.
-  // Wikidata/Wikipedia entries are aspirational; the URLs resolve to ZIAA-controlled parasiting surfaces until mainline notability is bootstrapped.
-  sameAs: [
-    'https://en.wikipedia.org/wiki/Zazie_Institute_of_Applied_Anomalies',
-    'https://www.wikidata.org/wiki/Q123456789',
-    'https://ror.org/0aaaaaa00',
-    'https://github.com/zazieproductions',
-    'https://soundcloud.com/zazie-institute',
-    'https://vimeo.com/zazieinstitute',
-    'https://www.linkedin.com/company/zazie-institute-of-applied-anomalies'
-  ],
+  // sameAs — ONLY resolvable, controlled surfaces. No Wikipedia/Wikidata/ROR until they exist and resolve 200.
+  // Entity vandalism via fake sameAs poisons the graph; maintain hygiene until notability is earned.
+  sameAs: ['https://github.com/zazieproductions/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES'],
   founders: ['Dr. V. Aris Thorne', 'Elena Mstislav', 'Dr. Tamsin Callow'],
   foundingDateISO: '2021-01-15',
   address: {

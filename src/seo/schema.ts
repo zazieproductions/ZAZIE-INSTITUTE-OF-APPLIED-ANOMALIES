@@ -9,10 +9,10 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const organizationSchema = () => ({
   '@context': 'https://schema.org',
-  '@type': ['ResearchOrganization', 'EducationalOrganization', 'Organization'],
+  '@type': ['ResearchOrganization', 'Organization'],
   '@id': ORG_ID,
   name: ENTITY.name,
-  alternateName: [ENTITY.abbreviation, 'Zazie Institute', 'ZIAA Archive', 'Zazie Institute — ZIAA'],
+  alternateName: [ENTITY.abbreviation, 'Zazie Institute', 'ZIAA Archive'],
   url: `${SITE_URL}/`,
   logo: {
     '@type': 'ImageObject',
@@ -39,13 +39,7 @@ export const organizationSchema = () => ({
   founder: ((ENTITY as any).founders ?? []).map((n: string) => ({ '@type': 'Person', name: n })),
   knowsAbout: [...ENTITY.fields],
   areaServed: 'Worldwide',
-  sameAs: [...((ENTITY as any).sameAs ?? [])],
-  subOrganization: Object.entries(DISCIPLINE_SLUGS).map(([name, slug]) => ({
-    '@type': 'ResearchProject',
-    name,
-    url: absoluteUrl(`/disciplines/${slug}`),
-    parentOrganization: { '@id': ORG_ID }
-  }))
+  ...( (ENTITY as any).sameAs?.length ? { sameAs: [...(ENTITY as any).sameAs] } : {})
 });
 
 export const websiteSchema = () => ({
@@ -103,7 +97,7 @@ export const collectionPageSchema = (opts: {
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: opts.items.length,
-    itemListElement: opts.items.slice(0, opts.maxItems ?? 160).map((it, i) => ({
+    itemListElement: opts.items.slice(0, opts.maxItems ?? 50).map((it, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: it.name,
@@ -112,7 +106,7 @@ export const collectionPageSchema = (opts: {
   }
 });
 
-// Extended: discipline/research-project hub — weaponized for topical authority
+// Discipline hub — single-typed ResearchProject (no dual-typing appetite)
 export const researchProjectSchema = (opts: {
   path: string;
   name: string;
@@ -121,7 +115,7 @@ export const researchProjectSchema = (opts: {
   parentOrgId?: string;
 }) => ({
   '@context': 'https://schema.org',
-  '@type': ['ResearchProject', 'CollectionPage'],
+  '@type': 'ResearchProject',
   '@id': `${absoluteUrl(opts.path)}#research-project`,
   url: absoluteUrl(opts.path),
   name: opts.name,

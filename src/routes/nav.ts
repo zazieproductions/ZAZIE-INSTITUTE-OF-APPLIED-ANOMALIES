@@ -13,6 +13,7 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/patents', label: 'SPECULATIVE PATENTS', count: archiveStats.totalPatents },
   { to: '/research-notes', label: 'RESEARCH NOTES', count: archiveStats.totalLogs },
   { to: '/monographs', label: 'MONOGRAPHS', count: archiveStats.totalMonographs },
+  { to: '/papers', label: 'PAPERS', count: 108 },
   { to: '/acoustic-bench', label: 'ACOUSTIC BENCH' },
   { to: '/spectra-lab', label: 'SPECTRA//LAB', tone: 'cyan' },
   { to: '/void-oculus', label: 'VOID//OCULUS', tone: 'violet' },

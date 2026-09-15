@@ -52,7 +52,7 @@ interface Meta {
   ogType: 'article' | 'profile' | 'website';
   published?: string;
   keywords: string[];
-  citation?: { title: string; authors: string[]; publicationDate: string; journalTitle?: string };
+  citation?: { title: string; authors: string[]; publicationDate: string; journalTitle?: string; pdfUrl?: string };
 }
 
 function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
@@ -66,7 +66,6 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         ogType: 'article',
         published: `${p.year}-01-01`,
         keywords: [p.discipline, p.codeName, 'experimental prototype', 'ZIAA'],
-        citation: { title: p.title, authors: [p.leadResearcher], publicationDate: `${p.year}/01/01`, journalTitle: 'ZIAA Prototype Archive' },
         jsonLd: creativeWorkSchema({
           type: 'TechArticle',
           path,
@@ -95,7 +94,7 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         ogType: 'article',
         published: p.filingDate,
         keywords: [p.primaryDiscipline, 'speculative patent', 'defensive disclosure', 'ZIAA'],
-        citation: { title: p.title, authors: p.inventors, publicationDate: p.filingDate.replace(/-/g, '/'), journalTitle: 'ZIAA Speculative Patent Disclosures' },
+        citation: { title: p.title, authors: p.inventors, publicationDate: p.filingDate.replace(/-/g, '/'), journalTitle: 'ZIAA Speculative Patent Disclosures', pdfUrl: `${SITE_URL}/papers/${p.id.toLowerCase()}.pdf` },
         jsonLd: creativeWorkSchema({
           type: 'CreativeWork',
           path,
@@ -120,7 +119,6 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         ogType: 'article',
         published: l.timestamp,
         keywords: [...l.tags, l.facility, 'research note'],
-        citation: { title: l.summary, authors: [l.author], publicationDate: l.timestamp.slice(0,10).replace(/-/g, '/'), journalTitle: 'ZIAA Research Notes' },
         jsonLd: creativeWorkSchema({
           type: 'Report',
           path,
@@ -144,7 +142,6 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         ogType: 'article',
         published: f.incidentDate,
         keywords: ['post-mortem', 'failure analysis', f.hazardClassification, 'ZIAA'],
-        citation: { title: `${f.projectTitle} post-mortem`, authors: [f.leadInvestigator], publicationDate: f.incidentDate.replace(/-/g,'/'), journalTitle: 'ZIAA Anomaly Post-Mortems' },
         jsonLd: creativeWorkSchema({
           type: 'Report',
           path,

@@ -24,6 +24,7 @@ const AuditRevisions = lazy(() => import('./pages/AuditRevisions'));
 const RecordPage = lazy(() => import('./pages/RecordPage'));
 const DisciplineHub = lazy(() => import('./pages/DisciplineHub'));
 const DisciplinesIndex = lazy(() => import('./pages/DisciplinesIndex'));
+const Papers = lazy(() => import('./pages/Papers'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const GlobalSearchModal = lazy(() => import('./components/GlobalSearchModal'));
@@ -119,6 +120,7 @@ export function App() {
             <Route path="/system-audit" element={<AuditRevisions />} />
             <Route path="/disciplines" element={<DisciplinesIndex />} />
             <Route path="/disciplines/:slug" element={<DisciplineHub />} />
+            <Route path="/papers" element={<Papers />} />
             <Route path="/search" element={<SearchPage />} />
 
             {/* Redirects for earlier/alternate URL vocabulary */}

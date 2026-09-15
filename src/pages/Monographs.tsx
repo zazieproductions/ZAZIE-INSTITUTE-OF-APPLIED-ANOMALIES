@@ -97,7 +97,8 @@ export const Monographs: React.FC = () => {
             authors: [shown.author, ...(shown.coAuthors || [])],
             publicationDate: shown.date.replace(/-/g, '/'),
             journalTitle: 'ZIAA Transactions on Applied Anomalies & Experimental Systems',
-            volume: shown.volume
+            volume: shown.volume,
+            pdfUrl: `${SITE_URL}/papers/${shown.id.toLowerCase()}.pdf`
           }}
           jsonLd={[
             breadcrumbSchema(crumbs),

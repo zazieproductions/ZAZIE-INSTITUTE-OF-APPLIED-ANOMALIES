@@ -55,13 +55,15 @@ export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/fellows', changefreq: 'monthly', priority: 0.7 },
   { path: '/system-audit', changefreq: 'weekly', priority: 0.5 },
   // Topical authority hubs — one canonical landing per research division (fixes §4 audit gap)
-  { path: '/disciplines', changefreq: 'weekly', priority: 0.85 },
+  { path: '/disciplines', changefreq: 'weekly', priority: 0.8 },
   ...disciplinesList.map(d => ({
     path: `/disciplines/${disciplineSlug(d)}`,
     changefreq: 'weekly' as const,
-    priority: 0.85,
+    priority: 0.8,
     lastmod: disciplineLastmod(d)
   })),
+  // Heterogeneous academic surface — papers corpus (HTML index for 108 PDFs)
+  { path: '/papers', changefreq: 'monthly', priority: 0.8 },
   { path: '/search', changefreq: 'yearly', priority: 0.1, noindex: true },
   { path: '/404', changefreq: 'yearly', priority: 0.0, noindex: true }
 ];
