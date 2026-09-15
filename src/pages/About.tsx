@@ -39,7 +39,7 @@ const FAQ = [
   },
   {
     q: 'Can I use the interactive instruments?',
-    a: 'Yes. The Acoustic Bench, SPECTRA//LAB and VOID//OCULUS run entirely in the browser using the Web Audio API and Canvas, with no account or download required.'
+    a: 'Yes. The Acoustic Bench, SPECTRA//LAB, SYNTHESIS//SIGNAL and VOID//OCULUS run entirely in the browser using the Web Audio API, Canvas and WebGL, with no account or download required.'
   },
   {
     q: 'How do I cite an archive record?',

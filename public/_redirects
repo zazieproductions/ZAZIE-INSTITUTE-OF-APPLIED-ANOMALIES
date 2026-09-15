@@ -6,6 +6,8 @@
 /bench                /acoustic-bench       301
 /spectra              /spectra-lab          301
 /oculus               /void-oculus          301
+/synthesis            /synthesis-signal     301
+/legal                /legal/institutional-status 301
 /infrastructure       /field-stations       301
 /vault                /post-mortems         301
 /failures             /post-mortems         301

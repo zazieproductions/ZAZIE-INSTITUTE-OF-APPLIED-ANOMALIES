@@ -16,6 +16,7 @@ const toneClasses = (tone: NavItem['tone'], active: boolean) => {
       case 'alert': return 'bg-red-950/80 text-red-200 border-b-2 border-red-500 font-bold shadow-sm';
       case 'cyan': return 'bg-cyan-950/80 text-cyan-200 border-b-2 border-cyan-400 font-bold shadow-sm';
       case 'violet': return 'bg-violet-950/80 text-violet-200 border-b-2 border-violet-400 font-bold shadow-sm';
+      case 'signal': return 'bg-[#03201c] text-[#7ffbe6] border-b-2 border-[#00ffcc] font-bold shadow-sm';
       default: return 'bg-[#121926] text-[#dfb76c] border-b-2 border-[#dfb76c] font-bold shadow-sm';
     }
   }
@@ -23,6 +24,7 @@ const toneClasses = (tone: NavItem['tone'], active: boolean) => {
     case 'alert': return 'text-red-300/90 hover:text-red-200 hover:bg-red-950/30';
     case 'cyan': return 'text-cyan-300/90 hover:text-cyan-200 hover:bg-cyan-950/30';
     case 'violet': return 'text-violet-300/90 hover:text-violet-200 hover:bg-violet-950/30';
+    case 'signal': return 'text-[#5fe6cf]/90 hover:text-[#7ffbe6] hover:bg-[#03201c]/60';
     default: return 'text-zinc-300 hover:text-zinc-100 hover:bg-[#090f17]';
   }
 };

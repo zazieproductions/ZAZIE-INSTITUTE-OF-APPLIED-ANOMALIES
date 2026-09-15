@@ -22,7 +22,14 @@ const INSTITUTE_LINKS = [
 const TOOL_LINKS = [
   { to: '/acoustic-bench', label: 'Acoustic Bench (Web Audio DSP)' },
   { to: '/spectra-lab', label: 'SPECTRA//LAB Audiovisual Console' },
-  { to: '/void-oculus', label: 'VOID//OCULUS Spatial Canvas' }
+  { to: '/void-oculus', label: 'VOID//OCULUS Spatial Canvas' },
+  { to: '/synthesis-signal', label: 'SYNTHESIS//SIGNAL Audio-Reactive 3D' }
+];
+const LEGAL_LINKS = [
+  { to: '/legal/institutional-status', label: 'Institutional Status' },
+  { to: '/legal/disclaimer', label: 'Research & Speculation Disclaimer' },
+  { to: '/legal/terms', label: 'Terms of Use' },
+  { to: '/legal/privacy', label: 'Privacy Policy' }
 ];
 
 const LinkColumn: React.FC<{ title: string; links: { to: string; label: string }[] }> = ({ title, links }) => (
@@ -106,11 +113,20 @@ export const Footer: React.FC = () => {
           <p>
             © {ENTITY.founded}–2026 {ENTITY.name}. A research division of {ENTITY.legalParent}.
           </p>
-          <p className="text-zinc-500">
-            Speculative research archive · Records are creative-technology documentation and do not constitute legal
-            patent filings.
-          </p>
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            {LEGAL_LINKS.map(l => (
+              <Link key={l.to} to={l.to} className="text-zinc-300 hover:text-white hover:underline underline-offset-2">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
+        <p className="text-[11px] text-zinc-400 leading-relaxed max-w-4xl">
+          {ENTITY.abbreviation} is an independent research and creative-technology initiative and is not an accredited
+          university, government agency or standards body. Archive records document experimental research, artistic
+          research, speculative engineering and design fiction; speculative patents are internal disclosures, not issued
+          patents. See the <Link to="/legal/disclaimer" className="text-[#dfb76c] hover:underline">full disclaimer</Link>.
+        </p>
       </div>
     </footer>
   );

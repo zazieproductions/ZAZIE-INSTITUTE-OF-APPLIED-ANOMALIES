@@ -51,6 +51,16 @@
       "permanent": true
     },
     {
+      "source": "/synthesis",
+      "destination": "/synthesis-signal",
+      "permanent": true
+    },
+    {
+      "source": "/legal",
+      "destination": "/legal/institutional-status",
+      "permanent": true
+    },
+    {
       "source": "/infrastructure",
       "destination": "/field-stations",
       "permanent": true
