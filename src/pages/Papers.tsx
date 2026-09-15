@@ -4,7 +4,6 @@ import { loadMonographs, loadPatents, monographPath, recordPath } from '../data/
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, collectionPageSchema, datasetSchema } from '../seo/schema';
-import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PageHeader } from '../components/PageHeader';
 import { FileText, Download, BookOpen } from 'lucide-react';
 
@@ -21,14 +20,14 @@ export const Papers: React.FC = () => {
     <div className="space-y-6 font-serif">
       <Seo
         title="Research Papers & Archival PDFs (108 Documents)"
-        description="Open archival papers from ZIAA: 8 peer-reviewed monographs and 100 speculative patent defensive publications, each with a canonical HTML dossier and a citable PDF (citation_pdf_url) for Scholar indexing. ISSN 2834-9180."
+        description="The ZIAA papers corpus: 8 Transactions monographs and 100 speculative patent defensive disclosures, each with a canonical HTML dossier and a citable PDF. ISSN 2834-9180 (online)."
         path="/papers"
         keywords={['ZIAA papers', 'research PDFs', 'monographs PDF', 'defensive publication PDF', 'citation_pdf_url', 'Scholar']}
         jsonLd={[
           breadcrumbSchema(CRUMBS),
           collectionPageSchema({
             name: 'ZIAA Archival Papers — Monographs & Defensive Publications',
-            description: '108 archival PDFs: 8 Transactions monographs and 100 speculative patent disclosures, each with a persistent HTML dossier and a byte-identical PDF for citation.',
+            description: '108 archival PDFs: 8 Transactions monographs and 100 speculative patent disclosures, each with a persistent HTML dossier and a byte-identical PDF carrying matching title, author and subject metadata.',
             path: '/papers',
             about: ['scholarly communication', 'open research', 'defensive publication'],
             items: [
@@ -40,7 +39,7 @@ export const Papers: React.FC = () => {
           datasetSchema({
             path: '/papers',
             name: 'ZIAA Papers Corpus — PDFs and Citation Graph',
-            description: 'Heterogeneous academic surface: 108 PDFs (8 monographs + 100 patents) with citation_* Highwire meta and Scholar-compatible citation_pdf_url, plus HTML dossiers with JSON-LD.',
+            description: 'The ZIAA papers corpus as a machine-readable dataset: 108 PDFs (8 Transactions monographs + 100 defensive disclosures) with Scholar-style citation metadata and matching HTML dossiers.',
             keywords: ['papers', 'PDF', 'citation', 'Scholar', 'defensive publication'],
             distributionUrl: 'https://zazieinstitute.org/papers/essay-2022-01.pdf'
           })

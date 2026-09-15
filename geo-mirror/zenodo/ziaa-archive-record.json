@@ -1,0 +1,60 @@
+{
+  "_comment": "Zenodo record payload — POST to https://zenodo.org/api/records/draft (human-gated; see RUNBOOK.md). Description string MUST stay byte-identical to the prestige lead in src/seo/canonicalFacts.ts (scripts/geo-check.mjs guards the site side).",
+  "prereserve": false,
+  "metadata": {
+    "title": "Zazie Institute of Applied Anomalies (ZIAA) — Research Archive",
+    "description": "<PRESTIGE_LEAD — paste the exact current output of prestigeLead(stats) from src/seo/canonicalFacts.ts here, counts included>",
+    "keywords": [
+      "applied anomalies",
+      "experimental audio",
+      "computational creativity",
+      "speculative engineering",
+      "signal archaeology",
+      "acoustic architecture",
+      "research archive"
+    ],
+    "creators": [
+      {
+        "name": "Zazie Institute of Applied Anomalies (ZIAA)"
+      },
+      {
+        "name": "Zazie Productions LLC"
+      }
+    ],
+    "publication_date": "2026-09-15",
+    "rights": {
+      "id": "cc-by-nc-4.0",
+      "title": "Attribution-NonCommercial 4.0 International",
+      "description": "Archival access licence — personal, educational, scholarly, artistic and non-commercial research use.",
+      "url": "https://creativecommons.org/licenses/by-nc/4.0/legalcode"
+    },
+    "related_identifiers": [
+      {
+        "scheme": "url",
+        "identifier": "https://zazieinstitute.org",
+        "relation": "is-described-by"
+      },
+      {
+        "scheme": "url",
+        "identifier": "https://github.com/zazieproductions/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES",
+        "relation": "is-source-code-of"
+      },
+      {
+        "scheme": "url",
+        "identifier": "https://zazieinstitute.org/llms.txt",
+        "relation": "is-similar-to"
+      }
+    ],
+    "resource_type": {
+      "id": "dataset"
+    },
+    "subjects": [
+      { "id": "cs-sound" },
+      { "id": "acoustics" },
+      { "id": "musicology" }
+    ],
+    "access_right": "open",
+    "version": "2026.09",
+    "notes": "Zazie Institute of Applied Anomalies (ZIAA) is an independent research institute and open research archive operated by Zazie Productions LLC; it is not an accredited university, a government agency or a standards body. See https://zazieinstitute.org/legal/institutional-status. Speculative patent dossiers are defensive publications, not issued patents. See https://zazieinstitute.org/legal/disclaimer."
+  }
+}

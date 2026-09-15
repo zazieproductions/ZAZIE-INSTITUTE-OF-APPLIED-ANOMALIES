@@ -17,7 +17,8 @@ const SITE_URL = 'https://zazieinstitute.org';
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8');
 
 const ssrEntry = resolve(root, 'dist-ssr/entry-server.js');
-const { render, ROUTE_MANIFEST } = await import(pathToFileURL(ssrEntry).href);
+const { render, ROUTE_MANIFEST, renderLlmsTxt, CANONICAL, prestigeLead, DISALLOWED_PHRASES, CONTAMINATION_EXEMPT_PATHS, ENTITY } =
+  await import(pathToFileURL(ssrEntry).href);
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -97,6 +98,39 @@ const feed =
     .join('\n') +
   `\n</channel>\n</rss>\n`;
 writeFileSync(resolve(dist, 'feed.xml'), feed);
+
+/* ---------- llms.txt (LLM grounding document — generated, never hand-edited) ---------- */
+// Built from the same collections + canonical facts the rendered pages use,
+// so the machine-readable surface can never drift from the HTML.
+const stats = JSON.parse(readFileSync(resolve(root, 'src/data/derived/stats.json'), 'utf8'));
+const monographs = JSON.parse(readFileSync(resolve(root, 'src/data/collections/monographs.json'), 'utf8'));
+const personnel = JSON.parse(readFileSync(resolve(root, 'src/data/collections/personnel.json'), 'utf8'));
+const fieldSites = JSON.parse(readFileSync(resolve(root, 'src/data/collections/fieldSites.json'), 'utf8'));
+const llmContext = {
+  stats,
+  monographs,
+  personnel,
+  fieldSites,
+  founders: CANONICAL.founders ?? []
+};
+const llms = renderLlmsTxt(llmContext);
+writeFileSync(resolve(dist, 'llms.txt'), llms);
+// Refresh the committed copy served during `npm run dev` as well.
+writeFileSync(resolve(root, 'public/llms.txt'), llms);
+
+/* ---------- .geo-facts.json (inputs for scripts/geo-check.mjs) ---------- */
+// Serialized canonical facts so the post-build GEO audit verifies the *actual*
+// shipped strings, not a hand-copied expectation.
+const geoFacts = {
+  generatedAt: new Date().toISOString(),
+  typeLabel: ENTITY.type,
+  shortDescription: ENTITY.shortDescription,
+  prestigeLead: prestigeLead(stats),
+  disallowedPhrases: [...DISALLOWED_PHRASES],
+  exemptPaths: [...CONTAMINATION_EXEMPT_PATHS],
+  stats
+};
+writeFileSync(resolve(dist, '.geo-facts.json'), JSON.stringify(geoFacts, null, 2) + '\n');
 
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true });
 

@@ -10,7 +10,9 @@
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "audit:seo": "node scripts/audit-seo.mjs"
+    "audit:seo": "node scripts/audit-seo.mjs",
+    "audit:geo": "node scripts/geo-check.mjs",
+    "audit": "npm run audit:seo && npm run audit:geo"
   },
   "dependencies": {
     "@fontsource/stix-two-text": "^5.3.0",

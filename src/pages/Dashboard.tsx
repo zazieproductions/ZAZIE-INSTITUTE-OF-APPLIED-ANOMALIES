@@ -7,6 +7,7 @@ import { AcousticBench } from '../components/AcousticBench';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { Seo } from '../seo/Seo';
 import { ENTITY } from '../seo/site';
+import { prestigeLead } from '../seo/canonicalFacts';
 import { organizationSchema, websiteSchema } from '../seo/schema';
 import {
   Activity, Cpu, FileText, AlertTriangle, ArrowRight, Layers, Radio, Zap, BookOpen, Users, MapPin
@@ -38,10 +39,10 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="space-y-6 font-serif">
       <Seo
-        description={`${ENTITY.name} (ZIAA): independent research & creative-technology archive of ${archiveStats.totalPrototypes} experimental prototypes, ${archiveStats.totalPatents} speculative patents, ${archiveStats.totalLogs} research notes and ${archiveStats.totalMonographs} monographs on audio technology, computational creativity and speculative engineering.`}
+        description={`${ENTITY.name} (ZIAA): independent research institute and open archive — ${archiveStats.totalPrototypes} prototypes, ${archiveStats.totalPatents} defensive disclosures, ${archiveStats.totalLogs} research notes, ${archiveStats.totalMonographs} monographs, ${archiveStats.totalFieldSites} field stations.`}
         path="/"
-        keywords={[...ENTITY.fields, 'ZIAA', 'Zazie Institute']}
-        jsonLd={[organizationSchema(), websiteSchema()]}
+        keywords={[...ENTITY.fields, 'ZIAA', 'Zazie Institute', 'Zazie Institute of Applied Anomalies']}
+        jsonLd={[organizationSchema({ description: prestigeLead(archiveStats) }), websiteSchema()]}
       />
 
       {/* Hero */}
@@ -57,7 +58,7 @@ export const Dashboard: React.FC = () => {
         <div className="relative z-10 flex flex-col lg:flex-row justify-between lg:items-center gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="archival-stamp font-mono text-[9.5px]">CREATIVE-TECHNOLOGY INITIATIVE // ARCHIVE</span>
+              <span className="archival-stamp font-mono text-[9.5px]">RESEARCH INSTITUTE // OPEN ARCHIVE</span>
               <span className="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#162233] text-cyan-300 border border-cyan-800/60">
                 RESEARCH CYCLE 2021–2026
               </span>
@@ -72,12 +73,7 @@ export const Dashboard: React.FC = () => {
             </h2>
 
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              The <strong className="text-white font-semibold">Zazie Institute of Applied Anomalies (ZIAA)</strong> is an
-              independent interdisciplinary research and creative-technology initiative. Founded in 2021 as the
-              speculative engineering division of <span className="text-[#dfb76c] font-medium">Zazie Productions LLC</span>,
-              the Institute designs experimental sound systems, tangible perceptual interfaces, computational creativity
-              software, and site-specific acoustic instruments — and publishes the prototypes, research notes and
-              monographs in this open archive.
+              {prestigeLead(archiveStats)}
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -325,7 +321,9 @@ export const Dashboard: React.FC = () => {
           <Link to="/about" className="text-xs font-mono text-zinc-400 hover:text-[#dfb76c]">About the Institute →</Link>
         </div>
         <p className="text-xs text-zinc-400 leading-relaxed max-w-3xl">
-          The cards above surface flagship prototypes and the most recent research notes. The dossiers below are longer-run investigations — signal archaeology of archival audio, perceptual-interface acoustics, material hysteresis and remote field listening — that live on deeper pages and are now cross-linked with descriptive titles so both readers and crawlers can discover them without relying on paged browsing.
+          Longer-run investigations from the deeper archive — optical recovery of historical audio carriers, whole-body
+          tactile listening, material hysteresis, and remote field listening. Each entry links to the full dossier and
+          to the Transactions volume that treats the same method.
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 text-xs">
           <nav aria-labelledby="deep-proto-heading">
@@ -349,7 +347,7 @@ export const Dashboard: React.FC = () => {
                   <span className="block text-zinc-300 mt-0.5 leading-snug">Underground resonant vault with 18.4 s natural reverberation — Acoustic Architecture</span>
                 </Link>
               </li>
-              <li><Link to="/prototypes" className="text-[#dfb76c] hover:underline font-mono text-[11px]">Browse all 160 prototypes →</Link></li>
+              <li><Link to="/prototypes" className="text-[#dfb76c] hover:underline font-mono text-[11px]">Browse all {archiveStats.totalPrototypes} prototypes →</Link></li>
             </ul>
           </nav>
           <nav aria-labelledby="deep-patent-heading">
@@ -373,7 +371,7 @@ export const Dashboard: React.FC = () => {
                   <span className="block text-zinc-300 mt-0.5 leading-snug">Spatial psychoacoustics and missing fundamentals — perceptual illusions in generative composition</span>
                 </Link>
               </li>
-              <li><Link to="/monographs" className="text-cyan-400 hover:underline font-mono text-[11px]">Read all 8 treatises →</Link></li>
+              <li><Link to="/monographs" className="text-cyan-400 hover:underline font-mono text-[11px]">Read all {archiveStats.totalMonographs} treatises →</Link></li>
             </ul>
           </nav>
           <nav aria-labelledby="deep-field-heading">

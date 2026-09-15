@@ -6,7 +6,8 @@ import { aboutPageSchema, breadcrumbSchema, organizationSchema } from '../seo/sc
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { archiveStats, disciplines, facilities, recordPath, monographPath } from '../data/archive';
-import { Cpu, FileText, Activity, BookOpen, Users, MapPin, AlertTriangle, Layers, Mail, ArrowRight } from 'lucide-react';
+import { CANONICAL, prestigeLead, prestigeDescriptionLong, instituteAtAGlance, STATUS_ANSWER } from '../seo/canonicalFacts';
+import { Cpu, FileText, Activity, BookOpen, Users, MapPin, AlertTriangle, Layers, Mail, ArrowRight, BookMarked, Quote } from 'lucide-react';
 
 const CRUMBS = [
   { name: 'ZIAA', path: '/' },
@@ -43,21 +44,29 @@ const FAQ = [
   },
   {
     q: 'How do I cite an archive record?',
-    a: 'Every record page includes a “Cite” action that copies a formatted citation containing the record identifier, title, the Institute as publisher and the canonical URL.'
+    a: 'Every record page includes a “Cite” action that copies a formatted citation containing the record identifier, title, the Institute as publisher and the canonical URL. The Institute’s full citation policy, with APA, BibTeX and Chicago templates, is published at /cite.'
+  },
+  {
+    q: 'Is the Zazie Institute a real university? Is it accredited?',
+    a: STATUS_ANSWER.short
+  },
+  {
+    q: 'Who operates the Zazie Institute of Applied Anomalies?',
+    a: 'ZIAA is operated by Zazie Productions LLC as its research division. It was founded in 2021 in the Mojave Basin, California, and its research cycle has run from 2021 through 2026 under the direction of its founding researchers.'
   }
 ];
 
 export const About: React.FC = () => (
   <div className="space-y-6 font-serif">
-    <Seo
-      title="About the Institute"
-      description={`About the ${ENTITY.name} (ZIAA): an independent interdisciplinary research and creative-technology initiative founded in 2021, working across experimental audio, computational creativity, speculative engineering, prototypes, software and digital art.`}
-      path="/about"
-      keywords={['about ZIAA', 'Zazie Institute', 'independent research initiative', 'creative technology lab', ...ENTITY.fields]}
-      jsonLd={[
-        breadcrumbSchema(CRUMBS),
-        aboutPageSchema('/about'),
-        organizationSchema(),
+      <Seo
+        title="About the Institute"
+        description={`About the ${ENTITY.name} (ZIAA): independent research institute and open archive founded in 2021 in the Mojave Basin, California.`}
+        path="/about"
+        keywords={['about ZIAA', 'Zazie Institute', 'independent research institute', 'applied anomalies', 'experimental audio research', ...ENTITY.fields]}
+        jsonLd={[
+          breadcrumbSchema(CRUMBS),
+          aboutPageSchema('/about'),
+          organizationSchema({ description: prestigeLead(archiveStats) }),
         {
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
@@ -80,14 +89,36 @@ export const About: React.FC = () => (
             About the Zazie Institute of Applied Anomalies
           </h1>
           <p className="text-sm md:text-base text-zinc-300 leading-relaxed max-w-3xl">
-            The <strong className="text-white">Zazie Institute of Applied Anomalies (ZIAA)</strong> is an{' '}
-            {ENTITY.type.toLowerCase()} founded in {ENTITY.founded}. It investigates applied anomalies, experimental
-            audio systems, computational creativity and speculative engineering, and publishes the resulting
-            prototypes, research notes, software and monographs as an open research archive.
+            {prestigeLead(archiveStats)}
           </p>
         </div>
       </div>
     </header>
+
+    {/* Institute at a glance — the count-bearing canonical facts, machine- and human-readable */}
+    <section aria-labelledby="at-a-glance" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 id="at-a-glance" className="text-lg font-bold text-white">The Institute at a glance</h2>
+        <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider">Research cycle {archiveStats.operationalYears}</span>
+      </div>
+      <dl className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        {instituteAtAGlance(archiveStats).map(item => (
+          <Link
+            key={item.label}
+            to={item.to}
+            className="p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group block"
+          >
+            <dt className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 group-hover:text-[#dfb76c] flex items-center gap-1.5">
+              <BookMarked className="w-3 h-3" aria-hidden="true" /> {item.label}
+            </dt>
+            <dd className="text-2xl font-mono font-bold text-white mt-1.5">{item.value}</dd>
+          </Link>
+        ))}
+      </dl>
+      <p className="text-xs text-zinc-400 leading-relaxed max-w-4xl">
+        {prestigeDescriptionLong(archiveStats)}
+      </p>
+    </section>
 
     <section aria-labelledby="mission" className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4 text-sm text-zinc-300 leading-relaxed">
@@ -128,7 +159,8 @@ export const About: React.FC = () => (
           <div><dt className="text-zinc-400">Name</dt><dd className="text-zinc-100">{ENTITY.name}</dd></div>
           <div><dt className="text-zinc-400">Abbreviation</dt><dd className="text-zinc-100">{ENTITY.abbreviation}</dd></div>
           <div><dt className="text-zinc-400">Type</dt><dd className="text-zinc-100">{ENTITY.type}</dd></div>
-          <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded}</dd></div>
+          <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} — {CANONICAL.foundingLocation}</dd></div>
+          <div><dt className="text-zinc-400">Founders</dt><dd className="text-zinc-100">{CANONICAL.founders.join(', ')}</dd></div>
           <div><dt className="text-zinc-400">Parent organisation</dt><dd className="text-zinc-100">{ENTITY.legalParent}</dd></div>
           <div><dt className="text-zinc-400">Research cycle</dt><dd className="text-zinc-100">{archiveStats.operationalYears}</dd></div>
           <div><dt className="text-zinc-400">Motto</dt><dd className="text-zinc-100 italic">Auditus Inauditi — hearing the unheard</dd></div>
@@ -165,7 +197,9 @@ export const About: React.FC = () => (
     <section aria-labelledby="featured-dossiers" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
       <h2 id="featured-dossiers" className="text-lg font-bold text-white">Representative technical dossiers — descriptive reading</h2>
       <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl">
-        For researchers arriving via search, these representative dossiers illustrate the Institute&apos;s three longest-run concerns — material acoustics, signal archaeology, and generative composition — and are linked here with descriptive anchor text to aid discovery alongside the sitemap.
+        Three representative dossiers from the Institute&apos;s longest-running lines of work — optical recovery of
+        historical audio carriers, whole-body tactile listening, and autonomous generative composition. Each is linked
+        to its division hub and to the Transactions volume that treats the same method.
       </p>
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
         <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
@@ -208,6 +242,22 @@ export const About: React.FC = () => (
       <p className="text-[11px] font-mono text-zinc-500 pt-2 border-t border-[#1b2636]">
         Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench — Web Audio DSP workstation with oscilloscope</Link> · <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB — audiovisual 64-band spectral console</Link> · <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL — Three.js audio-reactive environment</Link> · <Link to="/emotion-spectrum" className="text-[#b7a8ff] hover:underline">EMOTION//SPECTRUM — playable electromagnetic emotion ribbon</Link>
       </p>
+    </section>
+
+    {/* Institutional reference documents — canonical definitions + citation policy */}
+    <section aria-labelledby="reference-docs" className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+      <Link to="/lexicon" className="p-4 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group block">
+        <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c] flex items-center gap-2"><BookMarked className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" /> Lexicon — Institutional Vocabulary</div>
+        <p className="text-zinc-400 mt-1.5 leading-relaxed">Canonical definitions of the Institute&apos;s method terms — applied anomalies, signal archaeology, wave-terrain synthesis, defensive publication and more.</p>
+      </Link>
+      <Link to="/cite" className="p-4 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group block">
+        <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c] flex items-center gap-2"><Quote className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" /> Citation Policy</div>
+        <p className="text-zinc-400 mt-1.5 leading-relaxed">How to cite the archive and its records: publisher string, ISSN, and APA / BibTeX / Chicago templates for the Transactions series.</p>
+      </Link>
+      <Link to="/disciplines" className="p-4 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group block">
+        <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c] flex items-center gap-2"><ArrowRight className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" /> Research Divisions (8)</div>
+        <p className="text-zinc-400 mt-1.5 leading-relaxed">Each division has a canonical hub with its research program, prototype and patent cluster, and a division-level FAQ.</p>
+      </Link>
     </section>
 
     <section aria-labelledby="faq" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">

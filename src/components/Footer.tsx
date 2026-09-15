@@ -18,6 +18,8 @@ const INSTITUTE_LINKS = [
   { to: '/disciplines', label: 'Research Divisions (8 Laboratories)' },
   { to: '/fellows', label: `Fellows & Inventors (${archiveStats.totalPersonnel})` },
   { to: '/field-stations', label: `Field Stations (${archiveStats.totalFieldSites})` },
+  { to: '/lexicon', label: 'Lexicon — Institutional Vocabulary' },
+  { to: '/cite', label: 'Citation Policy' },
   { to: '/search', label: 'Archive Search' }
 ];
 const TOOL_LINKS = [
@@ -65,7 +67,7 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
               <p className="text-xs text-zinc-300 mt-1">
-                Independent interdisciplinary research &amp; creative-technology initiative · a research division of{' '}
+                Independent research institute &amp; open archive · a research division of{' '}
                 <strong className="text-zinc-200">{ENTITY.legalParent}</strong>
               </p>
               <p className="text-xs text-[#c5a059] italic mt-0.5">“{ENTITY.tagline}”</p>
@@ -99,9 +101,16 @@ export const Footer: React.FC = () => {
               <Link to="/disciplines" className="text-[#dfb76c] hover:underline">8 research divisions</Link> spanning applied anomalies, experimental audio systems, computational creativity, speculative
               engineering and acoustic architecture — <Link to="/prototypes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalPrototypes} prototypes</Link>,{' '}
               <Link to="/monographs" className="text-zinc-200 hover:text-white underline underline-offset-2">8 monographs</Link> and{' '}
-              <Link to="/research-notes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalLogs} research notes</Link> for creative technologists,
-              sound artists and speculative designers.
+              <Link to="/research-notes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalLogs} research notes</Link>.
             </p>
+            <a
+              href="/llms.txt"
+              className="mt-2 inline-flex items-center gap-1.5 text-zinc-500 hover:text-white font-mono text-[11px]"
+              title="Machine-readable archive guide (llms.txt)"
+            >
+              <Radio className="w-3.5 h-3.5" aria-hidden="true" />
+              llms.txt — machine-readable archive guide
+            </a>
             <a
               href={`mailto:${ENTITY.email}`}
               className="mt-2 inline-flex items-center gap-1.5 text-[#dfb76c] hover:text-white font-mono text-[11px]"
@@ -126,10 +135,11 @@ export const Footer: React.FC = () => {
           </nav>
         </div>
         <p className="text-[11px] text-zinc-400 leading-relaxed max-w-4xl">
-          {ENTITY.abbreviation} is an independent research and creative-technology initiative and is not an accredited
-          university, government agency or standards body. Archive records document experimental research, artistic
-          research, speculative engineering and design fiction; speculative patents are internal disclosures, not issued
-          patents. See the <Link to="/legal/disclaimer" className="text-[#dfb76c] hover:underline">full disclaimer</Link>.
+          {ENTITY.abbreviation} is an independent research institute and open research archive, and is not an
+          accredited university, government agency or standards body. Archive records document experimental research,
+          artistic research, speculative engineering and design fiction; speculative patents are internal disclosures,
+          not issued patents. See the <Link to="/legal/disclaimer" className="text-[#dfb76c] hover:underline">full disclaimer</Link>
+          {' '}and the <Link to="/legal/institutional-status" className="text-[#dfb76c] hover:underline">Institutional Status notice</Link>.
         </p>
       </div>
     </footer>

@@ -4,10 +4,9 @@ import { loadPrototypes, loadPatents, recordPath, monographPath, archiveStats } 
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, collectionPageSchema, researchProjectSchema, faqPageSchema } from '../seo/schema';
-import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PageHeader } from '../components/PageHeader';
-import { DISCIPLINE_SLUGS, disciplineBySlug } from '../seo/site';
-import { ArrowRight, FlaskConical, Layers, FileText, Users } from 'lucide-react';
+import { DISCIPLINE_SLUGS } from '../seo/site';
+import { FlaskConical, Layers, FileText } from 'lucide-react';
 
 interface DisciplineMeta {
   name: string;
@@ -30,7 +29,7 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Applied Anomalies',
     slug: 'applied-anomalies',
     longTitle: 'Applied Anomalies — Nonlinear Acoustics, Hysteresis & Perceptual Edge-Cases',
-    lede: 'The founding division of ZIAA. Treats acoustic feedback, material hysteresis, room-mode anomalies and perceptual thresholds as design materials for instruments that sustain, remember and misbehave productively.',
+    lede: 'Applied Anomalies is the founding division of ZIAA. It treats acoustic feedback, material hysteresis, room-mode anomalies and perceptual thresholds as design materials for instruments that sustain, remember and misbehave productively.',
     description: 'Applied Anomalies at ZIAA: nonlinear acoustic feedback, hysteresis-limited resonance and perceptual edge-case instruments. Prototypes, speculative patents and field notes from the anechoic chamber and spatial stage, 2021–2026.',
     editorial: [
       'Every enclosed space has a resonant fingerprint — standing frequencies set by dimensions, wall absorption and air temperature. Most audio engineering treats the moment those frequencies feed back as a failure to suppress. The Applied Anomalies studio inverts that premise: feedback is an instrument, hysteresis is a compositional parameter, and the room itself is a performer.',
@@ -60,7 +59,7 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Experimental Audio Systems',
     slug: 'experimental-audio-systems',
     longTitle: 'Experimental Audio Systems — Custom Synthesis Hardware & Wave-Terrain Instruments',
-    lede: 'Designs and measures complete electroacoustic instruments: analog front-ends, conversion stages, transducer arrays and the code that binds them. From wave-terrain oscillators to 32-channel spatial diffusion engines.',
+    lede: 'Experimental Audio Systems is the division that designs and measures complete electroacoustic instruments: analog front-ends, conversion stages, transducer arrays and the code that binds them — from wave-terrain oscillators to 32-channel spatial diffusion engines.',
     description: 'Experimental Audio Systems at ZIAA: custom synthesis hardware, wave-terrain oscillators and spatial diffusion instruments. Bench-calibrated prototypes and defensive patent disclosures, 2021–2026.',
     editorial: [
       'This division builds instruments that do not yet have a product category. A single prototype may contain a discrete transistor VCO, a Teensy 4.1 Cortex-M7 supervisor, a Dante/AES67 network bridge and a machined aluminum acoustic horn — all tuned together, not partitioned into “hardware” and “software.”',
@@ -90,7 +89,7 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Computational Creativity',
     slug: 'computational-creativity',
     longTitle: 'Computational Creativity — Autonomous Musical Agents & Procedural Scoring',
-    lede: 'Autonomous agents that compose, listen and negotiate with human performers. Real-time generative polyphony, neural audio resynthesis and adversarial creative search, evaluated as musical systems rather than demos.',
+    lede: 'Computational Creativity is the division for autonomous musical agents — systems that compose, listen and negotiate with human performers, through real-time generative polyphony and neural audio resynthesis, evaluated as musical systems rather than demos.',
     description: 'Computational Creativity at ZIAA: autonomous musical agents, procedural scores and neural audio resynthesis. Research prototypes, software instruments and monographs on generative composition.',
     editorial: [
       'Computational creativity at ZIAA is practice-led and system-evaluated: an agent is not a metaphor but a persistent software entity with memory, taste, and failure modes. Early agents (2021–22) used Markov and constraint logic; later generations employ latent audio encoders that traverse learned timbre spaces under joystick or gestural control.',
@@ -120,12 +119,12 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Speculative Engineering',
     slug: 'speculative-engineering',
     longTitle: 'Speculative Engineering — Design Fiction Hardware & Counterfactual Instruments',
-    lede: 'Inventor’s-office meets design fiction: multi-head tape machines that never shipped, glass speakers that should not work, and the patents that would have protected them — written as research to keep them unownable.',
+    lede: 'Speculative Engineering is the division of counterfactual instruments and design-fiction hardware: multi-head tape machines that never shipped, glass speakers that should not work, and the defensive disclosures that keep them unownable.',
     description: 'Speculative Engineering at ZIAA: design-fiction hardware, mechanical tape systems and counterfactual instruments. Speculative patent dossiers and physical prototypes that keep topologies open.',
     editorial: [
       'Speculative engineering is not concept art. Every dossier in this division has a measured schematic, a tolerance-stamped bill of materials and an anomaly note where physics pushes back. The “speculative” qualifier signals temporal position — an instrument from an adjacent history — not a lack of bench reality.',
       'Artifacts include four-head kinetic tape transports that treat wow and flutter as modulation sources, ceramic transducers that excite glass resonance, and horizon-scale infrasound horns tested in the Atacama micro-barometer array. The patent archive is deliberately written in patent register (abstract, independent/dependent claims, prior-art critique, counsel memo) as a defensive publication tactic: by disclosing topologies openly, we prevent predatory enclosure by entities that did not build them.',
-      'This division attracts the most ARG-curious attention — “lost” technologies, number-station aesthetics — and carries the strongest disclaimer obligations. All speculative disclosures are labeled as internal research disclosures, not issued patents, on both dossier and legal pages.'
+      'Because the dossiers describe instruments from an adjacent history, the division’s publication discipline is the strictest in the archive: every disclosure is labeled as an internal research disclosure, not an issued patent, on both the dossier and the legal pages, and every claim is tied to a bench measurement or a field test.'
     ,
       'Method is patent-register precise but HDR-open. A speculative disclosure states a problem (e.g., “thermal bias drift in continuous tape transports”), proposes a constructive solution (modulated bias oscillator locked to capstan tach), lists independent claims as buildable steps, critiques prior art (static bias, uncontrolled wow), and closes with a counsel memo that deliberately dedicates the topology to the public domain. The four-head transport (PAT-2024-004) and ceramic glass exciter (PAT-2021-025) were both bench-measured before the patent was drafted; claim language follows measurement, not the reverse.',
       'Evaluation is material, not conceptual. Tape transports are clocked against a NIST-traceable audio analyzer, glass exciters against laser vibrometry of Chladni modes, and infrasound horns against the Atacama micro-barometer array at 0.01 Hz. Failure is documented without euphemism: the 22 post-mortems include a glass resonance that fractured at 142 dB and an infrasound horn that inverted phase in high wind, both with salvage and containment notes. The division’s disclaimer is therefore not hedging but method — these are disclosures of things that were built and tested, labeled to prevent enclosure.'],
@@ -149,7 +148,7 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Perceptual Interfaces',
     slug: 'perceptual-interfaces',
     longTitle: 'Perceptual Interfaces — Haptic, Tactile & Whole-Body Listening Surfaces',
-    lede: 'Interfaces that return sound to the body: motorized faders that push back, floor arrays that let you stand inside a filter, and microtonal keyboards that retune under your fingers.',
+    lede: 'Perceptual Interfaces is the division for control and listening surfaces that return sound to the body: motorized faders that push back, floor arrays that let you stand inside a filter, and microtonal keyboards that retune under your fingers.',
     description: 'Perceptual Interfaces at ZIAA: haptic controllers, tactile acoustic floors and microtonal touch surfaces. Bench studies on embodied listening and vibrotactile spatialization.',
     editorial: [
       'If loudspeakers put sound “over there,” perceptual interfaces put it “through here.” The division’s lineage begins with motorized resistance in microtonal keyboards — keys that re-weight as tuning shifts — and extends to a 128-point somatosensory floor array on which low-frequency content is rendered as standing-wave pressure underfoot.',
@@ -178,12 +177,12 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Generative Software',
     slug: 'generative-software',
     longTitle: 'Generative Software — Low-Latency DSP, Spatialization & Live-Coding Engines',
-    lede: 'The soft half of hard instruments: AudioWorklet kernels, ambisonic spatialization and WebAssembly live-coding environments that run with sub-millisecond jitter and survive on stage.',
+    lede: 'Generative Software is the division for the real-time software half of hard instruments: AudioWorklet kernels, ambisonic spatialization and WebAssembly live-coding environments that run with sub-millisecond jitter and survive on stage.',
     description: 'Generative Software at ZIAA: real-time DSP engines, ambisonic spatialization and browser-native live-coding systems. Source-audible research tools with open DSP topologies.',
     editorial: [
       'Generative software at ZIAA is performance infrastructure, not plugin commodity. The audio graph runs on dedicated AudioWorklet threads with zero-allocation loops, pooled buffers and explicit GC exclusion, verified under Chrome’s real-time tracing. Pitch detection, granular time-stretching and convolution reverbs operate at 64–128 sample frames to keep performer-perceived latency under 3 ms.',
       'Signature outputs include a 64-point ambisonic decoder calibrated in the Salton Vault, a WebAssembly wavetable interpolator that withstands live code hot-swaps without glitches, and the SYNTHESIS//SIGNAL Three.js environment where geometry and sound share one clock. Each software prototype documents CPU load, memory ceiling and browser matrix (Chromium baseline, Firefox/Safari advisory).',
-      'This stack also powers the archive’s curiosity engine: the four browser instruments are its most linked and longest-dwell pages. Their SoftwareApplication JSON-LD, live consoles and shareable presets give search engines and recommendation systems durable behavioral signals that generic text pages cannot.'
+      'The same stack hosts the archive’s public instruments: the four browser workstations publish their DSP topologies alongside their documentation, so a reader can verify a claim about a kernel by running it. Shareable presets make bench results reproducible without Institute hardware.'
     ,
       'Real-time constraints are treated as first-class research claims. AudioWorklet kernels are profiled under Chrome tracing with allocation sampling enabled; zero-allocation is verified, not asserted, and GC pauses are measured across 10-minute runs. The 64-point ambisonic decoder’s calibration in the Vault includes per-speaker impulse responses and a 0.9 ms worst-case inter-channel jitter budget. Published prototypes list CPU load (e.g., 8.2% at 48 kHz on M2), memory ceiling (12 MB), and failure mode (browser tab suspension) so results are reproducible.',
       'Hot-swap live coding is not a metaphor for “reload the page.” Wavetable code is compiled to WASM, swapped under an audio-rate crossfade while the AudioContext runs, with a 64-sample rollback buffer if compilation fails. This is why SYNTHESIS//SIGNAL can change synthesis topology during performance without glitching — a claim that is testable in the browser instrument and documented as a SoftwareApplication featureList, not as marketing copy.'],
@@ -207,7 +206,7 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Signal Archaeology',
     slug: 'signal-archaeology',
     longTitle: 'Signal Archaeology — Optical Recovery & Media Forensics for Fragile Sound Carriers',
-    lede: 'Sound from stone, glass and wax without touching them. Laser triangulation, confocal profilometry and artifact-isolation that recovers audio from surfaces previously considered unplayable.',
+    lede: 'Signal Archaeology is the division for non-contact recovery of audio from fragile and historical carriers — sound from stone, glass and wax, via laser triangulation, confocal profilometry and artifact-isolation of surfaces previously considered unplayable.',
     description: 'Signal Archaeology at ZIAA: optical laser recovery of fragile historical audio carriers, artifact-isolation and non-contact groove reconstruction. Field and lab research 2021–2026.',
     editorial: [
       'Mechanical playback destroys what it preserves: a stylus exerts grams of force on grooves already fractured by age, mold and heat. Signal archaeology decouples recovery from wear. The division’s core apparatus — a 405 nm blue semiconductor laser projecting a knife-edge across a groove wall, captured by a high-speed linear CMOS sensor at 200 kfps — extracts stereo audio directly from surface geometry.',
@@ -236,7 +235,7 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
     name: 'Acoustic Architecture',
     slug: 'acoustic-architecture',
     longTitle: 'Acoustic Architecture — Spatial Listening Stations, Resonant Vaults & Sonic Pavilions',
-    lede: 'Buildings that are instruments and landscapes that are archives. Multi-channel domes, subterranean vaults and coastal pavilions where space is tuned as deliberately as circuitry.',
+    lede: 'Acoustic Architecture is the division that builds and measures listening spaces as instruments: multi-channel domes, subterranean vaults and coastal pavilions where space is tuned as deliberately as circuitry.',
     description: 'Acoustic Architecture at ZIAA: spatial speaker domes, subterranean vaults and field-station listening pavilions. Sound installations and architectural-acoustic research.',
     editorial: [
       'Acoustic architecture at ZIAA spans two scales: the constructed listening room and the found landscape as listening room. Both are measured, not metaphorized. The Salton Subterranean Vault — a 2,400 m² reinforced bunker with an 18.4-second RT60 — serves as an instrument for feedback and ambisonic staging experiments that would destroy a normal room. At the other extreme, desert and coastal field stations are “buildings” with kilometre-scale footprints — distributed microphone, geophone and VLF arrays that turn wind, seismic and atmospheric activity into compositional material.',
@@ -264,7 +263,6 @@ const DISCIPLINE_META: Record<string, DisciplineMeta> = {
   }
 };
 
-const ALL_SLUGS = Object.keys(DISCIPLINE_META);
 
 export const DisciplineHub: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -288,7 +286,9 @@ export const DisciplineHub: React.FC = () => {
   ];
 
   const totalRecords = protoInDiscipline.length + patentInDiscipline.length;
-  const title = `${meta.name} — Research Division & Laboratory Systems`;
+  // Title budget: name + "— Research Division" stays under 70 chars with the "· ZIAA" suffix;
+  // the full "longTitle" carries the evocative half on-page (H1) where there is no SERP budget.
+  const title = `${meta.name} — Research Division`;
   const description = meta.description;
   const keywords = [...meta.keywords, `${meta.name} research`, 'ZIAA', 'Zazie Institute'];
 

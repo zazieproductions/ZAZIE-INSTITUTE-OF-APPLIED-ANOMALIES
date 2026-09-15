@@ -55,6 +55,9 @@ export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/post-mortems', changefreq: 'monthly', priority: 0.7 },
   { path: '/fellows', changefreq: 'monthly', priority: 0.7 },
   { path: '/system-audit', changefreq: 'weekly', priority: 0.5 },
+  // Institutional reference surfaces — lexicon (DefinedTermSet) + citation policy
+  { path: '/lexicon', changefreq: 'monthly', priority: 0.7 },
+  { path: '/cite', changefreq: 'yearly', priority: 0.6 },
   // Topical authority hubs — one canonical landing per research division (fixes §4 audit gap)
   { path: '/disciplines', changefreq: 'weekly', priority: 0.8 },
   ...disciplinesList.map(d => ({

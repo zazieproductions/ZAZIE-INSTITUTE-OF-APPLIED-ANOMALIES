@@ -1,0 +1,40 @@
+cff-version: 1.1.0
+message: "If you use or cite this repository or the archive it documents, please use the citation below."
+type: dataset
+authors:
+  - name: "Zazie Institute of Applied Anomalies (ZIAA)"
+  - name: "Zazie Productions LLC"
+title: "Zazie Institute of Applied Anomalies (ZIAA) — Research Archive"
+abstract: >-
+  The Zazie Institute of Applied Anomalies (ZIAA) is an independent research
+  institute and open archive, founded in 2021 in the Mojave Basin, California,
+  and operated by Zazie Productions LLC. Organized into eight research
+  divisions, the Institute develops experimental sound technology, perceptual
+  interfaces and computational instruments, and publishes its work as a
+  permanent, citable record: 160 prototypes, 100 defensive patent disclosures,
+  330 research notes, 8 monographs, 16 field stations and a fellowship of 20
+  researchers.
+publisher:
+  name: "Zazie Productions LLC"
+  url: "https://zazieinstitute.org"
+version: "2026.09"
+date-released: "2026-09-15"
+url: "https://zazieinstitute.org"
+repository-code: "https://github.com/zazieproductions/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES"
+related-project:
+  - name: "ZIAA Transactions on Applied Anomalies & Experimental Systems"
+    issn: "2834-9180"
+    url: "https://zazieinstitute.org/monographs"
+keywords:
+  - "applied anomalies"
+  - "experimental audio"
+  - "computational creativity"
+  - "speculative engineering"
+  - "signal archaeology"
+  - "acoustic architecture"
+license: "SEE-LICENSE"
+comment: >-
+  The Zazie Institute of Applied Anomalies (ZIAA) is an independent research
+  institute and open research archive operated by Zazie Productions LLC; it is
+  not an accredited university, a government agency or a standards body. See
+  https://zazieinstitute.org/legal/institutional-status

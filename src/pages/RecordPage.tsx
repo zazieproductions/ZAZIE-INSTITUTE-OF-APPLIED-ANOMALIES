@@ -158,7 +158,9 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
     case 'personnel': {
       const p = rec as Personnel;
       return {
-        title: `${p.name} — ${p.title}`, titleId: p.id,
+        // Title budget: name + record id only; the job title rides in the H1,
+        // description and Person schema (disambiguatingDescription).
+        title: p.name, titleId: p.id,
         heading: p.name,
         description: `${p.name}, ${p.title} at the Zazie Institute of Applied Anomalies. Specialisation: ${p.specialization}. ${p.biography}`,
         ogType: 'profile',

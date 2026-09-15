@@ -26,6 +26,8 @@ const RecordPage = lazy(() => import('./pages/RecordPage'));
 const DisciplineHub = lazy(() => import('./pages/DisciplineHub'));
 const DisciplinesIndex = lazy(() => import('./pages/DisciplinesIndex'));
 const Papers = lazy(() => import('./pages/Papers'));
+const Lexicon = lazy(() => import('./pages/Lexicon'));
+const CitePolicy = lazy(() => import('./pages/CitePolicy'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const GlobalSearchModal = lazy(() => import('./components/GlobalSearchModal'));
@@ -122,6 +124,8 @@ export function App() {
             <Route path="/system-audit" element={<AuditRevisions />} />
             <Route path="/disciplines" element={<DisciplinesIndex />} />
             <Route path="/disciplines/:slug" element={<DisciplineHub />} />
+            <Route path="/lexicon" element={<Lexicon />} />
+            <Route path="/cite" element={<CitePolicy />} />
             <Route path="/papers" element={<Papers />} />
             <Route path="/search" element={<SearchPage />} />
 

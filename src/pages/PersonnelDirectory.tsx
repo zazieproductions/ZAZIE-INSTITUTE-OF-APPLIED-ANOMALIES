@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadPersonnel, recordPath, archiveStats } from '../data/archive';
 import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema, collectionPageSchema } from '../seo/schema';
+import { breadcrumbSchema, collectionPageSchema, faqPageSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
 import { Fingerprint, ArrowRight } from 'lucide-react';
 
@@ -19,7 +19,7 @@ export const PersonnelDirectory: React.FC = () => {
   return (
     <div className="space-y-6 font-serif">
       <Seo
-        title={`Fellows, Technologists & Speculative Inventors (${archiveStats.totalPersonnel} Profiles)`}
+        title={`Fellows, Technologists & Inventors (${archiveStats.totalPersonnel})`}
         description={description}
         path="/fellows"
         keywords={['creative technologists', 'sound artists', 'acoustic engineers', 'research fellows', 'ZIAA fellows']}
@@ -31,7 +31,21 @@ export const PersonnelDirectory: React.FC = () => {
             path: '/fellows',
             about: ['interdisciplinary research', 'computational creativity'],
             items: personnel.map(p => ({ name: `${p.name} — ${p.title}`, path: recordPath('personnel', p.id) }))
-          })
+          }),
+          faqPageSchema([
+            {
+              q: 'Who are the ZIAA fellows?',
+              a: `The ZIAA fellowship comprises ${archiveStats.totalPersonnel} core researchers — creative technologists, DSP architects, acoustic engineers, instrument builders and speculative designers. Each fellow has a canonical profile with specialization, facility assignment and selected publications.`
+            },
+            {
+              q: 'Is “fellow” an accredited academic title?',
+              a: 'No. “Fellow” is the Institute’s own designation for a core researcher. The Zazie Institute is an independent research institute and open archive, not an accredited university, and its designations are its own, as documented in the institutional status notice.'
+            },
+            {
+              q: 'How do I cite a ZIAA fellow or their work?',
+              a: 'Cite a fellow’s publications by their selected-publications list, and cite their prototype or monograph by its record identifier and canonical URL. The citation policy is at /cite.'
+            }
+          ])
         ]}
       />
 
@@ -86,6 +100,35 @@ export const PersonnelDirectory: React.FC = () => {
           </li>
         ))}
       </ul>
+
+      <section aria-labelledby="fellows-faq" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
+        <h2 id="fellows-faq" className="text-sm font-bold text-white tracking-wide">Fellowship — questions &amp; answers</h2>
+        <dl className="space-y-4 text-sm">
+          <div className="border-l-2 border-[#dfb76c]/60 pl-4">
+            <dt className="font-bold text-zinc-100">Who are the ZIAA fellows?</dt>
+            <dd className="text-zinc-300 leading-relaxed mt-1">
+              The fellowship comprises {archiveStats.totalPersonnel} core researchers — creative technologists, DSP
+              architects, acoustic engineers, instrument builders and speculative designers. Each fellow has a canonical
+              profile with specialization, facility assignment and selected publications.
+            </dd>
+          </div>
+          <div className="border-l-2 border-[#dfb76c]/60 pl-4">
+            <dt className="font-bold text-zinc-100">Is “fellow” an accredited academic title?</dt>
+            <dd className="text-zinc-300 leading-relaxed mt-1">
+              No. “Fellow” is the Institute’s own designation for a core researcher. The Zazie Institute is an
+              independent research institute and open archive, not an accredited university, and its designations are
+              its own, as documented in the <Link to="/legal/institutional-status" className="text-[#dfb76c] hover:underline">institutional status notice</Link>.
+            </dd>
+          </div>
+          <div className="border-l-2 border-[#dfb76c]/60 pl-4">
+            <dt className="font-bold text-zinc-100">How do I cite a ZIAA fellow or their work?</dt>
+            <dd className="text-zinc-300 leading-relaxed mt-1">
+              Cite a fellow’s publications by their selected-publications list, and cite their prototypes and monographs
+              by record identifier and canonical URL. The full policy is at the <Link to="/cite" className="text-[#dfb76c] hover:underline">citation policy</Link>.
+            </dd>
+          </div>
+        </dl>
+      </section>
     </div>
   );
 };

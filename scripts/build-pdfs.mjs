@@ -33,7 +33,7 @@ function genMonographPDF(m) {
   doc.font('Helvetica-Bold').fontSize(8).fillColor('#8c6d31')
     .text('ZAZIE INSTITUTE OF APPLIED ANOMALIES — ZIAA', { align: 'center' });
   doc.font('Helvetica').fontSize(7).fillColor('#666')
-    .text('Independent interdisciplinary research & creative-technology initiative — Zazie Productions LLC', { align: 'center' });
+    .text('Independent research institute and open research archive — Zazie Productions LLC', { align: 'center' });
   doc.moveDown(0.5);
   doc.font('Helvetica').fontSize(6).fillColor('#999')
     .text(`${m.volume}  •  ISSN 2834-9180 (Online)  •  OPEN RESEARCH`, { align: 'center' });
@@ -164,12 +164,10 @@ const patents = JSON.parse(readFileSync(resolve(root, 'src/data/collections/pate
 
 const monoResults = [];
 for (const m of monographs) {
-  // eslint-disable-next-line no-await-in-loop
   monoResults.push(await genMonographPDF(m));
 }
 const patResults = [];
 for (const p of patents) {
-  // eslint-disable-next-line no-await-in-loop
   patResults.push(await genPatentPDF(p));
 }
 

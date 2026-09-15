@@ -2,12 +2,13 @@
  * schema.org JSON-LD builders. Every graph node references the same
  * Organization @id so search engines merge signals onto one entity.
  */
-import { ENTITY, SITE_URL, absoluteUrl, DISCIPLINE_SLUGS } from './site';
+import { ENTITY, SITE_URL, absoluteUrl } from './site';
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const PERIODICAL_ID = `${SITE_URL}/#transactions-series`;
 
-export const organizationSchema = () => ({
+export const organizationSchema = (opts?: { description?: string }) => ({
   '@context': 'https://schema.org',
   '@type': ['ResearchOrganization', 'Organization'],
   '@id': ORG_ID,
@@ -22,24 +23,57 @@ export const organizationSchema = () => ({
     caption: `${ENTITY.name} institutional crest`
   },
   image: absoluteUrl(ENTITY.ogImagePath),
-  description: ENTITY.shortDescription,
-  foundingDate: (ENTITY as any).foundingDateISO ?? ENTITY.founded,
-  foundingLocation: {
-    '@type': 'Place',
-    name: (ENTITY as any).foundingLocation ?? 'California, USA',
-    address: (ENTITY as any).address
-  },
+  description: opts?.description ?? ENTITY.shortDescription,
   slogan: ENTITY.tagline,
   email: ENTITY.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: ENTITY.address?.streetAddress,
+    addressLocality: ENTITY.address?.addressLocality,
+    addressRegion: ENTITY.address?.addressRegion,
+    postalCode: ENTITY.address?.postalCode,
+    addressCountry: ENTITY.address?.addressCountry
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'research inquiries',
+    email: ENTITY.email,
+    availableLanguage: 'English'
+  },
+  foundingDate: ENTITY.foundingDateISO ?? ENTITY.founded,
+  foundingLocation: {
+    '@type': 'Place',
+    name: ENTITY.foundingLocation ?? 'California, USA',
+    address: ENTITY.address
+  },
   parentOrganization: {
     '@type': 'Organization',
     name: ENTITY.legalParent,
     url: absoluteUrl('/legal/institutional-status')
   },
-  founder: ((ENTITY as any).founders ?? []).map((n: string) => ({ '@type': 'Person', name: n })),
+  founder: ENTITY.founders.map((n: string) => ({
+    '@type': 'Person',
+    name: n,
+    affiliation: { '@id': ORG_ID }
+  })),
   knowsAbout: [...ENTITY.fields],
   areaServed: 'Worldwide',
-  ...( (ENTITY as any).sameAs?.length ? { sameAs: [...(ENTITY as any).sameAs] } : {})
+  ...(ENTITY.sameAs.length ? { sameAs: [...ENTITY.sameAs] } : {})
+});
+
+/** The ZIAA Transactions monograph series as a Periodical node (ISSN-carrying). */
+export const periodicalSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'Periodical',
+  '@id': PERIODICAL_ID,
+  name: 'ZIAA Transactions on Applied Anomalies & Experimental Systems',
+  alternateName: ['ZIAA Transactions', 'Transactions (ZIAA)'],
+  issn: '2834-9180',
+  url: `${SITE_URL}/monographs`,
+  publisher: { '@id': ORG_ID },
+  inLanguage: 'en',
+  description:
+    'The monograph series of the Zazie Institute of Applied Anomalies: working treatises on applied anomalies, experimental audio systems, computational creativity and speculative engineering, reviewed by the fellow panel. Eight volumes, 2022–2026.'
 });
 
 export const websiteSchema = () => ({
@@ -161,6 +195,69 @@ export const aboutPageSchema = (path: string) => ({
   mainEntity: { '@id': ORG_ID }
 });
 
+/** DefinedTerm + DefinedTermSet for the institutional lexicon. */
+export const definedTermSchema = (opts: { term: string; definition: string; url: string }) => ({
+  '@type': 'DefinedTerm',
+  name: opts.term,
+  inDefinedTermSet: `${absoluteUrl('/lexicon')}#terms`,
+  termCode: opts.term.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  description: opts.definition,
+  url: opts.url
+});
+
+export const definedTermSetSchema = (opts: {
+  path: string;
+  name: string;
+  description: string;
+  terms: { term: string; definition: string; url: string }[];
+}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  '@id': `${absoluteUrl(opts.path)}#terms`,
+  url: absoluteUrl(opts.path),
+  name: opts.name,
+  description: opts.description,
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORG_ID },
+  inLanguage: 'en',
+  hasDefinedTerm: opts.terms.map(t => definedTermSchema(t))
+});
+
+/** Scholarly monograph: ScholarlyArticle bound to the Transactions periodical. */
+export const monographSchema = (opts: {
+  path: string;
+  id: string;
+  title: string;
+  abstract: string;
+  date: string;
+  authors: string[];
+  volume: string;
+  keywords?: string[];
+  sections?: string[];
+}) => ({
+  ...creativeWorkSchema({
+    type: 'ScholarlyArticle',
+    path: opts.path,
+    name: opts.title,
+    headline: opts.title,
+    description: opts.abstract,
+    identifier: opts.id,
+    datePublished: opts.date,
+    authors: opts.authors,
+    keywords: opts.keywords,
+    extra: {
+      issn: '2834-9180',
+      articleSection: opts.sections,
+      reviewAspect: 'peer review by the ZIAA fellow panel'
+    }
+  }),
+  isPartOf: {
+    '@type': 'PublicationIssue',
+    name: opts.volume,
+    isPartOf: { '@id': PERIODICAL_ID }
+  }
+});
+
 /** Generic creative-work node for prototypes, patents, notes, reports. */
 export const creativeWorkSchema = (opts: {
   type: 'TechArticle' | 'ScholarlyArticle' | 'Report' | 'CreativeWork' | 'SoftwareSourceCode';
@@ -217,6 +314,7 @@ export const personSchema = (opts: {
   jobTitle: opts.jobTitle,
   description: opts.description,
   knowsAbout: opts.knowsAbout,
+  disambiguatingDescription: `${ENTITY.abbreviation} fellow — ${opts.jobTitle} at the ${ENTITY.name} (ZIAA)`,
   affiliation: { '@id': ORG_ID },
   worksFor: { '@id': ORG_ID },
   memberOf: { '@id': ORG_ID }
