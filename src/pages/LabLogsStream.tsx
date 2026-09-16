@@ -86,9 +86,11 @@ export const LabLogsStream: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
             <label htmlFor="f-facility" className="text-zinc-400 uppercase tracking-wider text-[10px] font-bold">Facility:</label>
-            <select id="f-facility" value={selectedFacility} onChange={e => setSelectedFacility(e.target.value)} className="bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-1.5 focus:outline-none focus:border-emerald-500">
+            {/* Long facility names made this select wider than a phone
+                viewport; allow it to shrink and wrap onto its own line. */}
+            <select id="f-facility" value={selectedFacility} onChange={e => setSelectedFacility(e.target.value)} className="min-w-0 max-w-full bg-[#070e17] border border-[#1e2f44] text-zinc-200 rounded p-1.5 focus:outline-none focus:border-emerald-500">
               <option value="ALL">ALL FACILITIES ({facilities.length})</option>
               {facilities.map(f => <option key={f} value={f}>{f}</option>)}
             </select>

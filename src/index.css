@@ -149,6 +149,33 @@ body {
   color: #f3f4f6;
 }
 
+/* ---------------------------------------------------------------------------
+   Touch targets on phones
+   The archive's controls are compact by design. On phones the same chips,
+   toggles and selects get a comfortable minimum height so they can actually be
+   tapped; desktop metrics are untouched. Inline text links are deliberately
+   excluded so prose and footnote styling stay exactly as designed, and any
+   control that must stay tight can opt out with `.tap-tight`.
+--------------------------------------------------------------------------- */
+@media (max-width: 639px) {
+  button,
+  select,
+  summary,
+  [role='button'],
+  input[type='button'],
+  input[type='submit'] {
+    min-height: 32px;
+  }
+  button.tap-tight,
+  select.tap-tight,
+  [role='button'].tap-tight {
+    min-height: 0;
+  }
+  input[type='range'] {
+    min-height: 28px;
+  }
+}
+
 /* Academic Paper Print Stylesheet */
 @media print {
   body {

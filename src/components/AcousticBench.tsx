@@ -266,7 +266,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
           id="bench-preset"
           value={selectedProtId}
           onChange={e => handleSelectPrototype(e.target.value)}
-          className="bg-[#080d14] border border-emerald-900/80 text-emerald-300 text-xs rounded px-2.5 py-1 focus:outline-none focus:border-emerald-400 grow max-w-md"
+          className="bg-[#080d14] border border-emerald-900/80 text-emerald-300 text-xs rounded px-2.5 py-1 focus:outline-none focus:border-emerald-400 min-w-0 w-full basis-full sm:basis-auto sm:grow sm:max-w-md"
         >
           {benchPresets.map(p => (
             <option key={p.id} value={p.id}>
@@ -427,14 +427,14 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
 
       {/* Waveform & Filter Type Selectors + Volume */}
       <div className="flex flex-wrap items-center justify-between gap-3 mt-3 pt-3 border-t border-emerald-950/70 text-xs">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-zinc-400">WAVE:</span>
             {(['sine', 'triangle', 'sawtooth', 'square'] as const).map(w => (
               <button
                 key={w}
                 onClick={() => handleUpdate({ waveform: w })}
-                className={`px-2 py-0.5 rounded uppercase text-[10px] ${
+                className={`min-h-[32px] rounded px-2.5 py-1.5 text-[10px] uppercase md:min-h-0 md:px-2 md:py-0.5 ${
                   profile.waveform === w
                     ? 'bg-emerald-500 text-black font-bold'
                     : 'bg-zinc-900 text-zinc-400 hover:text-white'
@@ -445,13 +445,13 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
             ))}
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-zinc-400">FILTER:</span>
             {(['bandpass', 'lowpass', 'notch', 'highpass'] as const).map(f => (
               <button
                 key={f}
                 onClick={() => handleUpdate({ filterType: f })}
-                className={`px-2 py-0.5 rounded uppercase text-[10px] ${
+                className={`min-h-[32px] rounded px-2.5 py-1.5 text-[10px] uppercase md:min-h-0 md:px-2 md:py-0.5 ${
                   profile.filterType === f
                     ? 'bg-cyan-500 text-black font-bold'
                     : 'bg-zinc-900 text-zinc-400 hover:text-white'
