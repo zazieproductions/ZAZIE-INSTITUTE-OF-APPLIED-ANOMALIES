@@ -4,7 +4,11 @@
 
 Source for **https://zazieinstitute.org** — the public archive of the Zazie Institute of Applied Anomalies (ZIAA): prototypes, speculative patents, research notes, anomaly post‑mortems, fellows, field stations, monographs (ZIAA Transactions, ISSN 2834‑9180 online) and four interactive instruments (Acoustic Bench, SPECTRA//LAB, VOID//OCULUS, SYNTHESIS//SIGNAL).
 
+> **Founder.** ZIAA was founded by **[Zazie Kanwar-Torge](https://zazieinstitute.org/founder)**, founder and owner of Zazie Productions LLC and founder and director of the Institute.
+
 > **Institutional status.** ZIAA is an independent research institute and open research archive; it is **not** an accredited university, a government agency or a standards body. See the [Institutional Status notice](https://zazieinstitute.org/legal/institutional-status).
+
+> **Trademarks.** Zazie Institute of Applied Anomalies™, ZIAA™, Zazie Productions™, Auditus Inauditi™ and all Institute instrument names are trademarks of Zazie Productions LLC. © 2021–2026 Zazie Productions LLC. All rights reserved. Full notice: [Trademarks & IP](https://zazieinstitute.org/legal/trademarks).
 
 ## How to cite
 
@@ -74,7 +78,8 @@ All URLs are lowercase, no trailing slash, no file extensions.
 | Monographs | `/monographs` | `/monographs/essay-2022-01` |
 | Instruments | `/acoustic-bench`, `/spectra-lab`, `/void-oculus` | |
 | Reference | `/lexicon`, `/cite` | |
-| Other | `/about`, `/system-audit`, `/search?q=` (noindex), `/404` (noindex) | |
+| Other | `/about`, `/founder`, `/system-audit`, `/search?q=` (noindex), `/404` (noindex) | |
+| Legal | `/legal/institutional-status`, `/legal/disclaimer`, `/legal/terms`, `/legal/privacy`, `/legal/trademarks` | |
 
 Legacy paths (`/logs`, `/personnel`, `/vault`, `/bench`, …) redirect permanently, both at the host level (`vercel.json`, `_redirects`) and inside the app.
 

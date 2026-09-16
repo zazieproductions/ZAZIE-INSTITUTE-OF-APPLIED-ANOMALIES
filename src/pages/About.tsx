@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Seo } from '../seo/Seo';
-import { ENTITY, disciplinePath } from '../seo/site';
-import { aboutPageSchema, breadcrumbSchema, organizationSchema } from '../seo/schema';
+import { ENTITY, FOUNDER, disciplinePath } from '../seo/site';
+import { aboutPageSchema, breadcrumbSchema, founderPersonSchema, organizationSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { archiveStats, disciplines, facilities, recordPath, monographPath } from '../data/archive';
-import { CANONICAL, prestigeLead, prestigeDescriptionLong, instituteAtAGlance, STATUS_ANSWER } from '../seo/canonicalFacts';
+import { CANONICAL, FOUNDER_STATEMENT, prestigeLead, prestigeDescriptionLong, instituteAtAGlance, STATUS_ANSWER } from '../seo/canonicalFacts';
 import { Cpu, FileText, Activity, BookOpen, Users, MapPin, AlertTriangle, Layers, Mail, ArrowRight, BookMarked, Quote } from 'lucide-react';
 
 const CRUMBS = [
@@ -51,8 +51,12 @@ const FAQ = [
     a: STATUS_ANSWER.short
   },
   {
+    q: 'Who founded the Zazie Institute of Applied Anomalies?',
+    a: 'ZIAA was founded by Zazie Kanwar-Torge in 2021 in the Mojave Basin, California. Zazie Kanwar-Torge is the founder and owner of Zazie Productions LLC, which operates the Institute as its research division, and serves as the Institute’s founder and director.'
+  },
+  {
     q: 'Who operates the Zazie Institute of Applied Anomalies?',
-    a: 'ZIAA is operated by Zazie Productions LLC as its research division. It was founded in 2021 in the Mojave Basin, California, and its research cycle has run from 2021 through 2026 under the direction of its founding researchers.'
+    a: 'ZIAA is operated by Zazie Productions LLC — founded and owned by Zazie Kanwar-Torge — as its research division. It was founded in 2021 in the Mojave Basin, California, and its research cycle has run from 2021 through 2026 under the direction of its founder and founding researchers.'
   }
 ];
 
@@ -60,13 +64,14 @@ export const About: React.FC = () => (
   <div className="space-y-6 font-serif">
       <Seo
         title="About the Institute"
-        description={`About the ${ENTITY.name} (ZIAA): independent research institute and open archive founded in 2021 in the Mojave Basin, California.`}
+        description={`About the ${ENTITY.name} (ZIAA): independent research institute founded by Zazie Kanwar-Torge and operated by Zazie Productions LLC.`}
         path="/about"
-        keywords={['about ZIAA', 'Zazie Institute', 'independent research institute', 'applied anomalies', 'experimental audio research', ...ENTITY.fields]}
+        keywords={['about ZIAA', 'Zazie Institute', 'Zazie Kanwar-Torge', 'Zazie Kanwar-Torge ZIAA', 'Zazie Productions LLC founder', 'independent research institute', 'applied anomalies', 'experimental audio research', ...ENTITY.fields]}
         jsonLd={[
           breadcrumbSchema(CRUMBS),
           aboutPageSchema('/about'),
           organizationSchema({ description: prestigeLead(archiveStats) }),
+          founderPersonSchema(),
         {
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
@@ -132,7 +137,9 @@ export const About: React.FC = () => (
         </p>
         <p>
           The Institute operates as the research and creative-technology division of{' '}
-          <strong className="text-zinc-100">{ENTITY.legalParent}</strong>. Its archive spans the {archiveStats.operationalYears}{' '}
+          <strong className="text-zinc-100">{ENTITY.legalParent}</strong>, founded and owned by{' '}
+          <Link to="/founder" className="text-[#dfb76c] hover:underline font-bold">Zazie Kanwar-Torge</Link>,
+          the Institute&apos;s founder and director. Its archive spans the {archiveStats.operationalYears}{' '}
           research cycle and is maintained as a permanent, citable record.
         </p>
         <h2 className="text-lg font-bold text-white pt-2">Primary Fields</h2>
@@ -160,7 +167,8 @@ export const About: React.FC = () => (
           <div><dt className="text-zinc-400">Abbreviation</dt><dd className="text-zinc-100">{ENTITY.abbreviation}</dd></div>
           <div><dt className="text-zinc-400">Type</dt><dd className="text-zinc-100">{ENTITY.type}</dd></div>
           <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} — {CANONICAL.foundingLocation}</dd></div>
-          <div><dt className="text-zinc-400">Founders</dt><dd className="text-zinc-100">{CANONICAL.founders.join(', ')}</dd></div>
+          <div><dt className="text-zinc-400">Founder &amp; director</dt><dd className="text-zinc-100"><Link to="/founder" className="text-[#dfb76c] hover:underline">{FOUNDER.name}</Link></dd></div>
+          <div><dt className="text-zinc-400">Founding researchers</dt><dd className="text-zinc-100">{CANONICAL.founders.join(', ')}</dd></div>
           <div><dt className="text-zinc-400">Parent organisation</dt><dd className="text-zinc-100">{ENTITY.legalParent}</dd></div>
           <div><dt className="text-zinc-400">Research cycle</dt><dd className="text-zinc-100">{archiveStats.operationalYears}</dd></div>
           <div><dt className="text-zinc-400">Motto</dt><dd className="text-zinc-100 italic">Auditus Inauditi — hearing the unheard</dd></div>
@@ -174,6 +182,18 @@ export const About: React.FC = () => (
           {facilities.map(f => <li key={f}>{f}</li>)}
         </ul>
       </aside>
+    </section>
+
+    <section aria-labelledby="founder-ownership" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
+      <h2 id="founder-ownership" className="text-lg font-bold text-white">Founder &amp; Ownership</h2>
+      <p className="text-sm text-zinc-300 leading-relaxed max-w-4xl">
+        {FOUNDER_STATEMENT}
+      </p>
+      <div className="flex flex-wrap gap-2 text-xs font-mono">
+        <Link to="/founder" className="px-3 py-1.5 bg-[#0a121e] border border-[#dfb76c]/60 hover:border-[#dfb76c] rounded text-[#dfb76c]">Zazie Kanwar-Torge — founder bio →</Link>
+        <Link to="/legal/institutional-status" className="px-3 py-1.5 bg-[#05080f] border border-[#1b2738] hover:border-[#dfb76c] rounded text-zinc-300">Institutional Status notice</Link>
+        <Link to="/legal/trademarks" className="px-3 py-1.5 bg-[#05080f] border border-[#1b2738] hover:border-[#dfb76c] rounded text-zinc-300">Trademarks &amp; IP Notice</Link>
+      </div>
     </section>
 
     <section aria-labelledby="holdings" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">

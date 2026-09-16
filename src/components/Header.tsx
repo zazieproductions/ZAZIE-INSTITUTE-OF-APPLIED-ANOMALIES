@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, isAudioPlaying = f
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1.5 text-[#dfb76c] font-medium tracking-wider">
             <Award className="w-3.5 h-3.5 text-[#d4af37]" aria-hidden="true" />
-            <span>{ENTITY.name.toUpperCase()}</span>
+            <span>{ENTITY.name.toUpperCase()}<span className="text-[9px] align-super" aria-hidden="true">™</span></span>
           </span>
           <span className="hidden lg:inline text-zinc-600" aria-hidden="true">|</span>
           <span className="hidden lg:inline text-zinc-300">
@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, isAudioPlaying = f
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <MastheadTag className="text-base md:text-lg font-bold tracking-wide text-white font-serif truncate">
-                ZAZIE INSTITUTE OF APPLIED ANOMALIES
+                ZAZIE INSTITUTE OF APPLIED ANOMALIES<span className="text-[10px] align-super text-[#dfb76c]" aria-hidden="true">™</span>
               </MastheadTag>
               <span className="hidden sm:inline-block px-2 py-0.5 text-[9px] font-mono tracking-widest text-[#dfb76c] bg-[#161309] border border-[#8c6d31]/60 rounded">
                 ZIAA

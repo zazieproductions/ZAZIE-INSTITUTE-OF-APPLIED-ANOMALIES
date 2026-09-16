@@ -2,11 +2,47 @@
  * schema.org JSON-LD builders. Every graph node references the same
  * Organization @id so search engines merge signals onto one entity.
  */
-import { ENTITY, SITE_URL, absoluteUrl } from './site';
+import { ENTITY, SITE_URL, FOUNDER, FOUNDER_ID, absoluteUrl } from './site';
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const PERIODICAL_ID = `${SITE_URL}/#transactions-series`;
+export { FOUNDER_ID };
+
+/**
+ * The legal founder as a schema.org Person. Emitted on the homepage, /about,
+ * /founder, /cite and every legal page so Google's entity graph binds the
+ * name "Zazie Kanwar-Torge" to the Institute and its operating company.
+ */
+export const founderPersonSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': FOUNDER_ID,
+  url: absoluteUrl(FOUNDER.path),
+  mainEntityOfPage: absoluteUrl(FOUNDER.path),
+  name: FOUNDER.name,
+  givenName: FOUNDER.givenName,
+  familyName: FOUNDER.familyName,
+  jobTitle: FOUNDER.jobTitle,
+  description: FOUNDER.description,
+  disambiguatingDescription: `Founder and owner of ${ENTITY.legalParent}; founder and director of the ${ENTITY.name} (${ENTITY.abbreviation})`,
+  affiliation: { '@id': ORG_ID },
+  worksFor: { '@id': ORG_ID },
+  founderOf: [
+    { '@id': ORG_ID },
+    {
+      '@type': 'Organization',
+      name: ENTITY.legalParent,
+      url: absoluteUrl('/legal/institutional-status')
+    }
+  ],
+  owns: {
+    '@type': 'Organization',
+    name: ENTITY.legalParent,
+    url: absoluteUrl('/legal/institutional-status')
+  },
+  knowsAbout: [...ENTITY.fields]
+});
 
 export const organizationSchema = (opts?: { description?: string }) => ({
   '@context': 'https://schema.org',
@@ -49,13 +85,23 @@ export const organizationSchema = (opts?: { description?: string }) => ({
   parentOrganization: {
     '@type': 'Organization',
     name: ENTITY.legalParent,
-    url: absoluteUrl('/legal/institutional-status')
+    url: absoluteUrl('/legal/institutional-status'),
+    founder: { '@id': FOUNDER_ID }
   },
-  founder: ENTITY.founders.map((n: string) => ({
-    '@type': 'Person',
-    name: n,
-    affiliation: { '@id': ORG_ID }
-  })),
+  founder: [
+    {
+      '@type': 'Person',
+      '@id': FOUNDER_ID,
+      name: FOUNDER.name,
+      url: absoluteUrl(FOUNDER.path),
+      jobTitle: FOUNDER.jobTitle
+    },
+    ...ENTITY.founders.map((n: string) => ({
+      '@type': 'Person',
+      name: n,
+      affiliation: { '@id': ORG_ID }
+    }))
+  ],
   knowsAbout: [...ENTITY.fields],
   areaServed: 'Worldwide',
   ...(ENTITY.sameAs.length ? { sameAs: [...ENTITY.sameAs] } : {})
@@ -84,6 +130,10 @@ export const websiteSchema = () => ({
   name: `${ENTITY.name} (${ENTITY.abbreviation})`,
   description: ENTITY.shortDescription,
   publisher: { '@id': ORG_ID },
+  author: { '@id': FOUNDER_ID },
+  creator: { '@id': FOUNDER_ID },
+  copyrightHolder: { '@id': ORG_ID },
+  copyrightYear: '2021-2026',
   inLanguage: 'en',
   potentialAction: {
     '@type': 'SearchAction',
@@ -289,6 +339,8 @@ export const creativeWorkSchema = (opts: {
   isPartOf: { '@id': WEBSITE_ID },
   publisher: { '@id': ORG_ID },
   sourceOrganization: { '@id': ORG_ID },
+  copyrightHolder: { '@id': ORG_ID },
+  copyrightYear: '2021-2026',
   author: opts.authors?.map(a => ({ '@type': 'Person', name: a })),
   keywords: opts.keywords?.join(', '),
   additionalType: opts.additionalType,

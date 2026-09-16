@@ -6,9 +6,9 @@ import { NetworkGraph } from '../components/NetworkGraph';
 import { AcousticBench } from '../components/AcousticBench';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { Seo } from '../seo/Seo';
-import { ENTITY } from '../seo/site';
+import { ENTITY, FOUNDER } from '../seo/site';
 import { prestigeLead } from '../seo/canonicalFacts';
-import { organizationSchema, websiteSchema } from '../seo/schema';
+import { founderPersonSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import {
   Activity, Cpu, FileText, AlertTriangle, ArrowRight, Layers, Radio, Zap, BookOpen, Users, MapPin
 } from 'lucide-react';
@@ -41,8 +41,8 @@ export const Dashboard: React.FC = () => {
       <Seo
         description={`${ENTITY.name} (ZIAA): independent research institute and open archive — ${archiveStats.totalPrototypes} prototypes, ${archiveStats.totalPatents} defensive disclosures, ${archiveStats.totalLogs} research notes, ${archiveStats.totalMonographs} monographs, ${archiveStats.totalFieldSites} field stations.`}
         path="/"
-        keywords={[...ENTITY.fields, 'ZIAA', 'Zazie Institute', 'Zazie Institute of Applied Anomalies']}
-        jsonLd={[organizationSchema({ description: prestigeLead(archiveStats) }), websiteSchema()]}
+        keywords={[...ENTITY.fields, 'ZIAA', 'Zazie Institute', 'Zazie Institute of Applied Anomalies', 'Zazie Kanwar-Torge', 'Zazie Kanwar-Torge ZIAA', 'Zazie Productions LLC']}
+        jsonLd={[organizationSchema({ description: prestigeLead(archiveStats) }), websiteSchema(), founderPersonSchema()]}
       />
 
       {/* Hero */}
@@ -74,6 +74,12 @@ export const Dashboard: React.FC = () => {
 
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               {prestigeLead(archiveStats)}
+            </p>
+
+            <p className="text-[11px] font-mono text-zinc-400">
+              Founded by{' '}
+              <Link to="/founder" className="text-[#dfb76c] hover:underline font-bold">{FOUNDER.name}</Link>
+              {' '}· A research division of {ENTITY.legalParent}
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">

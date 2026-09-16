@@ -5,6 +5,52 @@
  */
 export const SITE_URL = 'https://zazieinstitute.org';
 
+/**
+ * Legal founder & owner — the real-world person search engines must associate
+ * with the Institute and its operating company. Single source of truth for the
+ * name string; every visible credit, meta tag and Person JSON-LD node derives
+ * from here so Google merges signals onto one entity.
+ */
+export const FOUNDER = {
+  name: 'Zazie Kanwar-Torge',
+  givenName: 'Zazie',
+  familyName: 'Kanwar-Torge',
+  /** Canonical bio page — the Person entity's crawlable home. */
+  path: '/founder',
+  jobTitle: 'Founder of Zazie Productions LLC; Founder & Director of the Zazie Institute of Applied Anomalies',
+  shortRole: 'Founder & Director',
+  description:
+    'Zazie Kanwar-Torge is the founder and owner of Zazie Productions LLC and the founder and director of the Zazie Institute of Applied Anomalies (ZIAA), the independent research institute and open archive the company operates from the Mojave Basin, California.'
+} as const;
+
+/** Canonical @id of the founder's Person node — referenced by every schema. */
+export const FOUNDER_ID = `${SITE_URL}/founder#person`;
+
+/**
+ * Trademark portfolio — common-law marks owned by Zazie Productions LLC
+ * (founded and owned by Zazie Kanwar-Torge). Displayed with ™ across legal
+ * surfaces, the footer and the masthead; the full notice lives at
+ * /legal/trademarks. Never render these with ® (no registration is claimed).
+ */
+export const TRADEMARK_OWNER = 'Zazie Productions LLC';
+export const COPYRIGHT_NOTICE = '© 2021–2026 Zazie Productions LLC. All rights reserved.';
+export const TRADEMARK_MARKS = [
+  'Zazie Institute of Applied Anomalies',
+  'ZIAA',
+  'Zazie Productions',
+  'Auditus Inauditi',
+  'ZIAA Transactions',
+  'Acoustic Bench',
+  'SPECTRA//LAB',
+  'VOID//OCULUS',
+  'SYNTHESIS//SIGNAL',
+  'EMOTION//SPECTRUM',
+  'Black Vault',
+  'Anomaly Post-Mortem',
+  'System Audit Ledger',
+  'ZIAA Institutional Crest'
+] as const;
+
 export const ENTITY = {
   name: 'Zazie Institute of Applied Anomalies',
   abbreviation: 'ZIAA',

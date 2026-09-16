@@ -38,6 +38,7 @@ const disciplineLastmod = (discipline: string): string | undefined => {
 export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/', changefreq: 'weekly', priority: 1.0, lastmod: LAST_LOG },
   { path: '/about', changefreq: 'monthly', priority: 0.9 },
+  { path: '/founder', changefreq: 'monthly', priority: 0.9 },
   { path: '/prototypes', changefreq: 'weekly', priority: 0.9 },
   { path: '/patents', changefreq: 'monthly', priority: 0.8 },
   { path: '/research-notes', changefreq: 'weekly', priority: 0.8, lastmod: LAST_LOG },
@@ -51,6 +52,7 @@ export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/legal/disclaimer', changefreq: 'yearly', priority: 0.4 },
   { path: '/legal/terms', changefreq: 'yearly', priority: 0.3 },
   { path: '/legal/privacy', changefreq: 'yearly', priority: 0.3 },
+  { path: '/legal/trademarks', changefreq: 'yearly', priority: 0.4 },
   { path: '/field-stations', changefreq: 'monthly', priority: 0.7 },
   { path: '/post-mortems', changefreq: 'monthly', priority: 0.7 },
   { path: '/fellows', changefreq: 'monthly', priority: 0.7 },

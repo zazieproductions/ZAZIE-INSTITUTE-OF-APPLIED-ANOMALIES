@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Seo } from '../seo/Seo';
 import { CANONICAL, CITATION, recordCitation, STATUS_ANSWER } from '../seo/canonicalFacts';
-import { breadcrumbSchema, organizationSchema, faqPageSchema } from '../seo/schema';
+import { breadcrumbSchema, founderPersonSchema, organizationSchema, faqPageSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SITE_URL } from '../seo/site';
 import { Copy, Check, BookOpen } from 'lucide-react';
@@ -85,6 +85,7 @@ export const CitePolicy: React.FC = () => {
         jsonLd={[
           breadcrumbSchema(CRUMBS),
           organizationSchema(),
+          founderPersonSchema(),
           faqPageSchema(FAQ)
         ]}
       />
@@ -114,6 +115,11 @@ export const CitePolicy: React.FC = () => {
           </div>
           <code className="block font-mono text-xs text-zinc-200 leading-relaxed whitespace-pre-wrap">{CITATION.rootCitation}</code>
         </div>
+        <p className="text-xs text-zinc-400 leading-relaxed">
+          The Institute was founded by <Link to="/founder" className="text-[#dfb76c] hover:underline">Zazie Kanwar-Torge</Link>,
+          founder and owner of {CANONICAL.legalParent}, which holds all trademarks and copyrights in the archive — see the{' '}
+          <Link to="/legal/trademarks" className="text-[#dfb76c] hover:underline">Trademarks &amp; IP Notice</Link>.
+        </p>
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
           <div className="p-3.5 bg-[#03060a] border border-[#1b2738] rounded-lg"><dt className="text-zinc-400">Publisher string</dt><dd className="text-zinc-100 mt-1">{CITATION.publisher}</dd></div>
           <div className="p-3.5 bg-[#03060a] border border-[#1b2738] rounded-lg"><dt className="text-zinc-400">Series</dt><dd className="text-zinc-100 mt-1">{CITATION.journalTitle}</dd></div>
