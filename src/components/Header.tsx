@@ -73,7 +73,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, isAudioPlaying = f
           )}
           <div className="flex items-center gap-1.5 text-zinc-400">
             <Clock className="w-3 h-3 text-[#dfb76c]" aria-hidden="true" />
-            <time suppressHydrationWarning>{currentTime || '—— UTC'}</time>
+            {/* The timestamp only exists on the client. Reserving the width of a
+                full 23-character stamp keeps the registry strip from reflowing
+                when the clock lands, and the loaded layout is unchanged. */}
+            <time className="inline-block min-w-[23ch] tabular-nums" suppressHydrationWarning>
+              {currentTime || '—— UTC'}
+            </time>
           </div>
           <span className="hidden sm:inline text-zinc-600" aria-hidden="true">·</span>
           <span className="hidden sm:inline px-1.5 py-0.5 rounded bg-[#0a121e] border border-[#23354d] text-cyan-300 font-semibold">

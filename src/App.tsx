@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Loading } from './components/Loading';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Dashboard } from './pages/Dashboard';
 import { audioEngine } from './audio/audioEngine';
 
@@ -87,7 +88,14 @@ export function App() {
       <Header onOpenSearch={() => setSearchOpen(true)} isAudioPlaying={isAudioPlaying} />
 
       <main id="main-content" tabIndex={-1} className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 outline-none">
-        <Suspense fallback={<Loading />}>
+        <ErrorBoundary
+          resetKey={location.pathname}
+          label="THIS ARCHIVE SECTION FAILED TO LOAD"
+          onBack={() => {
+            window.location.assign('/');
+          }}
+        >
+          <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/about" element={<About />} />
@@ -148,8 +156,9 @@ export function App() {
             <Route path="/audit" element={<Navigate to="/system-audit" replace />} />
             <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
 
       <Footer />
