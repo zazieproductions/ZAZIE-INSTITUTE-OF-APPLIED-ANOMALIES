@@ -1,0 +1,364 @@
+{
+  "organ": "CIT-01",
+  "name": "The Citation Organ",
+  "seed": 20260916,
+  "subject": {
+    "url": "https://zazieinstitute.org",
+    "name": "Zazie Institute of Applied Anomalies"
+  },
+  "allowlist": [
+    "web.archive.org",
+    "archive.org",
+    "zenodo.org",
+    "doi.org"
+  ],
+  "caps": {
+    "tier1": 3,
+    "tier2": 8,
+    "tier3": 16
+  },
+  "hosts": {
+    "DOMAIN_V01": "listening-room-site-04.invalid",
+    "GHPAGES_MAIN": "ziaa-dsp.github.io",
+    "DOMAIN_V03": "transactions-annex.invalid",
+    "DOMAIN_P01": "impulse-response-library.invalid",
+    "GHPAGES_CUSTODY": "ziaa-custody.github.io",
+    "DOMAIN_P03": "lexicon-fragments.invalid",
+    "DOMAIN_P04": "resonance-calendar.invalid",
+    "GHPAGES_BENCH": "ziaa-bench-notes.github.io",
+    "DOMAIN_P06": "signal-salvage-index.invalid",
+    "GHPAGES_C01": "card-annex-01.github.io",
+    "GHPAGES_C04": "card-annex-04.github.io",
+    "GHPAGES_C06": "card-annex-06.github.io",
+    "GHPAGES_C08": "card-annex-08.github.io",
+    "GHPAGES_C10": "card-annex-10.github.io"
+  },
+  "nodes": [
+    {
+      "id": "V-01",
+      "tier": 1,
+      "title": "The Listening Room at Site-04",
+      "voice": "listening-room",
+      "archetype": "field-report",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_V01",
+      "path": "",
+      "innerPages": 3,
+      "upstream": 0,
+      "sideways": 0,
+      "offsetDays": 0,
+      "affinity": {
+        "disciplines": [
+          "Acoustic Architecture",
+          "Applied Anomalies"
+        ],
+        "sections": [
+          "field-stations",
+          "prototypes"
+        ],
+        "deepRecords": 3
+      }
+    },
+    {
+      "id": "V-02",
+      "tier": 1,
+      "title": "ZIAA // DSP Notebook",
+      "voice": "engineering-log",
+      "archetype": "notebook",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_MAIN",
+      "path": "",
+      "innerPages": 3,
+      "upstream": 0,
+      "sideways": 0,
+      "offsetDays": 10,
+      "affinity": {
+        "disciplines": [
+          "Generative Software",
+          "Perceptual Interfaces"
+        ],
+        "sections": [
+          "prototypes",
+          "patents"
+        ],
+        "deepRecords": 3
+      }
+    },
+    {
+      "id": "V-03",
+      "tier": 1,
+      "title": "Transactions Annex",
+      "voice": "transactions-annex",
+      "archetype": "dossier",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_V03",
+      "path": "",
+      "innerPages": 3,
+      "upstream": 0,
+      "sideways": 0,
+      "offsetDays": 24,
+      "affinity": {
+        "disciplines": [],
+        "sections": [
+          "monographs",
+          "fellows"
+        ],
+        "deepRecords": 3
+      }
+    },
+    {
+      "id": "P-01",
+      "tier": 2,
+      "title": "Impulse Response Library",
+      "voice": "library",
+      "archetype": "catalogue",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P01",
+      "path": "",
+      "upstream": 2,
+      "sideways": 1,
+      "offsetDays": 4,
+      "affinity": {
+        "sections": [
+          "field-stations"
+        ]
+      }
+    },
+    {
+      "id": "P-02",
+      "tier": 2,
+      "title": "Observations of Instrumental Custody",
+      "voice": "apparatus-log",
+      "archetype": "field-report",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_CUSTODY",
+      "path": "",
+      "upstream": 2,
+      "sideways": 1,
+      "offsetDays": 8,
+      "affinity": {
+        "sections": [
+          "prototypes"
+        ]
+      }
+    },
+    {
+      "id": "P-03",
+      "tier": 2,
+      "title": "Lexicon Fragments",
+      "voice": "lexicon-fragments",
+      "archetype": "index-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P03",
+      "path": "",
+      "upstream": 2,
+      "sideways": 1,
+      "offsetDays": 14,
+      "affinity": {
+        "sections": [
+          "research-notes"
+        ]
+      }
+    },
+    {
+      "id": "P-04",
+      "tier": 2,
+      "title": "Resonance Calendar",
+      "voice": "calendar",
+      "archetype": "notebook",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P04",
+      "path": "",
+      "upstream": 2,
+      "sideways": 1,
+      "offsetDays": 18,
+      "affinity": {
+        "sections": [
+          "research-notes",
+          "post-mortems"
+        ]
+      }
+    },
+    {
+      "id": "P-05",
+      "tier": 2,
+      "title": "Bench Notes",
+      "voice": "bench-notes",
+      "archetype": "catalogue",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_BENCH",
+      "path": "",
+      "upstream": 2,
+      "sideways": 1,
+      "offsetDays": 30,
+      "affinity": {
+        "sections": [
+          "prototypes"
+        ]
+      }
+    },
+    {
+      "id": "P-06",
+      "tier": 2,
+      "title": "Signal Salvage Index",
+      "voice": "salvage-index",
+      "archetype": "field-report",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P06",
+      "path": "",
+      "upstream": 2,
+      "sideways": 1,
+      "offsetDays": 38,
+      "affinity": {
+        "disciplines": [
+          "Signal Archaeology"
+        ],
+        "sections": [
+          "post-mortems"
+        ]
+      }
+    },
+    {
+      "id": "C-01",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_C01",
+      "path": "",
+      "offsetDays": 6,
+      "cardSerial": "Nº 001"
+    },
+    {
+      "id": "C-02",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P03",
+      "path": "card-02",
+      "offsetDays": 9,
+      "cardSerial": "Nº 002"
+    },
+    {
+      "id": "C-03",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P04",
+      "path": "card-03",
+      "offsetDays": 12,
+      "cardSerial": "Nº 003"
+    },
+    {
+      "id": "C-04",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_C04",
+      "path": "",
+      "offsetDays": 16,
+      "cardSerial": "Nº 004"
+    },
+    {
+      "id": "C-05",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P01",
+      "path": "card-05",
+      "offsetDays": 21,
+      "cardSerial": "Nº 005"
+    },
+    {
+      "id": "C-06",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_C06",
+      "path": "",
+      "offsetDays": 26,
+      "cardSerial": "Nº 006"
+    },
+    {
+      "id": "C-07",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P06",
+      "path": "card-07",
+      "offsetDays": 33,
+      "cardSerial": "Nº 007"
+    },
+    {
+      "id": "C-08",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_C08",
+      "path": "",
+      "offsetDays": 41,
+      "cardSerial": "Nº 008"
+    },
+    {
+      "id": "C-09",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P03",
+      "path": "card-09",
+      "offsetDays": 47,
+      "cardSerial": "Nº 009"
+    },
+    {
+      "id": "C-10",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "github-pages",
+      "hostToken": "GHPAGES_C10",
+      "path": "",
+      "offsetDays": 52,
+      "cardSerial": "Nº 010"
+    },
+    {
+      "id": "C-11",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P04",
+      "path": "card-11",
+      "offsetDays": 56,
+      "cardSerial": "Nº 011"
+    },
+    {
+      "id": "C-12",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "kind": "owned-domain",
+      "hostToken": "DOMAIN_P01",
+      "path": "card-12",
+      "offsetDays": 60,
+      "cardSerial": "Nº 012"
+    }
+  ],
+  "explicitEdges": [
+    {
+      "from": "V-03",
+      "to": "EXTERNAL",
+      "href": "https://archive.org/details/ziaa-transactions",
+      "label": "ZIAA Transactions — preservation deposits",
+      "rel": "nofollow",
+      "page": "index"
+    }
+  ]
+}

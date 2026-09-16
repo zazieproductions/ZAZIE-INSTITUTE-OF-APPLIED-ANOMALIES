@@ -1,0 +1,14 @@
+[
+  "fetch\\s*\\(",
+  "http\\.request",
+  "https\\.request",
+  "XMLHttpRequest",
+  "axios",
+  "node-fetch",
+  "undici",
+  "net\\.connect",
+  "child_process",
+  "\\bspawn\\s*\\(",
+  "(?<![.\\w])exec\\s*\\(",
+  "(?<![.\\w])execSync\\s*\\("
+]

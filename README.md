@@ -22,6 +22,7 @@ Zazie Productions LLC. https://zazieinstitute.org/
 - Citation policy (APA / BibTeX / Chicago templates, ISSN, record identifiers): [Citation Policy](https://zazieinstitute.org/cite)
 - This repository also carries a [`CITATION.cff`](./CITATION.cff) for tooling that reads the Citation File Format.
 - External deposits (Zenodo record payload, operator runbook) are staged in [`geo-mirror/`](./geo-mirror/).
+- Off-site machinery — instrument CIT-01, "The Citation Organ", a charter-contained tiered citation apparatus generated and audited from this repo — lives in [`linkwork/`](./linkwork/). Placard & runbook: [`linkwork/ORGAN.md`](./linkwork/ORGAN.md); binding rules: [`linkwork/CHARTER.md`](./linkwork/CHARTER.md).
 
 ## Stack
 

@@ -226,6 +226,25 @@ Targets (real pages with editability):
 2. **ORCID for fellows:** Create ORCID iDs for 3 lead fellows (Thorne, Mstislav, Callow) and link to Zenodo. This is standard for independent researchers — not deception.
 3. **Cite the archive from parasite articles** — each parasite includes a formatted reference to the Zenodo DOI, which then appears as a citation in OpenAlex’s knowledge graph. LLMs ground to OpenAlex DOIs.
 
+### 5.4 Tiered-Link Machinery — Instrument CIT-01, "The Citation Organ" (BUILT, STAGED)
+
+Phase 2's parasite/niche-edit lanes borrow authority. CIT-01 **grows** it: a full tiered-link pyramid — 12 sediment (citation cards) → 6 pipes (feeders) → 3 vessels (study satellites) → `zazieinstitute.org` — generated, audited, and shipped as a *work* under `linkwork/`. It is the §8 risk ("expired-domain PBN wall") re-engineered into its safe, reversible, self-owned form: charter-capped at 3/8/16 nodes, drip-scheduled across ~9 weeks (`out/schedule.ics`), anchor-budgeted (§5.1 ratios enforced ±6pp), template-drift-audited (J≤0.35 cross-node), zero-network by construction (the machinery makes no HTTP calls; deployment is manual per node `DEPLOY.md`), staged-noindex until go-live, and decommissionable in one command (honest tombstones + disavow scaffold).
+
+| Property | Value |
+|----------|-------|
+| Caps (charter §1) | 3 vessels / 8 pipes / 16 sediment — a piece, not a farm |
+| Ownership (§2) | Self-owned domains + operator platform accounts only; **no third-party automation, ever** — no comments, no accounts, no purchases, no injections; C4 allowlist: ledgered nodes ∪ reservoir ∪ {archive.org, web.archive.org, zenodo.org, doi.org} |
+| Anchors (§5.1) | Realized ≈ 42% brand / 21% url / 29% long-tail / 8% generic — within ±6pp; naked URLs → root, brand → identity surfaces, long-tails → topical records |
+| Hygiene | No reciprocals, no self-edges, no duplicate edges; cross-node 4-gram similarity ≤ 0.35 (5 archetypes × 5 palettes × 3 font stacks); machinery vocabulary never leaks onto generated surfaces |
+| Staging | Pre-go-live nodes ship `noindex, nofollow` + STAGED banner (C5); cadence ≤ ~3 nodes/week |
+| Reversibility | `decommission` → honest tombstones canonical to the archive + disavow scaffold |
+
+**Content:** all voices are in-universe (listening-room, DSP notebook, transactions annex, lexicon fragments, citation cards…) generated from the real collections — every cited record exists; every reservoir URL is derived from the same source as `sitemap.xml` (C10). Every page names the Institute and repeats the non-accreditation disclaimer.
+
+**Commands:** `node linkwork/linkwork.mjs build|audit|schedule|status|graph|decommission` — see `linkwork/ORGAN.md` (placard + runbook) and `linkwork/CHARTER.md` (binding rules; C1–C11 enforced in `lib/audit.mjs`). Build is deterministic: same spec + seed + epoch + clock ⇒ byte-identical sites, so the ledger is reproducible evidence.
+
+**Doctrine status:** BUILT AND CONTAINED at demo hosts (`.invalid` placeholders; DEMO MODE amber blocks deployment until `spec.local.json` resolves real hosts). Deployment is Phase-3-gated: only after parasite lanes (§5.1) show a clean 4-week velocity, per the blast-radius doctrine in §8.
+
 ---
 
 ## 6. CONTENT VELOCITY — Without Narrative Leak
