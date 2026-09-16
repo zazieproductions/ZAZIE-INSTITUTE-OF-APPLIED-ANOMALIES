@@ -188,7 +188,12 @@ const definedTerms = [...lex.matchAll(/"termCode":"([^"]+)"/g)].map(m => m[1]);
 if (definedTerms.length < 12) fail(`lexicon carries ${definedTerms.length} DefinedTerms, expected >= 12`);
 else ok(`lexicon carries ${definedTerms.length} DefinedTerms`);
 // Every llms.txt vocabulary definition must appear on /lexicon (same source strings).
-const vocabSection = llms.slice(llms.indexOf('## Entity vocabulary'));
+// Scope the slice to the vocabulary section only — later sections (grounding
+// sources, discovery surfaces, IP notice) are not vocabulary and must not be
+// parsed as definitions.
+const vocabStart = llms.indexOf('## Entity vocabulary');
+const vocabEnd = llms.indexOf('\n## ', vocabStart + 1);
+const vocabSection = vocabEnd === -1 ? llms.slice(vocabStart) : llms.slice(vocabStart, vocabEnd);
 const vocabDefs = [...vocabSection.matchAll(/^- [^:]+: ([^—]+)— /gm)].map(m => m[1].trim());
 let parity = 0;
 for (const d of vocabDefs) {

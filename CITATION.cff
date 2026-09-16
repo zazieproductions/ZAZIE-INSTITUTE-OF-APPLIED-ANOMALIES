@@ -2,6 +2,9 @@ cff-version: 1.1.0
 message: "If you use or cite this repository or the archive it documents, please use the citation below."
 type: dataset
 authors:
+  - family-names: "Kanwar-Torge"
+    given-names: "Zazie"
+    affiliation: "Zazie Productions LLC"
   - name: "Zazie Institute of Applied Anomalies (ZIAA)"
   - name: "Zazie Productions LLC"
 title: "Zazie Institute of Applied Anomalies (ZIAA) — Research Archive"

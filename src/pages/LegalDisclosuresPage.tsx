@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { Seo } from '../seo/Seo';
-import { breadcrumbSchema } from '../seo/schema';
+import { breadcrumbSchema, founderPersonSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { ENTITY } from '../seo/site';
+import { ENTITY, FOUNDER } from '../seo/site';
+import { TRADEMARK_NOTICE } from '../seo/canonicalFacts';
 import {
   Scale,
   Lock,
@@ -12,7 +13,8 @@ import {
   Info,
   CheckCircle2,
   Printer,
-  Award
+  Award,
+  BadgeCheck
 } from 'lucide-react';
 
 import { LEGAL_SLUGS, legalPath, type LegalSectionKey } from '../routes/legal';
@@ -33,6 +35,10 @@ const SEO: Record<LegalSectionKey, { title: string; description: string }> = {
   privacy: {
     title: 'Privacy Policy',
     description: 'Privacy policy for zazieinstitute.org: ZIAA instruments process audio and files locally in the browser, collect no telemetry and store session data only on your device. Data protection notice from Zazie Productions LLC.'
+  },
+  trademarks: {
+    title: 'Trademarks & IP Notice',
+    description: 'Trademark and copyright notice for the Zazie Institute of Applied Anomalies (ZIAA): all Institute names, marks and crests are trademarks of Zazie Productions LLC, founded by Zazie Kanwar-Torge. Full mark schedule.'
   }
 };
 
@@ -85,6 +91,13 @@ export const LegalDisclosuresPage: React.FC = () => {
       code: 'ZIAA-DISCL-004-PRIV',
       icon: Lock,
       description: 'Client-side local processing, zero-telemetry & data protection notice.'
+    },
+    {
+      key: 'trademarks',
+      label: 'Trademarks & IP',
+      code: 'ZIAA-DISCL-005-TM',
+      icon: BadgeCheck,
+      description: 'Trademark schedule, copyright notice & permitted-use terms. Owner: Zazie Productions LLC.'
     }
   ];
 
@@ -96,6 +109,7 @@ export const LegalDisclosuresPage: React.FC = () => {
         path={legalPath(activeSection)}
         jsonLd={[
           breadcrumbSchema(crumbs),
+          founderPersonSchema(),
           {
             '@context': 'https://schema.org',
             '@type': 'WebPage',
@@ -103,7 +117,10 @@ export const LegalDisclosuresPage: React.FC = () => {
             description: meta.description,
             url: `https://zazieinstitute.org${legalPath(activeSection)}`,
             isPartOf: { '@type': 'WebSite', url: 'https://zazieinstitute.org/', name: ENTITY.name },
-            publisher: { '@type': 'Organization', name: ENTITY.legalParent }
+            publisher: { '@type': 'Organization', name: ENTITY.legalParent },
+            copyrightHolder: { '@type': 'Organization', name: ENTITY.legalParent },
+            copyrightYear: '2021-2026',
+            author: { '@type': 'Person', name: FOUNDER.name, url: `https://zazieinstitute.org${FOUNDER.path}` }
           }
         ]}
       />
@@ -172,7 +189,7 @@ export const LegalDisclosuresPage: React.FC = () => {
       </header>
 
       {/* Section navigation */}
-      <nav aria-label="Disclosure documents" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+      <nav aria-label="Disclosure documents" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5">
         {sections.map(s => {
           const isActive = activeSection === s.key;
           const Icon = s.icon;
@@ -233,15 +250,22 @@ export const LegalDisclosuresPage: React.FC = () => {
                 1. Legal Entity & Operating Structure
               </h3>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                The <strong>Zazie Institute of Applied Anomalies (ZIAA)</strong> is an independent experimental creative 
-                research initiative and speculative engineering laboratory operated as an internal research and development 
-                division of <strong>Zazie Productions LLC</strong>, a private commercial limited liability entity.
+                The <strong>Zazie Institute of Applied Anomalies (ZIAA)</strong> is an independent experimental creative
+                research initiative and speculative engineering laboratory operated as an internal research and development
+                division of <strong>Zazie Productions LLC</strong>, a private commercial limited liability entity
+                founded and owned by <strong>Zazie Kanwar-Torge</strong> (<Link to="/founder" className="text-[#dfb76c] hover:underline">founder bio</Link>).
               </p>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                ZIAA was established in 2021 to advance interdisciplinary investigations in modular audio systems, 
-                computational creativity, physical computing, tactile perceptual interfaces, psychoacoustics, and speculative design. 
-                All operations, publications, codebases, hardware prototypes, and physical workspaces are funded, owned, 
+                ZIAA was established in 2021 to advance interdisciplinary investigations in modular audio systems,
+                computational creativity, physical computing, tactile perceptual interfaces, psychoacoustics, and speculative design.
+                All operations, publications, codebases, hardware prototypes, and physical workspaces are funded, owned,
                 and governed directly under the auspices of Zazie Productions LLC.
+              </p>
+              <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
+                All Institute names, marks, crests and instrument titles are common-law trademarks of{' '}
+                <strong>Zazie Productions LLC</strong>, and all archive materials are copyright{' '}
+                <strong>{TRADEMARK_NOTICE.copyright}</strong> The complete mark schedule is published in the{' '}
+                <Link to={legalPath('trademarks')} className="text-[#dfb76c] hover:underline">Trademarks &amp; Intellectual Property Notice</Link>.
               </p>
             </div>
 
@@ -312,6 +336,7 @@ export const LegalDisclosuresPage: React.FC = () => {
               </p>
               <div className="p-4 rounded-lg bg-[#020509] border border-[#1b2636] font-mono text-xs text-zinc-300 space-y-1">
                 <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC</div>
+                <div>Founder &amp; Owner: Zazie Kanwar-Torge</div>
                 <div>Directorate of Administration & Legal Affairs</div>
                 <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
                 <div className="text-cyan-400">Web: zazieinstitute.org · zazieproductions.com</div>
@@ -537,9 +562,16 @@ export const LegalDisclosuresPage: React.FC = () => {
                 3. Intellectual Property Rights
               </h3>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                All original text, technical dossiers, design fiction narratives, heraldic crests, 3D models, user interface designs, 
-                and custom DSP synthesis implementations are the proprietary intellectual property of <strong>Zazie Productions LLC</strong>, 
-                all rights reserved under United States and international copyright law.
+                All original text, technical dossiers, design fiction narratives, heraldic crests, 3D models, user interface designs,
+                and custom DSP synthesis implementations are the proprietary intellectual property of <strong>Zazie Productions LLC</strong>
+                (founded and owned by <strong>Zazie Kanwar-Torge</strong>), all rights reserved under United States and international
+                copyright law. Copyright {TRADEMARK_NOTICE.copyright}
+              </p>
+              <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
+                Institute designations — including {TRADEMARK_NOTICE.marks.slice(0, 8).join('™, ')}™ — are common-law
+                trademarks of Zazie Productions LLC. The full mark schedule, ownership record and permitted-use terms are
+                published in the <Link to={legalPath('trademarks')} className="text-[#dfb76c] hover:underline">Trademarks &amp; Intellectual Property Notice</Link>,
+                which forms part of these Terms.
               </p>
               <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
                 Open-source libraries incorporated into web workstations (such as Three.js, React, Tailwind CSS, Lucide icons, and Web Audio API interfaces) 
@@ -704,6 +736,120 @@ export const LegalDisclosuresPage: React.FC = () => {
             </div>
           </section>
         )}
+
+        {/* DOCUMENT VIEW 5: TRADEMARKS & INTELLECTUAL PROPERTY */}
+        {activeSection === 'trademarks' && (
+          <section className="space-y-8 animate-fadeIn">
+            <div className="border-b border-[#1b2636] pb-6 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-zinc-400">
+                <span>DOCUMENT NO: ZIAA-DISCL-005-TM</span>
+                <span>EFFECTIVE: SEPTEMBER 2026</span>
+                <span>OWNER: ZAZIE PRODUCTIONS LLC</span>
+              </div>
+              <h2 className="text-xl md:text-2xl font-bold text-white tracking-wide">
+                Trademarks &amp; Intellectual Property Notice
+              </h2>
+              <div className="text-xs text-[#c5a059] italic font-serif">
+                Ownership record, trademark schedule, copyright notice and permitted-use terms for all Institute marks and materials.
+              </div>
+            </div>
+
+            {/* Section 1: Ownership */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold font-mono text-[#dfb76c] uppercase tracking-wider flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#dfb76c]" />
+                1. Ownership of Marks &amp; Materials
+              </h3>
+              <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
+                All trademarks, service marks, trade names, crests, logotypes and instrument titles associated with the{' '}
+                <strong>Zazie Institute of Applied Anomalies (ZIAA)</strong> are owned by{' '}
+                <strong>Zazie Productions LLC</strong>, a private company founded and owned by{' '}
+                <strong>Zazie Kanwar-Torge</strong> (<Link to="/founder" className="text-[#dfb76c] hover:underline">founder bio</Link>),
+                who is also the founder and director of the Institute. All archive text, technical dossiers, software,
+                recordings, 3D models and interface designs are copyright{' '}
+                <strong>{TRADEMARK_NOTICE.copyright}</strong>
+              </p>
+              <p className="text-xs md:text-sm text-zinc-400 leading-relaxed">
+                The marks below are common-law trademarks asserted through continuous use in commerce since 2021. No
+                registration with any trademark office is claimed by the ™ designation; it denotes ownership and active
+                use by Zazie Productions LLC.
+              </p>
+            </div>
+
+            {/* Section 2: Mark schedule */}
+            <div className="space-y-3 bg-[#020509] border border-[#1b2636] p-5 rounded-lg">
+              <h3 className="text-sm font-bold font-mono text-[#dfb76c] uppercase tracking-wider flex items-center gap-2">
+                <BadgeCheck className="w-4 h-4 text-[#dfb76c] shrink-0" />
+                2. Trademark Schedule
+              </h3>
+              <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
+                Each of the following is a trademark™ of <strong>Zazie Productions LLC</strong>. The schedule is
+                non-exhaustive: any Institute name, crest, instrument title or series designation appearing on this
+                site is claimed as a mark of the company whether or not it appears below.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                {TRADEMARK_NOTICE.marks.map(mark => (
+                  <li key={mark} className="flex items-center justify-between gap-2 px-3 py-2 rounded bg-[#04070d] border border-[#1b2738] font-mono text-xs">
+                    <span className="text-zinc-100">{mark}<span className="text-[#dfb76c]">™</span></span>
+                    <span className="text-[10px] text-zinc-400 shrink-0">ZAZIE PRODUCTIONS LLC</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                The ZIAA Institutional Crest™ (all variants: gold, monochrome, favicon, og-default) and the motto{' '}
+                <em>Auditus Inauditi™</em> (‘hearing the unheard’) are likewise marks of Zazie Productions LLC.
+              </p>
+            </div>
+
+            {/* Section 3: Copyright */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold font-mono text-[#dfb76c] uppercase tracking-wider flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#dfb76c]" />
+                3. Copyright Notice
+              </h3>
+              <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
+                {TRADEMARK_NOTICE.copyright} All original text, technical dossiers, design fiction narratives,
+                heraldic crests, 3D models, user interface designs, custom DSP synthesis implementations, recordings
+                and PDFs on zazieinstitute.org are the proprietary property of Zazie Productions LLC under United States
+                and international copyright law. Open-source libraries incorporated into web workstations remain the
+                property of their respective creators under their applicable licenses.
+              </p>
+            </div>
+
+            {/* Section 4: Permitted use */}
+            <div className="space-y-3">
+              <h3 className="text-sm font-bold font-mono text-[#dfb76c] uppercase tracking-wider flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#dfb76c]" />
+                4. Permitted Use of Marks
+              </h3>
+              <div className="space-y-2 text-xs md:text-sm text-zinc-400 pl-4 border-l border-[#23354d]">
+                <p>• You may refer to Institute marks by name for nominative purposes — citation, criticism, review, scholarship and factual reporting — without implying endorsement, affiliation or sponsorship.</p>
+                <p>• You may reproduce the provided citation strings, which name the Institute and its series as publisher, in academic and editorial contexts per the <Link to="/cite" className="text-[#dfb76c] hover:underline">Citation Policy</Link>.</p>
+                <p>• You may not use any Institute mark as a business, product or service name, nor in any manner likely to cause confusion as to source or authorization.</p>
+                <p>• You may not reproduce the ZIAA Institutional Crest™, logotypes or instrument artwork except as rendered incidentally by normal browsing, without prior written consent from Zazie Productions LLC.</p>
+                <p>• Commercial, merchandising or co-branding uses of any mark require a written licence. Direct requests to the administration channel below.</p>
+              </div>
+            </div>
+
+            {/* Section 5: Enforcement & contact */}
+            <div className="space-y-3 border-t border-[#1b2636] pt-6">
+              <h3 className="text-sm font-bold font-mono text-[#dfb76c] uppercase tracking-wider flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#dfb76c]" />
+                5. Enforcement &amp; Licensing Inquiries
+              </h3>
+              <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
+                Zazie Productions LLC enforces its marks against confusing, misleading or dilutive use. To report
+                misuse or to request a licence, contact the corporate administration:
+              </p>
+              <div className="p-4 rounded-lg bg-[#020509] border border-[#1b2636] font-mono text-xs text-zinc-300 space-y-1">
+                <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC — INTELLECTUAL PROPERTY</div>
+                <div>Founder &amp; Owner: Zazie Kanwar-Torge</div>
+                <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
+                <div className="text-cyan-400">Web: zazieinstitute.org · zazieproductions.com</div>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
 
       {/* Bottom Certifications & Archival Stamp */}
@@ -715,7 +861,7 @@ export const LegalDisclosuresPage: React.FC = () => {
               ZAZIE PRODUCTIONS LLC // LEGAL REGISTRY
             </div>
             <div className="text-[10px] text-zinc-400">
-              Audited Repository Cycle 2021–2026 · All Rights Reserved
+              {TRADEMARK_NOTICE.copyright} Audited Repository Cycle 2021–2026 · All marks ™ of {ENTITY.legalParent}
             </div>
           </div>
         </div>

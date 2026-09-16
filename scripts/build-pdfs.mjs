@@ -21,7 +21,7 @@ function genMonographPDF(m) {
     Title: m.title,
     Author: [m.author, ...(m.coAuthors || [])].join(', '),
     Subject: m.abstract.slice(0, 200),
-    Keywords: 'ZIAA, applied anomalies, experimental audio',
+    Keywords: 'ZIAA, applied anomalies, experimental audio, Zazie Kanwar-Torge, Zazie Productions LLC',
     Creator: 'ZIAA Archive / build-pdfs.mjs',
     Producer: 'PDFKit'
   }});
@@ -33,7 +33,7 @@ function genMonographPDF(m) {
   doc.font('Helvetica-Bold').fontSize(8).fillColor('#8c6d31')
     .text('ZAZIE INSTITUTE OF APPLIED ANOMALIES — ZIAA', { align: 'center' });
   doc.font('Helvetica').fontSize(7).fillColor('#666')
-    .text('Independent research institute and open research archive — Zazie Productions LLC', { align: 'center' });
+    .text('Independent research institute and open research archive — Zazie Productions LLC · Founded by Zazie Kanwar-Torge', { align: 'center' });
   doc.moveDown(0.5);
   doc.font('Helvetica').fontSize(6).fillColor('#999')
     .text(`${m.volume}  •  ISSN 2834-9180 (Online)  •  OPEN RESEARCH`, { align: 'center' });
@@ -88,7 +88,7 @@ function genMonographPDF(m) {
 
   // Footer — archival
   doc.font('Helvetica').fontSize(6).fillColor('#999')
-    .text(`Archival specimen — ZIAA Publications Division  •  ${SITE}/monographs/${id}  •  Permanent preservation record — Cite as: ${m.author} et al., "${m.title}," ${m.volume}, ZIAA Press, ${m.date.slice(0,4)}.`, { align: 'center' });
+    .text(`Archival specimen — ZIAA Publications Division  •  ${SITE}/monographs/${id}  •  (c) 2021-2026 Zazie Productions LLC · Founded by Zazie Kanwar-Torge · All rights reserved  •  Cite as: ${m.author} et al., "${m.title}," ${m.volume}, ZIAA Press, ${m.date.slice(0,4)}.`, { align: 'center' });
 
   doc.end();
   return done.then(buf => {
@@ -104,6 +104,7 @@ function genPatentPDF(p) {
     Title: p.title,
     Author: p.inventors.join(', '),
     Subject: p.abstract.slice(0, 200),
+    Keywords: 'ZIAA, defensive publication, Zazie Kanwar-Torge, Zazie Productions LLC',
     Creator: 'ZIAA Archive / build-pdfs.mjs',
   }});
   const chunks = [];
@@ -111,7 +112,7 @@ function genPatentPDF(p) {
   const done = new Promise(res => doc.on('end', () => res(Buffer.concat(chunks))));
 
   doc.font('Helvetica-Bold').fontSize(7).fillColor('#8c6d31').text('ZAZIE INSTITUTE OF APPLIED ANOMALIES — SPECULATIVE PATENT DISCLOSURE', { align: 'center' });
-  doc.font('Helvetica').fontSize(6).fillColor('#666').text('Defensive publication — design-fiction hardware disclosure, not an issued patent  •  ZIAA Open Research Charter', { align: 'center' });
+  doc.font('Helvetica').fontSize(6).fillColor('#666').text('Defensive publication — design-fiction hardware disclosure, not an issued patent  •  Zazie Productions LLC · Founded by Zazie Kanwar-Torge', { align: 'center' });
   doc.moveDown(0.4);
   doc.strokeColor('#d4af37').lineWidth(0.5).moveTo(64, doc.y).lineTo(531, doc.y).stroke();
   doc.moveDown(1);
@@ -150,7 +151,7 @@ function genPatentPDF(p) {
   doc.font('Helvetica-Oblique').fontSize(7).fillColor('#555').text(p.legalCounselMemo, { align: 'justify' });
   doc.moveDown(0.8);
   doc.font('Helvetica').fontSize(6).fillColor('#999')
-    .text(`Defensive publication — disclosed to prevent predatory encumbrance  •  ${SITE}/patents/${id}  •  See /legal/disclaimer`, { align: 'center' });
+    .text(`Defensive publication — disclosed to prevent predatory encumbrance  •  ${SITE}/patents/${id}  •  (c) 2021-2026 Zazie Productions LLC · All rights reserved  •  See /legal/disclaimer`, { align: 'center' });
 
   doc.end();
   return done.then(buf => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ENTITY, absoluteUrl, buildTitle, snippet } from './site';
+import { ENTITY, FOUNDER, COPYRIGHT_NOTICE, absoluteUrl, buildTitle, snippet } from './site';
 import { CITATION } from './canonicalFacts';
 
 export interface SeoProps {
@@ -74,6 +74,12 @@ export const Seo: React.FC<SeoProps> = ({
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
       )}
       {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+
+      {/* Authorship & rights — every page attributes the legal founder and rights holder. */}
+      <meta name="author" content={FOUNDER.name} />
+      <meta name="copyright" content={COPYRIGHT_NOTICE} />
+      <meta name="publisher" content={`${ENTITY.name} (${ENTITY.abbreviation}) — ${ENTITY.legalParent}`} />
+      <link rel="author" href={absoluteUrl(FOUNDER.path)} />
 
       <meta property="og:site_name" content={`${ENTITY.name} (${ENTITY.abbreviation})`} />
       <meta property="og:type" content={type} />

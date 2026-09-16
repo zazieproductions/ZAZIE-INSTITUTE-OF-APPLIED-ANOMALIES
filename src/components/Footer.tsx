@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Shield, Radio, Lock, Mail } from 'lucide-react';
 import { archiveStats } from '../data/archive';
 import { InstitutionalCrest } from './InstitutionalCrest';
-import { ENTITY } from '../seo/site';
+import { ENTITY, FOUNDER, COPYRIGHT_NOTICE } from '../seo/site';
+import { TRADEMARK_NOTICE } from '../seo/canonicalFacts';
 
 const ARCHIVE_LINKS = [
   { to: '/prototypes', label: `Prototypes (${archiveStats.totalPrototypes})` },
@@ -15,6 +16,7 @@ const ARCHIVE_LINKS = [
 ];
 const INSTITUTE_LINKS = [
   { to: '/about', label: 'About the Institute' },
+  { to: '/founder', label: `Founder — ${FOUNDER.name}` },
   { to: '/disciplines', label: 'Research Divisions (8 Laboratories)' },
   { to: '/fellows', label: `Fellows & Inventors (${archiveStats.totalPersonnel})` },
   { to: '/field-stations', label: `Field Stations (${archiveStats.totalFieldSites})` },
@@ -33,7 +35,8 @@ const LEGAL_LINKS = [
   { to: '/legal/institutional-status', label: 'Institutional Status' },
   { to: '/legal/disclaimer', label: 'Research & Speculation Disclaimer' },
   { to: '/legal/terms', label: 'Terms of Use' },
-  { to: '/legal/privacy', label: 'Privacy Policy' }
+  { to: '/legal/privacy', label: 'Privacy Policy' },
+  { to: '/legal/trademarks', label: 'Trademarks & IP' }
 ];
 
 const LinkColumn: React.FC<{ title: string; links: { to: string; label: string }[] }> = ({ title, links }) => (
@@ -68,7 +71,8 @@ export const Footer: React.FC = () => {
               </div>
               <p className="text-xs text-zinc-300 mt-1">
                 Independent research institute &amp; open archive · a research division of{' '}
-                <strong className="text-zinc-200">{ENTITY.legalParent}</strong>
+                <strong className="text-zinc-200">{ENTITY.legalParent}</strong> · founded by{' '}
+                <Link to="/founder" className="text-[#dfb76c] hover:underline font-bold">{FOUNDER.name}</Link>
               </p>
               <p className="text-xs text-[#c5a059] italic mt-0.5">“{ENTITY.tagline}”</p>
             </div>
@@ -124,7 +128,7 @@ export const Footer: React.FC = () => {
         {/* Legal */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-zinc-400 font-mono">
           <p>
-            © {ENTITY.founded}–2026 {ENTITY.name}. A research division of {ENTITY.legalParent}.
+            {COPYRIGHT_NOTICE} Founded by <Link to="/founder" className="text-zinc-300 hover:text-white hover:underline underline-offset-2">{FOUNDER.name}</Link>.
           </p>
           <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-1">
             {LEGAL_LINKS.map(l => (
@@ -140,6 +144,7 @@ export const Footer: React.FC = () => {
           artistic research, speculative engineering and design fiction; speculative patents are internal disclosures,
           not issued patents. See the <Link to="/legal/disclaimer" className="text-[#dfb76c] hover:underline">full disclaimer</Link>
           {' '}and the <Link to="/legal/institutional-status" className="text-[#dfb76c] hover:underline">Institutional Status notice</Link>.
+          {TRADEMARK_NOTICE.short} See the <Link to="/legal/trademarks" className="text-[#dfb76c] hover:underline">Trademarks &amp; IP Notice</Link>.
         </p>
       </div>
     </footer>
