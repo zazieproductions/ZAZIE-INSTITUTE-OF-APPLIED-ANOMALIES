@@ -1,0 +1,151 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ZIAA//CIT-01//EN
+BEGIN:VEVENT
+UID:V-01@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260916
+SUMMARY:ANNEX GO-LIVE — The Listening Room at Site-04 (V-01)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:P-01@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260920
+SUMMARY:ANNEX GO-LIVE — Impulse Response Library (P-01)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-01@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260922
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-01)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:P-02@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260924
+SUMMARY:ANNEX GO-LIVE — Observations of Instrumental Custody (P-02)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-02@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260925
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-02)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:V-02@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260926
+SUMMARY:ANNEX GO-LIVE — ZIAA // DSP Notebook (V-02)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-03@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260928
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-03)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:P-03@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20260930
+SUMMARY:ANNEX GO-LIVE — Lexicon Fragments (P-03)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-04@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261002
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-04)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:P-04@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261004
+SUMMARY:ANNEX GO-LIVE — Resonance Calendar (P-04)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-05@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261007
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-05)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:V-03@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261010
+SUMMARY:ANNEX GO-LIVE — Transactions Annex (V-03)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-06@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261012
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-06)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:P-05@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261016
+SUMMARY:ANNEX GO-LIVE — Bench Notes (P-05)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-07@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261019
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-07)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:P-06@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261024
+SUMMARY:ANNEX GO-LIVE — Signal Salvage Index (P-06)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-08@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261027
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-08)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-09@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261102
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-09)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-10@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261107
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-10)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-11@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261111
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-11)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+BEGIN:VEVENT
+UID:C-12@cit-01.ziaa
+DTSTAMP:20260916T000000Z
+DTSTART;VALUE=DATE:20261115
+SUMMARY:ANNEX GO-LIVE — Citation Card (C-12)
+DESCRIPTION:Manual deploy per linkwork out/sites DEPLOY.md. Never announce a staged node.
+END:VEVENT
+END:VCALENDAR

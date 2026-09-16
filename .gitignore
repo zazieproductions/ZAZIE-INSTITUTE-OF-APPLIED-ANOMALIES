@@ -31,4 +31,4 @@ dist-ssr
 # CIT-01 deployable output (ledger + plate stay committed)
 linkwork/out/sites/
 linkwork/spec.local.json
-out/
+/out/

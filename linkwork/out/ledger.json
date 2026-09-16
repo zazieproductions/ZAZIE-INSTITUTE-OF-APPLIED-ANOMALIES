@@ -1,0 +1,1693 @@
+{
+  "organ": "CIT-01",
+  "name": "The Citation Organ",
+  "seed": 20260916,
+  "epoch": "2026-09-16",
+  "today": "2026-09-16",
+  "buildId": "0f502db23d15",
+  "demoMode": false,
+  "counts": {
+    "nodes": 21,
+    "byTier": {
+      "vessels": 3,
+      "pipes": 6,
+      "sediment": 12
+    },
+    "edges": 79,
+    "subjectBound": 24,
+    "pages": 30
+  },
+  "distribution": {
+    "brand": 0.4166666666666667,
+    "url": 0.20833333333333334,
+    "longtail": 0.2916666666666667,
+    "generic": 0.08333333333333333
+  },
+  "nodes": [
+    {
+      "id": "V-01",
+      "tier": 1,
+      "title": "The Listening Room at Site-04",
+      "voice": "listening-room",
+      "archetype": "field-report",
+      "url": "https://listening-room-site-04.invalid",
+      "host": "listening-room-site-04.invalid",
+      "goLive": "2026-09-16",
+      "stagedAtBuild": false,
+      "inner": [
+        {
+          "slug": "inner-1",
+          "record": {
+            "section": "prototypes",
+            "id": "PROT-132"
+          },
+          "title": "Boundary Layer Acoustic Phase Canceler with Dual Diaphragm Sensors (Revision 5.3)"
+        },
+        {
+          "slug": "inner-2",
+          "record": {
+            "section": "prototypes",
+            "id": "PROT-077"
+          },
+          "title": "Speculative Multichannel Waveguide Horn with Variable Throat Geometry (Revision 3.2)"
+        },
+        {
+          "slug": "inner-3",
+          "record": {
+            "section": "field-stations",
+            "id": "SITE-01"
+          },
+          "title": "Mojave Desert Acoustic Sanctuary"
+        }
+      ]
+    },
+    {
+      "id": "V-02",
+      "tier": 1,
+      "title": "ZIAA // DSP Notebook",
+      "voice": "engineering-log",
+      "archetype": "notebook",
+      "url": "https://ziaa-dsp.github.io",
+      "host": "ziaa-dsp.github.io",
+      "goLive": "2026-09-26",
+      "stagedAtBuild": true,
+      "inner": [
+        {
+          "slug": "inner-1",
+          "record": {
+            "section": "prototypes",
+            "id": "PROT-071"
+          },
+          "title": "3-Meter Longitudinal Spring Reverb Tank with Magnetic Eddy Dampers (Revision 3.2)"
+        },
+        {
+          "slug": "inner-2",
+          "record": {
+            "section": "prototypes",
+            "id": "PROT-114"
+          },
+          "title": "Motorized Haptic Feedback Keyboard with Dynamic Spring Resistance (Revision 4.3)"
+        },
+        {
+          "slug": "inner-3",
+          "record": {
+            "section": "prototypes",
+            "id": "PROT-100"
+          },
+          "title": "Boundary Layer Acoustic Phase Canceler with Dual Diaphragm Sensors (Revision 4.1)"
+        }
+      ]
+    },
+    {
+      "id": "V-03",
+      "tier": 1,
+      "title": "Transactions Annex",
+      "voice": "transactions-annex",
+      "archetype": "dossier",
+      "url": "https://transactions-annex.invalid",
+      "host": "transactions-annex.invalid",
+      "goLive": "2026-10-10",
+      "stagedAtBuild": true,
+      "inner": [
+        {
+          "slug": "inner-1",
+          "record": {
+            "section": "fellows",
+            "id": "FELLOW-012"
+          },
+          "title": "Prof. Dr. Julian Vance"
+        },
+        {
+          "slug": "inner-2",
+          "record": {
+            "section": "fellows",
+            "id": "FELLOW-016"
+          },
+          "title": "Dr. Soren Lindqvist"
+        },
+        {
+          "slug": "inner-3",
+          "record": {
+            "section": "fellows",
+            "id": "FELLOW-018"
+          },
+          "title": "Camille Laurent"
+        }
+      ]
+    },
+    {
+      "id": "P-01",
+      "tier": 2,
+      "title": "Impulse Response Library",
+      "voice": "library",
+      "archetype": "catalogue",
+      "url": "https://impulse-response-library.invalid",
+      "host": "impulse-response-library.invalid",
+      "goLive": "2026-09-20",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "P-02",
+      "tier": 2,
+      "title": "Observations of Instrumental Custody",
+      "voice": "apparatus-log",
+      "archetype": "field-report",
+      "url": "https://ziaa-custody.github.io",
+      "host": "ziaa-custody.github.io",
+      "goLive": "2026-09-24",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "P-03",
+      "tier": 2,
+      "title": "Lexicon Fragments",
+      "voice": "lexicon-fragments",
+      "archetype": "index-card",
+      "url": "https://lexicon-fragments.invalid",
+      "host": "lexicon-fragments.invalid",
+      "goLive": "2026-09-30",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "P-04",
+      "tier": 2,
+      "title": "Resonance Calendar",
+      "voice": "calendar",
+      "archetype": "notebook",
+      "url": "https://resonance-calendar.invalid",
+      "host": "resonance-calendar.invalid",
+      "goLive": "2026-10-04",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "P-05",
+      "tier": 2,
+      "title": "Bench Notes",
+      "voice": "bench-notes",
+      "archetype": "catalogue",
+      "url": "https://ziaa-bench-notes.github.io",
+      "host": "ziaa-bench-notes.github.io",
+      "goLive": "2026-10-16",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "P-06",
+      "tier": 2,
+      "title": "Signal Salvage Index",
+      "voice": "salvage-index",
+      "archetype": "field-report",
+      "url": "https://signal-salvage-index.invalid",
+      "host": "signal-salvage-index.invalid",
+      "goLive": "2026-10-24",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-01",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://card-annex-01.github.io",
+      "host": "card-annex-01.github.io",
+      "goLive": "2026-09-22",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-02",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://lexicon-fragments.invalid/card-02",
+      "host": "lexicon-fragments.invalid",
+      "goLive": "2026-09-25",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-03",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://resonance-calendar.invalid/card-03",
+      "host": "resonance-calendar.invalid",
+      "goLive": "2026-09-28",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-04",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://card-annex-04.github.io",
+      "host": "card-annex-04.github.io",
+      "goLive": "2026-10-02",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-05",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://impulse-response-library.invalid/card-05",
+      "host": "impulse-response-library.invalid",
+      "goLive": "2026-10-07",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-06",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://card-annex-06.github.io",
+      "host": "card-annex-06.github.io",
+      "goLive": "2026-10-12",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-07",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://signal-salvage-index.invalid/card-07",
+      "host": "signal-salvage-index.invalid",
+      "goLive": "2026-10-19",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-08",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://card-annex-08.github.io",
+      "host": "card-annex-08.github.io",
+      "goLive": "2026-10-27",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-09",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://lexicon-fragments.invalid/card-09",
+      "host": "lexicon-fragments.invalid",
+      "goLive": "2026-11-02",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-10",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://card-annex-10.github.io",
+      "host": "card-annex-10.github.io",
+      "goLive": "2026-11-07",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-11",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://resonance-calendar.invalid/card-11",
+      "host": "resonance-calendar.invalid",
+      "goLive": "2026-11-11",
+      "stagedAtBuild": true,
+      "inner": []
+    },
+    {
+      "id": "C-12",
+      "tier": 3,
+      "title": "Citation Card",
+      "voice": "citation-card",
+      "archetype": "index-card",
+      "url": "https://impulse-response-library.invalid/card-12",
+      "host": "impulse-response-library.invalid",
+      "goLive": "2026-11-15",
+      "stagedAtBuild": true,
+      "inner": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "index",
+      "anchorClass": "longtail",
+      "anchor": "zazie institute applied anomalies",
+      "targetUrl": "https://zazieinstitute.org/",
+      "targetPath": "/",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "brand",
+      "anchor": "the Institute's research archive",
+      "targetUrl": "https://zazieinstitute.org/",
+      "targetPath": "/",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-2",
+      "anchorClass": "url",
+      "anchor": "www.zazieinstitute.org",
+      "targetUrl": "https://zazieinstitute.org/about",
+      "targetPath": "/about",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-3",
+      "anchorClass": "url",
+      "anchor": "https://zazieinstitute.org",
+      "targetUrl": "https://zazieinstitute.org/disciplines",
+      "targetPath": "/disciplines",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "url",
+      "anchor": "zazieinstitute.org/archive",
+      "targetUrl": "https://zazieinstitute.org/disciplines/acoustic-architecture",
+      "targetPath": "/disciplines/acoustic-architecture",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-2",
+      "anchorClass": "longtail",
+      "anchor": "microtonal basalt lithophone piezoelectric actuator",
+      "targetUrl": "https://zazieinstitute.org/prototypes/prot-130",
+      "targetPath": "/prototypes/prot-130",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-3",
+      "anchorClass": "longtail",
+      "anchor": "microtonal mineral lithophone electromagnetically — defensive disclosure",
+      "targetUrl": "https://zazieinstitute.org/patents/pat-2022-032",
+      "targetPath": "/patents/pat-2022-032",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-01",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "brand",
+      "anchor": "the Institute's research archive",
+      "targetUrl": "https://zazieinstitute.org/prototypes/prot-036",
+      "targetPath": "/prototypes/prot-036",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "index",
+      "anchorClass": "longtail",
+      "anchor": "zazie institute applied anomalies research archive",
+      "targetUrl": "https://zazieinstitute.org/",
+      "targetPath": "/",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "brand",
+      "anchor": "the Institute's research archive",
+      "targetUrl": "https://zazieinstitute.org/",
+      "targetPath": "/",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-2",
+      "anchorClass": "brand",
+      "anchor": "Zazie Institute",
+      "targetUrl": "https://zazieinstitute.org/about",
+      "targetPath": "/about",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-3",
+      "anchorClass": "generic",
+      "anchor": "the register",
+      "targetUrl": "https://zazieinstitute.org/disciplines",
+      "targetPath": "/disciplines",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "longtail",
+      "anchor": "generative software research division — generative software",
+      "targetUrl": "https://zazieinstitute.org/disciplines/generative-software",
+      "targetPath": "/disciplines/generative-software",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-2",
+      "anchorClass": "brand",
+      "anchor": "Zazie Institute",
+      "targetUrl": "https://zazieinstitute.org/prototypes/prot-135",
+      "targetPath": "/prototypes/prot-135",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-3",
+      "anchorClass": "brand",
+      "anchor": "the ZIAA open archive",
+      "targetUrl": "https://zazieinstitute.org/patents/pat-2026-054",
+      "targetPath": "/patents/pat-2026-054",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-02",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "longtail",
+      "anchor": "whole-body somatosensory listening platform decentralized tactile transducers",
+      "targetUrl": "https://zazieinstitute.org/patents/pat-2023-015",
+      "targetPath": "/patents/pat-2023-015",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "index",
+      "anchorClass": "longtail",
+      "anchor": "zazie institute applied anomalies",
+      "targetUrl": "https://zazieinstitute.org/",
+      "targetPath": "/",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "generic",
+      "anchor": "the archive",
+      "targetUrl": "https://zazieinstitute.org/",
+      "targetPath": "/",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-2",
+      "anchorClass": "brand",
+      "anchor": "the Institute's research archive",
+      "targetUrl": "https://zazieinstitute.org/about",
+      "targetPath": "/about",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-3",
+      "anchorClass": "brand",
+      "anchor": "the ZIAA open archive",
+      "targetUrl": "https://zazieinstitute.org/disciplines",
+      "targetPath": "/disciplines",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "url",
+      "anchor": "www.zazieinstitute.org",
+      "targetUrl": "https://zazieinstitute.org/disciplines/applied-anomalies",
+      "targetPath": "/disciplines/applied-anomalies",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-2",
+      "anchorClass": "url",
+      "anchor": "zazieinstitute.org/archive",
+      "targetUrl": "https://zazieinstitute.org/monographs/essay-2025-05",
+      "targetPath": "/monographs/essay-2025-05",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-3",
+      "anchorClass": "brand",
+      "anchor": "ZIAA Research Archive",
+      "targetUrl": "https://zazieinstitute.org/fellows/fellow-007",
+      "targetPath": "/fellows/fellow-007",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "SUBJECT",
+      "page": "inner-1",
+      "anchorClass": "brand",
+      "anchor": "Zazie Institute of Applied Anomalies",
+      "targetUrl": "https://zazieinstitute.org/fellows/fellow-009",
+      "targetPath": "/fellows/fellow-009",
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "V-03",
+      "to": "EXTERNAL",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "ZIAA Transactions — preservation deposits",
+      "targetUrl": "https://archive.org/details/ziaa-transactions",
+      "targetPath": null,
+      "rel": "nofollow",
+      "external": true
+    },
+    {
+      "from": "P-01",
+      "to": "V-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Listening Room at Site-04",
+      "targetUrl": "https://listening-room-site-04.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-01",
+      "to": "V-02",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "ziaa // dsp notebook — study annex",
+      "targetUrl": "https://ziaa-dsp.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-01",
+      "to": "P-02",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Observations of Instrumental Custody",
+      "targetUrl": "https://ziaa-custody.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-02",
+      "to": "V-02",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "ZIAA // DSP Notebook",
+      "targetUrl": "https://ziaa-dsp.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-02",
+      "to": "V-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Transactions Annex",
+      "targetUrl": "https://transactions-annex.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-02",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Lexicon Fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-03",
+      "to": "V-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "transactions annex",
+      "targetUrl": "https://transactions-annex.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-03",
+      "to": "V-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Listening Room at Site-04",
+      "targetUrl": "https://listening-room-site-04.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-03",
+      "to": "P-04",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "resonance calendar — study annex",
+      "targetUrl": "https://resonance-calendar.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-04",
+      "to": "V-02",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "ZIAA // DSP Notebook",
+      "targetUrl": "https://ziaa-dsp.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-04",
+      "to": "V-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "transactions annex",
+      "targetUrl": "https://transactions-annex.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-04",
+      "to": "P-05",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Bench Notes",
+      "targetUrl": "https://ziaa-bench-notes.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-05",
+      "to": "V-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "transactions annex — study annex",
+      "targetUrl": "https://transactions-annex.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-05",
+      "to": "V-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "listening room at site-04 — study annex",
+      "targetUrl": "https://listening-room-site-04.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-05",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index — study annex",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-06",
+      "to": "V-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Transactions Annex",
+      "targetUrl": "https://transactions-annex.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-06",
+      "to": "V-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "listening room at site-04 — study annex",
+      "targetUrl": "https://listening-room-site-04.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "P-06",
+      "to": "P-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Impulse Response Library",
+      "targetUrl": "https://impulse-response-library.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-01",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index — study annex",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-01",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "lexicon fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-01",
+      "to": "C-02",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card — study annex",
+      "targetUrl": "https://lexicon-fragments.invalid/card-02",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-02",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index — study annex",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-02",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Lexicon Fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-02",
+      "to": "C-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Citation Card",
+      "targetUrl": "https://resonance-calendar.invalid/card-03",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-03",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "lexicon fragments — study annex",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-03",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index — study annex",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-03",
+      "to": "C-04",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card — study annex",
+      "targetUrl": "https://card-annex-04.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-04",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "lexicon fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-04",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-04",
+      "to": "C-05",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card — study annex",
+      "targetUrl": "https://impulse-response-library.invalid/card-05",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-05",
+      "to": "P-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "impulse response library",
+      "targetUrl": "https://impulse-response-library.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-05",
+      "to": "P-04",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Resonance Calendar",
+      "targetUrl": "https://resonance-calendar.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-05",
+      "to": "C-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card — study annex",
+      "targetUrl": "https://card-annex-06.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-06",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-06",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Lexicon Fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-06",
+      "to": "C-07",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Citation Card",
+      "targetUrl": "https://signal-salvage-index.invalid/card-07",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-07",
+      "to": "P-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "impulse response library — study annex",
+      "targetUrl": "https://impulse-response-library.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-07",
+      "to": "P-04",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "resonance calendar",
+      "targetUrl": "https://resonance-calendar.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-07",
+      "to": "C-08",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card — study annex",
+      "targetUrl": "https://card-annex-08.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-08",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Lexicon Fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-08",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index — study annex",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-08",
+      "to": "C-09",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card",
+      "targetUrl": "https://lexicon-fragments.invalid/card-09",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-09",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "lexicon fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-09",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "signal salvage index — study annex",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-09",
+      "to": "C-10",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card",
+      "targetUrl": "https://card-annex-10.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-10",
+      "to": "P-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "impulse response library",
+      "targetUrl": "https://impulse-response-library.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-10",
+      "to": "P-04",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Resonance Calendar",
+      "targetUrl": "https://resonance-calendar.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-10",
+      "to": "C-11",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card — study annex",
+      "targetUrl": "https://resonance-calendar.invalid/card-11",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-11",
+      "to": "P-03",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "lexicon fragments",
+      "targetUrl": "https://lexicon-fragments.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-11",
+      "to": "P-06",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Signal Salvage Index",
+      "targetUrl": "https://signal-salvage-index.invalid",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-11",
+      "to": "C-12",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Citation Card",
+      "targetUrl": "https://impulse-response-library.invalid/card-12",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-12",
+      "to": "P-02",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "observations of instrumental custody",
+      "targetUrl": "https://ziaa-custody.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-12",
+      "to": "P-05",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "Bench Notes",
+      "targetUrl": "https://ziaa-bench-notes.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    },
+    {
+      "from": "C-12",
+      "to": "C-01",
+      "page": "index",
+      "anchorClass": null,
+      "anchor": "citation card",
+      "targetUrl": "https://card-annex-01.github.io",
+      "targetPath": null,
+      "rel": null,
+      "external": false
+    }
+  ],
+  "files": [
+    {
+      "path": "V-01/index.html",
+      "bytes": 7020,
+      "sha256": "78ac1f6c248aefee"
+    },
+    {
+      "path": "V-01/inner-1.html",
+      "bytes": 7929,
+      "sha256": "80a0e8f28585b298"
+    },
+    {
+      "path": "V-01/inner-2.html",
+      "bytes": 7723,
+      "sha256": "088a5a9bcdf00b74"
+    },
+    {
+      "path": "V-01/inner-3.html",
+      "bytes": 7533,
+      "sha256": "278c53785aafc251"
+    },
+    {
+      "path": "V-01/robots.txt",
+      "bytes": 184,
+      "sha256": "15f7d028557b0faa"
+    },
+    {
+      "path": "V-01/sitemap.xml",
+      "bytes": 502,
+      "sha256": "7ba0e91fa9549619"
+    },
+    {
+      "path": "V-01/DEPLOY.md",
+      "bytes": 954,
+      "sha256": "29d1ea90bc7e8f6f"
+    },
+    {
+      "path": "V-02/index.html",
+      "bytes": 6160,
+      "sha256": "fadd0cd280ab03d9"
+    },
+    {
+      "path": "V-02/inner-1.html",
+      "bytes": 7359,
+      "sha256": "7aa984635faa26bb"
+    },
+    {
+      "path": "V-02/inner-2.html",
+      "bytes": 6949,
+      "sha256": "1e605d842b0ebdec"
+    },
+    {
+      "path": "V-02/inner-3.html",
+      "bytes": 6947,
+      "sha256": "58d14d9f1d5c54ac"
+    },
+    {
+      "path": "V-02/robots.txt",
+      "bytes": 163,
+      "sha256": "680f3508fb4f4ba2"
+    },
+    {
+      "path": "V-02/sitemap.xml",
+      "bytes": 454,
+      "sha256": "7f04f5ea3b4b78c9"
+    },
+    {
+      "path": "V-02/DEPLOY.md",
+      "bytes": 959,
+      "sha256": "8297355523404b94"
+    },
+    {
+      "path": "V-03/index.html",
+      "bytes": 6181,
+      "sha256": "9bfabd9ae4fea117"
+    },
+    {
+      "path": "V-03/inner-1.html",
+      "bytes": 6460,
+      "sha256": "7d1e1873930c72cb"
+    },
+    {
+      "path": "V-03/inner-2.html",
+      "bytes": 6368,
+      "sha256": "8efa4cf01eb13b7d"
+    },
+    {
+      "path": "V-03/inner-3.html",
+      "bytes": 6247,
+      "sha256": "ea30a2c9d51dccdb"
+    },
+    {
+      "path": "V-03/robots.txt",
+      "bytes": 169,
+      "sha256": "28ef98704e35a047"
+    },
+    {
+      "path": "V-03/sitemap.xml",
+      "bytes": 486,
+      "sha256": "50237dcdee758094"
+    },
+    {
+      "path": "V-03/DEPLOY.md",
+      "bytes": 975,
+      "sha256": "442dd883fa08c371"
+    },
+    {
+      "path": "P-01/index.html",
+      "bytes": 5759,
+      "sha256": "8492c3905df9cec5"
+    },
+    {
+      "path": "P-01/robots.txt",
+      "bytes": 181,
+      "sha256": "1be17c80b52ab855"
+    },
+    {
+      "path": "P-01/sitemap.xml",
+      "bytes": 204,
+      "sha256": "f745413875134006"
+    },
+    {
+      "path": "P-01/DEPLOY.md",
+      "bytes": 984,
+      "sha256": "baa6e0a022d472f7"
+    },
+    {
+      "path": "P-02/index.html",
+      "bytes": 5513,
+      "sha256": "e2c0cb3fcbae877d"
+    },
+    {
+      "path": "P-02/robots.txt",
+      "bytes": 183,
+      "sha256": "f5b94bd701f85493"
+    },
+    {
+      "path": "P-02/sitemap.xml",
+      "bytes": 194,
+      "sha256": "c4ca0ff833d28b09"
+    },
+    {
+      "path": "P-02/DEPLOY.md",
+      "bytes": 985,
+      "sha256": "75a96d6974ba80a0"
+    },
+    {
+      "path": "P-03/index.html",
+      "bytes": 5579,
+      "sha256": "2dc4eee2da2c4a77"
+    },
+    {
+      "path": "P-03/robots.txt",
+      "bytes": 167,
+      "sha256": "9ec96c33e5e359db"
+    },
+    {
+      "path": "P-03/sitemap.xml",
+      "bytes": 197,
+      "sha256": "06623f995683404e"
+    },
+    {
+      "path": "P-03/DEPLOY.md",
+      "bytes": 974,
+      "sha256": "7abec29fd7f9b8e3"
+    },
+    {
+      "path": "P-04/index.html",
+      "bytes": 5670,
+      "sha256": "536b8ead1076acc2"
+    },
+    {
+      "path": "P-04/robots.txt",
+      "bytes": 169,
+      "sha256": "a7e65dcdf7dc2dff"
+    },
+    {
+      "path": "P-04/sitemap.xml",
+      "bytes": 198,
+      "sha256": "64049f757a47c925"
+    },
+    {
+      "path": "P-04/DEPLOY.md",
+      "bytes": 966,
+      "sha256": "fb01e611b10c5fdc"
+    },
+    {
+      "path": "P-05/index.html",
+      "bytes": 5005,
+      "sha256": "2ca998985c4478de"
+    },
+    {
+      "path": "P-05/robots.txt",
+      "bytes": 162,
+      "sha256": "c59ddc5c40271368"
+    },
+    {
+      "path": "P-05/sitemap.xml",
+      "bytes": 198,
+      "sha256": "8490863dd0f2dc11"
+    },
+    {
+      "path": "P-05/DEPLOY.md",
+      "bytes": 963,
+      "sha256": "94000693e18b82da"
+    },
+    {
+      "path": "P-06/index.html",
+      "bytes": 5235,
+      "sha256": "bf87f0ed6f5f489f"
+    },
+    {
+      "path": "P-06/robots.txt",
+      "bytes": 173,
+      "sha256": "ee6288ffb0e40fa0"
+    },
+    {
+      "path": "P-06/sitemap.xml",
+      "bytes": 200,
+      "sha256": "abf25595d3a13bca"
+    },
+    {
+      "path": "P-06/DEPLOY.md",
+      "bytes": 981,
+      "sha256": "504384901d122a3c"
+    },
+    {
+      "path": "C-01/index.html",
+      "bytes": 4645,
+      "sha256": "90e839918e481a62"
+    },
+    {
+      "path": "C-01/robots.txt",
+      "bytes": 161,
+      "sha256": "7196a8c3175e686c"
+    },
+    {
+      "path": "C-01/sitemap.xml",
+      "bytes": 195,
+      "sha256": "724c4d3fc46da1be"
+    },
+    {
+      "path": "C-01/DEPLOY.md",
+      "bytes": 962,
+      "sha256": "88a9bfc8ac68e423"
+    },
+    {
+      "path": "C-02/index.html",
+      "bytes": 4988,
+      "sha256": "471d2367fae66177"
+    },
+    {
+      "path": "C-02/robots.txt",
+      "bytes": 179,
+      "sha256": "4e491ef00e69ee54"
+    },
+    {
+      "path": "C-02/sitemap.xml",
+      "bytes": 213,
+      "sha256": "2ad8e24b7f87d424"
+    },
+    {
+      "path": "C-02/DEPLOY.md",
+      "bytes": 974,
+      "sha256": "4a9a6987454611b5"
+    },
+    {
+      "path": "C-03/index.html",
+      "bytes": 5238,
+      "sha256": "a81de6465c9df909"
+    },
+    {
+      "path": "C-03/robots.txt",
+      "bytes": 180,
+      "sha256": "cb4148ef1a04fe98"
+    },
+    {
+      "path": "C-03/sitemap.xml",
+      "bytes": 214,
+      "sha256": "807d29bf5833a480"
+    },
+    {
+      "path": "C-03/DEPLOY.md",
+      "bytes": 976,
+      "sha256": "7081dae016b7bcaa"
+    },
+    {
+      "path": "C-04/index.html",
+      "bytes": 5031,
+      "sha256": "0e1c8072d2489ef0"
+    },
+    {
+      "path": "C-04/robots.txt",
+      "bytes": 161,
+      "sha256": "38555fd60f840013"
+    },
+    {
+      "path": "C-04/sitemap.xml",
+      "bytes": 195,
+      "sha256": "c2f5ba76cc6112b9"
+    },
+    {
+      "path": "C-04/DEPLOY.md",
+      "bytes": 962,
+      "sha256": "cc5cd9127494a6b0"
+    },
+    {
+      "path": "C-05/index.html",
+      "bytes": 5038,
+      "sha256": "24da91afd3bbcc47"
+    },
+    {
+      "path": "C-05/robots.txt",
+      "bytes": 186,
+      "sha256": "570a567544920af8"
+    },
+    {
+      "path": "C-05/sitemap.xml",
+      "bytes": 220,
+      "sha256": "da90fe0f501d8734"
+    },
+    {
+      "path": "C-05/DEPLOY.md",
+      "bytes": 988,
+      "sha256": "82ad8b21b0abf738"
+    },
+    {
+      "path": "C-06/index.html",
+      "bytes": 4834,
+      "sha256": "b933661e4d270776"
+    },
+    {
+      "path": "C-06/robots.txt",
+      "bytes": 161,
+      "sha256": "1d956ed3f1c01f5f"
+    },
+    {
+      "path": "C-06/sitemap.xml",
+      "bytes": 195,
+      "sha256": "fa1dfeb729dbf557"
+    },
+    {
+      "path": "C-06/DEPLOY.md",
+      "bytes": 962,
+      "sha256": "2080501f91fbd770"
+    },
+    {
+      "path": "C-07/index.html",
+      "bytes": 5130,
+      "sha256": "38044209a9bab734"
+    },
+    {
+      "path": "C-07/robots.txt",
+      "bytes": 182,
+      "sha256": "21c3ea0d9ef87948"
+    },
+    {
+      "path": "C-07/sitemap.xml",
+      "bytes": 216,
+      "sha256": "e19ee4e358c1397e"
+    },
+    {
+      "path": "C-07/DEPLOY.md",
+      "bytes": 980,
+      "sha256": "1b2e435402d3b52e"
+    },
+    {
+      "path": "C-08/index.html",
+      "bytes": 5122,
+      "sha256": "fcc1739624d8faf0"
+    },
+    {
+      "path": "C-08/robots.txt",
+      "bytes": 161,
+      "sha256": "86ea5b798ee05b69"
+    },
+    {
+      "path": "C-08/sitemap.xml",
+      "bytes": 195,
+      "sha256": "030d41aed1db4f64"
+    },
+    {
+      "path": "C-08/DEPLOY.md",
+      "bytes": 962,
+      "sha256": "523f108854890420"
+    },
+    {
+      "path": "C-09/index.html",
+      "bytes": 4609,
+      "sha256": "9b7a60e89a56ce70"
+    },
+    {
+      "path": "C-09/robots.txt",
+      "bytes": 179,
+      "sha256": "a7928c362de641bb"
+    },
+    {
+      "path": "C-09/sitemap.xml",
+      "bytes": 213,
+      "sha256": "eea788ea4504b63d"
+    },
+    {
+      "path": "C-09/DEPLOY.md",
+      "bytes": 974,
+      "sha256": "1c8f25440709f8ad"
+    },
+    {
+      "path": "C-10/index.html",
+      "bytes": 5108,
+      "sha256": "808a7f0f0406a076"
+    },
+    {
+      "path": "C-10/robots.txt",
+      "bytes": 161,
+      "sha256": "1a9eb33e42d48528"
+    },
+    {
+      "path": "C-10/sitemap.xml",
+      "bytes": 195,
+      "sha256": "561cd3241fc8db2b"
+    },
+    {
+      "path": "C-10/DEPLOY.md",
+      "bytes": 962,
+      "sha256": "e14b2d89a2481a1f"
+    },
+    {
+      "path": "C-11/index.html",
+      "bytes": 5064,
+      "sha256": "e9d7ce305c8b24a7"
+    },
+    {
+      "path": "C-11/robots.txt",
+      "bytes": 180,
+      "sha256": "9af033c4a351841d"
+    },
+    {
+      "path": "C-11/sitemap.xml",
+      "bytes": 214,
+      "sha256": "451a57b5ebc6e6d5"
+    },
+    {
+      "path": "C-11/DEPLOY.md",
+      "bytes": 976,
+      "sha256": "2d5df079a6d41c24"
+    },
+    {
+      "path": "C-12/index.html",
+      "bytes": 5032,
+      "sha256": "74cf8155b6a6094a"
+    },
+    {
+      "path": "C-12/robots.txt",
+      "bytes": 186,
+      "sha256": "0d27629e45f9dba4"
+    },
+    {
+      "path": "C-12/sitemap.xml",
+      "bytes": 220,
+      "sha256": "10a38de2d1220cd9"
+    },
+    {
+      "path": "C-12/DEPLOY.md",
+      "bytes": 988,
+      "sha256": "0e1c783eacd3056c"
+    }
+  ]
+}
