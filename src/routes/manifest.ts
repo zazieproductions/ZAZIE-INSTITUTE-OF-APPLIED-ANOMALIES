@@ -69,7 +69,9 @@ export const STATIC_ROUTES: RouteEntry[] = [
   // Heterogeneous academic surface — papers corpus (HTML index for 108 PDFs)
   { path: '/papers', changefreq: 'monthly', priority: 0.8 },
   { path: '/search', changefreq: 'yearly', priority: 0.1, noindex: true },
-  { path: '/404', changefreq: 'yearly', priority: 0.0, noindex: true }
+  { path: '/404', changefreq: 'yearly', priority: 0.0, noindex: true },
+  // Gone surface for retired addresses (HTTP 410) — see scripts/alias-registry.mjs
+  { path: '/410', changefreq: 'yearly', priority: 0.0, noindex: true }
 ];
 
 export const DYNAMIC_ROUTES: RouteEntry[] = [

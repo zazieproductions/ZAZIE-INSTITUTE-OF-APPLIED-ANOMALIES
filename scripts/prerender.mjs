@@ -7,7 +7,7 @@
  *   vite build --ssr src/entry-server.tsx --outDir dist-ssr
  *   node scripts/prerender.mjs
  */
-import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, copyFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -131,6 +131,41 @@ const geoFacts = {
   stats
 };
 writeFileSync(resolve(dist, '.geo-facts.json'), JSON.stringify(geoFacts, null, 2) + '\n');
+
+/* ---------- alias / redirect artifacts ---------- */
+// The registry (scripts/alias-registry.mjs) is the source of truth for every
+// historical URL. scripts/build-alias-rules.mjs turns it into the host configs;
+// here we make sure the *built* output carries the ones the hosts read, and we
+// materialise the Gone surface as a real file (preserved hosts can answer it
+// after a rewrite, so a retired path never soft-404s into the archive).
+const aliasArtifacts = ['_redirects', '_headers', 'aliases.json'];
+for (const name of aliasArtifacts) {
+  const src = resolve(root, 'public', name);
+  const dest = resolve(dist, name);
+  if (existsSync(src) && !existsSync(dest)) copyFileSync(src, dest);
+  if (!existsSync(dest)) failures.push(`missing alias artifact in dist: ${name}`);
+}
+
+// 404.html is the host fallback; 410.html is the Gone surface. Both are copies
+// of their prerendered route so the markup can never drift from the app.
+for (const [route, file] of [
+  ['404', '404.html'],
+  ['410', '410.html']
+]) {
+  const rendered = resolve(dist, route, 'index.html');
+  if (existsSync(rendered)) copyFileSync(rendered, resolve(dist, file));
+  else failures.push(`missing prerendered /${route} (needed for ${file})`);
+}
+
+// Report the alias surface with the build, so a deploy log shows the policy.
+const aliasRegistry = resolve(root, 'src/routes/aliases.generated.json');
+if (existsSync(aliasRegistry)) {
+  const table = JSON.parse(readFileSync(aliasRegistry, 'utf8'));
+  console.log(
+    `[prerender] alias registry in force: ${table.counts.exact} exact / ${table.counts.prefix} prefix / ` +
+      `${table.counts.gone} gone / ${table.counts.query} query rules`
+  );
+}
 
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true });
 

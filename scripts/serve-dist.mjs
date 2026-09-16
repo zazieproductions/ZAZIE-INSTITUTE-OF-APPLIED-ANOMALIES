@@ -1,16 +1,49 @@
-/** Minimal static server mirroring production routing (clean URLs, 404.html). For local preview only. */
+/**
+ * Local preview server for dist/ — mirrors production routing.
+ *
+ * Real status codes are served for the historical surface:
+ *   301  moved addresses (the alias registry)
+ *   308  trailing-slash / cleanUrl normalisation
+ *   410  retired surfaces (/exhibitions, /archives/*, old accession ids …)
+ *   404  the archive's own error page
+ *
+ * Usage: npm run build && node scripts/serve-dist.mjs   (PORT env overrides 4173)
+ */
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync } from 'node:fs';
-import { join, extname, resolve } from 'node:path';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { routeRequest, contentType, counts } from './lib/static-server.mjs';
+
 const dist = resolve(import.meta.dirname, '../dist');
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.xml': 'application/xml', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain' };
+const port = Number(process.env.PORT || 4173);
+
+if (!existsSync(resolve(dist, 'index.html'))) {
+  console.error('[serve-dist] dist/ is empty — run `npm run build` first.');
+  process.exit(1);
+}
+
 createServer((req, res) => {
-  let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-  if (path !== '/' && path.endsWith('/')) { res.writeHead(308, { Location: path.slice(0, -1) }); return res.end(); }
-  let file = join(dist, path);
-  if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
-  let status = 200;
-  if (!existsSync(file)) { file = join(dist, '404.html'); status = 404; }
-  res.writeHead(status, { 'Content-Type': types[extname(file)] ?? 'application/octet-stream' });
-  res.end(readFileSync(file));
-}).listen(+(process.env.PORT || 4173), '0.0.0.0', () => console.log('serving dist on', process.env.PORT || 4173));
+  const url = new URL(req.url, 'http://localhost');
+  const decision = routeRequest(dist, decodeURIComponent(url.pathname), url.search);
+
+  if (decision.kind === 'redirect') {
+    res.writeHead(decision.status, { Location: decision.location, 'Cache-Control': 'no-store' });
+    return res.end();
+  }
+
+  const file =
+    decision.kind === 'gone' || decision.kind === 'error'
+      ? decision.file
+      : decision.kind === 'file'
+        ? decision.file
+        : resolve(dist, '404.html');
+
+  const body = readFileSync(file);
+  res.writeHead(decision.status ?? 404, {
+    'Content-Type': contentType(file),
+    ...(decision.kind === 'gone' ? { 'X-Robots-Tag': 'noindex' } : {})
+  });
+  res.end(body);
+}).listen(port, '0.0.0.0', () => {
+  console.log(`[serve-dist] http://localhost:${port} — alias registry: ${counts.exact} exact / ${counts.prefix} prefix / ${counts.gone} gone(410)`);
+});

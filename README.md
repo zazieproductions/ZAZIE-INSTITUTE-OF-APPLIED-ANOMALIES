@@ -31,10 +31,12 @@ Zazie Productions LLC. https://zazieinstitute.org/
 | --- | --- |
 | `npm run dev` | Dev server (regenerates derived data first) |
 | `npm run build` | Type‑check → client build → SSR build → prerender all routes → `sitemap.xml`, `feed.xml`, `404.html` |
+| `npm run build:aliases` | Regenerate every host routing artifact from `scripts/alias-registry.mjs` (`vercel.json`, `middleware.ts`, `_redirects`, `deploy/*`, ledger) |
+| `npm run audit:aliases` | Post‑build URL‑alias audit: every historical address resolves with a real status code, no drift, no chains, no shadowed canonical pages |
 | `npm run audit:seo` | Post‑build technical SEO audit of `dist/` (fails on errors; see below) |
 | `npm run audit:geo` | Post‑build GEO audit: canonical‑fact echo, llms.txt freshness, JSON‑LD health, contamination scan, bot/discovery checks (fails on errors) |
 | `npm run lint` | ESLint |
-| `node scripts/serve-dist.mjs` | Local static server mirroring production routing |
+| `npm run serve` | Local static server mirroring production routing — real 301/308/410/404 for the historical surface |
 
 ## Project layout
 
@@ -43,7 +45,9 @@ index.html                 Document shell: <!--app-head--> / <!--app-html--> slo
 src/entry-client.tsx       hydrateRoot
 src/entry-server.tsx       prerender(url) + ROUTE_MANIFEST export for the build script
 src/App.tsx                Routes (incl. 301‑style redirects for legacy paths) and layout
-src/routes/manifest.ts     Single source of truth for all URLs (prerender + sitemap)
+src/routes/manifest.ts     Single source of truth for all canonical URLs (prerender + sitemap)
+scripts/alias-registry.mjs Every historical / alias / retired URL, with provenance and status code
+middleware.ts              Generated: literal 301 + 410 for alias-shaped paths (Vercel Routing Middleware)
 src/routes/nav.ts          Primary navigation items
 src/seo/site.ts            Entity vocabulary (SITE_URL, ENTITY, title/description builders)
 src/seo/canonicalFacts.ts  Canonical facts: prestige lead, division definitions, vocabulary, citation policy + llms.txt generator (single source of truth for GEO‑facing copy)
@@ -76,7 +80,29 @@ All URLs are lowercase, no trailing slash, no file extensions.
 | Reference | `/lexicon`, `/cite` | |
 | Other | `/about`, `/system-audit`, `/search?q=` (noindex), `/404` (noindex) | |
 
-Legacy paths (`/logs`, `/personnel`, `/vault`, `/bench`, …) redirect permanently, both at the host level (`vercel.json`, `_redirects`) and inside the app.
+### Historical URLs
+
+Old addresses keep working, at the host level, with real status codes — not client‑side redirects. The complete
+inventory (with provenance for every rule) is `URL_ALIAS_LEDGER.md`; it is generated from
+`scripts/alias-registry.mjs`, which is also the source for `vercel.json`, `middleware.ts`, `public/_redirects`,
+`deploy/*` and the client rescue table, so the hosts and the app can never disagree.
+
+| class | example | answer |
+| --- | --- | --- |
+| Earlier vocabulary of this repository | `/logs/LOG-330`, `/personnel/fellow-001`, `/vault/inc-2021-01`, `/dashboard` | 301 → canonical section |
+| Predecessor institute (ZIAA Laboratory) | `/people`, `/policies`, `/timeline`, `/instruments` | 301 → `/fellows`, `/legal/institutional-status`, `/about`, `/prototypes` |
+| Predecessor accessions | `/prototypes/ZIAA-PROTO-003`, `/ZIAA-PAT-031`, `/papers/ZIAA-PAPER-001`, `/people/PERSON-003` | 301 → section (or the provable identity) |
+| CleanUrl / file URLs | `/about/index.html`, `/prototypes/prot-001.html`, `/about/` | 301/308 → `/about`, `/prototypes/prot-001` |
+| Accession case (records print uppercase) | `/prototypes/PROT-001`, `/research-notes/LOG-330` | 301 → lowercase canonical |
+| Discipline faceting leftovers | `/prototypes?discipline=Signal%20Archaeology`, `/prototypes?division=Material+Acoustics` | 301 → `/disciplines/<slug>` |
+| Legacy tab/selector query views | `/?tab=vault`, `/papers?id=ZIAA-PAPER-001` | 301 → `/post-mortems`, `/papers` |
+| Satellite fossils (repo names cited in‑repo) | `/SYNTHESIS-SIGNAL`, `/interference-archive`, `/ziaa-dsp` | 301 → `/synthesis-signal`, `/disciplines/signal-archaeology`, `/disciplines/generative-software` |
+| Convention probes | `/feed`, `/rss.xml`, `/sitemap-index.xml` | 301 → `/feed.xml`, `/sitemap.xml` |
+| Retired surfaces (no successor) | `/exhibitions`, `/EXHIB-2025-A`, `/archives/*.pdf`, `/timeline/*`, `/policies/*` | **410 Gone** → the `/410` surface |
+
+`npm run audit:aliases` proves it after every build: targets resolve inside `dist/`, no rule shadows a canonical
+page, no redirect chains, the Vercel middleware matcher cannot intercept a canonical URL, and a smoke table of
+historical addresses answers exactly the declared code.
 
 ## SEO / quality guarantees (enforced by `npm run audit:seo`)
 
@@ -91,6 +117,7 @@ Legacy paths (`/logs`, `/personnel`, `/vault`, `/bench`, …) redirect permanent
 
 1. Edit the relevant file in `src/data/collections/`.
 2. `npm run build` regenerates derived data, pages, sitemap and feed. New records get URLs automatically via `src/routes/manifest.ts`.
-3. Run `npm run audit:seo` and fix any reported errors before deploying.
+3. Run `npm run audit` (aliases + SEO + GEO) and fix any reported errors before deploying.
+4. Adding or retiring a URL? Declare it once in `scripts/alias-registry.mjs` and run `npm run build:aliases`.
 
 Brand assets (favicons, touch icons, OG image, manifest) are generated from the crest geometry by `scripts/build-brand-assets.mjs` (runs in `prebuild`).

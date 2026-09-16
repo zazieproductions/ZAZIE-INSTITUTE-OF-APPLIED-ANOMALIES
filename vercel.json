@@ -21,11 +21,6 @@
       "permanent": true
     },
     {
-      "source": "/logs/:id",
-      "destination": "/research-notes/:id",
-      "permanent": true
-    },
-    {
       "source": "/lab-logs",
       "destination": "/research-notes",
       "permanent": true
@@ -46,11 +41,6 @@
       "permanent": true
     },
     {
-      "source": "/void-oculus/index.html",
-      "destination": "/void-oculus",
-      "permanent": true
-    },
-    {
       "source": "/synthesis",
       "destination": "/synthesis-signal",
       "permanent": true
@@ -58,11 +48,6 @@
     {
       "source": "/spectrum",
       "destination": "/emotion-spectrum",
-      "permanent": true
-    },
-    {
-      "source": "/legal",
-      "destination": "/legal/institutional-status",
       "permanent": true
     },
     {
@@ -86,17 +71,1670 @@
       "permanent": true
     },
     {
-      "source": "/personnel/:id",
-      "destination": "/fellows/:id",
-      "permanent": true
-    },
-    {
       "source": "/audit",
       "destination": "/system-audit",
       "permanent": true
     },
     {
-      "source": "/index.html",
+      "source": "/legal",
+      "destination": "/legal/institutional-status",
+      "permanent": true
+    },
+    {
+      "source": "/people",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/policies",
+      "destination": "/legal/institutional-status",
+      "permanent": true
+    },
+    {
+      "source": "/timeline",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/instruments",
+      "destination": "/prototypes",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-001",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-002",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-003",
+      "destination": "/fellows/fellow-001",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-004",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-005",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-006",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/SYNTHESIS-SIGNAL",
+      "destination": "/synthesis-signal",
+      "permanent": true
+    },
+    {
+      "source": "/Electromagnetic-Spectrum-Emotion-Web-Instrument",
+      "destination": "/emotion-spectrum",
+      "permanent": true
+    },
+    {
+      "source": "/electromagnetic-spectrum-emotion-web-instrument",
+      "destination": "/emotion-spectrum",
+      "permanent": true
+    },
+    {
+      "source": "/interference-archive",
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/vortex-av-engine",
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/ziaa-dsp",
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/ZAZIE-INSTITUTE-APPLIED-ANOMALIES-LABORATORY",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ziaa",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ziaa-lab",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/laboratory",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/rss",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/rss.xml",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/atom.xml",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/index.xml",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/ZAZIE-INSTITUTE-APPLIED-ANOMALIES-LABORATORY/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/research-notes/ZIAA-LOG-:id",
+      "destination": "/research-notes",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes/ZIAA-PROTO-:id",
+      "destination": "/prototypes",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes/ziaa-proto-:id",
+      "destination": "/prototypes",
+      "permanent": true
+    },
+    {
+      "source": "/interference-archive/:path*",
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/papers/ZIAA-PAPER-:id",
+      "destination": "/papers",
+      "permanent": true
+    },
+    {
+      "source": "/papers/ziaa-paper-:id",
+      "destination": "/papers",
+      "permanent": true
+    },
+    {
+      "source": "/patents/ZIAA-PAT-:id",
+      "destination": "/patents",
+      "permanent": true
+    },
+    {
+      "source": "/patents/ziaa-pat-:id",
+      "destination": "/patents",
+      "permanent": true
+    },
+    {
+      "source": "/synthesis-signal/:path*",
+      "destination": "/synthesis-signal",
+      "permanent": true
+    },
+    {
+      "source": "/emotion-spectrum/:path*",
+      "destination": "/emotion-spectrum",
+      "permanent": true
+    },
+    {
+      "source": "/vortex-av-engine/:path*",
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/infrastructure/:path*",
+      "destination": "/field-stations",
+      "permanent": true
+    },
+    {
+      "source": "/people/PERSON-:id",
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/logs/ZIAA-LOG-:id",
+      "destination": "/research-notes",
+      "permanent": true
+    },
+    {
+      "source": "/acoustic-bench/:path*",
+      "destination": "/acoustic-bench",
+      "permanent": true
+    },
+    {
+      "source": "/instruments/:path*",
+      "destination": "/prototypes",
+      "permanent": true
+    },
+    {
+      "source": "/ZIAA-PROTO-:id",
+      "destination": "/prototypes",
+      "permanent": true
+    },
+    {
+      "source": "/ZIAA-PAPER-:id",
+      "destination": "/papers",
+      "permanent": true
+    },
+    {
+      "source": "/void-oculus/:path*",
+      "destination": "/void-oculus",
+      "permanent": true
+    },
+    {
+      "source": "/spectra-lab/:path*",
+      "destination": "/spectra-lab",
+      "permanent": true
+    },
+    {
+      "source": "/laboratory/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/personnel/:path*",
+      "destination": "/fellows/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/synthesis/:path*",
+      "destination": "/synthesis-signal",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ZIAA-PAT-:id",
+      "destination": "/patents",
+      "permanent": true
+    },
+    {
+      "source": "/ZIAA-LOG-:id",
+      "destination": "/research-notes",
+      "permanent": true
+    },
+    {
+      "source": "/lab-logs/:path*",
+      "destination": "/research-notes/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/spectrum/:path*",
+      "destination": "/emotion-spectrum",
+      "permanent": true
+    },
+    {
+      "source": "/failures/:path*",
+      "destination": "/post-mortems/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/overview/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ziaa-dsp/:path*",
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/ziaa-lab/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/spectra/:path*",
+      "destination": "/spectra-lab",
+      "permanent": true
+    },
+    {
+      "source": "/oculus/:path*",
+      "destination": "/void-oculus",
+      "permanent": true
+    },
+    {
+      "source": "/bench/:path*",
+      "destination": "/acoustic-bench",
+      "permanent": true
+    },
+    {
+      "source": "/vault/:path*",
+      "destination": "/post-mortems/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/logs/:path*",
+      "destination": "/research-notes/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes/:id/index.html",
+      "destination": "/prototypes/:id",
+      "permanent": true
+    },
+    {
+      "source": "/patents/:id/index.html",
+      "destination": "/patents/:id",
+      "permanent": true
+    },
+    {
+      "source": "/research-notes/:id/index.html",
+      "destination": "/research-notes/:id",
+      "permanent": true
+    },
+    {
+      "source": "/monographs/:id/index.html",
+      "destination": "/monographs/:id",
+      "permanent": true
+    },
+    {
+      "source": "/post-mortems/:id/index.html",
+      "destination": "/post-mortems/:id",
+      "permanent": true
+    },
+    {
+      "source": "/fellows/:id/index.html",
+      "destination": "/fellows/:id",
+      "permanent": true
+    },
+    {
+      "source": "/field-stations/:id/index.html",
+      "destination": "/field-stations/:id",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Applied Anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Applied Anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "applied anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "applied anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "applied-anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "applied-anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Applied%20Anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Applied%20Anomalies"
+        }
+      ],
+      "destination": "/disciplines/applied-anomalies",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Experimental Audio Systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Experimental Audio Systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "experimental audio systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "experimental audio systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "experimental-audio-systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "experimental-audio-systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Experimental%20Audio%20Systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Experimental%20Audio%20Systems"
+        }
+      ],
+      "destination": "/disciplines/experimental-audio-systems",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Computational Creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Computational Creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "computational creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "computational creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "computational-creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "computational-creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Computational%20Creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Computational%20Creativity"
+        }
+      ],
+      "destination": "/disciplines/computational-creativity",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Speculative Engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Speculative Engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "speculative engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "speculative engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "speculative-engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "speculative-engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Speculative%20Engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Speculative%20Engineering"
+        }
+      ],
+      "destination": "/disciplines/speculative-engineering",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Perceptual Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Perceptual Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "perceptual interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "perceptual interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "perceptual-interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "perceptual-interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Perceptual%20Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Perceptual%20Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Generative Software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Generative Software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "generative software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "generative software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "generative-software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "generative-software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Generative%20Software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Generative%20Software"
+        }
+      ],
+      "destination": "/disciplines/generative-software",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Signal Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Signal Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "signal archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "signal archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "signal-archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "signal-archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Signal%20Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Signal%20Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Acoustic Architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Acoustic Architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "acoustic architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "acoustic architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "acoustic-architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "acoustic-architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Acoustic%20Architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "discipline",
+          "value": "Acoustic%20Architecture"
+        }
+      ],
+      "destination": "/disciplines/acoustic-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Perceptual Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Perceptual Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "perceptual interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "perceptual interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Perceptual%20Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Perceptual%20Interfaces"
+        }
+      ],
+      "destination": "/disciplines/perceptual-interfaces",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Signal Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Signal Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "signal archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "signal archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Signal%20Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Signal%20Archaeology"
+        }
+      ],
+      "destination": "/disciplines/signal-archaeology",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Material Acoustics"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Material Acoustics"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "material acoustics"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "material acoustics"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Material%20Acoustics"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Material%20Acoustics"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Generative Systems"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Generative Systems"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "generative systems"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "generative systems"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Generative%20Systems"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Generative%20Systems"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Spatial Infrastructures"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Spatial Infrastructures"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "spatial infrastructures"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "spatial infrastructures"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/prototypes",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Spatial%20Infrastructures"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/patents",
+      "has": [
+        {
+          "type": "query",
+          "key": "division",
+          "value": "Spatial%20Infrastructures"
+        }
+      ],
+      "destination": "/disciplines",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "dashboard"
+        }
+      ],
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "prototypes"
+        }
+      ],
+      "destination": "/prototypes",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "patents"
+        }
+      ],
+      "destination": "/patents",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "logs"
+        }
+      ],
+      "destination": "/research-notes",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "bench"
+        }
+      ],
+      "destination": "/acoustic-bench",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "spectra"
+        }
+      ],
+      "destination": "/spectra-lab",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "oculus"
+        }
+      ],
+      "destination": "/void-oculus",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "infrastructure"
+        }
+      ],
+      "destination": "/field-stations",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "monographs"
+        }
+      ],
+      "destination": "/monographs",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "vault"
+        }
+      ],
+      "destination": "/post-mortems",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "personnel"
+        }
+      ],
+      "destination": "/fellows",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab",
+          "value": "audit"
+        }
+      ],
+      "destination": "/system-audit",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "tab"
+        }
+      ],
       "destination": "/",
       "permanent": true
     }
@@ -135,6 +1773,10 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex"
+        },
+        {
+          "key": "Link",
+          "value": "<https://zazieinstitute.org/void-oculus>; rel=\"canonical\""
         }
       ]
     },
@@ -183,6 +1825,10 @@
         {
           "key": "Content-Disposition",
           "value": "inline"
+        },
+        {
+          "key": "Link",
+          "value": "<https://zazieinstitute.org/papers>; rel=\"canonical\""
         }
       ]
     },
@@ -208,6 +1854,76 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), geolocation=(), payment=()"
+        }
+      ]
+    },
+    {
+      "source": "/search",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
+      "source": "/404",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/410",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/_redirects",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/_headers",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        },
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/aliases.json",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
         }
       ]
     }

@@ -57,7 +57,8 @@ for (const file of pages) {
   const robots = attr(html.match(/<meta name="robots"[^>]*>/)?.[0] ?? '', 'content') ?? '';
   const noindex = robots.includes('noindex');
   if (!noindex) indexable.add(url);
-  if (noindex && !['/404', '/search'].includes(url)) errors.push(`${where} unexpected noindex`);
+  const NOINDEX_ALLOWED = ['/404', '/410', '/search'];
+  if (noindex && !NOINDEX_ALLOWED.includes(url)) errors.push(`${where} unexpected noindex`);
 
   const h1 = html.match(/<h1[\s>]/g) ?? [];
   if (h1.length !== 1) errors.push(`${where} expected 1 <h1>, found ${h1.length}`);

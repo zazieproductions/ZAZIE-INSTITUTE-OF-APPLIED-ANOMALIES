@@ -16,6 +16,16 @@ export default defineConfig(async ({ command }): Promise<UserConfig> => {
     } catch {
       /* optional dev plugin not present */
     }
+
+    // Historical URLs behave like production in dev/preview: real 301 for the
+    // alias registry, real 410 for retired surfaces (scripts/alias-registry.mjs).
+    try {
+      // @ts-expect-error untyped helper shared with the hosts
+      const aliases = await import('./scripts/dev-aliases.mjs');
+      plugins.push(aliases.aliasRouting());
+    } catch {
+      /* alias routing unavailable — dev keeps the client-side rescue only */
+    }
   }
 
   return {

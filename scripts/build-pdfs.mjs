@@ -23,7 +23,10 @@ function genMonographPDF(m) {
     Subject: m.abstract.slice(0, 200),
     Keywords: 'ZIAA, applied anomalies, experimental audio',
     Creator: 'ZIAA Archive / build-pdfs.mjs',
-    Producer: 'PDFKit'
+    Producer: 'PDFKit',
+    // Fixed document date: keeps the DOSSIER byte-identical across builds (PDFKit
+    // derives both the info dict and the trailer file ID from it).
+    CreationDate: new Date('2021-01-15T00:00:00Z')
   }});
   const chunks = [];
   doc.on('data', c => chunks.push(c));
@@ -105,6 +108,8 @@ function genPatentPDF(p) {
     Author: p.inventors.join(', '),
     Subject: p.abstract.slice(0, 200),
     Creator: 'ZIAA Archive / build-pdfs.mjs',
+    // Fixed document date: keep the dossier byte-identical across builds (see above).
+    CreationDate: new Date('2021-01-15T00:00:00Z')
   }});
   const chunks = [];
   doc.on('data', c => chunks.push(c));

@@ -1,0 +1,2193 @@
+{
+  "_generated": "scripts/build-alias-rules.mjs — edit scripts/alias-registry.mjs",
+  "origin": "https://zazieinstitute.org",
+  "counts": {
+    "exact": 794,
+    "prefix": 39,
+    "caseFold": 656,
+    "cleanUrl": 116,
+    "query": 130,
+    "gone": 10,
+    "canonical": 690,
+    "config": 262
+  },
+  "exact": [
+    {
+      "from": "/dashboard",
+      "to": "/",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/overview",
+      "to": "/",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/logs",
+      "to": "/research-notes",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/lab-logs",
+      "to": "/research-notes",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/bench",
+      "to": "/acoustic-bench",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/spectra",
+      "to": "/spectra-lab",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/oculus",
+      "to": "/void-oculus",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/synthesis",
+      "to": "/synthesis-signal",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/spectrum",
+      "to": "/emotion-spectrum",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/infrastructure",
+      "to": "/field-stations",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/vault",
+      "to": "/post-mortems",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/failures",
+      "to": "/post-mortems",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/personnel",
+      "to": "/fellows",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/audit",
+      "to": "/system-audit",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/legal",
+      "to": "/legal/institutional-status",
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/people",
+      "to": "/fellows",
+      "class": "predecessor",
+      "status": 301
+    },
+    {
+      "from": "/policies",
+      "to": "/legal/institutional-status",
+      "class": "predecessor",
+      "status": 301
+    },
+    {
+      "from": "/timeline",
+      "to": "/about",
+      "class": "predecessor",
+      "status": 301
+    },
+    {
+      "from": "/instruments",
+      "to": "/prototypes",
+      "class": "predecessor",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-001",
+      "to": "/fellows",
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-002",
+      "to": "/fellows",
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-003",
+      "to": "/fellows/fellow-001",
+      "class": "predecessor-identity",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-004",
+      "to": "/fellows",
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-005",
+      "to": "/fellows",
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-006",
+      "to": "/fellows",
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/SYNTHESIS-SIGNAL",
+      "to": "/synthesis-signal",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/Electromagnetic-Spectrum-Emotion-Web-Instrument",
+      "to": "/emotion-spectrum",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/electromagnetic-spectrum-emotion-web-instrument",
+      "to": "/emotion-spectrum",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/interference-archive",
+      "to": "/disciplines/signal-archaeology",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/vortex-av-engine",
+      "to": "/disciplines/computational-creativity",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/ziaa-dsp",
+      "to": "/disciplines/generative-software",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/ZAZIE-INSTITUTE-APPLIED-ANOMALIES-LABORATORY",
+      "to": "/",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES",
+      "to": "/",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/ziaa",
+      "to": "/",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/ziaa-lab",
+      "to": "/",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/laboratory",
+      "to": "/",
+      "class": "satellite-name",
+      "status": 301
+    },
+    {
+      "from": "/feed",
+      "to": "/feed.xml",
+      "class": "convention-alias",
+      "status": 301
+    },
+    {
+      "from": "/rss",
+      "to": "/feed.xml",
+      "class": "convention-alias",
+      "status": 301
+    },
+    {
+      "from": "/sitemap",
+      "to": "/sitemap.xml",
+      "class": "convention-alias",
+      "status": 301
+    }
+  ],
+  "prefix": [
+    {
+      "from": "/ZAZIE-INSTITUTE-APPLIED-ANOMALIES-LABORATORY",
+      "to": "/",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES",
+      "to": "/",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/research-notes/ZIAA-LOG-",
+      "to": "/research-notes",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/prototypes/ZIAA-PROTO-",
+      "to": "/prototypes",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/prototypes/ziaa-proto-",
+      "to": "/prototypes",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/interference-archive",
+      "to": "/disciplines/signal-archaeology",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/papers/ZIAA-PAPER-",
+      "to": "/papers",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/papers/ziaa-paper-",
+      "to": "/papers",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/patents/ZIAA-PAT-",
+      "to": "/patents",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/patents/ziaa-pat-",
+      "to": "/patents",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/synthesis-signal",
+      "to": "/synthesis-signal",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/emotion-spectrum",
+      "to": "/emotion-spectrum",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/vortex-av-engine",
+      "to": "/disciplines/computational-creativity",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/infrastructure",
+      "to": "/field-stations",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/people/PERSON-",
+      "to": "/fellows",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/logs/ZIAA-LOG-",
+      "to": "/research-notes",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/acoustic-bench",
+      "to": "/acoustic-bench",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/instruments",
+      "to": "/prototypes",
+      "splat": false,
+      "class": "predecessor",
+      "status": 301
+    },
+    {
+      "from": "/ZIAA-PROTO-",
+      "to": "/prototypes",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/ZIAA-PAPER-",
+      "to": "/papers",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/void-oculus",
+      "to": "/void-oculus",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/spectra-lab",
+      "to": "/spectra-lab",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/laboratory",
+      "to": "/",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/personnel",
+      "to": "/fellows",
+      "splat": true,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/synthesis",
+      "to": "/synthesis-signal",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/dashboard",
+      "to": "/",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/ZIAA-PAT-",
+      "to": "/patents",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/ZIAA-LOG-",
+      "to": "/research-notes",
+      "splat": false,
+      "class": "predecessor-accession",
+      "status": 301
+    },
+    {
+      "from": "/lab-logs",
+      "to": "/research-notes",
+      "splat": true,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/spectrum",
+      "to": "/emotion-spectrum",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/failures",
+      "to": "/post-mortems",
+      "splat": true,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/overview",
+      "to": "/",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/ziaa-dsp",
+      "to": "/disciplines/generative-software",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/ziaa-lab",
+      "to": "/",
+      "splat": false,
+      "class": "satellite-fossil",
+      "status": 301
+    },
+    {
+      "from": "/spectra",
+      "to": "/spectra-lab",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/oculus",
+      "to": "/void-oculus",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/bench",
+      "to": "/acoustic-bench",
+      "splat": false,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/vault",
+      "to": "/post-mortems",
+      "splat": true,
+      "class": "vocabulary-drift",
+      "status": 301
+    },
+    {
+      "from": "/logs",
+      "to": "/research-notes",
+      "splat": true,
+      "class": "vocabulary-drift",
+      "status": 301
+    }
+  ],
+  "goneExact": [
+    {
+      "from": "/exhibitions",
+      "class": "retired-programme",
+      "status": 410
+    },
+    {
+      "from": "/archives",
+      "class": "retired-documentation",
+      "status": 410
+    },
+    {
+      "from": "/apps",
+      "class": "retired-surface",
+      "status": 410
+    }
+  ],
+  "gonePrefix": [
+    {
+      "from": "/exhibitions",
+      "class": "retired-programme",
+      "status": 410
+    },
+    {
+      "from": "/archives",
+      "class": "retired-documentation",
+      "status": 410
+    },
+    {
+      "from": "/timeline",
+      "class": "retired-surface",
+      "status": 410
+    },
+    {
+      "from": "/policies",
+      "class": "retired-surface",
+      "status": 410
+    },
+    {
+      "from": "/EXHIB-",
+      "class": "retired-programme",
+      "status": 410
+    },
+    {
+      "from": "/people",
+      "class": "retired-surface",
+      "status": 410
+    },
+    {
+      "from": "/search",
+      "class": "retired-surface",
+      "status": 410
+    }
+  ],
+  "query": [
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Applied Anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Applied Anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "applied anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "applied anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "applied-anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "applied-anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Applied%20Anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Applied%20Anomalies",
+      "to": "/disciplines/applied-anomalies",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Experimental Audio Systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Experimental Audio Systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "experimental audio systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "experimental audio systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "experimental-audio-systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "experimental-audio-systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Experimental%20Audio%20Systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Experimental%20Audio%20Systems",
+      "to": "/disciplines/experimental-audio-systems",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Computational Creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Computational Creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "computational creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "computational creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "computational-creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "computational-creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Computational%20Creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Computational%20Creativity",
+      "to": "/disciplines/computational-creativity",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Speculative Engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Speculative Engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "speculative engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "speculative engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "speculative-engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "speculative-engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Speculative%20Engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Speculative%20Engineering",
+      "to": "/disciplines/speculative-engineering",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Perceptual Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Perceptual Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "perceptual interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "perceptual interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "perceptual-interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "perceptual-interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Perceptual%20Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Perceptual%20Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Generative Software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Generative Software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "generative software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "generative software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "generative-software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "generative-software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Generative%20Software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Generative%20Software",
+      "to": "/disciplines/generative-software",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Signal Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Signal Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "signal archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "signal archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "signal-archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "signal-archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Signal%20Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Signal%20Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Acoustic Architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Acoustic Architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "acoustic architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "acoustic architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "acoustic-architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "acoustic-architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "discipline",
+      "value": "Acoustic%20Architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "discipline",
+      "value": "Acoustic%20Architecture",
+      "to": "/disciplines/acoustic-architecture",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Perceptual Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Perceptual Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "perceptual interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "perceptual interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Perceptual%20Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Perceptual%20Interfaces",
+      "to": "/disciplines/perceptual-interfaces",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Signal Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Signal Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "signal archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "signal archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Signal%20Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Signal%20Archaeology",
+      "to": "/disciplines/signal-archaeology",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Material Acoustics",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Material Acoustics",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "material acoustics",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "material acoustics",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Material%20Acoustics",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Material%20Acoustics",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Generative Systems",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Generative Systems",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "generative systems",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "generative systems",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Generative%20Systems",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Generative%20Systems",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Spatial Infrastructures",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Spatial Infrastructures",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "spatial infrastructures",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "spatial infrastructures",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/prototypes",
+      "key": "division",
+      "value": "Spatial%20Infrastructures",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/patents",
+      "key": "division",
+      "value": "Spatial%20Infrastructures",
+      "to": "/disciplines",
+      "class": "facet-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "dashboard",
+      "to": "/",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "prototypes",
+      "to": "/prototypes",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "patents",
+      "to": "/patents",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "logs",
+      "to": "/research-notes",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "bench",
+      "to": "/acoustic-bench",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "spectra",
+      "to": "/spectra-lab",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "oculus",
+      "to": "/void-oculus",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "infrastructure",
+      "to": "/field-stations",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "monographs",
+      "to": "/monographs",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "vault",
+      "to": "/post-mortems",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "personnel",
+      "to": "/fellows",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": "audit",
+      "to": "/system-audit",
+      "class": "hash-tab-leftover",
+      "status": 301
+    },
+    {
+      "path": "/",
+      "key": "tab",
+      "value": null,
+      "to": "/",
+      "class": "hash-tab-leftover",
+      "status": 301
+    }
+  ],
+  "satellites": [
+    {
+      "origin": "https://zazieproductions.github.io/void-oculus/",
+      "target": "https://zazieinstitute.org/void-oculus",
+      "evidence": "GitHub Pages built from main; the repository README links the demo",
+      "hosts": [
+        "config",
+        "redirects",
+        "strict"
+      ]
+    },
+    {
+      "origin": "https://zazieproductions.github.io/interference-archive/",
+      "target": "https://zazieinstitute.org/disciplines/signal-archaeology",
+      "evidence": "GitHub Pages built from main; link in the repository README",
+      "hosts": [
+        "config",
+        "redirects",
+        "strict"
+      ]
+    },
+    {
+      "origin": "https://zazieproductions.github.io/vortex-av-engine/",
+      "target": "https://zazieinstitute.org/disciplines/computational-creativity",
+      "evidence": "GitHub Pages configured from main; link in the repository README",
+      "hosts": [
+        "config",
+        "redirects",
+        "strict"
+      ]
+    },
+    {
+      "origin": "https://zazieproductions.github.io/spectra-lab/",
+      "target": "https://zazieinstitute.org/spectra-lab",
+      "evidence": "the repository README documents publishing the root from main",
+      "hosts": [
+        "planned"
+      ]
+    },
+    {
+      "origin": "https://zazieproductions.github.io/SYNTHESIS-SIGNAL/",
+      "target": "https://zazieinstitute.org/synthesis-signal",
+      "evidence": "the repository README documents publishing the root from main",
+      "hosts": [
+        "planned"
+      ]
+    },
+    {
+      "origin": "https://zazieproductions.github.io/ziaa-dsp/",
+      "target": "https://zazieinstitute.org/disciplines/generative-software",
+      "evidence": "BLACK_HAT_SEO_ARCHITECT_PLAYBOOK.md §4 — planned GitHub Pages satellite",
+      "hosts": [
+        "planned"
+      ]
+    },
+    {
+      "origin": "https://ziaa.pages.dev/",
+      "target": "https://zazieinstitute.org/",
+      "evidence": "wrangler.toml name=\"ziaa\" of the predecessor Cloudflare Pages project",
+      "hosts": [
+        "planned"
+      ]
+    }
+  ],
+  "canonicalPaths": [
+    "/",
+    "/about",
+    "/prototypes",
+    "/patents",
+    "/research-notes",
+    "/monographs",
+    "/acoustic-bench",
+    "/spectra-lab",
+    "/void-oculus",
+    "/synthesis-signal",
+    "/emotion-spectrum",
+    "/legal/institutional-status",
+    "/legal/disclaimer",
+    "/legal/terms",
+    "/legal/privacy",
+    "/field-stations",
+    "/post-mortems",
+    "/fellows",
+    "/system-audit",
+    "/lexicon",
+    "/cite",
+    "/disciplines",
+    "/papers",
+    "/search",
+    "/404",
+    "/410",
+    "/disciplines/applied-anomalies",
+    "/disciplines/experimental-audio-systems",
+    "/disciplines/computational-creativity",
+    "/disciplines/speculative-engineering",
+    "/disciplines/perceptual-interfaces",
+    "/disciplines/generative-software",
+    "/disciplines/signal-archaeology",
+    "/disciplines/acoustic-architecture",
+    "/prototypes/prot-001",
+    "/prototypes/prot-002",
+    "/prototypes/prot-003",
+    "/prototypes/prot-004",
+    "/prototypes/prot-005",
+    "/prototypes/prot-006",
+    "/prototypes/prot-007",
+    "/prototypes/prot-008",
+    "/prototypes/prot-009",
+    "/prototypes/prot-010",
+    "/prototypes/prot-011",
+    "/prototypes/prot-012",
+    "/prototypes/prot-013",
+    "/prototypes/prot-014",
+    "/prototypes/prot-015",
+    "/prototypes/prot-016",
+    "/prototypes/prot-017",
+    "/prototypes/prot-018",
+    "/prototypes/prot-019",
+    "/prototypes/prot-020",
+    "/prototypes/prot-021",
+    "/prototypes/prot-022",
+    "/prototypes/prot-023",
+    "/prototypes/prot-024",
+    "/prototypes/prot-025",
+    "/prototypes/prot-026",
+    "/prototypes/prot-027",
+    "/prototypes/prot-028",
+    "/prototypes/prot-029",
+    "/prototypes/prot-030",
+    "/prototypes/prot-031",
+    "/prototypes/prot-032",
+    "/prototypes/prot-033",
+    "/prototypes/prot-034",
+    "/prototypes/prot-035",
+    "/prototypes/prot-036",
+    "/prototypes/prot-037",
+    "/prototypes/prot-038",
+    "/prototypes/prot-039",
+    "/prototypes/prot-040",
+    "/prototypes/prot-041",
+    "/prototypes/prot-042",
+    "/prototypes/prot-043",
+    "/prototypes/prot-044",
+    "/prototypes/prot-045",
+    "/prototypes/prot-046",
+    "/prototypes/prot-047",
+    "/prototypes/prot-048",
+    "/prototypes/prot-049",
+    "/prototypes/prot-050",
+    "/prototypes/prot-051",
+    "/prototypes/prot-052",
+    "/prototypes/prot-053",
+    "/prototypes/prot-054",
+    "/prototypes/prot-055",
+    "/prototypes/prot-056",
+    "/prototypes/prot-057",
+    "/prototypes/prot-058",
+    "/prototypes/prot-059",
+    "/prototypes/prot-060",
+    "/prototypes/prot-061",
+    "/prototypes/prot-062",
+    "/prototypes/prot-063",
+    "/prototypes/prot-064",
+    "/prototypes/prot-065",
+    "/prototypes/prot-066",
+    "/prototypes/prot-067",
+    "/prototypes/prot-068",
+    "/prototypes/prot-069",
+    "/prototypes/prot-070",
+    "/prototypes/prot-071",
+    "/prototypes/prot-072",
+    "/prototypes/prot-073",
+    "/prototypes/prot-074",
+    "/prototypes/prot-075",
+    "/prototypes/prot-076",
+    "/prototypes/prot-077",
+    "/prototypes/prot-078",
+    "/prototypes/prot-079",
+    "/prototypes/prot-080",
+    "/prototypes/prot-081",
+    "/prototypes/prot-082",
+    "/prototypes/prot-083",
+    "/prototypes/prot-084",
+    "/prototypes/prot-085",
+    "/prototypes/prot-086",
+    "/prototypes/prot-087",
+    "/prototypes/prot-088",
+    "/prototypes/prot-089",
+    "/prototypes/prot-090",
+    "/prototypes/prot-091",
+    "/prototypes/prot-092",
+    "/prototypes/prot-093",
+    "/prototypes/prot-094",
+    "/prototypes/prot-095",
+    "/prototypes/prot-096",
+    "/prototypes/prot-097",
+    "/prototypes/prot-098",
+    "/prototypes/prot-099",
+    "/prototypes/prot-100",
+    "/prototypes/prot-101",
+    "/prototypes/prot-102",
+    "/prototypes/prot-103",
+    "/prototypes/prot-104",
+    "/prototypes/prot-105",
+    "/prototypes/prot-106",
+    "/prototypes/prot-107",
+    "/prototypes/prot-108",
+    "/prototypes/prot-109",
+    "/prototypes/prot-110",
+    "/prototypes/prot-111",
+    "/prototypes/prot-112",
+    "/prototypes/prot-113",
+    "/prototypes/prot-114",
+    "/prototypes/prot-115",
+    "/prototypes/prot-116",
+    "/prototypes/prot-117",
+    "/prototypes/prot-118",
+    "/prototypes/prot-119",
+    "/prototypes/prot-120",
+    "/prototypes/prot-121",
+    "/prototypes/prot-122",
+    "/prototypes/prot-123",
+    "/prototypes/prot-124",
+    "/prototypes/prot-125",
+    "/prototypes/prot-126",
+    "/prototypes/prot-127",
+    "/prototypes/prot-128",
+    "/prototypes/prot-129",
+    "/prototypes/prot-130",
+    "/prototypes/prot-131",
+    "/prototypes/prot-132",
+    "/prototypes/prot-133",
+    "/prototypes/prot-134",
+    "/prototypes/prot-135",
+    "/prototypes/prot-136",
+    "/prototypes/prot-137",
+    "/prototypes/prot-138",
+    "/prototypes/prot-139",
+    "/prototypes/prot-140",
+    "/prototypes/prot-141",
+    "/prototypes/prot-142",
+    "/prototypes/prot-143",
+    "/prototypes/prot-144",
+    "/prototypes/prot-145",
+    "/prototypes/prot-146",
+    "/prototypes/prot-147",
+    "/prototypes/prot-148",
+    "/prototypes/prot-149",
+    "/prototypes/prot-150",
+    "/prototypes/prot-151",
+    "/prototypes/prot-152",
+    "/prototypes/prot-153",
+    "/prototypes/prot-154",
+    "/prototypes/prot-155",
+    "/prototypes/prot-156",
+    "/prototypes/prot-157",
+    "/prototypes/prot-158",
+    "/prototypes/prot-159",
+    "/prototypes/prot-160",
+    "/patents/pat-2021-001",
+    "/patents/pat-2022-002",
+    "/patents/pat-2023-003",
+    "/patents/pat-2024-004",
+    "/patents/pat-2025-005",
+    "/patents/pat-2026-006",
+    "/patents/pat-2021-007",
+    "/patents/pat-2022-008",
+    "/patents/pat-2023-009",
+    "/patents/pat-2024-010",
+    "/patents/pat-2025-011",
+    "/patents/pat-2026-012",
+    "/patents/pat-2021-013",
+    "/patents/pat-2022-014",
+    "/patents/pat-2023-015",
+    "/patents/pat-2024-016",
+    "/patents/pat-2025-017",
+    "/patents/pat-2026-018",
+    "/patents/pat-2021-019",
+    "/patents/pat-2022-020",
+    "/patents/pat-2023-021",
+    "/patents/pat-2024-022",
+    "/patents/pat-2025-023",
+    "/patents/pat-2026-024",
+    "/patents/pat-2021-025",
+    "/patents/pat-2022-026",
+    "/patents/pat-2023-027",
+    "/patents/pat-2024-028",
+    "/patents/pat-2025-029",
+    "/patents/pat-2026-030",
+    "/patents/pat-2021-031",
+    "/patents/pat-2022-032",
+    "/patents/pat-2023-033",
+    "/patents/pat-2024-034",
+    "/patents/pat-2025-035",
+    "/patents/pat-2026-036",
+    "/patents/pat-2021-037",
+    "/patents/pat-2022-038",
+    "/patents/pat-2023-039",
+    "/patents/pat-2024-040",
+    "/patents/pat-2025-041",
+    "/patents/pat-2026-042",
+    "/patents/pat-2021-043",
+    "/patents/pat-2022-044",
+    "/patents/pat-2023-045",
+    "/patents/pat-2024-046",
+    "/patents/pat-2025-047",
+    "/patents/pat-2026-048",
+    "/patents/pat-2021-049",
+    "/patents/pat-2022-050",
+    "/patents/pat-2023-051",
+    "/patents/pat-2024-052",
+    "/patents/pat-2025-053",
+    "/patents/pat-2026-054",
+    "/patents/pat-2021-055",
+    "/patents/pat-2022-056",
+    "/patents/pat-2023-057",
+    "/patents/pat-2024-058",
+    "/patents/pat-2025-059",
+    "/patents/pat-2026-060",
+    "/patents/pat-2021-061",
+    "/patents/pat-2022-062",
+    "/patents/pat-2023-063",
+    "/patents/pat-2024-064",
+    "/patents/pat-2025-065",
+    "/patents/pat-2026-066",
+    "/patents/pat-2021-067",
+    "/patents/pat-2022-068",
+    "/patents/pat-2023-069",
+    "/patents/pat-2024-070",
+    "/patents/pat-2025-071",
+    "/patents/pat-2026-072",
+    "/patents/pat-2021-073",
+    "/patents/pat-2022-074",
+    "/patents/pat-2023-075",
+    "/patents/pat-2024-076",
+    "/patents/pat-2025-077",
+    "/patents/pat-2026-078",
+    "/patents/pat-2021-079",
+    "/patents/pat-2022-080",
+    "/patents/pat-2023-081",
+    "/patents/pat-2024-082",
+    "/patents/pat-2025-083",
+    "/patents/pat-2026-084",
+    "/patents/pat-2021-085",
+    "/patents/pat-2022-086",
+    "/patents/pat-2023-087",
+    "/patents/pat-2024-088",
+    "/patents/pat-2025-089",
+    "/patents/pat-2026-090",
+    "/patents/pat-2021-091",
+    "/patents/pat-2022-092",
+    "/patents/pat-2023-093",
+    "/patents/pat-2024-094",
+    "/patents/pat-2025-095",
+    "/patents/pat-2026-096",
+    "/patents/pat-2021-097",
+    "/patents/pat-2022-098",
+    "/patents/pat-2023-099",
+    "/patents/pat-2024-100",
+    "/research-notes/log-330",
+    "/research-notes/log-329",
+    "/research-notes/log-328",
+    "/research-notes/log-327",
+    "/research-notes/log-326",
+    "/research-notes/log-325",
+    "/research-notes/log-324",
+    "/research-notes/log-323",
+    "/research-notes/log-322",
+    "/research-notes/log-321",
+    "/research-notes/log-320",
+    "/research-notes/log-319",
+    "/research-notes/log-318",
+    "/research-notes/log-317",
+    "/research-notes/log-316",
+    "/research-notes/log-315",
+    "/research-notes/log-314",
+    "/research-notes/log-313",
+    "/research-notes/log-312",
+    "/research-notes/log-311",
+    "/research-notes/log-310",
+    "/research-notes/log-309",
+    "/research-notes/log-308",
+    "/research-notes/log-307",
+    "/research-notes/log-306",
+    "/research-notes/log-305",
+    "/research-notes/log-304",
+    "/research-notes/log-303",
+    "/research-notes/log-302",
+    "/research-notes/log-301",
+    "/research-notes/log-300",
+    "/research-notes/log-299",
+    "/research-notes/log-298",
+    "/research-notes/log-297",
+    "/research-notes/log-296",
+    "/research-notes/log-295",
+    "/research-notes/log-294",
+    "/research-notes/log-293",
+    "/research-notes/log-292",
+    "/research-notes/log-291",
+    "/research-notes/log-290",
+    "/research-notes/log-289",
+    "/research-notes/log-288",
+    "/research-notes/log-287",
+    "/research-notes/log-286",
+    "/research-notes/log-285",
+    "/research-notes/log-284",
+    "/research-notes/log-283",
+    "/research-notes/log-282",
+    "/research-notes/log-281",
+    "/research-notes/log-280",
+    "/research-notes/log-279",
+    "/research-notes/log-278",
+    "/research-notes/log-277",
+    "/research-notes/log-276",
+    "/research-notes/log-275",
+    "/research-notes/log-274",
+    "/research-notes/log-273",
+    "/research-notes/log-272",
+    "/research-notes/log-271",
+    "/research-notes/log-270",
+    "/research-notes/log-269",
+    "/research-notes/log-268",
+    "/research-notes/log-267",
+    "/research-notes/log-266",
+    "/research-notes/log-265",
+    "/research-notes/log-264",
+    "/research-notes/log-263",
+    "/research-notes/log-262",
+    "/research-notes/log-261",
+    "/research-notes/log-260",
+    "/research-notes/log-259",
+    "/research-notes/log-258",
+    "/research-notes/log-257",
+    "/research-notes/log-256",
+    "/research-notes/log-255",
+    "/research-notes/log-254",
+    "/research-notes/log-253",
+    "/research-notes/log-252",
+    "/research-notes/log-251",
+    "/research-notes/log-250",
+    "/research-notes/log-249",
+    "/research-notes/log-248",
+    "/research-notes/log-247",
+    "/research-notes/log-246",
+    "/research-notes/log-245",
+    "/research-notes/log-244",
+    "/research-notes/log-243",
+    "/research-notes/log-242",
+    "/research-notes/log-241",
+    "/research-notes/log-240",
+    "/research-notes/log-239",
+    "/research-notes/log-238",
+    "/research-notes/log-237",
+    "/research-notes/log-236",
+    "/research-notes/log-235",
+    "/research-notes/log-234",
+    "/research-notes/log-233",
+    "/research-notes/log-232",
+    "/research-notes/log-231",
+    "/research-notes/log-230",
+    "/research-notes/log-229",
+    "/research-notes/log-228",
+    "/research-notes/log-227",
+    "/research-notes/log-226",
+    "/research-notes/log-225",
+    "/research-notes/log-224",
+    "/research-notes/log-223",
+    "/research-notes/log-222",
+    "/research-notes/log-221",
+    "/research-notes/log-220",
+    "/research-notes/log-219",
+    "/research-notes/log-218",
+    "/research-notes/log-217",
+    "/research-notes/log-216",
+    "/research-notes/log-215",
+    "/research-notes/log-214",
+    "/research-notes/log-213",
+    "/research-notes/log-212",
+    "/research-notes/log-211",
+    "/research-notes/log-210",
+    "/research-notes/log-209",
+    "/research-notes/log-208",
+    "/research-notes/log-207",
+    "/research-notes/log-206",
+    "/research-notes/log-205",
+    "/research-notes/log-204",
+    "/research-notes/log-203",
+    "/research-notes/log-202",
+    "/research-notes/log-201",
+    "/research-notes/log-200",
+    "/research-notes/log-199",
+    "/research-notes/log-198",
+    "/research-notes/log-197",
+    "/research-notes/log-196",
+    "/research-notes/log-195",
+    "/research-notes/log-194",
+    "/research-notes/log-193",
+    "/research-notes/log-192",
+    "/research-notes/log-191",
+    "/research-notes/log-190",
+    "/research-notes/log-189",
+    "/research-notes/log-188",
+    "/research-notes/log-187",
+    "/research-notes/log-186",
+    "/research-notes/log-185",
+    "/research-notes/log-184",
+    "/research-notes/log-183",
+    "/research-notes/log-182",
+    "/research-notes/log-181",
+    "/research-notes/log-180",
+    "/research-notes/log-179",
+    "/research-notes/log-178",
+    "/research-notes/log-177",
+    "/research-notes/log-176",
+    "/research-notes/log-175",
+    "/research-notes/log-174",
+    "/research-notes/log-173",
+    "/research-notes/log-172",
+    "/research-notes/log-171",
+    "/research-notes/log-170",
+    "/research-notes/log-169",
+    "/research-notes/log-168",
+    "/research-notes/log-167",
+    "/research-notes/log-166",
+    "/research-notes/log-165",
+    "/research-notes/log-164",
+    "/research-notes/log-163",
+    "/research-notes/log-162",
+    "/research-notes/log-161",
+    "/research-notes/log-160",
+    "/research-notes/log-159",
+    "/research-notes/log-158",
+    "/research-notes/log-157",
+    "/research-notes/log-156",
+    "/research-notes/log-155",
+    "/research-notes/log-154",
+    "/research-notes/log-153",
+    "/research-notes/log-152",
+    "/research-notes/log-151",
+    "/research-notes/log-150",
+    "/research-notes/log-149",
+    "/research-notes/log-148",
+    "/research-notes/log-147",
+    "/research-notes/log-146",
+    "/research-notes/log-145",
+    "/research-notes/log-144",
+    "/research-notes/log-143",
+    "/research-notes/log-142",
+    "/research-notes/log-141",
+    "/research-notes/log-140",
+    "/research-notes/log-139",
+    "/research-notes/log-138",
+    "/research-notes/log-137",
+    "/research-notes/log-136",
+    "/research-notes/log-135",
+    "/research-notes/log-134",
+    "/research-notes/log-133",
+    "/research-notes/log-132",
+    "/research-notes/log-131",
+    "/research-notes/log-130",
+    "/research-notes/log-129",
+    "/research-notes/log-128",
+    "/research-notes/log-127",
+    "/research-notes/log-126",
+    "/research-notes/log-125",
+    "/research-notes/log-124",
+    "/research-notes/log-123",
+    "/research-notes/log-122",
+    "/research-notes/log-121",
+    "/research-notes/log-120",
+    "/research-notes/log-119",
+    "/research-notes/log-118",
+    "/research-notes/log-117",
+    "/research-notes/log-116",
+    "/research-notes/log-115",
+    "/research-notes/log-114",
+    "/research-notes/log-113",
+    "/research-notes/log-112",
+    "/research-notes/log-111",
+    "/research-notes/log-110",
+    "/research-notes/log-109",
+    "/research-notes/log-108",
+    "/research-notes/log-107",
+    "/research-notes/log-106",
+    "/research-notes/log-105",
+    "/research-notes/log-104",
+    "/research-notes/log-103",
+    "/research-notes/log-102",
+    "/research-notes/log-101",
+    "/research-notes/log-100",
+    "/research-notes/log-099",
+    "/research-notes/log-098",
+    "/research-notes/log-097",
+    "/research-notes/log-096",
+    "/research-notes/log-095",
+    "/research-notes/log-094",
+    "/research-notes/log-093",
+    "/research-notes/log-092",
+    "/research-notes/log-091",
+    "/research-notes/log-090",
+    "/research-notes/log-089",
+    "/research-notes/log-088",
+    "/research-notes/log-087",
+    "/research-notes/log-086",
+    "/research-notes/log-085",
+    "/research-notes/log-084",
+    "/research-notes/log-083",
+    "/research-notes/log-082",
+    "/research-notes/log-081",
+    "/research-notes/log-080",
+    "/research-notes/log-079",
+    "/research-notes/log-078",
+    "/research-notes/log-077",
+    "/research-notes/log-076",
+    "/research-notes/log-075",
+    "/research-notes/log-074",
+    "/research-notes/log-073",
+    "/research-notes/log-072",
+    "/research-notes/log-071",
+    "/research-notes/log-070",
+    "/research-notes/log-069",
+    "/research-notes/log-068",
+    "/research-notes/log-067",
+    "/research-notes/log-066",
+    "/research-notes/log-065",
+    "/research-notes/log-064",
+    "/research-notes/log-063",
+    "/research-notes/log-062",
+    "/research-notes/log-061",
+    "/research-notes/log-060",
+    "/research-notes/log-059",
+    "/research-notes/log-058",
+    "/research-notes/log-057",
+    "/research-notes/log-056",
+    "/research-notes/log-055",
+    "/research-notes/log-054",
+    "/research-notes/log-053",
+    "/research-notes/log-052",
+    "/research-notes/log-051",
+    "/research-notes/log-050",
+    "/research-notes/log-049",
+    "/research-notes/log-048",
+    "/research-notes/log-047",
+    "/research-notes/log-046",
+    "/research-notes/log-045",
+    "/research-notes/log-044",
+    "/research-notes/log-043",
+    "/research-notes/log-042",
+    "/research-notes/log-041",
+    "/research-notes/log-040",
+    "/research-notes/log-039",
+    "/research-notes/log-038",
+    "/research-notes/log-037",
+    "/research-notes/log-036",
+    "/research-notes/log-035",
+    "/research-notes/log-034",
+    "/research-notes/log-033",
+    "/research-notes/log-032",
+    "/research-notes/log-031",
+    "/research-notes/log-030",
+    "/research-notes/log-029",
+    "/research-notes/log-028",
+    "/research-notes/log-027",
+    "/research-notes/log-026",
+    "/research-notes/log-025",
+    "/research-notes/log-024",
+    "/research-notes/log-023",
+    "/research-notes/log-022",
+    "/research-notes/log-021",
+    "/research-notes/log-020",
+    "/research-notes/log-019",
+    "/research-notes/log-018",
+    "/research-notes/log-017",
+    "/research-notes/log-016",
+    "/research-notes/log-015",
+    "/research-notes/log-014",
+    "/research-notes/log-013",
+    "/research-notes/log-012",
+    "/research-notes/log-011",
+    "/research-notes/log-010",
+    "/research-notes/log-009",
+    "/research-notes/log-008",
+    "/research-notes/log-007",
+    "/research-notes/log-006",
+    "/research-notes/log-005",
+    "/research-notes/log-004",
+    "/research-notes/log-003",
+    "/research-notes/log-002",
+    "/research-notes/log-001",
+    "/monographs/essay-2022-01",
+    "/monographs/essay-2023-02",
+    "/monographs/essay-2024-03",
+    "/monographs/essay-2024-04",
+    "/monographs/essay-2025-05",
+    "/monographs/essay-2025-06",
+    "/monographs/essay-2026-07",
+    "/monographs/essay-2026-08",
+    "/post-mortems/inc-2021-01",
+    "/post-mortems/inc-2021-02",
+    "/post-mortems/inc-2022-03",
+    "/post-mortems/inc-2022-04",
+    "/post-mortems/inc-2022-05",
+    "/post-mortems/inc-2023-06",
+    "/post-mortems/inc-2023-07",
+    "/post-mortems/inc-2023-08",
+    "/post-mortems/inc-2024-09",
+    "/post-mortems/inc-2024-10",
+    "/post-mortems/inc-2024-11",
+    "/post-mortems/inc-2024-12",
+    "/post-mortems/inc-2025-13",
+    "/post-mortems/inc-2025-14",
+    "/post-mortems/inc-2025-15",
+    "/post-mortems/inc-2025-16",
+    "/post-mortems/inc-2025-17",
+    "/post-mortems/inc-2026-18",
+    "/post-mortems/inc-2026-19",
+    "/post-mortems/inc-2026-20",
+    "/post-mortems/inc-2026-21",
+    "/post-mortems/inc-2026-22",
+    "/fellows/fellow-001",
+    "/fellows/fellow-002",
+    "/fellows/fellow-003",
+    "/fellows/fellow-004",
+    "/fellows/fellow-005",
+    "/fellows/fellow-006",
+    "/fellows/fellow-007",
+    "/fellows/fellow-008",
+    "/fellows/fellow-009",
+    "/fellows/fellow-010",
+    "/fellows/fellow-011",
+    "/fellows/fellow-012",
+    "/fellows/fellow-013",
+    "/fellows/fellow-014",
+    "/fellows/fellow-015",
+    "/fellows/fellow-016",
+    "/fellows/fellow-017",
+    "/fellows/fellow-018",
+    "/fellows/fellow-019",
+    "/fellows/fellow-020",
+    "/field-stations/site-01",
+    "/field-stations/site-02",
+    "/field-stations/site-03",
+    "/field-stations/site-04",
+    "/field-stations/site-05",
+    "/field-stations/site-06",
+    "/field-stations/site-07",
+    "/field-stations/site-08",
+    "/field-stations/site-09",
+    "/field-stations/site-10",
+    "/field-stations/site-11",
+    "/field-stations/site-12",
+    "/field-stations/site-13",
+    "/field-stations/site-14",
+    "/field-stations/site-15",
+    "/field-stations/site-16"
+  ]
+}

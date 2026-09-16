@@ -5,6 +5,7 @@ import { Footer } from './components/Footer';
 import { Loading } from './components/Loading';
 import { Dashboard } from './pages/Dashboard';
 import { audioEngine } from './audio/audioEngine';
+import { CLIENT_ALIAS_ROUTES, resolveAliasWithQuery, resolveSatelliteOrigin } from './routes/aliasResolver';
 
 /* Route-level code splitting: each section (and its data) is its own chunk. */
 const About = lazy(() => import('./pages/About'));
@@ -30,6 +31,7 @@ const Lexicon = lazy(() => import('./pages/Lexicon'));
 const CitePolicy = lazy(() => import('./pages/CitePolicy'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const Gone = lazy(() => import('./pages/Gone'));
 const GlobalSearchModal = lazy(() => import('./components/GlobalSearchModal'));
 
 /** Restore top-of-page on navigation (SPA default keeps scroll position). */
@@ -41,7 +43,11 @@ function ScrollToTop() {
   return null;
 }
 
-/** Legacy hash/tab URLs (#prototypes, ?tab=vault) → canonical paths. */
+/**
+ * Legacy hash/tab URLs (#prototypes, ?tab=vault) → canonical paths.
+ * Mirrors the hash-tab-leftover rules in scripts/alias-registry.mjs (host config
+ * answers /?tab=… with a real 301 where the host can match query strings).
+ */
 const LEGACY_TABS: Record<string, string> = {
   dashboard: '/',
   prototypes: '/prototypes',
@@ -59,6 +65,37 @@ const LEGACY_TABS: Record<string, string> = {
 
 function LegacyRedirect({ tab }: { tab: string }) {
   return <Navigate to={LEGACY_TABS[tab] ?? '/'} replace />;
+}
+
+/**
+ * Catch-all rescue: a path the router does not declare is offered to the alias
+ * registry before it becomes a 404. This is what keeps historical URLs working
+ * on hosts that cannot express the rule (query facets, retired subpaths, and
+ * satellites serving this same build).
+ */
+function AliasRescue() {
+  const { pathname, search } = useLocation();
+  const resolution = resolveAliasWithQuery(pathname, search);
+  if (resolution.kind === 'permanent') {
+    const keepQuery = resolution.via === 'case-fold' ? search : '';
+    return <Navigate to={`${resolution.to}${keepQuery}`} replace />;
+  }
+  if (resolution.kind === 'gone') return <Navigate to="/410" replace />;
+  return <NotFound />;
+}
+
+/**
+ * Satellite origins already named in this repository (GitHub Pages demos of the
+ * predecessor and of the ported instruments) are not canonical: if this build is
+ * served from one, hand the visitor to the institution's origin. The host rules
+ * for those origins are generated in deploy/satellite-canonicalization.md.
+ */
+function SatelliteOriginCanonicalizer() {
+  useEffect(() => {
+    const fix = resolveSatelliteOrigin(window.location.href);
+    if (fix) window.location.replace(fix.to);
+  }, []);
+  return null;
 }
 
 export function App() {
@@ -83,6 +120,7 @@ export function App() {
         Skip to main content
       </a>
       <ScrollToTop />
+      <SatelliteOriginCanonicalizer />
 
       <Header onOpenSearch={() => setSearchOpen(true)} isAudioPlaying={isAudioPlaying} />
 
@@ -129,25 +167,15 @@ export function App() {
             <Route path="/papers" element={<Papers />} />
             <Route path="/search" element={<SearchPage />} />
 
-            {/* Redirects for earlier/alternate URL vocabulary */}
-            <Route path="/dashboard" element={<Navigate to="/" replace />} />
-            <Route path="/overview" element={<Navigate to="/" replace />} />
-            <Route path="/logs" element={<Navigate to="/research-notes" replace />} />
+            {/* Historical / alias vocabulary, generated from scripts/alias-registry.mjs
+                so the client can never drift from vercel.json + public/_redirects. */}
+            {CLIENT_ALIAS_ROUTES.map(rule => (
+              <Route key={rule.from} path={rule.from} element={<Navigate to={rule.to} replace />} />
+            ))}
             <Route path="/logs/:id" element={<RecordPage type="log" redirectTo="/research-notes" />} />
-            <Route path="/lab-logs" element={<Navigate to="/research-notes" replace />} />
-            <Route path="/bench" element={<Navigate to="/acoustic-bench" replace />} />
-            <Route path="/spectra" element={<Navigate to="/spectra-lab" replace />} />
-            <Route path="/oculus" element={<Navigate to="/void-oculus" replace />} />
-            <Route path="/synthesis" element={<Navigate to="/synthesis-signal" replace />} />
-            <Route path="/spectrum" element={<Navigate to="/emotion-spectrum" replace />} />
-            <Route path="/infrastructure" element={<Navigate to="/field-stations" replace />} />
-            <Route path="/vault" element={<Navigate to="/post-mortems" replace />} />
-            <Route path="/failures" element={<Navigate to="/post-mortems" replace />} />
-            <Route path="/personnel" element={<Navigate to="/fellows" replace />} />
             <Route path="/personnel/:id" element={<RecordPage type="personnel" redirectTo="/fellows" />} />
-            <Route path="/audit" element={<Navigate to="/system-audit" replace />} />
-            <Route path="/404" element={<NotFound />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/410" element={<Gone />} />
+            <Route path="*" element={<AliasRescue />} />
           </Routes>
         </Suspense>
       </main>

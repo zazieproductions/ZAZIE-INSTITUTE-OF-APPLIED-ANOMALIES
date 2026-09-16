@@ -134,7 +134,7 @@ const isExempt = (p) => exempt.some(e => p === e || p.startsWith(e + '/'));
 const shortWords = new Set(['arg', 'seo', 'blog', 'startup', 'saas', 'satire', 'hoax', 'joke']);
 let hits = 0;
 for (const p of pages) {
-  if (p === '/404' || p === '/search' || isExempt(p)) continue;
+  if (p === '/404' || p === '/410' || p === '/search' || isExempt(p)) continue;
   const html = readFileSync(join(dist, p === '/' ? 'index.html' : `${p}/index.html`), 'utf8');
   const text = html
     .replace(/<script[\s\S]*?<\/script>/g, ' ')

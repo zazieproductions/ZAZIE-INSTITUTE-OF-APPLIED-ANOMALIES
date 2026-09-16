@@ -4,15 +4,18 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/build-derived.mjs",
+    "predev": "node scripts/build-derived.mjs && node scripts/build-alias-rules.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/build-derived.mjs && node scripts/build-brand-assets.mjs && node scripts/build-pdfs.mjs",
+    "prebuild": "node scripts/build-derived.mjs && node scripts/build-alias-rules.mjs && node scripts/build-brand-assets.mjs && node scripts/build-pdfs.mjs",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "audit:seo": "node scripts/audit-seo.mjs",
     "audit:geo": "node scripts/geo-check.mjs",
-    "audit": "npm run audit:seo && npm run audit:geo"
+    "audit": "npm run audit:aliases && npm run audit:seo && npm run audit:geo",
+    "build:aliases": "node scripts/build-alias-rules.mjs",
+    "serve": "node scripts/serve-dist.mjs",
+    "audit:aliases": "node scripts/audit-aliases.mjs"
   },
   "dependencies": {
     "@fontsource/stix-two-text": "^5.3.0",

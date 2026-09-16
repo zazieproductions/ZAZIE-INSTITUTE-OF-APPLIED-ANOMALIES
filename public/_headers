@@ -4,6 +4,7 @@
   Cache-Control: public, max-age=31536000, immutable
 /apps/void-oculus/*
   X-Robots-Tag: noindex
+  Link: <https://zazieinstitute.org/void-oculus>; rel="canonical"
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400
@@ -20,6 +21,7 @@
   Content-Type: application/pdf
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
   X-Robots-Tag: all
+  Link: <https://zazieinstitute.org/papers>; rel="canonical"
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
@@ -27,3 +29,19 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), geolocation=(), payment=()
   X-Robots-Tag: all
+/search
+  X-Robots-Tag: noindex, follow
+/404
+  X-Robots-Tag: noindex
+/410
+  X-Robots-Tag: noindex
+/aliases.json
+  X-Robots-Tag: noindex
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/_redirects
+  X-Robots-Tag: noindex
+  Content-Type: text/plain; charset=utf-8
+/_headers
+  X-Robots-Tag: noindex
+  Content-Type: text/plain; charset=utf-8
