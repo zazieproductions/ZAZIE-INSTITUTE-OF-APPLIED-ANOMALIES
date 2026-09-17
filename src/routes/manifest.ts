@@ -75,13 +75,16 @@ export const STATIC_ROUTES: RouteEntry[] = [
 ];
 
 export const DYNAMIC_ROUTES: RouteEntry[] = [
-  ...prototypes.map(p => ({ path: `/prototypes/${lower(p.id)}`, changefreq: 'monthly' as const, priority: 0.7 })),
+  // Record lastmod = the record's own archival date (year precision where the
+  // collection only carries a year); prerender clamps future in-fiction dates
+  // to the build date so the sitemap never carries invalid future lastmods.
+  ...prototypes.map(p => ({ path: `/prototypes/${lower(p.id)}`, changefreq: 'monthly' as const, priority: 0.7, lastmod: `${p.year}-12-31` })),
   ...patents.map(p => ({ path: `/patents/${lower(p.id)}`, changefreq: 'yearly' as const, priority: 0.6, lastmod: p.filingDate })),
   ...labLogs.map(l => ({ path: `/research-notes/${lower(l.id)}`, changefreq: 'yearly' as const, priority: 0.5, lastmod: l.timestamp.slice(0, 10) })),
   ...monographs.map(m => ({ path: `/monographs/${lower(m.id)}`, changefreq: 'yearly' as const, priority: 0.8, lastmod: m.date })),
   ...failures.map(f => ({ path: `/post-mortems/${lower(f.id)}`, changefreq: 'yearly' as const, priority: 0.5, lastmod: f.incidentDate })),
-  ...personnel.map(p => ({ path: `/fellows/${lower(p.id)}`, changefreq: 'monthly' as const, priority: 0.6 })),
-  ...fieldSites.map(s => ({ path: `/field-stations/${lower(s.id)}`, changefreq: 'yearly' as const, priority: 0.6 }))
+  ...personnel.map(p => ({ path: `/fellows/${lower(p.id)}`, changefreq: 'monthly' as const, priority: 0.6, lastmod: `${p.joinedYear}-12-31` })),
+  ...fieldSites.map(s => ({ path: `/field-stations/${lower(s.id)}`, changefreq: 'yearly' as const, priority: 0.6, lastmod: `${s.establishedYear}-12-31` }))
 ];
 
 export const ROUTE_MANIFEST: RouteEntry[] = [...STATIC_ROUTES, ...DYNAMIC_ROUTES];

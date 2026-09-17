@@ -238,3 +238,23 @@ llms.txt vocabulary.
 No parasites, no Wikidata, no paid amplification until the probe data says so.
 
 *Auditus Inauditi.*
+
+---
+
+## 8. Batch 2 addendum - knowledge-panel & ranking package (this branch)
+
+Companion: `KNOWLEDGE_PANEL_RUNBOOK.md` (operator phases 1-5).
+
+| Change | File(s) | Effect |
+|---|---|---|
+| Build breaker fixed: regex character class `[,;:\-–-(\s]` parsed as an out-of-order range (`TS1517`) and failed `tsc -b` | `src/seo/site.ts` | `npm run build` is green again |
+| Entity-frame leak in the OG card kicker ("…CREATIVE-TECHNOLOGY INITIATIVE") - the exact "initiative" wording §1 purged from text surfaces survived in the generated PNG | `scripts/build-brand-assets.mjs` | kicker now "INDEPENDENT RESEARCH INSTITUTE & OPEN ARCHIVE" |
+| Per-section OG cards (11 sections) + path-prefix mapping in the SEO layer | `build-brand-assets.mjs`, `src/seo/Seo.tsx` | distinct share/answer cards per archive section (count-free subtitles - no drift) |
+| `sameAs` += GitHub **org** profile (verified 200) alongside the repository | `src/seo/site.ts` | second controlled node for entity matching |
+| Sitemap `lastmod` completion: prototypes (`year`), fellows (`joinedYear`), field stations (`establishedYear`) - clamp already handles future in-fiction dates | `src/routes/manifest.ts` | ~649/689 sitemap URLs now carry lastmod (was 470) |
+| robots.txt explicit allows for the 2025/26 answer-engine crawlers: OAI-SearchBot, Claude-User, Claude-SearchBot, Perplexity-User, Meta-ExternalAgent, Applebot, Amazonbot, DuckAssistBot | `public/robots.txt` | discovery guaranteed rather than default-allow |
+| Site-verification slots (Google / Bing / Yandex) staged as commented placeholders in the static head | `index.html` | unlocks Search Console verification → panel claim flow (runbook Phase 1) |
+| New `audit:geo` group 7/7 - knowledge-panel readiness: full Organization node field check, square-logo rule, sameAs host allowlist, WebSite SearchAction, SERP favicon assets, verification meta (warn) | `scripts/geo-check.mjs` | panel inputs can no longer regress silently |
+
+Validation: `npm run build` → 691 pages / 689 sitemap URLs; `audit:seo` 0 errors;
+`audit:geo` 0 errors, 1 warn (verification token = operator step, runbook Phase 1).
