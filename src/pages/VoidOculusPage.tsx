@@ -11,7 +11,7 @@ const CRUMBS = [
 
 const APP_URL = '/apps/void-oculus/index.html';
 const DESCRIPTION =
-  'VOID//OCULUS is an infinite spatial-thinking canvas from the Zazie Institute of Applied Anomalies: an 8,000 × 6,000 px board with procedural eyes, linked research cards, in-place editing, search and local session persistence — a zero-dependency creative tool.';
+  'VOID//OCULUS is an infinite spatial-thinking canvas from the Zazie Institute of Applied Anomalies: an 8,000 × 6,000 px board with procedural eyes, linked research cards, in-place editing, search and local session persistence - a zero-dependency creative tool.';
 
 /**
  * The VOID//OCULUS prototype is intentionally kept in an isolated document
@@ -24,7 +24,7 @@ export const VoidOculusPage: React.FC = () => {
   return (
     <div className="space-y-4 font-mono">
       <Seo
-        title="VOID//OCULUS — Infinite Spatial Thinking Canvas"
+        title="VOID//OCULUS - Infinite Spatial Thinking Canvas"
         description={DESCRIPTION}
         path="/void-oculus"
         keywords={['spatial canvas', 'infinite whiteboard', 'creative tool', 'digital art', 'generative interface']}
@@ -52,7 +52,7 @@ export const VoidOculusPage: React.FC = () => {
               <span className="text-[10px] tracking-wider text-zinc-400">VOID-OCULUS / EMBEDDED RUNTIME</span>
             </div>
             <h1 className="font-serif text-xl font-bold tracking-wide text-white md:text-2xl">
-              VOID//OCULUS — THE CANVAS IS AN EYE
+              VOID//OCULUS - THE CANVAS IS AN EYE
             </h1>
             <p className="mt-1 max-w-3xl text-xs leading-relaxed text-zinc-300 md:text-sm">
               A spatial thinking surface that looks back at you. Pan and zoom the infinite board, link research cards,

@@ -270,7 +270,7 @@ export const AcousticBench: React.FC<AcousticBenchProps> = ({
         >
           {benchPresets.map(p => (
             <option key={p.id} value={p.id}>
-              {p.id} — {p.codeName} ({p.discipline})
+              {p.id} - {p.codeName} ({p.discipline})
             </option>
           ))}
         </select>

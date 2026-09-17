@@ -41,7 +41,7 @@ export const BlackVaultFailures: React.FC = () => {
         kicker="SPECULATIVE ENGINEERING FAILURE ARCHIVE"
         tone="red"
         title={<>Experimental Anomalies &amp; System Post-Mortems ({failures.length} Records)</>}
-        lede="Detailed case studies of prototype feedback cascades, mechanical fatigue, algorithmic drift and physical acoustic boundaries encountered during ZIAA experimental testing — each with incident narrative, root-cause analysis, containment protocol and salvaged hardware."
+        lede="Detailed case studies of prototype feedback cascades, mechanical fatigue, algorithmic drift and physical acoustic boundaries encountered during ZIAA experimental testing - each with incident narrative, root-cause analysis, containment protocol and salvaged hardware."
         aside={
           <p className="text-right text-xs font-mono text-red-300 bg-[#140505] px-3.5 py-2 border border-red-900/60 rounded-md shrink-0">
             <strong className="font-bold">{failures.length}</strong> Documented Post-Mortems

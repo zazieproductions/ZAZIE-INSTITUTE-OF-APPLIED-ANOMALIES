@@ -170,10 +170,10 @@ export const LabLogsStream: React.FC = () => {
         </div>
       )}
 
-      {/* Crawlable complete index — every research note linked so bench calibrations, field recordings and anomaly telemetry are discoverable without paging. */}
+      {/* Crawlable complete index - every research note linked so bench calibrations, field recordings and anomaly telemetry are discoverable without paging. */}
       <section aria-labelledby="complete-log-index" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-5 md:p-6 space-y-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#1b2636] pb-3">
-          <h2 id="complete-log-index" className="text-sm font-bold text-white tracking-wide">Complete research-notes index — every log, crawlable</h2>
+          <h2 id="complete-log-index" className="text-sm font-bold text-white tracking-wide">Complete research-notes index - every log, crawlable</h2>
           <p className="text-[11px] font-mono text-zinc-400">All {labLogs.length} notes · chronological, earliest first</p>
         </div>
         <p className="text-xs text-zinc-400 leading-relaxed">

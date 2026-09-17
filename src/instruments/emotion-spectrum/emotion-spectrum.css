@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   EMOTION//SPECTRUM — instrument-scoped styles.
+   EMOTION//SPECTRUM - instrument-scoped styles.
    Ported from the standalone instrument's index.css. Global rules that
    applied to <body> were dropped; typography is re-established as scoped
    utility classes so nothing outside .emotion-spectrum is affected.

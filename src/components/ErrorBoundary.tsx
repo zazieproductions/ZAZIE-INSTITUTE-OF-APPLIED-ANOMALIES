@@ -33,7 +33,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error: Error) {
     // Keep the diagnostic in the console for maintainers, but never rely on it
-    // as the only signal — the UI below explains the failure to the user.
+    // as the only signal - the UI below explains the failure to the user.
     console.error('[ZIAA] Section render failure:', error);
   }
 
@@ -47,7 +47,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
           title={this.props.label ?? 'THIS ARCHIVE SECTION FAILED TO LOAD'}
           message={
             isChunkError
-              ? 'A required archive module could not be downloaded. This is usually a temporary network problem — retry, or reload the page.'
+              ? 'A required archive module could not be downloaded. This is usually a temporary network problem - retry, or reload the page.'
               : 'An unexpected fault occurred while rendering this record. Other archive sections remain fully available.'
           }
           detail={this.state.error.message}

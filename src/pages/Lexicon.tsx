@@ -36,7 +36,7 @@ export const Lexicon: React.FC = () => {
   return (
     <div className="space-y-6 font-serif">
       <Seo
-        title="Lexicon — Institutional Vocabulary"
+        title="Lexicon - Institutional Vocabulary"
         description={`Institutional lexicon of the Zazie Institute of Applied Anomalies (ZIAA): canonical definitions of the Institute's research divisions, method terms, publication series and named apparatus.`}
         path="/lexicon"
         keywords={['ZIAA lexicon', 'applied anomalies definition', 'signal archaeology definition', 'wave-terrain synthesis', 'defensive publication', 'institute terminology']}
@@ -58,7 +58,7 @@ export const Lexicon: React.FC = () => {
         <div className="space-y-3 max-w-3xl">
           <span className="archival-stamp font-mono text-[9.5px]">INSTITUTIONAL LEXICON</span>
           <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
-            Lexicon — Institutional Vocabulary of the Institute
+            Lexicon - Institutional Vocabulary of the Institute
           </h1>
           <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
             The Zazie Institute of Applied Anomalies works with a controlled technical vocabulary. This lexicon

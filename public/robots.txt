@@ -1,4 +1,4 @@
-# Zazie Institute of Applied Anomalies (ZIAA) — https://zazieinstitute.org
+# Zazie Institute of Applied Anomalies (ZIAA) - https://zazieinstitute.org
 # Canonical robots. ARG verisimilitude requires permissive crawling for archival
 # discovery surfaces (scholar, .edu, LLM). Thin pages are noindex + disallowed;
 # everything else is crawlable with full prerender.
@@ -7,7 +7,7 @@ Allow: /
 Disallow: /search
 Disallow: /404
 
-# AI training / LLM discovery crawlers — allow with attribution.
+# AI training / LLM discovery crawlers - allow with attribution.
 # These are explicitly permitted to bootstrap entity citation in AI Overviews,
 # ChatGPT, Perplexity, Claude, Gemini grounding.
 User-agent: GPTBot
@@ -37,7 +37,7 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# Scholar / academic surfaces — ensure Googlebot Scholar path is clean
+# Scholar / academic surfaces - ensure Googlebot Scholar path is clean
 User-agent: Googlebot
 Allow: /
 

@@ -16,11 +16,11 @@ const ARCHIVE_LINKS = [
 ];
 const INSTITUTE_LINKS = [
   { to: '/about', label: 'About the Institute' },
-  { to: '/founder', label: `Founder — ${FOUNDER.name}` },
+  { to: '/founder', label: `Founder - ${FOUNDER.name}` },
   { to: '/disciplines', label: 'Research Divisions (8 Laboratories)' },
   { to: '/fellows', label: `Fellows & Inventors (${archiveStats.totalPersonnel})` },
   { to: '/field-stations', label: `Field Stations (${archiveStats.totalFieldSites})` },
-  { to: '/lexicon', label: 'Lexicon — Institutional Vocabulary' },
+  { to: '/lexicon', label: 'Lexicon - Institutional Vocabulary' },
   { to: '/cite', label: 'Citation Policy' },
   { to: '/search', label: 'Archive Search' }
 ];
@@ -103,7 +103,7 @@ export const Footer: React.FC = () => {
             <h2 className="text-[10px] font-mono font-bold text-[#dfb76c] uppercase tracking-wider mb-2">Research Focus</h2>
             <p className="text-zinc-300 leading-relaxed">
               <Link to="/disciplines" className="text-[#dfb76c] hover:underline">8 research divisions</Link> spanning applied anomalies, experimental audio systems, computational creativity, speculative
-              engineering and acoustic architecture — <Link to="/prototypes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalPrototypes} prototypes</Link>,{' '}
+              engineering and acoustic architecture - <Link to="/prototypes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalPrototypes} prototypes</Link>,{' '}
               <Link to="/monographs" className="text-zinc-200 hover:text-white underline underline-offset-2">8 monographs</Link> and{' '}
               <Link to="/research-notes" className="text-zinc-200 hover:text-white underline underline-offset-2">{archiveStats.totalLogs} research notes</Link>.
             </p>
@@ -113,7 +113,7 @@ export const Footer: React.FC = () => {
               title="Machine-readable archive guide (llms.txt)"
             >
               <Radio className="w-3.5 h-3.5" aria-hidden="true" />
-              llms.txt — machine-readable archive guide
+              llms.txt - machine-readable archive guide
             </a>
             <a
               href={`mailto:${ENTITY.email}`}

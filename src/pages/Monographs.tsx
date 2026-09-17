@@ -103,7 +103,7 @@ export const Monographs: React.FC = () => {
         <Seo
           title={shown.title}
           titleId={shown.id}
-          description={`${shown.abstract} — ${shown.volume}, by ${[shown.author, ...(shown.coAuthors || [])].join(', ')}.`}
+          description={`${shown.abstract} - ${shown.volume}, by ${[shown.author, ...(shown.coAuthors || [])].join(', ')}.`}
           path={monographPath(shown.id)}
           type="article"
           publishedTime={shown.date}
@@ -262,7 +262,7 @@ export const Monographs: React.FC = () => {
                 </p>
               </div>
 
-              {/* Visible citation — parity with the citation_* meta in the document head */}
+              {/* Visible citation - parity with the citation_* meta in the document head */}
               <div className="p-4 bg-[#03060a] border border-[#1b2738] rounded-lg text-xs font-mono">
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="text-[10px] text-zinc-400 uppercase tracking-wider">Cite this treatise (APA)</span>

@@ -10,7 +10,7 @@ import { synth } from "./synth";
 import "./emotion-spectrum.css";
 
 /**
- * EMOTION//SPECTRUM — embedded build of the Electromagnetic Spectrum Emotion
+ * EMOTION//SPECTRUM - embedded build of the Electromagnetic Spectrum Emotion
  * Web Instrument (zazieproductions/Electromagnetic-Spectrum-Emotion-Web-Instrument).
  *
  * The standalone app is a full-viewport single page; inside the ZIAA archive it

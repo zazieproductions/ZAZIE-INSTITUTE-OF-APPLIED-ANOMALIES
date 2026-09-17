@@ -19,7 +19,7 @@ const STYLES: { id: Style; label: string }[] = [
   { id: 'chicago', label: 'Chicago' }
 ];
 
-/** Worked examples — real records, stable accessions. */
+/** Worked examples - real records, stable accessions. */
 const MONO = {
   identifier: 'ESSAY-2022-01',
   title: 'Nonlinear Acoustic Feedback in Architectural Spaces: Harnessing Resonant Anomalies for Generative Sound Systems',
@@ -30,7 +30,7 @@ const MONO = {
 };
 const PROTO = {
   identifier: 'PROT-001',
-  title: 'FEEDBACK-RES — Self-Regulating Acoustic Feedback Resonator with Optical Hysteresis',
+  title: 'FEEDBACK-RES - Self-Regulating Acoustic Feedback Resonator with Optical Hysteresis',
   authors: ['Dr. V. A. Thorne'],
   year: '2021',
   url: `${SITE_URL}/prototypes/prot-001`
@@ -47,7 +47,7 @@ const FAQ = [
   },
   {
     q: 'Can I cite a prototype or a patent dossier?',
-    a: 'Yes. Every record — prototype, defensive disclosure, research note, post-mortem, fellow profile or field station — has a canonical URL and a “Cite” action that produces a formatted citation with the record’s stable accession identifier.'
+    a: 'Yes. Every record - prototype, defensive disclosure, research note, post-mortem, fellow profile or field station - has a canonical URL and a “Cite” action that produces a formatted citation with the record’s stable accession identifier.'
   },
   {
     q: 'Is the Zazie Institute accredited or affiliated with a university?',
@@ -78,7 +78,7 @@ export const CitePolicy: React.FC = () => {
   return (
     <div className="space-y-6 font-serif">
       <Seo
-        title="Citation Policy — How to Cite the Archive"
+        title="Citation Policy - How to Cite the Archive"
         description={`Citation policy of the Zazie Institute of Applied Anomalies (ZIAA): publisher string, ISSN, and APA, BibTeX and Chicago templates for citing the Institute, its monographs and individual archive records.`}
         path="/cite"
         keywords={['cite ZIAA', 'ZIAA citation', 'how to cite Zazie Institute', 'ZIAA ISSN', 'BibTeX ZIAA', 'academic citation archive']}
@@ -95,7 +95,7 @@ export const CitePolicy: React.FC = () => {
         <div className="space-y-3 max-w-3xl">
           <span className="archival-stamp font-mono text-[9.5px]">CITATION POLICY</span>
           <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
-            Citation Policy — How to Cite the Institute and Its Records
+            Citation Policy - How to Cite the Institute and Its Records
           </h1>
           <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
             The archive is maintained as a permanent, citable research record. This page publishes the Institute&apos;s
@@ -117,7 +117,7 @@ export const CitePolicy: React.FC = () => {
         </div>
         <p className="text-xs text-zinc-400 leading-relaxed">
           The Institute was founded by <Link to="/founder" className="text-[#dfb76c] hover:underline">Zazie Kanwar-Torge</Link>,
-          founder and owner of {CANONICAL.legalParent}, which holds all trademarks and copyrights in the archive — see the{' '}
+          founder and owner of {CANONICAL.legalParent}, which holds all trademarks and copyrights in the archive - see the{' '}
           <Link to="/legal/trademarks" className="text-[#dfb76c] hover:underline">Trademarks &amp; IP Notice</Link>.
         </p>
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
@@ -160,17 +160,17 @@ export const CitePolicy: React.FC = () => {
         <p className="text-sm text-zinc-300 leading-relaxed max-w-3xl">{CITATION.howToCiteNote}</p>
         <div className="p-4 bg-[#03060a] border border-[#1b2738] rounded-lg">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-            <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider">Record citation example (APA) — {PROTO.identifier}</span>
+            <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-wider">Record citation example (APA) - {PROTO.identifier}</span>
             <CopyRow text={recordCitation(PROTO, 'apa')} />
           </div>
           <code className="block font-mono text-xs text-zinc-200 leading-relaxed whitespace-pre-wrap">{recordCitation(PROTO, 'apa')}</code>
         </div>
         <p className="text-xs text-zinc-400 leading-relaxed max-w-3xl">
           PDF-bearing surfaces (monographs and defensive disclosures) additionally expose Scholar-style citation
-          metadata — <code className="text-cyan-300 font-mono">citation_title</code>,{' '}
+          metadata - <code className="text-cyan-300 font-mono">citation_title</code>,{' '}
           <code className="text-cyan-300 font-mono">citation_author</code>,{' '}
           <code className="text-cyan-300 font-mono">citation_pdf_url</code> and{' '}
-          <code className="text-cyan-300 font-mono">citation_issn</code> — alongside the record&apos;s JSON-LD.
+          <code className="text-cyan-300 font-mono">citation_issn</code> - alongside the record&apos;s JSON-LD.
         </p>
         <p className="text-xs text-zinc-400 leading-relaxed max-w-3xl border-l-2 border-[#23354d] pl-3">
           {CITATION.statusNote} See the{' '}

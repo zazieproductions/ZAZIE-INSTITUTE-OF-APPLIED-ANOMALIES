@@ -31,12 +31,12 @@ export const FieldInfrastructure: React.FC = () => {
             description,
             path: '/field-stations',
             about: ['sound technology', 'audio research'],
-            items: fieldSites.map(s => ({ name: `${s.codename} — ${s.name}`, path: recordPath('site', s.id) }))
+            items: fieldSites.map(s => ({ name: `${s.codename} - ${s.name}`, path: recordPath('site', s.id) }))
           }),
           faqPageSchema([
             {
               q: 'What is a ZIAA field station?',
-              a: 'A remote listening post — desert array, hydrophone string, subterranean vault or coastal pavilion — that gathers acoustic, seismic and electromagnetic telemetry as research and compositional material. Sixteen stations are indexed, each with a canonical dossier listing channel count, bandwidth, footprint, coordinates and instrumentation.'
+              a: 'A remote listening post - desert array, hydrophone string, subterranean vault or coastal pavilion - that gathers acoustic, seismic and electromagnetic telemetry as research and compositional material. Sixteen stations are indexed, each with a canonical dossier listing channel count, bandwidth, footprint, coordinates and instrumentation.'
             },
             {
               q: 'Can I visit a ZIAA field station?',
@@ -44,7 +44,7 @@ export const FieldInfrastructure: React.FC = () => {
             },
             {
               q: 'What do ZIAA field stations record?',
-              a: 'Environmental acoustic and electromagnetic telemetry — ground-coupled seismic and geophone data, wideband VLF radio loops, hydrophone strings and multichannel microphone arrays. Data feed the Institute’s research notes and the Signal Archaeology and Acoustic Architecture divisions.'
+              a: 'Environmental acoustic and electromagnetic telemetry - ground-coupled seismic and geophone data, wideband VLF radio loops, hydrophone strings and multichannel microphone arrays. Data feed the Institute’s research notes and the Signal Archaeology and Acoustic Architecture divisions.'
             }
           ])
         ]}
@@ -107,12 +107,12 @@ export const FieldInfrastructure: React.FC = () => {
       </ul>
 
       <section aria-labelledby="stations-faq" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
-        <h2 id="stations-faq" className="text-sm font-bold text-white tracking-wide">Field stations — questions &amp; answers</h2>
+        <h2 id="stations-faq" className="text-sm font-bold text-white tracking-wide">Field stations - questions &amp; answers</h2>
         <dl className="space-y-4 text-sm">
           <div className="border-l-2 border-amber-500/60 pl-4">
             <dt className="font-bold text-zinc-100">What is a ZIAA field station?</dt>
             <dd className="text-zinc-300 leading-relaxed mt-1">
-              A remote listening post — desert array, hydrophone string, subterranean vault or coastal pavilion — that
+              A remote listening post - desert array, hydrophone string, subterranean vault or coastal pavilion - that
               gathers acoustic, seismic and electromagnetic telemetry as research and compositional material. Sixteen
               stations are indexed, each with a canonical dossier listing channel count, bandwidth, footprint,
               coordinates and instrumentation.
@@ -129,7 +129,7 @@ export const FieldInfrastructure: React.FC = () => {
           <div className="border-l-2 border-amber-500/60 pl-4">
             <dt className="font-bold text-zinc-100">What do ZIAA field stations record?</dt>
             <dd className="text-zinc-300 leading-relaxed mt-1">
-              Environmental acoustic and electromagnetic telemetry — ground-coupled seismic and geophone data, wideband
+              Environmental acoustic and electromagnetic telemetry - ground-coupled seismic and geophone data, wideband
               VLF radio loops, hydrophone strings and multichannel microphone arrays. Data feed the Institute’s research
               notes and the Signal Archaeology and Acoustic Architecture divisions.
             </dd>

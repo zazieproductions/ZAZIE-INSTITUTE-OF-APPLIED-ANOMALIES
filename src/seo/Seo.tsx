@@ -75,10 +75,10 @@ export const Seo: React.FC<SeoProps> = ({
       )}
       {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
 
-      {/* Authorship & rights — every page attributes the legal founder and rights holder. */}
+      {/* Authorship & rights - every page attributes the legal founder and rights holder. */}
       <meta name="author" content={FOUNDER.name} />
       <meta name="copyright" content={COPYRIGHT_NOTICE} />
-      <meta name="publisher" content={`${ENTITY.name} (${ENTITY.abbreviation}) — ${ENTITY.legalParent}`} />
+      <meta name="publisher" content={`${ENTITY.name} (${ENTITY.abbreviation}) - ${ENTITY.legalParent}`} />
       <link rel="author" href={absoluteUrl(FOUNDER.path)} />
 
       <meta property="og:site_name" content={`${ENTITY.name} (${ENTITY.abbreviation})`} />
@@ -100,7 +100,7 @@ export const Seo: React.FC<SeoProps> = ({
       <meta name="twitter:image" content={img} />
       <meta name="twitter:image:alt" content={imageAlt} />
 
-      {/* Google Scholar / Highwire Press — citation hacking surface for academic indexes */}
+      {/* Google Scholar / Highwire Press - citation hacking surface for academic indexes */}
       {citation?.title && <meta name="citation_title" content={citation.title} />}
       {citation?.authors?.map(a => (
         <meta key={a} name="citation_author" content={a} />

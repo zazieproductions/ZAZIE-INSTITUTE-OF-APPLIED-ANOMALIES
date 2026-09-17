@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOID//OCULUS — The Canvas Is An Eye</title>
+<title>VOID//OCULUS - The Canvas Is An Eye</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48" />
 <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -851,7 +851,7 @@
     --vein: #6b1220;
   }
 
-  /* macro iris — the board sits inside a giant eye */
+  /* macro iris - the board sits inside a giant eye */
   .macro-iris {
     position: absolute;
     z-index: 0;
@@ -937,7 +937,7 @@
     margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px;
   }
 
-  /* eyelid vignette — the canvas squints as you pull back */
+  /* eyelid vignette - the canvas squints as you pull back */
   .lid-shade {
     position: fixed;
     left: 0; right: 0;
@@ -1039,7 +1039,7 @@
      REDUCED MOTION
      Autonomous motion is removed entirely: fiber drift, pupil pulse,
      iris breath, scan line, sweeps, marquees, boot flicker, glows.
-     Pointer-driven gaze is retained but damped in the gaze loop —
+     Pointer-driven gaze is retained but damped in the gaze loop -
      it is a direct response to user input, not ambient animation.
      ============================================================ */
   @media (prefers-reduced-motion: reduce) {
@@ -1155,7 +1155,7 @@
 
 <script>
 /**
- * @fileoverview VOID//OCULUS — Main Canvas Engine
+ * @fileoverview VOID//OCULUS - Main Canvas Engine
  * 
  * This module implements the core state management, transform system,
  * card management, connection rendering, and event handling for the
@@ -1500,7 +1500,7 @@ function beginEdit(card, e) {
 /**
  * Drops the caret where the user actually clicked rather than at the start of
  * the region. `caretPositionFromPoint` is the standard; `caretRangeFromPoint`
- * is the WebKit/Blink spelling. Both are optional — without either, focus alone
+ * is the WebKit/Blink spelling. Both are optional - without either, focus alone
  * is a correct if less precise outcome.
  * @param {HTMLElement} region - The now-editable element
  * @param {MouseEvent} e - Event carrying viewport coordinates
@@ -2298,7 +2298,7 @@ function buildCanvas() {
 
   createCard('waveform', 180, 420, `
     <div class="waveform-card" style="width:280px">
-      <div style="font-size:8px;letter-spacing:2px;color:var(--text-dim);margin-bottom:8px">◈ WAVEFORM — 808.WAV</div>
+      <div style="font-size:8px;letter-spacing:2px;color:var(--text-dim);margin-bottom:8px">◈ WAVEFORM - 808.WAV</div>
       <svg width="260" height="60" style="display:block">
         <defs>
           <linearGradient id="wg" x1="0" x2="0" y1="0" y2="1">
@@ -2394,28 +2394,28 @@ function buildCanvas() {
       <div class="timeline-item">
         <div class="timeline-dot" style="background:var(--phosphor);box-shadow:0 0 8px var(--phosphor)"></div>
         <div>
-          <div style="font-size:9px;color:var(--text-primary)">Phase I — Seeding</div>
+          <div style="font-size:9px;color:var(--text-primary)">Phase I - Seeding</div>
           <div class="timeline-time">Q1 2025 · COMPLETE</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot" style="background:var(--amber);box-shadow:0 0 8px var(--amber)"></div>
         <div>
-          <div style="font-size:9px;color:var(--text-primary)">Phase II — Amplification</div>
+          <div style="font-size:9px;color:var(--text-primary)">Phase II - Amplification</div>
           <div class="timeline-time">Q2 2025 · IN PROGRESS</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot" style="background:var(--border)"></div>
         <div>
-          <div style="font-size:9px;color:var(--text-secondary)">Phase III — Monetization</div>
+          <div style="font-size:9px;color:var(--text-secondary)">Phase III - Monetization</div>
           <div class="timeline-time">Q3 2025 · PENDING</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot" style="background:var(--border)"></div>
         <div>
-          <div style="font-size:9px;color:var(--text-secondary)">Phase IV — Scale</div>
+          <div style="font-size:9px;color:var(--text-secondary)">Phase IV - Scale</div>
           <div class="timeline-time">Q4 2025 · PENDING</div>
         </div>
       </div>
@@ -2555,7 +2555,7 @@ function buildCanvas() {
         <div class="code-title">shader.glsl</div>
       </div>
       <div class="code-body">
-<span class="cm">// Fragment shader — glow field</span><br>
+<span class="cm">// Fragment shader - glow field</span><br>
 <span class="kw">uniform</span> <span class="var">float</span> <span class="fn">uTime</span>;<br>
 <span class="kw">uniform</span> <span class="var">vec2</span>  <span class="fn">uRes</span>;<br><br>
 <span class="fn">void</span> <span class="var">main</span>() {<br>
@@ -2578,9 +2578,9 @@ function buildCanvas() {
   `);
 
   const defs = [
-    ['APOPHENIA', 'noun · psychology', 'The tendency to perceive meaningful connections between unrelated things. In creative systems, this becomes generative rather than delusional — <span style="color:var(--violet)">the engine of pattern synthesis</span>.'],
-    ['LIMINAL', 'adj · anthropology', 'Occupying a position at, or on both sides of, a boundary or threshold. The creative space between states — where transformation becomes possible and identity becomes <span style="color:var(--violet)">fluid</span>.'],
-    ['PARATEXT', 'noun · semiotics', 'Elements surrounding a text that frame its meaning — titles, trailers, covers, packaging. In digital systems, paratext <span style="color:var(--violet)">exceeds the text itself</span> in influence.'],
+    ['APOPHENIA', 'noun · psychology', 'The tendency to perceive meaningful connections between unrelated things. In creative systems, this becomes generative rather than delusional - <span style="color:var(--violet)">the engine of pattern synthesis</span>.'],
+    ['LIMINAL', 'adj · anthropology', 'Occupying a position at, or on both sides of, a boundary or threshold. The creative space between states - where transformation becomes possible and identity becomes <span style="color:var(--violet)">fluid</span>.'],
+    ['PARATEXT', 'noun · semiotics', 'Elements surrounding a text that frame its meaning - titles, trailers, covers, packaging. In digital systems, paratext <span style="color:var(--violet)">exceeds the text itself</span> in influence.'],
   ];
 
   defs.forEach(([term, type, text], i) => {
@@ -2602,7 +2602,7 @@ function buildCanvas() {
 
   createCard('sticky', 300, 2020, `
     <div class="sticky sticky-red" style="width:260px">
-      <div class="sticky-label">🔴 CRITICAL PATH — Q2</div>
+      <div class="sticky-label">🔴 CRITICAL PATH - Q2</div>
       ① Release audio EP [track 1-4]<br>
       ② Launch brand site (dark mode)<br>
       ③ Activate email list: 5k target<br>
@@ -2763,7 +2763,7 @@ const SCHEMA_VERSION = 1;
 
 /**
  * Tag allowlist for rehydrated card markup. Anything outside this set is
- * dropped wholesale — script, iframe, object, embed, link, style, form controls
+ * dropped wholesale - script, iframe, object, embed, link, style, form controls
  * and every other element capable of executing or fetching.
  * @constant {Set<string>}
  */
@@ -2902,7 +2902,7 @@ function saveSession() {
     VO.storage = false;
     if (!storageWarned) {
       storageWarned = true;
-      showNotif('⚠ SESSION NOT SAVED — STORAGE UNAVAILABLE');
+      showNotif('⚠ SESSION NOT SAVED - STORAGE UNAVAILABLE');
       console.warn('[void-oculus] session persistence disabled:', err);
     }
   }
@@ -3063,8 +3063,8 @@ document.addEventListener('keyup', e => {
 VO.booting = false;
 
 showNotif(sessionRestored
-  ? '⚡ SESSION RESTORED — ' + state.cards.length + ' CARDS · ' + state.connections.length + ' LINKS'
-  : '⚡ OCULUS LOADED — DRAG TO PAN · SCROLL TO ZOOM · THE EYES TRACK YOU');
+  ? '⚡ SESSION RESTORED - ' + state.cards.length + ' CARDS · ' + state.connections.length + ' LINKS'
+  : '⚡ OCULUS LOADED - DRAG TO PAN · SCROLL TO ZOOM · THE EYES TRACK YOU');
 
 // Periodic minimap refresh
 setInterval(updateMinimap, 1000);
@@ -3137,7 +3137,7 @@ setInterval(updateMinimap, 1000);
       const ym = R + Math.sin(a + bend * 0.4) * (r0 + r1) * 0.5;
       fib += `<path d="M${x0.toFixed(1)} ${y0.toFixed(1)} Q${xm.toFixed(1)} ${ym.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}" stroke="${rnd() > 0.72 ? hi : mid}" stroke-width="${(0.4 + rnd() * 1.1).toFixed(2)}" fill="none" opacity="${(0.14 + rnd() * 0.55).toFixed(2)}"/>`;
     }
-    // crypts — dark voids in the stroma
+    // crypts - dark voids in the stroma
     let crypt = '';
     for (let i = 0; i < Math.max(3, o.fibers / 12); i++) {
       const a = rnd() * Math.PI * 2, rr = pupR + rnd() * (irisR - pupR) * 0.8;
@@ -3231,7 +3231,7 @@ setInterval(updateMinimap, 1000);
    * Drops registry entries whose card has left the document.
    *
    * `deleteCard()` removes the element but cannot reach into this IIFE, so
-   * without this pass every deleted eye would be iterated forever — a slow CPU
+   * without this pass every deleted eye would be iterated forever - a slow CPU
    * and memory leak that also holds a detached subtree alive. Detached nodes
    * are identified by `isConnected`, which covers deletion by any route, not
    * just the context menu.
@@ -3265,7 +3265,7 @@ setInterval(updateMinimap, 1000);
         if (cx < vx - 400 || cx > vx + vw + 400 || cy < vy - 400 || cy > vy + vh + 400) continue;
         const dx = mx - cx, dy = my - cy;
         const d = Math.hypot(dx, dy) || 1;
-        // Gaze answers the pointer directly, so it survives reduced-motion —
+        // Gaze answers the pointer directly, so it survives reduced-motion -
         // but at a third of the travel, well under any vestibular threshold.
         const pull = Math.min(1, d / (e.r * 6)) * (VO.reducedMotion ? 0.33 : 1);
         const ux = dx / d, uy = dy / d;
@@ -3304,7 +3304,7 @@ setInterval(updateMinimap, 1000);
       const d = Math.hypot(ex - cx, ey - cy);
       setTimeout(() => blink(e, 130), d * 0.28);
     });
-    showNotif('◉ CASCADE BLINK — THE BOARD LOOKED AWAY');
+    showNotif('◉ CASCADE BLINK - THE BOARD LOOKED AWAY');
   }, 40000);
 
   /* ---------- macro iris: the board is inside an eye ---------- */
@@ -3439,13 +3439,13 @@ setInterval(updateMinimap, 1000);
   }
 
   /* ================================================================
-     ZONE: OCULUS — ocular systems
+     ZONE: OCULUS - ocular systems
      ================================================================ */
   function buildOculus() {
 
     createCard('section', 2100, 150, `
       <div class="section-header" style="color:var(--violet-bright);background:var(--violet-faint);border:1px solid var(--violet);">
-        ◉ OCULUS — OCULAR SYSTEMS
+        ◉ OCULUS - OCULAR SYSTEMS
       </div>`);
 
     /* --- annotated anatomy --- */
@@ -3487,10 +3487,10 @@ setInterval(updateMinimap, 1000);
               `<text x="${tx}" y="${ty}" fill="#888890" font-family="monospace" font-size="8" letter-spacing="1.5">${t}</text>
                <line x1="${tx + (tx > 190 ? 0 : 30)}" y1="${ty - 3}" x2="${lx}" y2="${ly}" stroke="#3a3a40" stroke-width="0.6"/>`
             ).join('')}
-            <text x="190" y="270" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="3">FIG. I — THE APERTURE / SAGITTAL</text>
+            <text x="190" y="270" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="3">FIG. I - THE APERTURE / SAGITTAL</text>
           </svg>
         </div>
-        <div class="img-caption">◈ OCULAR CROSS-SECTION — ANNOTATED</div>
+        <div class="img-caption">◈ OCULAR CROSS-SECTION - ANNOTATED</div>
       </div>`);
 
     /* --- iris study gallery: same function, six seeds --- */
@@ -3538,7 +3538,7 @@ setInterval(updateMinimap, 1000);
 
     createCard('img', 2650, 560, `
       <div class="progress-card" style="width:260px">
-        <div class="progress-label">// PUPILLOMETRY — 60s TRACE</div>
+        <div class="progress-label">// PUPILLOMETRY - 60s TRACE</div>
         <svg width="236" height="96" style="display:block">
           <defs>
             <linearGradient id="pup-g" x1="0" x2="0" y1="0" y2="1">
@@ -3572,16 +3572,16 @@ setInterval(updateMinimap, 1000);
       <div class="sticky sticky-violet" style="width:230px">
         <div class="sticky-label">◉ WHY EYES</div>
         The eye is the only organ that <span style="color:var(--violet)">looks back</span>.<br><br>
-        Put one on a page and the page stops being a page — it becomes a room with someone in it.<br><br>
+        Put one on a page and the page stops being a page - it becomes a room with someone in it.<br><br>
         Pupil = negative space. Iris = signal. Sclera = silence around the signal.
       </div>`);
 
     /* ================================================================
-       ZONE: SACCADE — gaze economics
+       ZONE: SACCADE - gaze economics
        ================================================================ */
     createCard('section', 2100, 980, `
       <div class="section-header" style="color:var(--crimson-bright);background:var(--crimson-faint);border:1px solid var(--crimson);">
-        ⬡ SACCADE — ATTENTION TELEMETRY
+        ⬡ SACCADE - ATTENTION TELEMETRY
       </div>`);
 
     createCard('img', 2100, 1050, `
@@ -3604,10 +3604,10 @@ setInterval(updateMinimap, 1000);
         });
         return out;
       })()}
-            <text x="150" y="202" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="3">SCANPATH — 11 FIXATIONS / 2.4s</text>
+            <text x="150" y="202" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="3">SCANPATH - 11 FIXATIONS / 2.4s</text>
           </svg>
         </div>
-        <div class="img-caption">◈ GAZE PLOT — LANDING PAGE v7</div>
+        <div class="img-caption">◈ GAZE PLOT - LANDING PAGE v7</div>
       </div>`);
 
     createCard('img', 2430, 1050, `
@@ -3627,7 +3627,7 @@ setInterval(updateMinimap, 1000);
             <rect x="136" y="60" width="108" height="42" fill="none" stroke="#2a2a2e" stroke-dasharray="3 3"/>
             <rect x="136" y="112" width="108" height="38" fill="none" stroke="#cc2233" stroke-dasharray="3 3"/>
             <text x="140" y="126" fill="#cc2233" font-family="monospace" font-size="7">CTA · COLD</text>
-            <text x="130" y="200" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="2">ATTENTION HEATMAP — n=1,204</text>
+            <text x="130" y="200" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="2">ATTENTION HEATMAP - n=1,204</text>
           </svg>
         </div>
         <div class="img-caption" style="color:var(--crimson)">⚠ CTA SITS IN A BLIND SPOT</div>
@@ -3637,7 +3637,7 @@ setInterval(updateMinimap, 1000);
       <div class="sticky sticky-red" style="width:250px">
         <div class="sticky-label">👁 EYEBALLS ≠ ATTENTION</div>
         Impressions are <span style="color:var(--crimson-bright)">served</span>. Attention is <span style="color:var(--crimson-bright)">taken</span>.<br><br>
-        ① Eyes hit faces first — always. Then text on the face's gaze line.<br>
+        ① Eyes hit faces first - always. Then text on the face's gaze line.<br>
         ② An eye looking AT the CTA moves the CTA's fixation share up hard.<br>
         ③ Time-to-first-fixation &lt; 0.6s or the fold is dead.<br>
         ④ Motion beats color. Color beats size. Size beats copy.<br>
@@ -3651,7 +3651,7 @@ setInterval(updateMinimap, 1000);
           <div class="code-title">saccade.js</div>
         </div>
         <div class="code-body">
-<span class="cm">// microsaccade jitter — eyes never rest</span><br>
+<span class="cm">// microsaccade jitter - eyes never rest</span><br>
 <span class="kw">const</span> <span class="var">DRIFT</span> = <span class="num">0.4</span>; <span class="cm">// deg/s</span><br>
 <span class="kw">const</span> <span class="var">TREMOR</span> = <span class="num">90</span>;  <span class="cm">// Hz</span><br>
 <span class="fn">function</span> <span class="var">gaze</span>(t, target) {<br>
@@ -3681,7 +3681,7 @@ setInterval(updateMinimap, 1000);
       <div class="def-card" style="width:240px">
         <div class="def-term" style="color:var(--crimson-bright)">FOVEATION</div>
         <div class="def-type">noun · vision · rendering</div>
-        <div class="def-text">Only <span style="color:var(--crimson-bright)">2°</span> of your visual field is sharp. The rest is a hallucination stitched from memory and motion. You have never seen a whole page — only the ghost of one.</div>
+        <div class="def-text">Only <span style="color:var(--crimson-bright)">2°</span> of your visual field is sharp. The rest is a hallucination stitched from memory and motion. You have never seen a whole page - only the ghost of one.</div>
       </div>`);
 
     /* ================================================================
@@ -3693,10 +3693,10 @@ setInterval(updateMinimap, 1000);
       </div>`);
 
     const ocdefs = [
-      ['PHOSPHENE', 'noun · entoptics', 'Light seen without light — pressure on a closed eye, cosmic rays through an astronaut\'s retina. <span style="color:var(--phosphor)">The eye reporting itself</span> as if it were the world.', 'phosphor'],
+      ['PHOSPHENE', 'noun · entoptics', 'Light seen without light - pressure on a closed eye, cosmic rays through an astronaut\'s retina. <span style="color:var(--phosphor)">The eye reporting itself</span> as if it were the world.', 'phosphor'],
       ['TROXLER FADING', 'noun · perception', 'Fix your gaze long enough and the periphery <span style="color:var(--phosphor)">dissolves</span>. Anything that does not move ceases to exist. The nervous system is a change detector wearing a camera costume.', 'phosphor'],
       ['TAPETUM LUCIDUM', 'noun · zoology', 'The mirror behind a predator\'s retina, giving photons a second pass. Why the fox glows at the edge of the road. <span style="color:var(--amber)">Eyeshine is a second chance at the same light.</span>', 'amber'],
-      ['ENTOPTIC', 'adj · phenomenology', 'Of images originating <span style="color:var(--violet)">inside the eye itself</span> — floaters, blue-field specks, the Purkinje tree of your own blood vessels. Ancient rock art is full of them.', 'violet'],
+      ['ENTOPTIC', 'adj · phenomenology', 'Of images originating <span style="color:var(--violet)">inside the eye itself</span> - floaters, blue-field specks, the Purkinje tree of your own blood vessels. Ancient rock art is full of them.', 'violet'],
       ['SCOTOMA', 'noun · neurology', 'A hole in the visual field the brain <span style="color:var(--crimson)">paints over</span> so smoothly you never notice the absence. Every one of us is already looking through a censored image.', 'crimson'],
       ['PAREIDOLIA', 'noun · cognition', 'Faces in wood grain, eyes in the dark. The face-detector runs at a hair trigger because a false positive costs nothing and a false negative <span style="color:var(--crimson)">costs everything</span>.', 'crimson'],
     ];
@@ -3711,7 +3711,7 @@ setInterval(updateMinimap, 1000);
     });
 
     /* ================================================================
-       THE WATCHER — centerpiece
+       THE WATCHER - centerpiece
        ================================================================ */
     const watcherOpts = { size: 380, pal: 'violet', seed: 1313, pupil: 0.30, fibers: 140, drift: true };
     const watcher = createCard('eye', 1420, 1700, `
@@ -3730,11 +3730,11 @@ setInterval(updateMinimap, 1000);
     scanEyes(watcher);
 
     /* ================================================================
-       ZONE: SCRYING — occult ocular sigils
+       ZONE: SCRYING - occult ocular sigils
        ================================================================ */
     createCard('section', 1560, 2500, `
       <div class="section-header" style="color:var(--amber);background:var(--amber-faint);border:1px solid var(--amber);">
-        ⬡ SCRYING — SIGIL WORKS
+        ⬡ SCRYING - SIGIL WORKS
       </div>`);
 
     // eye of providence
@@ -3755,7 +3755,7 @@ setInterval(updateMinimap, 1000);
             <text x="110" y="182" text-anchor="middle" fill="#cc8800" font-family="monospace" font-size="7" letter-spacing="3">ANNUIT · COEPTIS</text>
           </svg>
         </div>
-        <div class="img-caption">SIGIL 07 — PROVIDENCE</div>
+        <div class="img-caption">SIGIL 07 - PROVIDENCE</div>
       </div>`);
 
     // recursive eye
@@ -3767,10 +3767,10 @@ setInterval(updateMinimap, 1000);
               <path d="M ${110 - r} 100 C ${110 - r * 0.55} ${100 - r * 0.78}, ${110 + r * 0.55} ${100 - r * 0.78}, ${110 + r} 100 C ${110 + r * 0.55} ${100 + r * 0.78}, ${110 - r * 0.55} ${100 + r * 0.78}, ${110 - r} 100 Z"
                 fill="none" stroke="${['#00ff9d', '#7b4fff', '#cc2233'][i % 3]}" stroke-width="${(1.4 - i * 0.1).toFixed(2)}" opacity="${(0.85 - i * 0.07).toFixed(2)}"/>`).join('')}
             <circle cx="110" cy="100" r="3" fill="#00ff9d"/>
-            <text x="110" y="186" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="2">EYE WITHIN EYE — Ω</text>
+            <text x="110" y="186" text-anchor="middle" fill="#3a3a40" font-family="monospace" font-size="7" letter-spacing="2">EYE WITHIN EYE - Ω</text>
           </svg>
         </div>
-        <div class="img-caption">SIGIL 08 — RECURSION</div>
+        <div class="img-caption">SIGIL 08 - RECURSION</div>
       </div>`);
 
     // triple watcher
@@ -3786,12 +3786,12 @@ setInterval(updateMinimap, 1000);
       <div class="sticky sticky-amber" style="width:250px">
         <div class="sticky-label">🜏 SCRYING PROTOCOL</div>
         Not divination. <span style="color:var(--amber)">Attention discipline.</span><br><br>
-        Stare at one dark surface long enough and the periphery dissolves (see: TROXLER). What surfaces is not the future — it's your own pattern-completion, made visible.<br><br>
+        Stare at one dark surface long enough and the periphery dissolves (see: TROXLER). What surfaces is not the future - it's your own pattern-completion, made visible.<br><br>
         Use it as a compositional tool: build boards dense enough that the viewer starts finishing them for you.
       </div>`);
 
     /* ================================================================
-       ZONE: OPTIC SIGNAL — where the eye meets the audio lab
+       ZONE: OPTIC SIGNAL - where the eye meets the audio lab
        ================================================================ */
     createCard('section', 300, 2500, `
       <div class="section-header" style="color:var(--phosphor);background:var(--phosphor-faint);border:1px solid var(--phosphor-dim);">
@@ -3804,12 +3804,12 @@ setInterval(updateMinimap, 1000);
         PHOTON → ROD/CONE → BIPOLAR → GANGLION → OPTIC N. → LGN → V1<br><br>
         Same shape as the audio chain.<br>
         Gain staging at every node.<br>
-        <span style="color:var(--phosphor)">The retina compresses before it transmits</span> — 126M receptors, 1M fibers out. 126:1 ratio. That IS a codec.
+        <span style="color:var(--phosphor)">The retina compresses before it transmits</span> - 126M receptors, 1M fibers out. 126:1 ratio. That IS a codec.
       </div>`);
 
     createCard('waveform', 580, 2570, `
       <div class="waveform-card" style="width:300px">
-        <div style="font-size:8px;letter-spacing:2px;color:var(--text-dim);margin-bottom:8px">◈ OPTIC NERVE — SPIKE RASTER</div>
+        <div style="font-size:8px;letter-spacing:2px;color:var(--text-dim);margin-bottom:8px">◈ OPTIC NERVE - SPIKE RASTER</div>
         <svg width="280" height="80" style="display:block">
           ${(() => {
         const r = rng(31337); let o = '';
@@ -3854,7 +3854,7 @@ setInterval(updateMinimap, 1000);
       <div class="def-card" style="width:240px">
         <div class="def-term" style="color:var(--phosphor)">SACCADIC MASKING</div>
         <div class="def-type">noun · neurology · editing</div>
-        <div class="def-text">During a saccade the brain <span style="color:var(--phosphor)">deletes the footage</span> — you go blind ~40 minutes a day and never notice. Perception is already a cut. All editing is imitation of the eye.</div>
+        <div class="def-text">During a saccade the brain <span style="color:var(--phosphor)">deletes the footage</span> - you go blind ~40 minutes a day and never notice. Perception is already a cut. All editing is imitation of the eye.</div>
       </div>`);
 
     /* --- eyes scattered INTO the existing zones, watching the work --- */

@@ -29,7 +29,7 @@ export const DisciplinesIndex: React.FC = () => {
     <div className="space-y-6 font-serif">
       <Seo
         title="Research Divisions & Interdisciplinary Studios"
-        description="The 8 research divisions of the Zazie Institute of Applied Anomalies: Applied Anomalies, Experimental Audio Systems, Computational Creativity, Speculative Engineering, Perceptual Interfaces, Generative Software, Signal Archaeology and Acoustic Architecture — with prototypes, patents and monographs per division."
+        description="The 8 research divisions of the Zazie Institute of Applied Anomalies: Applied Anomalies, Experimental Audio Systems, Computational Creativity, Speculative Engineering, Perceptual Interfaces, Generative Software, Signal Archaeology and Acoustic Architecture - with prototypes, patents and monographs per division."
         path="/disciplines"
         keywords={['ZIAA research divisions', 'interdisciplinary studios', 'experimental audio research lab', 'applied anomalies institute', ...Object.keys(DISCIPLINE_SLUGS)]}
         jsonLd={[
@@ -41,7 +41,7 @@ export const DisciplinesIndex: React.FC = () => {
             path: '/disciplines',
             about: ['experimental technology', 'audio research', 'computational creativity', 'speculative engineering'],
             items: disciplineEntries.map(([name, slug]) => ({
-              name: `${name} — ZIAA Research Division`,
+              name: `${name} - ZIAA Research Division`,
               path: `/disciplines/${slug}`
             })),
             maxItems: 20
@@ -66,7 +66,7 @@ export const DisciplinesIndex: React.FC = () => {
       <section aria-labelledby="divisions-grid" className="bg-[#05080f] border border-[#213045] rounded-xl p-5 md:p-6 space-y-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#1b2636] pb-3">
           <h2 id="divisions-grid" className="text-sm font-bold text-white tracking-wide">
-            Browse by research division — every hub is crawlable, citable and interlinked
+            Browse by research division - every hub is crawlable, citable and interlinked
           </h2>
           <p className="text-[11px] font-mono text-zinc-400">Hover for editorial · Click for full dossier</p>
         </div>
@@ -104,7 +104,7 @@ export const DisciplinesIndex: React.FC = () => {
           </div>
           <div className="p-3 bg-[#03060a] border border-[#1b2738] rounded-lg">
             <div className="text-[11px] font-mono font-bold text-cyan-400 uppercase">The record</div>
-            <p className="text-zinc-400 mt-1 leading-relaxed">Every division lists its complete prototype and defensive-disclosure cluster with canonical record pages — the archive is organized by division, not by filter.</p>
+            <p className="text-zinc-400 mt-1 leading-relaxed">Every division lists its complete prototype and defensive-disclosure cluster with canonical record pages - the archive is organized by division, not by filter.</p>
           </div>
           <div className="p-3 bg-[#03060a] border border-[#1b2738] rounded-lg">
             <div className="text-[11px] font-mono font-bold text-emerald-400 uppercase">Reference</div>
@@ -116,14 +116,14 @@ export const DisciplinesIndex: React.FC = () => {
       <section aria-labelledby="divisional-system" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-6 space-y-3">
         <h2 id="divisional-system" className="text-sm font-bold text-white">The divisional system</h2>
         <p className="text-sm text-zinc-300 leading-relaxed max-w-3xl">
-          The divisions are the Institute’s primary organizational units — each corresponds to a named laboratory
+          The divisions are the Institute’s primary organizational units - each corresponds to a named laboratory
           program with its own bench, its own publication line, and its own fellows. A record belongs to the division
           that built it; cross-cutting work is co-listed where two programs contributed. The archive has been organized
           by division since the 2023 archival reclassification, which fixed the current eight-division structure.
         </p>
         <p className="text-xs font-mono text-zinc-500">
-          See also: <Link to="/about" className="text-[#dfb76c] hover:underline">About the Institute — mission &amp; fact sheet</Link> ·{' '}
-          <Link to="/lexicon" className="text-emerald-300 hover:underline">Lexicon — institutional vocabulary</Link> ·{' '}
+          See also: <Link to="/about" className="text-[#dfb76c] hover:underline">About the Institute - mission &amp; fact sheet</Link> ·{' '}
+          <Link to="/lexicon" className="text-emerald-300 hover:underline">Lexicon - institutional vocabulary</Link> ·{' '}
           <Link to="/prototypes" className="text-cyan-400 hover:underline">Prototype archive ({archiveStats.totalPrototypes})</Link> ·{' '}
           <Link to="/monographs" className="text-violet-300 hover:underline">Transactions &amp; monographs</Link>
         </p>

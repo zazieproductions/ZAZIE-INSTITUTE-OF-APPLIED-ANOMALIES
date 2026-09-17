@@ -62,14 +62,14 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
       return {
         title: p.title, titleId: p.id,
         heading: p.title,
-        description: `${p.codeName} (${p.id}) — ${p.discipline} prototype, ${p.year}. ${p.abstract}`,
+        description: `${p.codeName} (${p.id}) - ${p.discipline} prototype, ${p.year}. ${p.abstract}`,
         ogType: 'article',
         published: `${p.year}-01-01`,
         keywords: [p.discipline, p.codeName, 'experimental prototype', 'ZIAA'],
         jsonLd: creativeWorkSchema({
           type: 'TechArticle',
           path,
-          name: `${p.id} ${p.codeName} — ${p.title}`,
+          name: `${p.id} ${p.codeName} - ${p.title}`,
           headline: p.title,
           description: p.abstract,
           identifier: p.id,
@@ -90,7 +90,7 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
       return {
         title: p.title, titleId: p.id,
         heading: p.title,
-        description: `Speculative patent ${p.patentNumber} (${humanize(p.status).toLowerCase()}, filed ${p.filingDate}) — ${p.abstract}`,
+        description: `Speculative patent ${p.patentNumber} (${humanize(p.status).toLowerCase()}, filed ${p.filingDate}) - ${p.abstract}`,
         ogType: 'article',
         published: p.filingDate,
         keywords: [p.primaryDiscipline, 'speculative patent', 'defensive disclosure', 'ZIAA'],
@@ -98,7 +98,7 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         jsonLd: creativeWorkSchema({
           type: 'CreativeWork',
           path,
-          name: `${p.patentNumber} — ${p.title}`,
+          name: `${p.patentNumber} - ${p.title}`,
           description: p.abstract,
           identifier: p.patentNumber,
           datePublished: p.filingDate,
@@ -145,7 +145,7 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         jsonLd: creativeWorkSchema({
           type: 'Report',
           path,
-          name: `${f.id} — ${f.projectTitle} post-mortem`,
+          name: `${f.id} - ${f.projectTitle} post-mortem`,
           description: f.summary,
           identifier: f.id,
           datePublished: f.incidentDate,
@@ -180,7 +180,7 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
       return {
         title: `${s.name} field station`, titleId: s.codename,
         heading: s.name,
-        description: `${s.codename} — ZIAA field station in ${s.location}, established ${s.establishedYear}. ${s.description}`,
+        description: `${s.codename} - ZIAA field station in ${s.location}, established ${s.establishedYear}. ${s.description}`,
         ogType: 'website',
         keywords: ['field station', 'sound observatory', s.location, 'ZIAA'],
         jsonLd: placeSchema({

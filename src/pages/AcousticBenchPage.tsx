@@ -17,7 +17,7 @@ const DESCRIPTION =
 export const AcousticBenchPage: React.FC = () => (
   <div className="space-y-6 font-mono text-xs">
     <Seo
-      title="Acoustic Bench — Interactive Web Audio DSP Workstation"
+      title="Acoustic Bench - Interactive Web Audio DSP Workstation"
       description={DESCRIPTION}
       path="/acoustic-bench"
       keywords={['web audio', 'DSP workstation', 'binaural synthesis', 'oscilloscope', 'spectrum analyser', 'creative tools']}
@@ -39,7 +39,7 @@ export const AcousticBenchPage: React.FC = () => (
         <div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
-            <h1 className="text-base font-bold text-white tracking-wider">ACOUSTIC BENCH — INTERACTIVE DSP WORKSTATION</h1>
+            <h1 className="text-base font-bold text-white tracking-wider">ACOUSTIC BENCH - INTERACTIVE DSP WORKSTATION</h1>
           </div>
           <p className="text-zinc-300 text-[11px] mt-1 max-w-3xl leading-relaxed">
             Real-time Web Audio synthesis engine for auditioning ZIAA prototype acoustic profiles: binaural carriers, FM
