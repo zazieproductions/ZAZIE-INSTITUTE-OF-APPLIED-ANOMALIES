@@ -231,7 +231,7 @@
     "channelCount": 6,
     "frequencyRange": "200 Hz – 30.0 kHz",
     "physicalFootprint": "Dual 15-meter orthogonal loop antennas",
-    "description": "Radio listening station tuned to naturally occurring VLF emissions—lightning whistlers, dawn chorus, and magnetospheric chirps—without artificial power grid interference.",
+    "description": "Radio listening station tuned to naturally occurring VLF emissions-lightning whistlers, dawn chorus, and magnetospheric chirps-without artificial power grid interference.",
     "publicAccessProtocol": "Real-time audio feed streamed to ZIAA Spectral Lab for creative resynthesis.",
     "instrumentationList": [
       "Orthogonal Magnetic Loop Antennas",

@@ -18,7 +18,7 @@
     "sections": [
       {
         "heading": "1. Introduction: From Artifact to Instrument",
-        "content": "Every enclosed architectural space possesses a unique resonant fingerprint—a set of standing frequencies governed by its physical dimensions, wall materials, and room geometries. In standard sound reinforcement, acoustic feedback occurs when energy from a speaker returns to a microphone with unity or greater gain, rapidly escalating into destructive distortion. However, when viewed through the lens of cybernetic systems and experimental composition, feedback is a pure dialogue between physical architecture and electroacoustic transduction."
+        "content": "Every enclosed architectural space possesses a unique resonant fingerprint-a set of standing frequencies governed by its physical dimensions, wall materials, and room geometries. In standard sound reinforcement, acoustic feedback occurs when energy from a speaker returns to a microphone with unity or greater gain, rapidly escalating into destructive distortion. However, when viewed through the lens of cybernetic systems and experimental composition, feedback is a pure dialogue between physical architecture and electroacoustic transduction."
       },
       {
         "heading": "2. The Hysteresis Gain Architecture",
@@ -50,7 +50,7 @@
     ],
     "date": "2023-09-12",
     "volume": "Volume V, Issue 2 (Archival Audio & Signal Archaeology)",
-    "abstract": "Fragile historical sound media—including nineteenth-century wax cylinders, early acetate discs, and experimental lacquer surfaces—frequently suffer from mechanical degradation that prevents stylus playback. This paper documents an optical scanning methodology that extracts high-fidelity audio without physical contact. Using dual-laser triangulation and confocal profilometry, we record high-resolution surface topographies, isolate intentional groove modulations from mold spore pitting and surface fissures, and reconstruct historic audio with unprecedented clarity.",
+    "abstract": "Fragile historical sound media-including nineteenth-century wax cylinders, early acetate discs, and experimental lacquer surfaces-frequently suffer from mechanical degradation that prevents stylus playback. This paper documents an optical scanning methodology that extracts high-fidelity audio without physical contact. Using dual-laser triangulation and confocal profilometry, we record high-resolution surface topographies, isolate intentional groove modulations from mold spore pitting and surface fissures, and reconstruct historic audio with unprecedented clarity.",
     "keyTheorems": [
       "Principle of Non-Contact Groove Reconstruction: Optical triangulation resolves sub-micron lateral groove wall excursions at 192 kHz sample equivalent without imposing mechanical stylus drag.",
       "Artifact Decoupling Invariance: Microscopic surface damage exhibits steep vertical edge profiles distinct from the continuous sinusoidal curvature of engraved acoustic signals, allowing algorithmic artifact separation.",
@@ -296,7 +296,7 @@
     ],
     "date": "2026-08-22",
     "volume": "Volume VIII, Issue 3 (Spatial Audio & Creative Software)",
-    "abstract": "Deploying multichannel spatial audio systems in non-traditional architectural spaces—such as historic industrial warehouses, concrete tunnels, and open outdoor plazas—presents major technical challenges for traditional fixed-channel audio routing. This paper describes a modular, distributed spatial sound architecture built on open network protocols (Open Sound Control, Dante, and WebSockets). We present algorithms for real-time acoustic room correction, dynamic trajectory panning, and collaborative multi-user spatial performance interfaces.",
+    "abstract": "Deploying multichannel spatial audio systems in non-traditional architectural spaces-such as historic industrial warehouses, concrete tunnels, and open outdoor plazas-presents major technical challenges for traditional fixed-channel audio routing. This paper describes a modular, distributed spatial sound architecture built on open network protocols (Open Sound Control, Dante, and WebSockets). We present algorithms for real-time acoustic room correction, dynamic trajectory panning, and collaborative multi-user spatial performance interfaces.",
     "keyTheorems": [
       "Networked Transducer Modularity: Decoupling audio channel count from physical hardware racks through Gigabit Dante networks allows arbitrary scaling of loudspeaker nodes in complex architectural spaces.",
       "Adaptive Room Correction Invariance: Measuring real-time impulse responses via distributed microphone pods enables dynamic inverse-filtering that neutralizes unwanted architectural echoes.",

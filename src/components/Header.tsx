@@ -77,7 +77,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, isAudioPlaying = f
                 full 23-character stamp keeps the registry strip from reflowing
                 when the clock lands, and the loaded layout is unchanged. */}
             <time className="inline-block min-w-[23ch] tabular-nums" suppressHydrationWarning>
-              {currentTime || '—— UTC'}
+              {currentTime || '-- UTC'}
             </time>
           </div>
           <span className="hidden sm:inline text-zinc-600" aria-hidden="true">·</span>
@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, isAudioPlaying = f
 
       {/* Masthead */}
       <div className="flex items-center justify-between gap-3 px-3 md:px-6 py-3 border-b border-[#1f2b3c]/60 bg-gradient-to-r from-[#03060a] via-[#050a12] to-[#03060a]">
-        <Link to="/" className="flex items-center gap-3.5 min-w-0 group" aria-label="Zazie Institute of Applied Anomalies — home">
+        <Link to="/" className="flex items-center gap-3.5 min-w-0 group" aria-label="Zazie Institute of Applied Anomalies - home">
           <div className="relative">
             <InstitutionalCrest size={46} variant="gold" className="transition-transform group-hover:scale-105" />
             <div className="absolute inset-0 bg-[#d4af37]/10 rounded-full blur-sm pointer-events-none" aria-hidden="true" />

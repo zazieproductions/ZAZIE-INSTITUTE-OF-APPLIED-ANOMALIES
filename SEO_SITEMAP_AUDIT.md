@@ -1,4 +1,4 @@
-# Zazie Institute of Applied Anomalies — SEO sitemap & crawl audit (2026-09-15)
+# Zazie Institute of Applied Anomalies - SEO sitemap & crawl audit (2026-09-15)
 
 **Canonical origin:** `https://zazieinstitute.org`  
 **Branch:** `arena/01a0a682-zazie-institute-of-applied-ano`  
@@ -14,30 +14,30 @@ The router is declared in `src/App.tsx`. The single source of truth for prerende
 | # | Route | Source | Changefreq | Priority | `lastmod` source | Canonical |
 |---|-------|--------|------------|----------|------------------|-----------|
 | 1 | `/` | static | weekly | **1.0** | latest `labLogs.timestamp` (clamped to today) | `https://zazieinstitute.org/` |
-| 2 | `/about` | static | monthly | 0.9 | — | `https://zazieinstitute.org/about` |
-| 3 | `/prototypes` | static | weekly | 0.9 | — | `…/prototypes` |
-| 4 | `/patents` | static | monthly | 0.8 | — | `…/patents` |
+| 2 | `/about` | static | monthly | 0.9 | - | `https://zazieinstitute.org/about` |
+| 3 | `/prototypes` | static | weekly | 0.9 | - | `…/prototypes` |
+| 4 | `/patents` | static | monthly | 0.8 | - | `…/patents` |
 | 5 | `/research-notes` | static | weekly | 0.8 | latest `labLogs.timestamp` (clamped) | `…/research-notes` |
-| 6 | `/monographs` | static | monthly | 0.8 | — | `…/monographs` |
-| 7 | `/acoustic-bench` | static | monthly | 0.7 | — | `…/acoustic-bench` |
-| 8 | `/spectra-lab` | static | monthly | 0.7 | — | `…/spectra-lab` |
-| 9 | `/void-oculus` | static | monthly | 0.6 | — | `…/void-oculus` |
-|10 | `/synthesis-signal` | static | monthly | 0.7 | — | `…/synthesis-signal` |
-|11 | `/legal/institutional-status` | static | yearly | 0.4 | — | `…/legal/institutional-status` |
-|12 | `/legal/disclaimer` | static | yearly | 0.4 | — | `…/legal/disclaimer` |
-|13 | `/legal/terms` | static | yearly | 0.3 | — | `…/legal/terms` |
-|14 | `/legal/privacy` | static | yearly | 0.3 | — | `…/legal/privacy` |
-|15 | `/field-stations` | static | monthly | 0.7 | — | `…/field-stations` |
-|16 | `/post-mortems` | static | monthly | 0.7 | — | `…/post-mortems` |
-|17 | `/fellows` | static | monthly | 0.7 | — | `…/fellows` |
-|18 | `/system-audit` | static | weekly | 0.5 | — | `…/system-audit` |
-|19–178 | `/prototypes/prot-001` … `/prototypes/prot-160` | `prototypes.json` (160) | monthly | 0.7 | — | canonical per record |
+| 6 | `/monographs` | static | monthly | 0.8 | - | `…/monographs` |
+| 7 | `/acoustic-bench` | static | monthly | 0.7 | - | `…/acoustic-bench` |
+| 8 | `/spectra-lab` | static | monthly | 0.7 | - | `…/spectra-lab` |
+| 9 | `/void-oculus` | static | monthly | 0.6 | - | `…/void-oculus` |
+|10 | `/synthesis-signal` | static | monthly | 0.7 | - | `…/synthesis-signal` |
+|11 | `/legal/institutional-status` | static | yearly | 0.4 | - | `…/legal/institutional-status` |
+|12 | `/legal/disclaimer` | static | yearly | 0.4 | - | `…/legal/disclaimer` |
+|13 | `/legal/terms` | static | yearly | 0.3 | - | `…/legal/terms` |
+|14 | `/legal/privacy` | static | yearly | 0.3 | - | `…/legal/privacy` |
+|15 | `/field-stations` | static | monthly | 0.7 | - | `…/field-stations` |
+|16 | `/post-mortems` | static | monthly | 0.7 | - | `…/post-mortems` |
+|17 | `/fellows` | static | monthly | 0.7 | - | `…/fellows` |
+|18 | `/system-audit` | static | weekly | 0.5 | - | `…/system-audit` |
+|19–178 | `/prototypes/prot-001` … `/prototypes/prot-160` | `prototypes.json` (160) | monthly | 0.7 | - | canonical per record |
 |179–278 | `/patents/pat-2021-001` … `/patents/pat-2026-100` | `patents.json` (100) | yearly | 0.6 | `filingDate` (clamped) | canonical |
 |279–608 | `/research-notes/log-001` … `/research-notes/log-330` | `labLogs.json` (330) | yearly | 0.5 | `timestamp` (YYYY-MM-DD, clamped) | canonical |
 |609–616 | `/monographs/essay-2022-01` … `/monographs/essay-2026-08` | `monographs.json` (8) | yearly | 0.8 | `date` | canonical |
 |617–638 | `/post-mortems/inc-2021-01` … `/post-mortems/inc-2026-22` | `failures.json` (22) | yearly | 0.5 | `incidentDate` (clamped) | canonical |
-|639–658 | `/fellows/fellow-001` … `/fellows/fellow-020` | `personnel.json` (20) | monthly | 0.6 | — | canonical |
-|659–674 | `/field-stations/site-01` … `/field-stations/site-16` | `fieldSites.json` (16) | yearly | 0.6 | — | canonical |
+|639–658 | `/fellows/fellow-001` … `/fellows/fellow-020` | `personnel.json` (20) | monthly | 0.6 | - | canonical |
+|659–674 | `/field-stations/site-01` … `/field-stations/site-16` | `fieldSites.json` (16) | yearly | 0.6 | - | canonical |
 
 **Total indexable URLs in production sitemap:** **674** (18 hub/legal + 656 detail). `dist/sitemap.xml` validated: 674 `<url>` entries, 0 duplicates, valid UTF-8, size 99 757 bytes (< 50 k limit, < 50 MB).
 
@@ -100,7 +100,7 @@ The 8 disciplines from `disciplines.json` (Applied Anomalies, Experimental Audio
 
 **b) Hub “year” / “theme” browse is not crawlable.** Similar thin-filter issue; not urgent given the small year span (2021–2026). No action needed now.
 
-**Content depth:** all other important landing needs are met — About page has FAQPage JSON-LD, monographs are individually indexable scholarly articles (increasing from 8), legal pages provide institutional disclosures, interactive benches provide tool intent. No fabrication of doorway pages is warranted.
+**Content depth:** all other important landing needs are met - About page has FAQPage JSON-LD, monographs are individually indexable scholarly articles (increasing from 8), legal pages provide institutional disclosures, interactive benches provide tool intent. No fabrication of doorway pages is warranted.
 
 ---
 
@@ -124,9 +124,9 @@ The sequential prev/next chain ensures sitemap-discovered URLs remain reachable,
 
 Secondary opportunity: the **Overview dashboard (`/`)** links to only 4 prototypes, 3 monographs, 5 logs, and 0 patents / 0 fellows / 0 field-stations. Given the dashboard is the most-inbound page (2 027 inbound links in crawl, effectively the homepage), it should distribute more descriptive link equity to deep records with keyword-rich anchors (e.g., “self-regulating acoustic feedback resonator with optical hysteresis”, “sub-glacial hydrophone listening array”).
 
-Footer already provides exhaustive hub links (archive holds, institute, interactive instruments, legal) — well-structured; no change needed there.
+Footer already provides exhaustive hub links (archive holds, institute, interactive instruments, legal) - well-structured; no change needed there.
 
-**Implemented remedy (this audit):** see “Files changed” — each of the three underlinked hubs now includes a **crawlable complete index** rendered in the prerendered HTML (inside `<details>` + `<noscript>` fallback) that links to *every* record in that collection with descriptive anchor text (`ID // codeName — title — discipline`). This raises hub→detail internal links from ~136 missing to 0 missing, without altering the interactive UX (cards + ShowMore remain primary).
+**Implemented remedy (this audit):** see “Files changed” - each of the three underlinked hubs now includes a **crawlable complete index** rendered in the prerendered HTML (inside `<details>` + `<noscript>` fallback) that links to *every* record in that collection with descriptive anchor text (`ID // codeName - title - discipline`). This raises hub→detail internal links from ~136 missing to 0 missing, without altering the interactive UX (cards + ShowMore remain primary).
 
 ---
 
@@ -159,7 +159,7 @@ Footer already provides exhaustive hub links (archive holds, institute, interact
 2. Improved crawlability of the primary orphan sets by adding **complete, prerendered, descriptive index sections** to `/prototypes`, `/patents`, `/research-notes` (see file-change log below).
 3. Added a **curated, descriptive cross-link block** to the Overview (`/` Dashboard) linking to deep prototypes, patents and field-station themes with institutional tone (no keyword stuffing).
 
-The sitemap itself was *not* inflated; its purpose remains discovery, canonical clarity and crawl efficiency — not ranking manipulation. No `priority`/`changefreq` games were introduced.
+The sitemap itself was *not* inflated; its purpose remains discovery, canonical clarity and crawl efficiency - not ranking manipulation. No `priority`/`changefreq` games were introduced.
 
 ---
 *Note: This audit was generated mechanically from `dist/` + source and should be resubmitted after each `npm run build`. The authoritative validator is `npm run audit:seo` (fails on any sitemap/indexable mismatch).*

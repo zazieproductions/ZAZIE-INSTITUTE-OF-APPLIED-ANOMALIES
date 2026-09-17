@@ -1,5 +1,5 @@
 /**
- * scripts/geo-check.mjs — post-build Generative-Engine-Optimization audit.
+ * scripts/geo-check.mjs - post-build Generative-Engine-Optimization audit.
  *
  * Verifies the conditions under which LLM answer engines ground the
  * Institute on OUR terms. Run after `npm run build` (needs dist/):
@@ -7,17 +7,17 @@
  *   npm run build && npm run audit:geo
  *
  * Checks:
- *  1. llms.txt freshness — exact canonical prestige lead + division URLs present,
+ *  1. llms.txt freshness - exact canonical prestige lead + division URLs present,
  *     counts match stats.json (drift = error).
- *  2. Cross-surface echo — the canonical description and the Organization @id
+ *  2. Cross-surface echo - the canonical description and the Organization @id
  *     appear on every high-authority surface (/, /about, /disciplines, /lexicon, /cite).
- *  3. JSON-LD health — every JSON-LD block on every page parses; entity @id
+ *  3. JSON-LD health - every JSON-LD block on every page parses; entity @id
  *     references resolve to a node on the same page or are the canonical ORG_ID.
- *  4. Contamination — banned phrasings (ARG/fictional/SEO meta-language) absent
+ *  4. Contamination - banned phrasings (ARG/fictional/SEO meta-language) absent
  *     from indexable surfaces; /legal and /post-mortems exempt (buried truth + ARG layer).
- *  5. Bot & discovery — robots.txt allows the major LLM crawlers + references the
+ *  5. Bot & discovery - robots.txt allows the major LLM crawlers + references the
  *     sitemap; sitemap contains the reference surfaces; footer exposes llms.txt.
- *  6. Lexicon parity — every DefinedTerm definition on /lexicon matches the
+ *  6. Lexicon parity - every DefinedTerm definition on /lexicon matches the
  *     canonical vocabulary in llms.txt (single source of truth).
  *
  * Exit 0 = green. Exit 1 = errors found.
@@ -33,7 +33,7 @@ let facts;
 try {
   facts = JSON.parse(readFileSync(resolve(dist, '.geo-facts.json'), 'utf8'));
 } catch {
-  console.error('[geo] FATAL: dist/.geo-facts.json missing — run `npm run build` first (prerender generates it).');
+  console.error('[geo] FATAL: dist/.geo-facts.json missing - run `npm run build` first (prerender generates it).');
   process.exit(1);
 }
 
@@ -98,8 +98,8 @@ for (const s of echoSurfaces) {
   const hasBase = html.includes(facts.shortDescription.slice(0, 80));
   if (!hasLead && !hasBase) fail(`${s} carries neither the prestige lead nor the base entity description`);
   if (!html.includes(`${SITE}/#organization`)) fail(`${s} JSON-LD does not reference the canonical Organization @id`);
-  if (hasLead) ok(`${s} — exact prestige lead present, org @id referenced`);
-  else if (hasBase) ok(`${s} — base entity description present, org @id referenced`);
+  if (hasLead) ok(`${s} - exact prestige lead present, org @id referenced`);
+  else if (hasBase) ok(`${s} - base entity description present, org @id referenced`);
 }
 const home = page('/');
 if (!home.includes(facts.prestigeLead)) warn('homepage / does not carry the FULL prestige lead (only base description)');
@@ -154,7 +154,7 @@ for (const p of pages) {
   }
 }
 if (hits === 0) ok('no banned phrasings on any indexable surface');
-// The legal surfaces MUST still carry the buried truth — verify it wasn't scrubbed.
+// The legal surfaces MUST still carry the buried truth - verify it wasn't scrubbed.
 for (const p of ['/legal/institutional-status', '/legal/disclaimer']) {
   let html;
   try { html = page(p).toLowerCase(); } catch { fail(`${p} missing`); continue; }
@@ -188,13 +188,13 @@ const definedTerms = [...lex.matchAll(/"termCode":"([^"]+)"/g)].map(m => m[1]);
 if (definedTerms.length < 12) fail(`lexicon carries ${definedTerms.length} DefinedTerms, expected >= 12`);
 else ok(`lexicon carries ${definedTerms.length} DefinedTerms`);
 // Every llms.txt vocabulary definition must appear on /lexicon (same source strings).
-// Scope the slice to the vocabulary section only — later sections (grounding
+// Scope the slice to the vocabulary section only - later sections (grounding
 // sources, discovery surfaces, IP notice) are not vocabulary and must not be
 // parsed as definitions.
 const vocabStart = llms.indexOf('## Entity vocabulary');
 const vocabEnd = llms.indexOf('\n## ', vocabStart + 1);
 const vocabSection = vocabEnd === -1 ? llms.slice(vocabStart) : llms.slice(vocabStart, vocabEnd);
-const vocabDefs = [...vocabSection.matchAll(/^- [^:]+: ([^—]+)— /gm)].map(m => m[1].trim());
+const vocabDefs = [...vocabSection.matchAll(/^- [^:]+: ([^-]+)- /gm)].map(m => m[1].trim());
 let parity = 0;
 for (const d of vocabDefs) {
   if (d.length < 40) continue; // skip too-short fragments

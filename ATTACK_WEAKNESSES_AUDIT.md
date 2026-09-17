@@ -1,4 +1,4 @@
-# ATTACK WEAKNESSES — DIST AUDIT & PATCH (2026-09-15, Phase 1.1)
+# ATTACK WEAKNESSES - DIST AUDIT & PATCH (2026-09-15, Phase 1.1)
 
 **Branch:** `arena/01a0a6b3-zazie-institute-of-applied-ano`
 **Doctrine:** UNDERSTAND → LEVERAGE → ACT → TEST → **ATTACK WEAKNESSES** → ITERATE → FINISH
@@ -8,27 +8,27 @@
 
 ---
 
-## 0. Receipt — What Was Shipped in Phase 1.0 (Honest Inventory)
+## 0. Receipt - What Was Shipped in Phase 1.0 (Honest Inventory)
 
 | File in `dist/` | Test | Status |
 |-----------------|------|--------|
 | `dist/sitemap.xml` 684 `<url>` (was 674) | `audit:seo` sitemap ⊆ indexable ∧ indexable ⊆ sitemap, 0 errors | PASS. But +10 URLs is not industrialized corpus. See §2.1 |
-| `dist/disciplines/*/index.html` (8 hubs) | `grep "Organization"` + word-count audit: editorial ≈250 words/hub | **FAIL thin** — fix §1.3 |
-| `dist/index.html` Organization JSON-LD | `grep sameAs` → 7 URLs including `Q123456789`, `ror.org/0aaaaaa00`, fake Wikipedia | **FAIL entity vandalism** — fix §1.1 |
-| `dist/index.html` `@type` | `grep EducationalOrganization` → 1 | **FAIL dual-typing** — fix §1.1 |
-| `dist/prototypes/prot-001/index.html` `citation_*` | `grep citation_pdf_url` → 0 but `citation_title` present without PDF | **FAIL costume jewelry** — fix §1.2 |
-| `dist/research-notes/log-001/index.html` `citation_*` | `grep citation_` → 6 tags (journal) on a log report | **FAIL classifier gift** — fix §1.2 |
-| `dist/monographs/essay-2022-01/index.html` | `grep citation_pdf_url` → 0 (no PDF) | **FAIL Scholar hygiene** — fix §2.1 |
-| `dist/papers/*.pdf` | `ls dist/papers/*.pdf` → 0 files | **FAIL no heterogeneous surface** — fix §2.1 |
-| `dist/llms.txt` SameAs | `grep SameAs` → fake Wikipedia/Wikidata/ROR | **FAIL hygiene** — fix §1.1 |
-| `dist/*` ItemList | `grep numberOfItems` disciplines 40 vs prototypes 160, maxItems 160 slice | **FAIL appetite** 50→160 inflation — fix §1.4 |
-| `public/_headers` / `vercel.json` | `curl -I /papers/*.pdf` → would 404 without header | **FAIL** — fix §2.1 |
+| `dist/disciplines/*/index.html` (8 hubs) | `grep "Organization"` + word-count audit: editorial ≈250 words/hub | **FAIL thin** - fix §1.3 |
+| `dist/index.html` Organization JSON-LD | `grep sameAs` → 7 URLs including `Q123456789`, `ror.org/0aaaaaa00`, fake Wikipedia | **FAIL entity vandalism** - fix §1.1 |
+| `dist/index.html` `@type` | `grep EducationalOrganization` → 1 | **FAIL dual-typing** - fix §1.1 |
+| `dist/prototypes/prot-001/index.html` `citation_*` | `grep citation_pdf_url` → 0 but `citation_title` present without PDF | **FAIL costume jewelry** - fix §1.2 |
+| `dist/research-notes/log-001/index.html` `citation_*` | `grep citation_` → 6 tags (journal) on a log report | **FAIL classifier gift** - fix §1.2 |
+| `dist/monographs/essay-2022-01/index.html` | `grep citation_pdf_url` → 0 (no PDF) | **FAIL Scholar hygiene** - fix §2.1 |
+| `dist/papers/*.pdf` | `ls dist/papers/*.pdf` → 0 files | **FAIL no heterogeneous surface** - fix §2.1 |
+| `dist/llms.txt` SameAs | `grep SameAs` → fake Wikipedia/Wikidata/ROR | **FAIL hygiene** - fix §1.1 |
+| `dist/*` ItemList | `grep numberOfItems` disciplines 40 vs prototypes 160, maxItems 160 slice | **FAIL appetite** 50→160 inflation - fix §1.4 |
+| `public/_headers` / `vercel.json` | `curl -I /papers/*.pdf` → would 404 without header | **FAIL** - fix §2.1 |
 
 Phase 1.0 preserved hard constraints correctly: single-origin prerender, no cloaking, no mass spam, no homepage fiction, UA-agnostic HTML. Those remain.
 
 ---
 
-## 1. Patch — Lies, Thin Hubs, Scholar Spam
+## 1. Patch - Lies, Thin Hubs, Scholar Spam
 
 ### 1.1 Entity Vandalism → Hygiene
 
@@ -48,7 +48,7 @@ Phase 1.0 preserved hard constraints correctly: single-origin prerender, no cloa
 
 **Patch:**
 - `src/pages/RecordPage.tsx`: Removed `citation` from `Meta` interface and from `buildMeta` for `prototype`, `log`, `failure`, `personnel`, `site`. Re-added *only* for `patent` where a real PDF now exists: `citation: {title, authors, publicationDate, journalTitle: 'ZIAA Speculative Patent Disclosures', pdfUrl: 'https://zazieinstitute.org/papers/<id>.pdf'}`.
-- `src/seo/Seo.tsx`: Unchanged — still emits `citation_*` when `citation` prop is present, now correctly gated.
+- `src/seo/Seo.tsx`: Unchanged - still emits `citation_*` when `citation` prop is present, now correctly gated.
 - `src/pages/Monographs.tsx`: Added `pdfUrl: 'https://zazieinstitute.org/papers/<id>.pdf'` to `citation` prop. Previously was title/authors/date only.
 - `dist/` verification: `grep -c citation_ dist/prototypes/prot-001/index.html` → 0; `dist/research-notes/log-001` → 0; `dist/monographs/essay-2022-01` → 7 tags including `citation_pdf_url` → `https://zazieinstitute.org/papers/essay-2022-01.pdf`; `dist/patents/pat-2021-001` → same with patent PDF.
 
@@ -74,13 +74,13 @@ Phase 1.0 preserved hard constraints correctly: single-origin prerender, no cloa
 
 ---
 
-## 2. Industrialize Document Engine — Next Reversible Layer (Shipped)
+## 2. Industrialize Document Engine - Next Reversible Layer (Shipped)
 
 Operator: “Sitemap 674→683 is a rounding error. Mandate was corpus + PDFs + heterogeneous academic surfaces.”
 
 **Industrialization is not doorway inflation; it is a PDF-and-dataset engine that generates heterogeneous surfaces from the same JSON that feeds HTML, with byte-identical provenance.**
 
-### 2.1 Papers Corpus — 108 Real PDFs
+### 2.1 Papers Corpus - 108 Real PDFs
 
 **Engine:** `scripts/build-pdfs.mjs` (new, uses `pdfkit` 0.20.2) reads `monographs.json` (8) and `patents.json` (100) and emits `public/papers/<id>.pdf` (lowercase, 4.6–6.5 KB each, 518 KB total). Each PDF has:
 - PDF Info dict Title/Author/Subject/Keywords matching HTML `citation_*`
@@ -113,7 +113,7 @@ Operator: “Sitemap 674→683 is a rounding error. Mandate was corpus + PDFs + 
 | Feed | RSS | `/feed.xml` | `dist/feed.xml` 50 items | |
 | Sitemap | XML | `/sitemap.xml` | `dist/sitemap.xml` 684 `<url>` | `audit:seo` 0 errors |
 
-Heterogeneity is now HTML + PDF + RSS + JSON-LD, not just HTML. Next industrialization (not shipped, queued) is `/datasets` (+16 station datasets) as Dataset JSON-LD with `distributionUrl: /datasets/<site>.json` — deferred to Phase 1.2 to keep this patch auditable.
+Heterogeneity is now HTML + PDF + RSS + JSON-LD, not just HTML. Next industrialization (not shipped, queued) is `/datasets` (+16 station datasets) as Dataset JSON-LD with `distributionUrl: /datasets/<site>.json` - deferred to Phase 1.2 to keep this patch auditable.
 
 ---
 
@@ -144,4 +144,4 @@ python3 -c "import re,pathlib; html=pathlib.Path('dist/disciplines/applied-anoma
 
 **Next reversible layer (queued, not shipped in this patch):** `/datasets` (16 station datasets, Dataset schema, CSV/JSON distribution) + thickening hub editorial to 600+ words with dataset cross-links.
 
-— Architect, ATTACK WEAKNESSES phase, 2026-09-15
+- Architect, ATTACK WEAKNESSES phase, 2026-09-15

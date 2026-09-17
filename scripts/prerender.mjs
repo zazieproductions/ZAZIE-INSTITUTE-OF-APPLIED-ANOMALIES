@@ -85,7 +85,7 @@ const newest = [...labLogs].sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
 const feed =
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n` +
-  `  <title>ZIAA Research Notes — Zazie Institute of Applied Anomalies</title>\n` +
+  `  <title>ZIAA Research Notes - Zazie Institute of Applied Anomalies</title>\n` +
   `  <link>${SITE_URL}/research-notes</link>\n` +
   `  <description>Chronological research notes and lab telemetry from the Zazie Institute of Applied Anomalies (ZIAA).</description>\n` +
   `  <language>en</language>\n` +
@@ -99,7 +99,7 @@ const feed =
   `\n</channel>\n</rss>\n`;
 writeFileSync(resolve(dist, 'feed.xml'), feed);
 
-/* ---------- llms.txt (LLM grounding document — generated, never hand-edited) ---------- */
+/* ---------- llms.txt (LLM grounding document - generated, never hand-edited) ---------- */
 // Built from the same collections + canonical facts the rendered pages use,
 // so the machine-readable surface can never drift from the HTML.
 const stats = JSON.parse(readFileSync(resolve(root, 'src/data/derived/stats.json'), 'utf8'));

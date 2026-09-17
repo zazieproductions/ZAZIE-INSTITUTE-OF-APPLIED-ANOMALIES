@@ -96,7 +96,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   return (
     <span
       className={`inline-flex items-center rounded border font-mono font-medium tracking-wider select-none transition-colors ${style.container} ${sizeClasses} ${className}`}
-      title={`[ZIAA Classification: ${label}] ${meta.description} — ${meta.scope}`}
+      title={`[ZIAA Classification: ${label}] ${meta.description} - ${meta.scope}`}
     >
       <span className={`rounded-full shrink-0 ${dotSize} ${style.dot}`} />
       {showIcon && <IconComponent className={`shrink-0 ${iconSize}`} />}

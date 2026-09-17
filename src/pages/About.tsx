@@ -32,7 +32,7 @@ const FAQ = [
   },
   {
     q: 'What does “applied anomalies” mean?',
-    a: 'Applied anomalies are edge-case physical, acoustic and computational phenomena — feedback, hysteresis, resonance, perceptual illusions — treated not as defects but as design material for instruments, interfaces and software.'
+    a: 'Applied anomalies are edge-case physical, acoustic and computational phenomena - feedback, hysteresis, resonance, perceptual illusions - treated not as defects but as design material for instruments, interfaces and software.'
   },
   {
     q: 'Are the speculative patents real legal filings?',
@@ -56,7 +56,7 @@ const FAQ = [
   },
   {
     q: 'Who operates the Zazie Institute of Applied Anomalies?',
-    a: 'ZIAA is operated by Zazie Productions LLC — founded and owned by Zazie Kanwar-Torge — as its research division. It was founded in 2021 in the Mojave Basin, California, and its research cycle has run from 2021 through 2026 under the direction of its founder and founding researchers.'
+    a: 'ZIAA is operated by Zazie Productions LLC - founded and owned by Zazie Kanwar-Torge - as its research division. It was founded in 2021 in the Mojave Basin, California, and its research cycle has run from 2021 through 2026 under the direction of its founder and founding researchers.'
   }
 ];
 
@@ -100,7 +100,7 @@ export const About: React.FC = () => (
       </div>
     </header>
 
-    {/* Institute at a glance — the count-bearing canonical facts, machine- and human-readable */}
+    {/* Institute at a glance - the count-bearing canonical facts, machine- and human-readable */}
     <section aria-labelledby="at-a-glance" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 id="at-a-glance" className="text-lg font-bold text-white">The Institute at a glance</h2>
@@ -129,7 +129,7 @@ export const About: React.FC = () => (
       <div className="lg:col-span-2 bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4 text-sm text-zinc-300 leading-relaxed">
         <h2 id="mission" className="text-lg font-bold text-white">Mission &amp; Method</h2>
         <p>
-          ZIAA treats anomalies — acoustic feedback, material hysteresis, perceptual edge cases, algorithmic drift — as
+          ZIAA treats anomalies - acoustic feedback, material hysteresis, perceptual edge cases, algorithmic drift - as
           design material rather than defects. Research moves between bench, field and code: instruments are built,
           measured in studios and remote listening stations, documented in research notes, and reflected upon in
           monographs. Software prototypes are released as browser-native creative tools so the work can be heard and
@@ -166,12 +166,12 @@ export const About: React.FC = () => (
           <div><dt className="text-zinc-400">Name</dt><dd className="text-zinc-100">{ENTITY.name}</dd></div>
           <div><dt className="text-zinc-400">Abbreviation</dt><dd className="text-zinc-100">{ENTITY.abbreviation}</dd></div>
           <div><dt className="text-zinc-400">Type</dt><dd className="text-zinc-100">{ENTITY.type}</dd></div>
-          <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} — {CANONICAL.foundingLocation}</dd></div>
+          <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} - {CANONICAL.foundingLocation}</dd></div>
           <div><dt className="text-zinc-400">Founder &amp; director</dt><dd className="text-zinc-100"><Link to="/founder" className="text-[#dfb76c] hover:underline">{FOUNDER.name}</Link></dd></div>
           <div><dt className="text-zinc-400">Founding researchers</dt><dd className="text-zinc-100">{CANONICAL.founders.join(', ')}</dd></div>
           <div><dt className="text-zinc-400">Parent organisation</dt><dd className="text-zinc-100">{ENTITY.legalParent}</dd></div>
           <div><dt className="text-zinc-400">Research cycle</dt><dd className="text-zinc-100">{archiveStats.operationalYears}</dd></div>
-          <div><dt className="text-zinc-400">Motto</dt><dd className="text-zinc-100 italic">Auditus Inauditi — hearing the unheard</dd></div>
+          <div><dt className="text-zinc-400">Motto</dt><dd className="text-zinc-100 italic">Auditus Inauditi - hearing the unheard</dd></div>
           <div>
             <dt className="text-zinc-400">Research inquiries</dt>
             <dd><a href={`mailto:${ENTITY.email}`} className="text-[#dfb76c] hover:underline inline-flex items-center gap-1"><Mail className="w-3 h-3" aria-hidden="true" />{ENTITY.email}</a></dd>
@@ -190,7 +190,7 @@ export const About: React.FC = () => (
         {FOUNDER_STATEMENT}
       </p>
       <div className="flex flex-wrap gap-2 text-xs font-mono">
-        <Link to="/founder" className="px-3 py-1.5 bg-[#0a121e] border border-[#dfb76c]/60 hover:border-[#dfb76c] rounded text-[#dfb76c]">Zazie Kanwar-Torge — founder bio →</Link>
+        <Link to="/founder" className="px-3 py-1.5 bg-[#0a121e] border border-[#dfb76c]/60 hover:border-[#dfb76c] rounded text-[#dfb76c]">Zazie Kanwar-Torge - founder bio →</Link>
         <Link to="/legal/institutional-status" className="px-3 py-1.5 bg-[#05080f] border border-[#1b2738] hover:border-[#dfb76c] rounded text-zinc-300">Institutional Status notice</Link>
         <Link to="/legal/trademarks" className="px-3 py-1.5 bg-[#05080f] border border-[#1b2738] hover:border-[#dfb76c] rounded text-zinc-300">Trademarks &amp; IP Notice</Link>
       </div>
@@ -215,16 +215,16 @@ export const About: React.FC = () => (
     </section>
 
     <section aria-labelledby="featured-dossiers" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
-      <h2 id="featured-dossiers" className="text-lg font-bold text-white">Representative technical dossiers — descriptive reading</h2>
+      <h2 id="featured-dossiers" className="text-lg font-bold text-white">Representative technical dossiers - descriptive reading</h2>
       <p className="text-sm text-zinc-400 leading-relaxed max-w-3xl">
-        Three representative dossiers from the Institute&apos;s longest-running lines of work — optical recovery of
+        Three representative dossiers from the Institute&apos;s longest-running lines of work - optical recovery of
         historical audio carriers, whole-body tactile listening, and autonomous generative composition. Each is linked
         to its division hub and to the Transactions volume that treats the same method.
       </p>
       <ul className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
         <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
           <div>
-            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-025 — Signal Archaeology · prototype dossier</div>
+            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-025 - Signal Archaeology · prototype dossier</div>
             <div className="font-bold text-zinc-100 mt-1">Non-contact laser profilometer for historical grooved audio carriers</div>
             <div className="text-zinc-400 mt-1.5 leading-relaxed">Optical scanning and artifact-isolation techniques for fragile recordings.</div>
           </div>
@@ -236,7 +236,7 @@ export const About: React.FC = () => (
         </li>
         <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
           <div>
-            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-017 — Perceptual Interfaces · tactile acoustics</div>
+            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-017 - Perceptual Interfaces · tactile acoustics</div>
             <div className="font-bold text-zinc-100 mt-1">128-point tactile somatosensory floor array for whole-body listening</div>
             <div className="text-zinc-400 mt-1.5 leading-relaxed">Psychoacoustic research on vibrotactile spatialisation and whole-body perception.</div>
           </div>
@@ -248,7 +248,7 @@ export const About: React.FC = () => (
         </li>
         <li className="h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded group flex flex-col justify-between">
           <div>
-            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-042 — Computational Creativity · generative software</div>
+            <div className="text-[11px] font-mono text-[#dfb76c]">PROT-042 - Computational Creativity · generative software</div>
             <div className="font-bold text-zinc-100 mt-1">Real-time neural latent audio resynthesizer with multi-vector joystick</div>
             <div className="text-zinc-400 mt-1.5 leading-relaxed">Generative composition via neural audio morphing and procedural scoring.</div>
           </div>
@@ -260,15 +260,15 @@ export const About: React.FC = () => (
         </li>
       </ul>
       <p className="text-[11px] font-mono text-zinc-500 pt-2 border-t border-[#1b2636]">
-        Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench — Web Audio DSP workstation with oscilloscope</Link> · <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB — audiovisual 64-band spectral console</Link> · <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL — Three.js audio-reactive environment</Link> · <Link to="/emotion-spectrum" className="text-[#b7a8ff] hover:underline">EMOTION//SPECTRUM — playable electromagnetic emotion ribbon</Link>
+        Interactive instruments: <Link to="/acoustic-bench" className="text-emerald-400 hover:underline">Acoustic Bench - Web Audio DSP workstation with oscilloscope</Link> · <Link to="/spectra-lab" className="text-cyan-400 hover:underline">SPECTRA//LAB - audiovisual 64-band spectral console</Link> · <Link to="/synthesis-signal" className="text-violet-300 hover:underline">SYNTHESIS//SIGNAL - Three.js audio-reactive environment</Link> · <Link to="/emotion-spectrum" className="text-[#b7a8ff] hover:underline">EMOTION//SPECTRUM - playable electromagnetic emotion ribbon</Link>
       </p>
     </section>
 
-    {/* Institutional reference documents — canonical definitions + citation policy */}
+    {/* Institutional reference documents - canonical definitions + citation policy */}
     <section aria-labelledby="reference-docs" className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
       <Link to="/lexicon" className="p-4 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group block">
-        <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c] flex items-center gap-2"><BookMarked className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" /> Lexicon — Institutional Vocabulary</div>
-        <p className="text-zinc-400 mt-1.5 leading-relaxed">Canonical definitions of the Institute&apos;s method terms — applied anomalies, signal archaeology, wave-terrain synthesis, defensive publication and more.</p>
+        <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c] flex items-center gap-2"><BookMarked className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" /> Lexicon - Institutional Vocabulary</div>
+        <p className="text-zinc-400 mt-1.5 leading-relaxed">Canonical definitions of the Institute&apos;s method terms - applied anomalies, signal archaeology, wave-terrain synthesis, defensive publication and more.</p>
       </Link>
       <Link to="/cite" className="p-4 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group block">
         <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c] flex items-center gap-2"><Quote className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" /> Citation Policy</div>

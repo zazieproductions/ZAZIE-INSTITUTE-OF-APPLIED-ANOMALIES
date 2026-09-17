@@ -25,7 +25,7 @@ export const SynthesisSignalPage: React.FC = () => {
   return (
     <div className="space-y-6 font-mono text-xs">
       <Seo
-        title="SYNTHESIS//SIGNAL — Audio-Reactive 3D Visualiser"
+        title="SYNTHESIS//SIGNAL - Audio-Reactive 3D Visualiser"
         description={DESCRIPTION}
         path="/synthesis-signal"
         keywords={['audio visualizer', 'Three.js', 'Web Audio API', 'FFT spectrum analyser', 'creative coding', 'computational creativity']}
@@ -67,7 +67,7 @@ export const SynthesisSignalPage: React.FC = () => {
                 <span className="font-mono">SYNTH</span><span className="text-[#00ffcc] drop-shadow-[0_0_12px_#00ffcc]">ESIS</span>
                 <span className="text-[#444]">//</span>
                 <span className="text-[#ff00ff]">SIGNAL</span>
-                <span className="text-sm font-normal text-zinc-400 ml-2">— Audiovisual Environment</span>
+                <span className="text-sm font-normal text-zinc-400 ml-2">- Audiovisual Environment</span>
               </h1>
               
               <p className="text-sm text-zinc-300 leading-relaxed font-serif">
@@ -162,7 +162,7 @@ export const SynthesisSignalPage: React.FC = () => {
               <li>Ported to React + TypeScript with <code className="text-[#dfb76c]">three@latest</code> ES modules</li>
               <li>Preserved 2048-point FFT, torus-knot displacement, 3K particle field</li>
               <li>Added ZIAA archival framing, transport progress, and geometry switching</li>
-              <li>Local-only processing — uploaded files never leave browser</li>
+              <li>Local-only processing - uploaded files never leave browser</li>
               <li>Integrated into the ZIAA archive at <code className="text-[#00ffcc]">SYNTHESIS//SIGNAL</code></li>
             </ul>
           </div>
@@ -182,7 +182,7 @@ export const SynthesisSignalPage: React.FC = () => {
               <li>Configurable FFT resolution</li>
             </ul>
             <p className="pt-2 border-t border-[#1a1f33] text-zinc-400">
-              Within ZIAA, this prototype is classified as <span className="text-[#dfb76c]">PROT-161 // SYNTHESIS-SIGNAL</span> — a computational creativity and audiovisual DSP workstation, complementary to existing <span className="text-cyan-300">SPECTRA//LAB</span> and <span className="text-emerald-300">ACOUSTIC BENCH</span>.
+              Within ZIAA, this prototype is classified as <span className="text-[#dfb76c]">PROT-161 // SYNTHESIS-SIGNAL</span> - a computational creativity and audiovisual DSP workstation, complementary to existing <span className="text-cyan-300">SPECTRA//LAB</span> and <span className="text-emerald-300">ACOUSTIC BENCH</span>.
             </p>
           </div>
         </div>

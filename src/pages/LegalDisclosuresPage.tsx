@@ -104,7 +104,7 @@ export const LegalDisclosuresPage: React.FC = () => {
   return (
     <article className="space-y-8 font-serif text-zinc-300 max-w-5xl mx-auto pb-16">
       <Seo
-        title={`${meta.title} — Legal & Disclosures`}
+        title={`${meta.title} - Legal & Disclosures`}
         description={meta.description}
         path={legalPath(activeSection)}
         jsonLd={[
@@ -568,7 +568,7 @@ export const LegalDisclosuresPage: React.FC = () => {
                 copyright law. Copyright {TRADEMARK_NOTICE.copyright}
               </p>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                Institute designations — including {TRADEMARK_NOTICE.marks.slice(0, 8).join('™, ')}™ — are common-law
+                Institute designations - including {TRADEMARK_NOTICE.marks.slice(0, 8).join('™, ')}™ - are common-law
                 trademarks of Zazie Productions LLC. The full mark schedule, ownership record and permitted-use terms are
                 published in the <Link to={legalPath('trademarks')} className="text-[#dfb76c] hover:underline">Trademarks &amp; Intellectual Property Notice</Link>,
                 which forms part of these Terms.
@@ -728,7 +728,7 @@ export const LegalDisclosuresPage: React.FC = () => {
                 For questions regarding data practices or to submit an inquiry regarding information rights, contact:
               </p>
               <div className="p-4 rounded-lg bg-[#020509] border border-[#1b2636] font-mono text-xs text-zinc-300 space-y-1">
-                <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC — DATA GOVERNANCE</div>
+                <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC - DATA GOVERNANCE</div>
                 <div>Attention: Directorate of Privacy & Digital Ethics</div>
                 <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies</div>
                 <div className="text-cyan-400">URL: zazieinstitute.org</div>
@@ -823,7 +823,7 @@ export const LegalDisclosuresPage: React.FC = () => {
                 4. Permitted Use of Marks
               </h3>
               <div className="space-y-2 text-xs md:text-sm text-zinc-400 pl-4 border-l border-[#23354d]">
-                <p>• You may refer to Institute marks by name for nominative purposes — citation, criticism, review, scholarship and factual reporting — without implying endorsement, affiliation or sponsorship.</p>
+                <p>• You may refer to Institute marks by name for nominative purposes - citation, criticism, review, scholarship and factual reporting - without implying endorsement, affiliation or sponsorship.</p>
                 <p>• You may reproduce the provided citation strings, which name the Institute and its series as publisher, in academic and editorial contexts per the <Link to="/cite" className="text-[#dfb76c] hover:underline">Citation Policy</Link>.</p>
                 <p>• You may not use any Institute mark as a business, product or service name, nor in any manner likely to cause confusion as to source or authorization.</p>
                 <p>• You may not reproduce the ZIAA Institutional Crest™, logotypes or instrument artwork except as rendered incidentally by normal browsing, without prior written consent from Zazie Productions LLC.</p>
@@ -842,7 +842,7 @@ export const LegalDisclosuresPage: React.FC = () => {
                 misuse or to request a licence, contact the corporate administration:
               </p>
               <div className="p-4 rounded-lg bg-[#020509] border border-[#1b2636] font-mono text-xs text-zinc-300 space-y-1">
-                <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC — INTELLECTUAL PROPERTY</div>
+                <div className="text-white font-bold">ZAZIE PRODUCTIONS LLC - INTELLECTUAL PROPERTY</div>
                 <div>Founder &amp; Owner: Zazie Kanwar-Torge</div>
                 <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
                 <div className="text-cyan-400">Web: zazieinstitute.org · zazieproductions.com</div>

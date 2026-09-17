@@ -40,7 +40,7 @@ const FAQ = [
 export const Founder: React.FC = () => (
   <div className="space-y-6 font-serif">
     <Seo
-      title="Zazie Kanwar-Torge — Founder & Director"
+      title="Zazie Kanwar-Torge - Founder & Director"
       description="Zazie Kanwar-Torge is the founder and owner of Zazie Productions LLC and the founder and director of the Zazie Institute of Applied Anomalies (ZIAA)."
       path="/founder"
       keywords={[
@@ -86,16 +86,16 @@ export const Founder: React.FC = () => (
           <strong className="text-zinc-100">Zazie Kanwar-Torge</strong> founded the {ENTITY.name} ({ENTITY.abbreviation}) in{' '}
           {ENTITY.founded} in the Mojave Basin, California, as the research division of{' '}
           <strong className="text-zinc-100">{ENTITY.legalParent}</strong>. As founder and director, {FOUNDER.name} sets
-          the Institute&apos;s research program across its eight divisions — applied anomalies, experimental audio
+          the Institute&apos;s research program across its eight divisions - applied anomalies, experimental audio
           systems, computational creativity, speculative engineering, perceptual interfaces, generative software,
-          signal archaeology and acoustic architecture — and directs the {archiveStats.operationalYears} research cycle
+          signal archaeology and acoustic architecture - and directs the {archiveStats.operationalYears} research cycle
           documented in this archive.
         </p>
         <p>
           The archive {FOUNDER.name} established now holds {archiveStats.totalPrototypes} prototypes,{' '}
           {archiveStats.totalPatents} defensive patent disclosures, {archiveStats.totalLogs} research notes,{' '}
           {archiveStats.totalMonographs} monographs, {archiveStats.totalFieldSites} field stations and a fellowship of{' '}
-          {archiveStats.totalPersonnel} researchers — published as a permanent, citable record under the Institute&apos;s{' '}
+          {archiveStats.totalPersonnel} researchers - published as a permanent, citable record under the Institute&apos;s{' '}
           <Link to="/cite" className="text-[#dfb76c] hover:underline">citation policy</Link>.
         </p>
         <h2 className="text-lg font-bold text-white pt-2">Ownership &amp; intellectual property</h2>
@@ -117,7 +117,7 @@ export const Founder: React.FC = () => (
           <div><dt className="text-zinc-400">Role</dt><dd className="text-zinc-100">{FOUNDER.shortRole}</dd></div>
           <div><dt className="text-zinc-400">Company</dt><dd className="text-zinc-100">{ENTITY.legalParent} (founder &amp; owner)</dd></div>
           <div><dt className="text-zinc-400">Institute</dt><dd className="text-zinc-100">{ENTITY.name} ({ENTITY.abbreviation})</dd></div>
-          <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} — Mojave Basin, California</dd></div>
+          <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} - Mojave Basin, California</dd></div>
           <div><dt className="text-zinc-400">Research cycle</dt><dd className="text-zinc-100">{archiveStats.operationalYears}</dd></div>
           <div>
             <dt className="text-zinc-400">Research inquiries</dt>
@@ -158,7 +158,7 @@ export const Founder: React.FC = () => (
         <li>
           <Link to="/acoustic-bench" className="block h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group">
             <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c]">Browser Instruments</div>
-            <p className="text-zinc-400 mt-1.5 leading-relaxed">Acoustic Bench, SPECTRA//LAB, VOID//OCULUS and SYNTHESIS//SIGNAL — no account required.</p>
+            <p className="text-zinc-400 mt-1.5 leading-relaxed">Acoustic Bench, SPECTRA//LAB, VOID//OCULUS and SYNTHESIS//SIGNAL - no account required.</p>
           </Link>
         </li>
       </ul>

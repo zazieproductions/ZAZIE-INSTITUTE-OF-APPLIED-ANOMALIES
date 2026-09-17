@@ -190,7 +190,7 @@ export const collectionPageSchema = (opts: {
   }
 });
 
-// Discipline hub — single-typed ResearchProject (no dual-typing appetite)
+// Discipline hub - single-typed ResearchProject (no dual-typing appetite)
 export const researchProjectSchema = (opts: {
   path: string;
   name: string;
@@ -366,7 +366,7 @@ export const personSchema = (opts: {
   jobTitle: opts.jobTitle,
   description: opts.description,
   knowsAbout: opts.knowsAbout,
-  disambiguatingDescription: `${ENTITY.abbreviation} fellow — ${opts.jobTitle} at the ${ENTITY.name} (ZIAA)`,
+  disambiguatingDescription: `${ENTITY.abbreviation} fellow - ${opts.jobTitle} at the ${ENTITY.name} (ZIAA)`,
   affiliation: { '@id': ORG_ID },
   worksFor: { '@id': ORG_ID },
   memberOf: { '@id': ORG_ID }

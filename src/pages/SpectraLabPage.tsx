@@ -17,7 +17,7 @@ const DESCRIPTION =
 export const SpectraLabPage: React.FC = () => (
   <div className="space-y-4">
     <Seo
-      title="SPECTRA//LAB — Audiovisual DSP Console"
+      title="SPECTRA//LAB - Audiovisual DSP Console"
       description={DESCRIPTION}
       path="/spectra-lab"
       keywords={['audiovisual', 'spectral visualiser', 'FFT', 'generative visuals', 'creative coding', 'computational creativity']}
@@ -39,11 +39,11 @@ export const SpectraLabPage: React.FC = () => (
         <div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" aria-hidden="true" />
-            <h1 className="text-base font-bold text-white tracking-wider">SPECTRA//LAB — AUDIOVISUAL DSP WORKSTATION</h1>
+            <h1 className="text-base font-bold text-white tracking-wider">SPECTRA//LAB - AUDIOVISUAL DSP WORKSTATION</h1>
           </div>
           <p className="text-zinc-300 text-xs mt-1 max-w-3xl leading-relaxed">
             Volumetric spectral field canvas, particle physics, 64-band FFT analysis, 8×8 mod matrix, and automated
-            parameter curves — a computational-creativity instrument from the ZIAA Generative Software studio.
+            parameter curves - a computational-creativity instrument from the ZIAA Generative Software studio.
           </p>
         </div>
         <Link

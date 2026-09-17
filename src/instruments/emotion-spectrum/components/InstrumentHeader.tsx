@@ -30,7 +30,7 @@ export default function InstrumentHeader({ accent, mode, selectMode }: Instrumen
           </h2>
         </div>
         <p className="es-font-mono text-[11px] md:text-xs text-white/45 mt-2 max-w-xl tracking-wide">
-          An instrument tuned to the electromagnetic spectrum — from long
+          An instrument tuned to the electromagnetic spectrum - from long
           grounding radio waves to transcendent gamma. Play the light. Hear the
           feeling.
         </p>

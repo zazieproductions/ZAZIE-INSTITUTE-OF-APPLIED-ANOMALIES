@@ -316,7 +316,7 @@ export const SpectraLabConsole: React.FC = () => {
             SPECTRA//LAB
           </span>
           <span className="px-1.5 py-0.5 rounded text-[9px] border border-[#00f0ff]/40 text-[#00f0ff]">
-            v3.14.0 — KAIROS
+            v3.14.0 - KAIROS
           </span>
         </div>
 
@@ -444,7 +444,7 @@ export const SpectraLabConsole: React.FC = () => {
 
             {/* Overlays & Crosshairs */}
             <div className="absolute top-3 left-3 text-[10px] text-[#00f0ff] tracking-widest font-bold">
-              ◉ STAGE_01 — VOLUMETRIC SPECTRAL FIELD
+              ◉ STAGE_01 - VOLUMETRIC SPECTRAL FIELD
             </div>
 
             <div className="absolute top-3 right-3 text-[10px] text-right text-[#9aa7c2]">

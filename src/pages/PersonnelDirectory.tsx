@@ -30,12 +30,12 @@ export const PersonnelDirectory: React.FC = () => {
             description,
             path: '/fellows',
             about: ['interdisciplinary research', 'computational creativity'],
-            items: personnel.map(p => ({ name: `${p.name} — ${p.title}`, path: recordPath('personnel', p.id) }))
+            items: personnel.map(p => ({ name: `${p.name} - ${p.title}`, path: recordPath('personnel', p.id) }))
           }),
           faqPageSchema([
             {
               q: 'Who are the ZIAA fellows?',
-              a: `The ZIAA fellowship comprises ${archiveStats.totalPersonnel} core researchers — creative technologists, DSP architects, acoustic engineers, instrument builders and speculative designers. Each fellow has a canonical profile with specialization, facility assignment and selected publications.`
+              a: `The ZIAA fellowship comprises ${archiveStats.totalPersonnel} core researchers - creative technologists, DSP architects, acoustic engineers, instrument builders and speculative designers. Each fellow has a canonical profile with specialization, facility assignment and selected publications.`
             },
             {
               q: 'Is “fellow” an accredited academic title?',
@@ -102,12 +102,12 @@ export const PersonnelDirectory: React.FC = () => {
       </ul>
 
       <section aria-labelledby="fellows-faq" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
-        <h2 id="fellows-faq" className="text-sm font-bold text-white tracking-wide">Fellowship — questions &amp; answers</h2>
+        <h2 id="fellows-faq" className="text-sm font-bold text-white tracking-wide">Fellowship - questions &amp; answers</h2>
         <dl className="space-y-4 text-sm">
           <div className="border-l-2 border-[#dfb76c]/60 pl-4">
             <dt className="font-bold text-zinc-100">Who are the ZIAA fellows?</dt>
             <dd className="text-zinc-300 leading-relaxed mt-1">
-              The fellowship comprises {archiveStats.totalPersonnel} core researchers — creative technologists, DSP
+              The fellowship comprises {archiveStats.totalPersonnel} core researchers - creative technologists, DSP
               architects, acoustic engineers, instrument builders and speculative designers. Each fellow has a canonical
               profile with specialization, facility assignment and selected publications.
             </dd>

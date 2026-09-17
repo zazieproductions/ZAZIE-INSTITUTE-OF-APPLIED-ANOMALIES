@@ -6,7 +6,7 @@
 export const SITE_URL = 'https://zazieinstitute.org';
 
 /**
- * Legal founder & owner — the real-world person search engines must associate
+ * Legal founder & owner - the real-world person search engines must associate
  * with the Institute and its operating company. Single source of truth for the
  * name string; every visible credit, meta tag and Person JSON-LD node derives
  * from here so Google merges signals onto one entity.
@@ -15,7 +15,7 @@ export const FOUNDER = {
   name: 'Zazie Kanwar-Torge',
   givenName: 'Zazie',
   familyName: 'Kanwar-Torge',
-  /** Canonical bio page — the Person entity's crawlable home. */
+  /** Canonical bio page - the Person entity's crawlable home. */
   path: '/founder',
   jobTitle: 'Founder of Zazie Productions LLC; Founder & Director of the Zazie Institute of Applied Anomalies',
   shortRole: 'Founder & Director',
@@ -23,11 +23,11 @@ export const FOUNDER = {
     'Zazie Kanwar-Torge is the founder and owner of Zazie Productions LLC and the founder and director of the Zazie Institute of Applied Anomalies (ZIAA), the independent research institute and open archive the company operates from the Mojave Basin, California.'
 } as const;
 
-/** Canonical @id of the founder's Person node — referenced by every schema. */
+/** Canonical @id of the founder's Person node - referenced by every schema. */
 export const FOUNDER_ID = `${SITE_URL}/founder#person`;
 
 /**
- * Trademark portfolio — common-law marks owned by Zazie Productions LLC
+ * Trademark portfolio - common-law marks owned by Zazie Productions LLC
  * (founded and owned by Zazie Kanwar-Torge). Displayed with ™ across legal
  * surfaces, the footer and the masthead; the full notice lives at
  * /legal/trademarks. Never render these with ® (no registration is claimed).
@@ -57,17 +57,17 @@ export const ENTITY = {
   legalParent: 'Zazie Productions LLC',
   founded: '2021',
   foundingLocation: 'Mojave Basin, California, USA',
-  /** Canonical entity-type label — kept in sync with src/seo/canonicalFacts.ts. */
+  /** Canonical entity-type label - kept in sync with src/seo/canonicalFacts.ts. */
   type: 'Independent research institute and open research archive',
   tagline: 'Applied Anomalies · Experimental Systems · Audio Technology · Computational Creativity',
   /**
-   * Canonical entity description (no counts — count-bearing variants are
+   * Canonical entity description (no counts - count-bearing variants are
    * produced by canonicalFacts.prestigeLead(stats) and must stay consistent
    * with this base string; scripts/geo-check.mjs enforces the overlap).
    */
   shortDescription:
     'The Zazie Institute of Applied Anomalies (ZIAA) is an independent research institute and open archive, founded in 2021 in the Mojave Basin, California, and operated by Zazie Productions LLC. Organized into eight research divisions, the Institute develops experimental sound technology, perceptual interfaces and computational instruments, and publishes its work as a permanent, citable research archive.',
-  // Expanded topical cluster for entity disambiguation and long-tail capture —
+  // Expanded topical cluster for entity disambiguation and long-tail capture -
   // maps to knowsAbout / about / keywords across every schema.
   fields: [
     'experimental technology',
@@ -91,7 +91,7 @@ export const ENTITY = {
     'field recording',
     'binaural synthesis'
   ],
-  // sameAs — ONLY resolvable, controlled surfaces. No Wikipedia/Wikidata/ROR until they exist and resolve 200.
+  // sameAs - ONLY resolvable, controlled surfaces. No Wikipedia/Wikidata/ROR until they exist and resolve 200.
   // Entity vandalism via fake sameAs poisons the graph; maintain hygiene until notability is earned.
   sameAs: ['https://github.com/zazieproductions/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES'],
   founders: ['Dr. V. Aris Thorne', 'Elena Mstislav', 'Dr. Tamsin Callow'],
@@ -109,7 +109,7 @@ export const ENTITY = {
   themeColor: '#030508'
 } as const;
 
-// Canonical discipline vocabulary — single source for nav, sitemap, schema, internal anchoring.
+// Canonical discipline vocabulary - single source for nav, sitemap, schema, internal anchoring.
 export const DISCIPLINE_SLUGS: Record<string, string> = {
   'Applied Anomalies': 'applied-anomalies',
   'Experimental Audio Systems': 'experimental-audio-systems',
@@ -133,11 +133,11 @@ export const disciplineBySlug = (slug: string) =>
  * @param keep       identifier part (record id, codename) that is never clipped, e.g. "PAT-2021-001"
  */
 export function buildTitle(pageTitle?: string, keep?: string): string {
-  if (!pageTitle) return `${ENTITY.name} (${ENTITY.abbreviation}) — Research Archive`;
+  if (!pageTitle) return `${ENTITY.name} (${ENTITY.abbreviation}) - Research Archive`;
   const tail = keep ? ` (${keep})` : '';
   // Title budget ≈ 70 chars: full brand suffix when it fits, short "· ZIAA" suffix otherwise,
   // clipping the page part at a word boundary if it is still too long. H1s keep the full title.
-  const full = `${pageTitle}${tail} · ${ENTITY.abbreviation} — ${ENTITY.name}`;
+  const full = `${pageTitle}${tail} · ${ENTITY.abbreviation} - ${ENTITY.name}`;
   if (full.length <= 70) return full;
   const short = `${tail} · ${ENTITY.abbreviation}`;
   return `${clipWords(pageTitle, 70 - short.length)}${short}`;
@@ -160,5 +160,5 @@ function clipWords(s: string, max: number): string {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
   const at = cut.lastIndexOf(' ');
-  return `${cut.slice(0, at > max - 30 ? at : max - 1).replace(/[,;:\-–—(\s]+$/, '')}…`;
+  return `${cut.slice(0, at > max - 30 ? at : max - 1).replace(/[,;:\-–-(\s]+$/, '')}…`;
 }

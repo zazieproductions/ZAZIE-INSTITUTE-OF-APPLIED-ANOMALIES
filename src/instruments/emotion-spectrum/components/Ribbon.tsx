@@ -31,7 +31,7 @@ export default function Ribbon({
         <div className="es-font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
           {mode === "ribbon"
             ? drone
-              ? "Ribbon · Drone latch — click emotions to hold"
+              ? "Ribbon · Drone latch - click emotions to hold"
               : "Ribbon · press & drag across the spectrum"
             : "Theremin · glide left→right to sweep the spectrum"}
         </div>

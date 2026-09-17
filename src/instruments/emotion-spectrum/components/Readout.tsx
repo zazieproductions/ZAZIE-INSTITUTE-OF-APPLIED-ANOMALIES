@@ -31,7 +31,7 @@ export default function Readout({ currentCell, accent, intensity }: ReadoutProps
               className="es-font-serif text-3xl md:text-5xl leading-none mt-1"
               style={{ color: accent, textShadow: `0 0 40px ${accent}` }}
             >
-              {currentCell ? currentCell.emotion.name : "—"}
+              {currentCell ? currentCell.emotion.name : "-"}
             </div>
             {currentCell && (
               <div className="es-font-mono text-[10px] text-white/40 mt-2">

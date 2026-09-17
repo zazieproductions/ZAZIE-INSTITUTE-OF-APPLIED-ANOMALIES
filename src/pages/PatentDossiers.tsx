@@ -54,7 +54,7 @@ export const PatentDossiers: React.FC = () => {
             description,
             path: '/patents',
             about: ['speculative engineering', 'experimental technology'],
-            items: patents.map(p => ({ name: `${p.patentNumber} — ${p.title}`, path: recordPath('patent', p.id) }))
+            items: patents.map(p => ({ name: `${p.patentNumber} - ${p.title}`, path: recordPath('patent', p.id) }))
           })
         ]}
       />
@@ -144,14 +144,14 @@ export const PatentDossiers: React.FC = () => {
       </ul>
       {pager.hasMore && <ShowMoreButton remaining={pager.remaining} onMore={pager.showMore} onAll={pager.showAll} label="patents" />}
 
-      {/* Crawlable complete index — every speculative patent dossier linked with defensive-disclosure title for discovery without paging. */}
+      {/* Crawlable complete index - every speculative patent dossier linked with defensive-disclosure title for discovery without paging. */}
       <section aria-labelledby="complete-patent-index" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-5 md:p-6 space-y-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#1b2636] pb-3">
-          <h2 id="complete-patent-index" className="text-sm font-bold text-white tracking-wide">Complete patent index — all defensive disclosures, crawlable</h2>
+          <h2 id="complete-patent-index" className="text-sm font-bold text-white tracking-wide">Complete patent index - all defensive disclosures, crawlable</h2>
           <p className="text-[11px] font-mono text-zinc-400">All {patents.length} dossiers · ordered by filing date</p>
         </div>
         <p className="text-xs text-zinc-400 leading-relaxed">
-          The dossiers above are paged for reading; the index below exposes the entire speculative-patent file as plain links so every audio-invention disclosure — from hysteresis limiters to hydrophone arrays — is discoverable in the static crawl.
+          The dossiers above are paged for reading; the index below exposes the entire speculative-patent file as plain links so every audio-invention disclosure - from hysteresis limiters to hydrophone arrays - is discoverable in the static crawl.
         </p>
         <details className="group/details">
           <summary className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#091322] hover:bg-[#122238] border border-[#2b3e58] rounded-md text-xs font-mono text-cyan-300 cursor-pointer select-none list-none">
@@ -168,7 +168,7 @@ export const PatentDossiers: React.FC = () => {
                 <span className="font-mono font-bold text-cyan-400 group-hover/link:text-white">{p.patentNumber}</span>
                 <span className="text-zinc-600 font-mono"> · {p.id} · </span>
                 <span className="font-semibold text-zinc-200 group-hover/link:text-white line-clamp-1">{p.title}</span>
-                <span className="block text-[11px] text-zinc-400 truncate mt-0.5">{p.primaryDiscipline} — filed {p.filingDate}</span>
+                <span className="block text-[11px] text-zinc-400 truncate mt-0.5">{p.primaryDiscipline} - filed {p.filingDate}</span>
               </Link>
             ))}
           </div>

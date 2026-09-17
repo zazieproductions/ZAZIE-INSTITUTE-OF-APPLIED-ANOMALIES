@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   Typography — STIX Two Text, self-hosted latin subset only.
+   Typography - STIX Two Text, self-hosted latin subset only.
    Regular weight is preloaded from index.html (it renders LCP text);
    the rest load with font-display: swap. A metric-matched fallback
    keeps layout shift near zero while the web font is in flight.

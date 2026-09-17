@@ -7,5 +7,5 @@ export const clip = (s: string, max: number) => {
   const t = s.trim().replace(/\.{3}$|…$/, '');
   if (t.length <= max) return t;
   const cut = t.slice(0, max);
-  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 20)).replace(/[,;:\-–—\s]+$/, '')}…`;
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 20)).replace(/[,;:\-–-\s]+$/, '')}…`;
 };
