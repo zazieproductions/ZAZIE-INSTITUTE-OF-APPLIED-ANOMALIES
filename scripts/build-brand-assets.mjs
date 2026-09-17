@@ -141,7 +141,26 @@ const og = async (name, opts) => {
   const buf = Buffer.from(ogSvg(opts));
   await sharp(buf, { density: 144 }).resize(1200, 630).png({ compressionLevel: 9, palette: true }).toFile(resolve(brand, `${name}.png`));
 };
-await og('og-default', { kicker: 'ZIAA · INDEPENDENT RESEARCH &amp; CREATIVE-TECHNOLOGY INITIATIVE', title: ['Zazie Institute of', 'Applied Anomalies'], subtitle: 'Experimental research archive · prototypes · notes · monographs' });
+// Canonical entity-type label in the kicker - never "initiative" (see GEO_SYSTEM.md §1).
+await og('og-default', { kicker: 'ZIAA · INDEPENDENT RESEARCH INSTITUTE &amp; OPEN ARCHIVE', title: ['Zazie Institute of', 'Applied Anomalies'], subtitle: 'Experimental research archive · prototypes · notes · monographs' });
+
+// Section-level OG cards consumed by src/seo/Seo.tsx (path-prefix mapping).
+// Keep subtitles count-free - section counts live in stats.json and drift.
+const sectionCards = [
+  ['og-about', { kicker: 'ZIAA · ENTITY PROFILE', title: ['Institute', 'Profile'], subtitle: 'Canonical profile · divisions · founding · status' }],
+  ['og-founder', { kicker: 'ZIAA · FOUNDER &amp; DIRECTOR', title: ['Zazie', 'Kanwar-Torge'], subtitle: 'Founder, Zazie Productions LLC · Founder &amp; Director, ZIAA' }],
+  ['og-prototypes', { kicker: 'ZIAA · ARCHIVE', title: ['Prototypes', 'Archive'], subtitle: 'Experimental instruments · bench to field deployment' }],
+  ['og-patents', { kicker: 'ZIAA · DEFENSIVE PUBLICATION', title: ['Speculative', 'Patent Dossiers'], subtitle: 'Defensive disclosures · claims · prior-art critique' }],
+  ['og-research-notes', { kicker: 'ZIAA · LAB LEDGER', title: ['Research Notes', ''], subtitle: 'Chronological lab notes &amp; telemetry' }],
+  ['og-monographs', { kicker: 'ZIAA · MONOGRAPH SERIES', title: ['ZIAA', 'Transactions'], subtitle: 'ISSN 2834-9180 · reviewed by the fellow panel' }],
+  ['og-post-mortems', { kicker: 'ZIAA · INCIDENT RECORD', title: ['Anomaly', 'Post-Mortems'], subtitle: 'Incident analyses &amp; root-cause records' }],
+  ['og-fellows', { kicker: 'ZIAA · RESEARCH FELLOWSHIP', title: ['The', 'Fellowship'], subtitle: 'Research fellows &amp; their programs' }],
+  ['og-field-stations', { kicker: 'ZIAA · REMOTE INFRASTRUCTURE', title: ['Field', 'Stations'], subtitle: 'Remote listening stations · instrumentation' }],
+  ['og-disciplines', { kicker: 'ZIAA · RESEARCH MAP', title: ['Research', 'Divisions'], subtitle: 'Eight divisions · one canonical landing each' }],
+  ['og-papers', { kicker: 'ZIAA · OPEN ACCESS', title: ['Papers', 'Corpus'], subtitle: 'Crawlable PDFs with full citation metadata' }]
+];
+for (const [name, opts] of sectionCards) await og(name, opts);
+console.log('[brand] icons, OG images (default + section cards) and manifest written');
 
 // Web app manifest
 const manifest = {
@@ -174,4 +193,4 @@ writeFileSync(resolve(pub, 'site.webmanifest'), JSON.stringify(manifest, null, 2
 if (!existsSync(resolve(pub, 'robots.txt'))) {
   console.warn('[brand] robots.txt missing');
 }
-console.log('[brand] icons, OG image and manifest written');
+

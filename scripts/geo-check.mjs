@@ -19,10 +19,15 @@
  *     sitemap; sitemap contains the reference surfaces; footer exposes llms.txt.
  *  6. Lexicon parity - every DefinedTerm definition on /lexicon matches the
  *     canonical vocabulary in llms.txt (single source of truth).
+ *  7. Knowledge-panel readiness - the Organization node on / carries every
+ *     field Google's entity systems consume (name, alternateName, url, square
+ *     logo, sameAs, foundingDate, address, contactPoint, founder, parent),
+ *     the WebSite node carries a SearchAction, SERP favicon assets exist, and
+ *     site-verification metas are reported (warn only - operator token).
  *
  * Exit 0 = green. Exit 1 = errors found.
  */
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { resolve, join, relative } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
@@ -58,7 +63,7 @@ const pages = [];
 console.log(`[geo] ${pages.length} pages, facts from ${facts.generatedAt}`);
 
 /* ---------- 1. llms.txt ---------- */
-console.log('[geo] 1/6 llms.txt grounding document');
+console.log('[geo] 1/7 llms.txt grounding document');
 let llms = '';
 try {
   llms = readFileSync(resolve(dist, 'llms.txt'), 'utf8');
@@ -89,7 +94,7 @@ if (llms) {
 }
 
 /* ---------- 2. cross-surface echo ---------- */
-console.log('[geo] 2/6 cross-surface echo (canonical description consistency)');
+console.log('[geo] 2/7 cross-surface echo (canonical description consistency)');
 const echoSurfaces = ['/', '/about', '/disciplines', '/lexicon', '/cite'];
 for (const s of echoSurfaces) {
   let html;
@@ -105,7 +110,7 @@ const home = page('/');
 if (!home.includes(facts.prestigeLead)) warn('homepage / does not carry the FULL prestige lead (only base description)');
 
 /* ---------- 3. JSON-LD health ---------- */
-console.log('[geo] 3/6 JSON-LD health');
+console.log('[geo] 3/7 JSON-LD health');
 let ldBlocks = 0;
 let pagesWithLd = 0;
 const orgIdCount = new Map();
@@ -128,7 +133,7 @@ ok(`${ldBlocks} JSON-LD blocks across ${pagesWithLd} pages, all parse`);
 if (orgIdCount.size < 5) warn(`only ${orgIdCount.size} pages reference the canonical Organization @id`);
 
 /* ---------- 4. contamination scan ---------- */
-console.log('[geo] 4/6 contamination scan (banned phrasings on indexable surfaces)');
+console.log('[geo] 4/7 contamination scan (banned phrasings on indexable surfaces)');
 const exempt = facts.exemptPaths;
 const isExempt = (p) => exempt.some(e => p === e || p.startsWith(e + '/'));
 const shortWords = new Set(['arg', 'seo', 'blog', 'startup', 'saas', 'satire', 'hoax', 'joke']);
@@ -163,14 +168,18 @@ for (const p of ['/legal/institutional-status', '/legal/disclaimer']) {
 ok('buried legal truth intact on /legal/* (non-accreditation statements present)');
 
 /* ---------- 5. bot access & discovery ---------- */
-console.log('[geo] 5/6 bot access & discovery');
+console.log('[geo] 5/7 bot access & discovery');
 const robots = readFileSync(resolve(dist, 'robots.txt'), 'utf8');
 if (!robots.includes(`Sitemap: ${SITE}/sitemap.xml`)) fail('robots.txt missing sitemap reference');
 else ok('robots.txt references sitemap');
-for (const bot of ['GPTBot', 'ChatGPT-User', 'ClaudeBot', 'PerplexityBot', 'Google-Extended']) {
+const REQUIRED_BOTS = [
+  'GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot',
+  'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Meta-ExternalAgent'
+];
+for (const bot of REQUIRED_BOTS) {
   if (!new RegExp(`User-agent:\\s*${bot}`, 'i').test(robots)) fail(`robots.txt missing ${bot} directive`);
 }
-ok('robots.txt carries explicit allows for GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended');
+ok(`robots.txt carries explicit allows for ${REQUIRED_BOTS.join(', ')}`);
 const sitemap = readFileSync(resolve(dist, 'sitemap.xml'), 'utf8');
 for (const need of ['/lexicon', '/cite', '/disciplines', '/monographs', '/about']) {
   if (!sitemap.includes(`<loc>${SITE}${need}</loc>`)) fail(`sitemap missing ${need}`);
@@ -180,7 +189,7 @@ if (!home.includes('/llms.txt')) fail('footer does not expose llms.txt from the 
 else ok('llms.txt discoverable from the site footer');
 
 /* ---------- 6. lexicon parity ---------- */
-console.log('[geo] 6/6 lexicon parity (DefinedTermSet ↔ llms.txt vocabulary)');
+console.log('[geo] 6/7 lexicon parity (DefinedTermSet ↔ llms.txt vocabulary)');
 const lex = page('/lexicon');
 let termCount = 0;
 for (const m of lex.matchAll(/DefinedTerm[\s\S]*?"name":"([^"]+)"/g)) termCount++;
@@ -202,6 +211,62 @@ for (const d of vocabDefs) {
   else fail(`vocabulary definition not echoed on /lexicon: "${d.slice(0, 60)}…"`);
 }
 if (vocabDefs.filter(d => d.length >= 40).length > 0) ok(`${parity}/${vocabDefs.filter(d => d.length >= 40).length} vocabulary definitions verified on /lexicon`);
+
+/* ---------- 7. knowledge-panel readiness ---------- */
+console.log('[geo] 7/7 knowledge-panel readiness (Organization entity node)');
+// Google assembles Organization knowledge panels from the entity home's
+// structured data. Verify every field Google's docs name as consumed:
+// name, alternateName, url, logo (square >= 112px), sameAs, foundingDate,
+// address, contactPoint, founder, parentOrganization.
+{
+  const blocks = [...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => {
+    try { return JSON.parse(m[1]); } catch { return null; }
+  }).filter(Boolean);
+  const findNode = (type) => blocks.find((b) => (Array.isArray(b?.['@type']) ? b['@type'] : [b?.['@type']]).includes(type));
+  const org = blocks.find((b) => String(b?.['@id'] ?? '').endsWith('/#organization'));
+  const site = findNode('WebSite');
+
+  if (!org) fail('homepage JSON-LD carries no Organization node at the canonical @id');
+  else {
+    for (const field of ['name', 'alternateName', 'url', 'logo', 'sameAs', 'foundingDate', 'address', 'contactPoint', 'founder', 'parentOrganization', 'email']) {
+      const v = org[field];
+      const present = Array.isArray(v) ? v.length > 0 : v != null && v !== '';
+      if (!present) fail(`Organization node missing ${field} (knowledge-panel input)`);
+    }
+    const logoUrl = typeof org.logo === 'object' ? org.logo?.url : org.logo;
+    const logoOk = typeof logoUrl === 'string' && logoUrl.startsWith('https://');
+    const logoDims = typeof org.logo === 'object' ? Number(org.logo?.width ?? 0) : 0;
+    if (!logoOk || logoDims < 112) fail(`Organization logo must be an https ImageObject >= 112px (found ${logoUrl ?? 'none'}, ${logoDims}px)`);
+    else ok(`Organization logo ${logoDims}x${logoDims} square ImageObject at ${logoUrl}`);
+    const sameAs = Array.isArray(org.sameAs) ? org.sameAs : [];
+    const allowedHosts = ['github.com'];
+    const bad = sameAs.filter((u) => {
+      try { return !allowedHosts.includes(new URL(u).hostname); } catch { return true; }
+    });
+    if (sameAs.length === 0) fail('Organization sameAs is empty (add controlled, resolvable profiles - see KNOWLEDGE_PANEL_RUNBOOK.md)');
+    else if (bad.length) fail(`Organization sameAs contains non-controlled or malformed URLs: ${bad.join(', ')}`);
+    else ok(`Organization sameAs carries ${sameAs.length} controlled profile URL(s)`);
+    const addr = org.address ?? {};
+    if (!(addr.addressLocality && addr.addressRegion && addr.addressCountry)) fail('Organization address incomplete (locality/region/country required for entity matching)');
+    else ok(`Organization address resolves: ${addr.addressLocality}, ${addr.addressRegion}, ${addr.addressCountry}`);
+  }
+  if (!site?.potentialAction?.['query-input']) fail('WebSite node missing SearchAction potentialAction');
+  else ok('WebSite node carries SearchAction potentialAction');
+
+  // SERP favicon assets - Google serves these next to results on mobile & desktop.
+  for (const asset of ['favicon.ico', 'favicon.svg', 'apple-touch-icon.png', 'site.webmanifest']) {
+    if (!existsSync(join(dist, asset))) fail(`dist/${asset} missing (SERP favicon / PWA identity)`);
+  }
+  ok('SERP favicon + manifest assets present in dist/');
+
+  // Site-verification metas unlock Search Console data + the panel claim flow.
+  // Warn only: the token is an operator secret and lands via index.html.
+  // Strip HTML comments first so the commented placeholder in index.html does
+  // not count as a shipped verification tag.
+  const homeNoComments = home.replace(/<!--[\s\S]*?-->/g, '');
+  if (!/google-site-verification/.test(homeNoComments)) warn('no google-site-verification meta on / - Search Console not yet verified (see KNOWLEDGE_PANEL_RUNBOOK.md step 2)');
+  else ok('google-site-verification meta present');
+}
 
 /* ---------- summary ---------- */
 console.log('');

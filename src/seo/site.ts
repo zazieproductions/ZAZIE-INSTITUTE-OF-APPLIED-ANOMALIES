@@ -93,7 +93,12 @@ export const ENTITY = {
   ],
   // sameAs - ONLY resolvable, controlled surfaces. No Wikipedia/Wikidata/ROR until they exist and resolve 200.
   // Entity vandalism via fake sameAs poisons the graph; maintain hygiene until notability is earned.
-  sameAs: ['https://github.com/zazieproductions/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES'],
+  // Knowledge-panel guidance: every URL here should be a profile Google can
+  // associate with the org (see KNOWLEDGE_PANEL_RUNBOOK.md before adding one).
+  sameAs: [
+    'https://github.com/zazieproductions',
+    'https://github.com/zazieproductions/ZAZIE-INSTITUTE-OF-APPLIED-ANOMALIES'
+  ],
   founders: ['Dr. V. Aris Thorne', 'Elena Mstislav', 'Dr. Tamsin Callow'],
   foundingDateISO: '2021-01-15',
   address: {
@@ -160,5 +165,5 @@ function clipWords(s: string, max: number): string {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
   const at = cut.lastIndexOf(' ');
-  return `${cut.slice(0, at > max - 30 ? at : max - 1).replace(/[,;:\-–-(\s]+$/, '')}…`;
+  return `${cut.slice(0, at > max - 30 ? at : max - 1).replace(/[,;:–(\s-]+$/, '')}…`;
 }

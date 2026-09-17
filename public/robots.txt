@@ -16,13 +16,25 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Google-Extended
@@ -35,6 +47,18 @@ User-agent: Bytespider
 Allow: /
 
 User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
 Allow: /
 
 # Scholar / academic surfaces - ensure Googlebot Scholar path is clean
