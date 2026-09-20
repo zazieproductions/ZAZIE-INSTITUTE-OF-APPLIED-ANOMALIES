@@ -77,6 +77,7 @@ All URLs are lowercase, no trailing slash, no file extensions.
 | Field stations | `/field-stations` | `/field-stations/site-01` |
 | Monographs | `/monographs` | `/monographs/essay-2022-01` |
 | Instruments | `/acoustic-bench`, `/spectra-lab`, `/void-oculus` | |
+| Standalone instrument | `/apps/void-oculus` | Full-screen VOID//OCULUS canvas, indexed as a static artifact |
 | Reference | `/lexicon`, `/cite` | |
 | Other | `/about`, `/founder`, `/system-audit`, `/search?q=` (noindex), `/404` (noindex) | |
 | Legal | `/legal/institutional-status`, `/legal/disclaimer`, `/legal/terms`, `/legal/privacy`, `/legal/trademarks` | |

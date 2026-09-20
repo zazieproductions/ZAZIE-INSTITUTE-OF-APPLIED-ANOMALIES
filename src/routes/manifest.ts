@@ -1,7 +1,7 @@
 /**
  * Enumerates every canonical URL on the site. Used by:
- *   - scripts/prerender.mjs  → one static HTML file per URL
- *   - scripts/prerender.mjs  → sitemap.xml
+ *   - scripts/prerender.mjs  → one static HTML file per rendered URL
+ *   - scripts/prerender.mjs  → sitemap.xml (including verified static artifacts)
  * Data is read directly from the collection JSON so the manifest is exhaustive.
  */
 import prototypes from '../data/collections/prototypes.json';
@@ -19,6 +19,12 @@ export interface RouteEntry {
   lastmod?: string;
   /** Excluded from sitemap (but still prerendered), e.g. search & 404. */
   noindex?: boolean;
+  /**
+   * The URL is supplied by a static public artifact rather than the React
+   * shell. It participates in the sitemap, but prerender must not overwrite
+   * the artifact with the catch-all React route.
+   */
+  staticAsset?: boolean;
 }
 
 const lower = (s: string) => s.toLowerCase();
@@ -46,6 +52,9 @@ export const STATIC_ROUTES: RouteEntry[] = [
   { path: '/acoustic-bench', changefreq: 'monthly', priority: 0.7 },
   { path: '/spectra-lab', changefreq: 'monthly', priority: 0.7 },
   { path: '/void-oculus', changefreq: 'monthly', priority: 0.6 },
+  // The full-screen canvas is a standalone static artifact. Keep its clean,
+  // extensionless URL discoverable without asking React to render the app shell.
+  { path: '/apps/void-oculus', changefreq: 'monthly', priority: 0.5, staticAsset: true },
   { path: '/synthesis-signal', changefreq: 'monthly', priority: 0.7 },
   { path: '/emotion-spectrum', changefreq: 'monthly', priority: 0.7 },
   { path: '/legal/institutional-status', changefreq: 'yearly', priority: 0.4 },

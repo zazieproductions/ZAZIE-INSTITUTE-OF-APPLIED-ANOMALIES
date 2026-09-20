@@ -63,7 +63,7 @@ No URLs are manufactured for SEO. Priorities are conservative and monotonic (hub
 |-----------------|----------------------|--------|
 | `/search`, `/search?q=*` | `noindex: true` → `noindex,follow`; Disallow in `robots.txt`; not in sitemap | Search-result page, query-parameter variant, thin/duplicate, non-canonical. Correctly excluded. |
 | `/404` (+ `/* → /404.html` fallback) | `noindex: true`; Disallow | Error page, no indexable content. |
-| `/apps/void-oculus/*` | `X-Robots-Tag: noindex` in `_headers` + `vercel.json`; not in manifest | Isolated SPA canvas with own global state & localStorage; thin on archival text; kept as embedded tool, not archival record. |
+| `/apps/void-oculus` | Static artifact with `index,follow`, self-canonical metadata, SoftwareApplication JSON-LD and a sitemap entry | The full-screen canvas is a distinct, crawlable instrument surface. The archive page at `/void-oculus` links to this clean URL; the physical `index.html` path is never linked. |
 | Legacy aliases: `/dashboard`, `/overview`, `/logs`, `/logs/:id`, `/lab-logs`, `/bench`, `/spectra`, `/oculus`, `/void-oculus/index.html`, `/synthesis`, `/legal`, `/infrastructure`, `/vault`, `/failures`, `/personnel`, `/personnel/:id`, `/audit`, `/index.html` | 301 permanently to canonical (in `vercel.json` + `_redirects` + `<Navigate replace>`) | Duplicate vocabulary from earlier site iterations; redirects are indexable only at target. Not in sitemap, not prerendered. |
 | Hash fragments `#prototypes` etc. (`LEGACY_TABS` in `App.tsx`) | client redirect → canonical | Non-crawlable fragment; canonical is path. |
 | Query-parameter filtered views: `/prototypes?discipline=*&status=*&clearance=*&year=*`, `/patents?discipline=*`, `/research-notes?facility=*` etc. | not in manifest; filtered client-side with `useSearchParams` + `useState` | Thin variants of the canonical hub; would create parameter faceting duplication. No separate canonical, no `rel=canonical` pointing elsewhere. Correctly excluded, but see §4 for recommendation. |
@@ -106,7 +106,7 @@ The 8 disciplines from `disciplines.json` (Applied Anomalies, Experimental Audio
 
 ## 5. Internal-linking opportunities
 
-Static crawl of `dist/` (excluding `apps/`) shows the hub-card grids use **client-side `ShowMore` state**: the prerendered HTML contains only the first page of results:
+Static crawl of `dist/` (excluding the standalone instrument UI under `apps/`) shows the hub-card grids use **client-side `ShowMore` state**: the prerendered HTML contains only the first page of results:
 
 - `/prototypes` → **24 / 160** cards (15 %)
 - `/patents` → **24 / 100** (24 %)
@@ -136,7 +136,7 @@ Footer already provides exhaustive hub links (archive holds, institute, interact
 
 - **XML validity:** `<?xml version="1.0" encoding="UTF-8"?>` + `xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"`; parses with Python `xml.etree`, 0 parse errors; every URL is UTF-8 NFC-safe; `&` correctly escaped where present.
 - **Protocol compliance:** every `<url>` has `<loc>` (absolute `https://zazieinstitute.org` + path, no trailing slash duplication), `<changefreq>` ∈ {weekly,monthly,yearly} and `<priority>` 0.0–1.0. `<lastmod>` present only where derivable (patents → `filingDate`, logs → `timestamp`, monographs → `date`, failures → `incidentDate`, `/` + `/research-notes` → latest log clamped to today). Future dates (in-fiction 2026 values) are clamped to `today` so `lastmod` never lies in the future.
-- **Exclusion correctness:** sitemap excludes `/search`, `/404`, redirects, `/apps/*`, query variants, hashes. Matches existing `robots.txt` Disallow rules.
+- **Exclusion correctness:** sitemap excludes `/search`, `/404`, redirects, query variants and hashes. The standalone `/apps/void-oculus` artifact is intentionally included with its own canonical metadata; the physical `index.html` filename is not a sitemap URL.
 - **Size:** 674 URLs, 99.7 KB uncompressed → well under 50 000 and 50 MB limits; no sitemap index needed now. Logic in `prerender.mjs` already handles index creation if the archive ever exceeds 45 000 URLs.
 - **Discoverability:** `public/robots.txt` and `dist/robots.txt` both contain `Sitemap: https://zazieinstitute.org/sitemap.xml` (required line, line-ending normalized). `index.html` `<link rel="sitemap" href="/sitemap.xml">` and `<link rel="alternate" href="/feed.xml">` present.
 - **Host agreement:** `SITE_URL` matches production hostname; `vercel.json` + `_headers` + `site.webmanifest` + `sitemap.xml` all use `https://zazieinstitute.org`.

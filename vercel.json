@@ -130,15 +130,6 @@
       ]
     },
     {
-      "source": "/apps/void-oculus/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
-    },
-    {
       "source": "/(sitemap.xml|feed.xml|robots.txt|llms.txt)",
       "headers": [
         {
