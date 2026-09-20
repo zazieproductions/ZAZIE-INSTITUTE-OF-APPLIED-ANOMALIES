@@ -3,15 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOID//OCULUS - The Canvas Is An Eye</title>
+<title>VOID//OCULUS Spatial Canvas - Standalone Tool · ZIAA</title>
+<meta name="description" content="VOID//OCULUS is a spatial-thinking canvas from ZIAA with procedural eyes, research cards, in-place editing, search and local session persistence." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48" />
 <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link rel="manifest" href="/site.webmanifest" />
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://zazieinstitute.org/void-oculus">
+<link rel="canonical" href="https://zazieinstitute.org/apps/void-oculus" />
+<meta property="og:site_name" content="Zazie Institute of Applied Anomalies (ZIAA)" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="VOID//OCULUS Spatial Canvas - Standalone Tool · ZIAA" />
+<meta property="og:description" content="A spatial-thinking canvas from ZIAA with procedural eyes, research cards, search and local session persistence." />
+<meta property="og:url" content="https://zazieinstitute.org/apps/void-oculus" />
+<meta property="og:image" content="https://zazieinstitute.org/brand/og-default.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Zazie Institute of Applied Anomalies institutional crest" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="VOID//OCULUS Spatial Canvas - Standalone Tool · ZIAA" />
+<meta name="twitter:description" content="A spatial-thinking canvas from ZIAA with procedural eyes, research cards, search and local session persistence." />
+<meta name="twitter:image" content="https://zazieinstitute.org/brand/og-default.png" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://zazieinstitute.org/apps/void-oculus#software",
+  "name": "VOID//OCULUS Spatial Canvas",
+  "url": "https://zazieinstitute.org/apps/void-oculus",
+  "description": "An infinite spatial-thinking canvas from the Zazie Institute of Applied Anomalies with procedural eyes, linked research cards, in-place editing, search and local session persistence.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Web",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Zazie Institute of Applied Anomalies",
+    "url": "https://zazieinstitute.org/"
+  }
+}
+</script>
 <style>
 
   :root {
@@ -1062,9 +1094,28 @@
     .eye-svg .pupil-grp { transition: none !important; }
     #boot-oculus { animation: none !important; }
   }
+
+  /* Accessible document context for crawlers and assistive technology. The
+     canvas remains a full-screen tool, so the descriptive heading does not
+     compete with its controls visually. */
+  .document-heading,
+  .document-summary {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 </style>
 </head>
 <body>
+<main id="oculus-main" aria-labelledby="oculus-title">
+  <h1 id="oculus-title" class="document-heading">VOID//OCULUS - Infinite Spatial Thinking Canvas</h1>
+  <p class="document-summary">An interactive spatial-thinking canvas from the Zazie Institute of Applied Anomalies. Pan and zoom the board, connect research cards, create notes and eyes, search the canvas, and save a local session.</p>
 
 <div class="scan-line"></div>
 
@@ -1152,6 +1203,7 @@
     <div id="selection-box"></div>
   </div>
 </div>
+</main>
 
 <script>
 /**

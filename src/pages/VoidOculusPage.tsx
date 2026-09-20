@@ -9,7 +9,9 @@ const CRUMBS = [
   { name: 'VOID//OCULUS', path: '/void-oculus' }
 ];
 
-const APP_URL = '/apps/void-oculus/index.html';
+// Link to the clean URL. Vercel's cleanUrls rule redirects the physical
+// index.html path, and internal links must never send crawlers through it.
+const APP_URL = '/apps/void-oculus';
 const DESCRIPTION =
   'VOID//OCULUS is an infinite spatial-thinking canvas from the Zazie Institute of Applied Anomalies: an 8,000 × 6,000 px board with procedural eyes, linked research cards, in-place editing, search and local session persistence - a zero-dependency creative tool.';
 

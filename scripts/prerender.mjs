@@ -41,7 +41,8 @@ function splitHead(html) {
 
 let count = 0;
 const failures = [];
-for (const route of ROUTE_MANIFEST) {
+const renderedRoutes = ROUTE_MANIFEST.filter((route) => !route.staticAsset);
+for (const route of renderedRoutes) {
   try {
     const html = await render(route.path);
     const { head, body } = splitHead(html);
@@ -53,6 +54,14 @@ for (const route of ROUTE_MANIFEST) {
   } catch (err) {
     failures.push({ path: route.path, err: String(err) });
   }
+}
+
+// Static public artifacts are copied by Vite before this script runs. Verify
+// that every manifest entry still exists, but never replace it with the React
+// catch-all page above.
+for (const route of ROUTE_MANIFEST.filter((entry) => entry.staticAsset)) {
+  const file = route.path === '/' ? resolve(dist, 'index.html') : resolve(dist, `.${route.path}`, 'index.html');
+  if (!existsSync(file)) failures.push({ path: route.path, err: `static asset missing: ${file}` });
 }
 
 // 404.html for hosts that serve it for unknown paths (Netlify, GitHub Pages, Cloudflare Pages, Vercel w/ config)
@@ -78,6 +87,10 @@ const sitemap =
     .join('\n') +
   `\n</urlset>\n`;
 writeFileSync(resolve(dist, 'sitemap.xml'), sitemap);
+// Keep the development/static-public copy in lockstep with the production
+// artifact. Otherwise `npm run dev` can advertise an older URL inventory than
+// the sitemap generated for deployment.
+writeFileSync(resolve(root, 'public/sitemap.xml'), sitemap);
 
 /* ---------- feed.xml (research notes, newest 50) ---------- */
 const labLogs = JSON.parse(readFileSync(resolve(root, 'src/data/collections/labLogs.json'), 'utf8'));

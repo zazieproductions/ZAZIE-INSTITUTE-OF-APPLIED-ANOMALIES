@@ -15,7 +15,7 @@ const pages = [];
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
-    if (statSync(p).isDirectory()) { if (!['assets', 'apps'].includes(name)) walk(p); }
+    if (statSync(p).isDirectory()) { if (name !== 'assets') walk(p); }
     else if (name === 'index.html') pages.push(p);
   }
 })(dist);
@@ -76,6 +76,7 @@ for (const file of pages) {
   for (const m of html.matchAll(/<a [^>]*href="([^"#?]*)/g)) {
     const href = m[1];
     if (!href.startsWith('/') || href.startsWith('//')) continue;
+    if (/\/index\.html$/.test(href)) errors.push(`${where} internal link points to redirectable index.html: ${href}`);
     if (/\.(xml|png|svg|ico|html|txt|pdf)$/.test(href)) { if (!existsSync(join(dist, href))) errors.push(`${where} broken asset link ${href}`); continue; }
     if (href !== '/' && href.endsWith('/')) errors.push(`${where} internal link with trailing slash: ${href}`);
     const target = join(dist, href, 'index.html');

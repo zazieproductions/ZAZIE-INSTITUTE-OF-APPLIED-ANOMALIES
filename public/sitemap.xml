@@ -10,6 +10,7 @@
   <url><loc>https://zazieinstitute.org/acoustic-bench</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zazieinstitute.org/spectra-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zazieinstitute.org/void-oculus</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://zazieinstitute.org/apps/void-oculus</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://zazieinstitute.org/synthesis-signal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zazieinstitute.org/emotion-spectrum</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://zazieinstitute.org/legal/institutional-status</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>

@@ -55,7 +55,7 @@ const pages = [];
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) {
-      if (!['assets', 'apps'].includes(name)) walk(p);
+      if (name !== 'assets') walk(p);
     } else if (name === 'index.html') pages.push('/' + relative(dist, p).replace(/index\.html$/, '').replace(/\/$/, ''));
   }
 })(dist);
