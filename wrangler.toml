@@ -1,0 +1,18 @@
+# Cloudflare Pages configuration
+# Docs: https://developers.cloudflare.com/pages/
+#
+# This site is a fully prerendered static build: `npm run build` emits the
+# complete site (every route as a real HTML file, plus hashed assets) into
+# `dist/`. `pages_build_output_dir` pins the Pages deployment to that build
+# output.
+#
+# NEVER deploy the repository root. The root `index.html` is the un-built
+# Vite document shell (an empty `#root` whose module script points at
+# `/src/entry-client.tsx`); served raw it cannot execute, and because the
+# repo root has no `404.html`, Cloudflare Pages falls back to SPA mode and
+# serves that shell for every URL — a grey screen. The same failure happens
+# if `dist/404.html` is missing from the build output (Pages then treats the
+# project as an SPA). `scripts/prerender.mjs` fails the build in both cases.
+name = "ziaa"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-07"

@@ -39,6 +39,8 @@ Zazie Productions LLC. https://zazieinstitute.org/
 | `npm run audit:geo` | Post‑build GEO audit: canonical‑fact echo, llms.txt freshness, JSON‑LD health, contamination scan, bot/discovery checks (fails on errors) |
 | `npm run lint` | ESLint |
 | `node scripts/serve-dist.mjs` | Local static server mirroring production routing |
+| `npm run deploy` | Build and publish the static site to Cloudflare Pages (`dist/` via `wrangler.toml`) |
+| `npm run deploy:preview` | Same, to a Pages preview deployment |
 
 ## Project layout
 
@@ -61,6 +63,7 @@ src/components/*           UI (PageHeader, Breadcrumbs, RecordDossier, instrumen
 public/                    robots.txt, site.webmanifest, icons, /brand OG image, /fonts, /apps/void-oculus
 scripts/                   build-derived, build-brand-assets (sharp), prerender, audit-seo, serve-dist
 vercel.json, public/_redirects, public/_headers   Hosting config: redirects, caching, security headers
+wrangler.toml              Cloudflare Pages config: build output directory (`dist`)
 ```
 
 ## URL scheme
@@ -100,3 +103,26 @@ Legacy paths (`/logs`, `/personnel`, `/vault`, `/bench`, …) redirect permanent
 3. Run `npm run audit:seo` and fix any reported errors before deploying.
 
 Brand assets (favicons, touch icons, OG image, manifest) are generated from the crest geometry by `scripts/build-brand-assets.mjs` (runs in `prebuild`).
+
+## Deployment
+
+The site is a fully prerendered static build: `npm run build` writes every route as a real HTML file into **`dist/`** — no server required. **Always deploy `dist/`, never the repository root.**
+
+### Cloudflare Pages (production host)
+
+- **Build command:** `npm run build`
+- **Build output directory:** `dist`
+- **Environment variables:** `NODE_VERSION=20`
+- **One-click:** `npm run deploy` (runs the build, then `wrangler pages deploy`; `wrangler.toml` pins `pages_build_output_dir = "dist"` and the project name `ziaa`)
+
+When connecting the repo in the Cloudflare dashboard (Workers & Pages → Create application → Pages → Connect to Git), pick the *Vite* preset — or set the fields above manually — and make sure the build output directory is `dist`.
+
+> **Warning — the grey-screen failure mode.** The repository root contains the un-built Vite document shell (`index.html` with `<!--app-head-->` / `<!--app-html-->` placeholders and `<script type="module" src="/src/entry-client.tsx">`). If the *repo root* is deployed (wrong output directory, or a direct upload of the checkout), that shell is what every URL returns: the browser cannot execute the raw `.tsx` module, the app never mounts, and the page renders as a grey screen — while search engines keep the previously indexed pages. The same happens if `dist/404.html` is missing: Cloudflare Pages then treats the project as a single-page app and rewrites *every* path (including `/assets/*.js`) to the root `index.html`. `scripts/prerender.mjs` fails the build on both defects, and `src/entry-client.tsx` falls back to a clean client render when it is handed an un-prerendered shell.
+
+### Vercel
+
+`vercel.json` already declares `buildCommand: npm run build` and `outputDirectory: dist` (plus `cleanUrls`, trailing-slash and cache-header policy). Connect the repo and deploy — no extra configuration needed.
+
+### Netlify
+
+`public/_redirects` (permanent legacy aliases) and `public/_headers` (cache + security policy) ship inside `dist/`. Both Netlify and Cloudflare Pages serve `dist/404.html` automatically for unknown paths; no catch-all rewrite is used.

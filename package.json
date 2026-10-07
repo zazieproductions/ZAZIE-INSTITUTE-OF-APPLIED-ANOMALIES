@@ -8,6 +8,8 @@
     "dev": "vite",
     "prebuild": "node scripts/build-derived.mjs && node scripts/build-brand-assets.mjs && node scripts/build-pdfs.mjs",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "deploy": "npm run build && npx --yes wrangler pages deploy",
+    "deploy:preview": "npm run build && npx --yes wrangler pages deploy --branch preview",
     "lint": "eslint .",
     "preview": "vite preview",
     "audit:seo": "node scripts/audit-seo.mjs",
