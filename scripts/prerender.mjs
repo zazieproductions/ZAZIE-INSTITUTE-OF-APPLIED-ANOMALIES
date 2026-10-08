@@ -152,3 +152,26 @@ if (failures.length) {
   console.error('[prerender] failures:', failures);
   process.exit(1);
 }
+
+/* ---------- deployment safety guards ----------
+ * Two output defects turn the deployed site into a grey screen:
+ *
+ * 1. dist/index.html still containing the <!--app-head-->/<!--app-html-->
+ *    template placeholders — i.e. the homepage was never prerendered, so
+ *    the host serves the empty document shell.
+ * 2. dist/404.html missing — Cloudflare Pages treats a project without a
+ *    top-level 404.html as a single-page application and rewrites EVERY
+ *    path (including /assets/*.js, which then arrive as text/html and are
+ *    refused by the browser) to the root index.html.
+ *
+ * Fail the build rather than shipping either defect.
+ */
+const shippedHome = readFileSync(resolve(dist, 'index.html'), 'utf8');
+if (shippedHome.includes('<!--app-html-->') || shippedHome.includes('<!--app-head-->')) {
+  console.error('[prerender] dist/index.html still contains unfilled template placeholders — the homepage was not prerendered');
+  process.exit(1);
+}
+if (!existsSync(resolve(dist, '404.html'))) {
+  console.error('[prerender] dist/404.html is missing — Cloudflare Pages would fall back to SPA mode and serve index.html for every path (grey screen)');
+  process.exit(1);
+}

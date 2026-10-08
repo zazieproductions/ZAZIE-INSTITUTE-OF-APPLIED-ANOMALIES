@@ -1,3 +1,15 @@
+# Cloudflare Pages / Netlify redirect rules.
+#
+# Only the permanent legacy aliases live here. There is deliberately NO
+# `/*` catch-all: both Cloudflare Pages and Netlify serve /404.html
+# automatically for any path that does not match a file, and on Cloudflare
+# Pages a catch-all rule is unsupported as a rewrite and — because Pages
+# applies _redirects rules even when a static asset matches the request —
+# risks hijacking asset requests (/assets/*.js would arrive as text/html
+# and the app would never boot: grey screen).
+#
+# The 404 page is generated into dist/404.html by scripts/prerender.mjs,
+# which fails the build if it is missing.
 /dashboard            /                     301
 /overview             /                     301
 /logs                 /research-notes       301
@@ -14,4 +26,3 @@
 /personnel            /fellows              301
 /personnel/*          /fellows/:splat       301
 /audit                /system-audit         301
-/*                    /404.html             404
