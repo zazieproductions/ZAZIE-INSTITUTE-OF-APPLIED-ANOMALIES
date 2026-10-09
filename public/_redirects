@@ -1,3 +1,6 @@
+# Only permanent legacy aliases live here. Cloudflare Pages and Netlify serve
+# dist/404.html automatically for unmatched routes; do not add a `/*` fallback,
+# which can rewrite asset requests to HTML and prevent the app from booting.
 /dashboard            /                     301
 /overview             /                     301
 /logs                 /research-notes       301
@@ -14,4 +17,3 @@
 /personnel            /fellows              301
 /personnel/*          /fellows/:splat       301
 /audit                /system-audit         301
-/*                    /404.html             404

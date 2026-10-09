@@ -13,8 +13,11 @@ const tree = (
   </StrictMode>
 );
 
-// Production HTML is prerendered, so we hydrate. In dev the root is empty.
-if (container.hasChildNodes()) {
+// Production HTML is prerendered, so hydrate its actual element markup. The
+// unbuilt Vite shell contains only the <!--app-html--> comment, which makes
+// hasChildNodes() true even though there is nothing to hydrate. Fall back to a
+// clean client render for that shell instead of triggering a hydration error.
+if (container.firstElementChild !== null) {
   hydrateRoot(container, tree);
 } else {
   createRoot(container).render(tree);

@@ -1,0 +1,5 @@
+# Cloudflare Pages must publish the prerendered Vite build, not this repository root.
+# The project name must match the existing Cloudflare Pages project.
+name = "zazie-institute-of-applied-anomalies"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-09"
