@@ -62,7 +62,7 @@ No URLs are manufactured for SEO. Priorities are conservative and monotonic (hub
 | Route / pattern | Excluded from sitemap | Reason |
 |-----------------|----------------------|--------|
 | `/search`, `/search?q=*` | `noindex: true` → `noindex,follow`; Disallow in `robots.txt`; not in sitemap | Search-result page, query-parameter variant, thin/duplicate, non-canonical. Correctly excluded. |
-| `/404` (+ `/* → /404.html` fallback) | `noindex: true`; Disallow | Error page, no indexable content. |
+| `/404` (copied to `dist/404.html` for host-native unknown-route handling) | `noindex: true`; Disallow | Error page, no indexable content. Cloudflare Pages and Netlify serve `404.html` for unmatched routes; there is intentionally no `/*` redirect because a catch-all can hijack requests for built assets. |
 | `/apps/void-oculus` | Static artifact with `index,follow`, self-canonical metadata, SoftwareApplication JSON-LD and a sitemap entry | The full-screen canvas is a distinct, crawlable instrument surface. The archive page at `/void-oculus` links to this clean URL; the physical `index.html` path is never linked. |
 | Legacy aliases: `/dashboard`, `/overview`, `/logs`, `/logs/:id`, `/lab-logs`, `/bench`, `/spectra`, `/oculus`, `/void-oculus/index.html`, `/synthesis`, `/legal`, `/infrastructure`, `/vault`, `/failures`, `/personnel`, `/personnel/:id`, `/audit`, `/index.html` | 301 permanently to canonical (in `vercel.json` + `_redirects` + `<Navigate replace>`) | Duplicate vocabulary from earlier site iterations; redirects are indexable only at target. Not in sitemap, not prerendered. |
 | Hash fragments `#prototypes` etc. (`LEGACY_TABS` in `App.tsx`) | client redirect → canonical | Non-crawlable fragment; canonical is path. |

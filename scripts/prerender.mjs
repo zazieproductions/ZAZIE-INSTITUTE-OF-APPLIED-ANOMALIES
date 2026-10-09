@@ -145,6 +145,28 @@ const geoFacts = {
 };
 writeFileSync(resolve(dist, '.geo-facts.json'), JSON.stringify(geoFacts, null, 2) + '\n');
 
+/* ---------- deployment safety guards ----------
+ * Cloudflare Pages treats a project with no top-level 404.html as an SPA and
+ * rewrites unmatched requests (including missing JS/CSS assets) to index.html.
+ * If that document is the unbuilt Vite shell, React never mounts and visitors
+ * see a blank/grey page. Catch both broken-output states during the build.
+ */
+const shippedHomePath = resolve(dist, 'index.html');
+if (!existsSync(shippedHomePath)) {
+  failures.push({ path: '/', err: 'built homepage is missing: dist/index.html' });
+} else {
+  const shippedHome = readFileSync(shippedHomePath, 'utf8');
+  if (shippedHome.includes('<!--app-head-->') || shippedHome.includes('<!--app-html-->')) {
+    failures.push({ path: '/', err: 'dist/index.html still contains unfilled Vite prerender placeholders' });
+  }
+  if (shippedHome.includes('/src/entry-client.tsx')) {
+    failures.push({ path: '/', err: 'dist/index.html still points at the uncompiled Vite client entry' });
+  }
+}
+if (!existsSync(resolve(dist, '404.html'))) {
+  failures.push({ path: '/404', err: 'dist/404.html is missing; Cloudflare Pages would use SPA fallback for every request' });
+}
+
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true });
 
 console.log(`[prerender] ${count} pages written, ${indexable.length} sitemap URLs, ${newest.length} feed items`);

@@ -39,6 +39,9 @@ Zazie Productions LLC. https://zazieinstitute.org/
 | `npm run audit:geo` | Post‑build GEO audit: canonical‑fact echo, llms.txt freshness, JSON‑LD health, contamination scan, bot/discovery checks (fails on errors) |
 | `npm run lint` | ESLint |
 | `node scripts/serve-dist.mjs` | Local static server mirroring production routing |
+| `npm test` | Deployment-safety and tab-branding regression tests |
+| `npm run deploy` | Build and publish `dist/` to the Cloudflare Pages project |
+| `npm run deploy:preview` | Build and publish a Cloudflare Pages preview deployment |
 
 ## Project layout
 
@@ -60,7 +63,7 @@ src/pages/*                One component per route; RecordPage renders all recor
 src/components/*           UI (PageHeader, Breadcrumbs, RecordDossier, instruments…)
 public/                    robots.txt, site.webmanifest, icons, /brand OG image, /fonts, /apps/void-oculus
 scripts/                   build-derived, build-brand-assets (sharp), prerender, audit-seo, serve-dist
-vercel.json, public/_redirects, public/_headers   Hosting config: redirects, caching, security headers
+vercel.json, wrangler.toml, public/_redirects, public/_headers   Hosting config: output directory, legacy redirects, caching, security headers
 ```
 
 ## URL scheme
@@ -100,3 +103,9 @@ Legacy paths (`/logs`, `/personnel`, `/vault`, `/bench`, …) redirect permanent
 3. Run `npm run audit:seo` and fix any reported errors before deploying.
 
 Brand assets (favicons, touch icons, OG image, manifest) are generated from the crest geometry by `scripts/build-brand-assets.mjs` (runs in `prebuild`).
+
+## Deployment
+
+This is a static, prerendered site. `npm run build` writes all pages, compiled assets, and the host-native `dist/404.html` into **`dist/`**. Deploy `dist/`, never the repository root. `wrangler.toml` pins the existing Cloudflare Pages project (`zazie-institute-of-applied-anomalies`) to that output directory; the build fails if prerender placeholders or the 404 document are missing. The wildcard 404 rewrite is intentionally absent from `public/_redirects` so requests for built JavaScript and CSS are never rewritten to HTML.
+
+For Cloudflare Pages Git deployments, use build command `npm run build` and build output directory `dist` (Node.js 22). After changing these settings, redeploy the production branch. Alternatively, run `npm run deploy` with Wrangler authenticated to Cloudflare; use `npm run deploy:preview` for a preview deployment. `npm test` checks these deployment invariants and the generated production HTML.
