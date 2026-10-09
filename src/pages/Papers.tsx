@@ -27,7 +27,7 @@ export const Papers: React.FC = () => {
           breadcrumbSchema(CRUMBS),
           collectionPageSchema({
             name: 'ZIAA Archival Papers - Monographs & Defensive Publications',
-            description: '108 archival PDFs: 8 Transactions monographs and 100 speculative patent disclosures, each with a persistent HTML dossier and a byte-identical PDF carrying matching title, author and subject metadata.',
+            description: '108 archival PDFs: 8 Transactions monographs and 100 speculative patent disclosures, each paired with a persistent HTML dossier and a PDF carrying the same title, authors, archive identifier and canonical URL.',
             path: '/papers',
             about: ['scholarly communication', 'open research', 'defensive publication'],
             items: [
@@ -39,7 +39,7 @@ export const Papers: React.FC = () => {
           datasetSchema({
             path: '/papers',
             name: 'ZIAA Papers Corpus - PDFs and Citation Graph',
-            description: 'The ZIAA papers corpus as a machine-readable dataset: 108 PDFs (8 Transactions monographs + 100 defensive disclosures) with Scholar-style citation metadata and matching HTML dossiers.',
+            description: 'The ZIAA papers corpus as a machine-readable dataset: 108 PDFs (8 Transactions monographs + 100 defensive disclosures) paired with canonical HTML dossiers and matching citation identifiers.',
             keywords: ['papers', 'PDF', 'citation', 'Scholar', 'defensive publication'],
             distributionUrl: 'https://zazieinstitute.org/papers/essay-2022-01.pdf'
           })
@@ -49,13 +49,13 @@ export const Papers: React.FC = () => {
       <PageHeader
         crumbs={CRUMBS}
         stamp="PAPERS & CITATION CORPUS"
-        kicker="108 ARCHIVAL PDFs - HTML DOSSIER + BYTE-IDENTICAL PDF FOR SCHOLAR"
+        kicker="108 ARCHIVAL PAPERS · CANONICAL HTML DOSSIERS + SCHOLAR-READY PDFS"
         title={<>Research Papers & Archival PDFs (108 Documents)</>}
-        lede="Every monograph and speculative patent in the ZIAA archive exists as a canonical HTML dossier (with JSON-LD and citation_* meta) and as a byte-identical PDF served as application/pdf at /papers/<id>.pdf. The PDF is the Scholar surface; the HTML is the human surface. Both share one canonical and one citation identifier."
+        lede="Every monograph and speculative patent has a canonical HTML dossier and a matching archival PDF. The dossier is the reader-facing record, with structured data and citation details; the PDF is prepared for scholarly indexing. Each pair uses the same canonical URL and stable archive identifier."
         aside={
           <div className="text-right text-xs font-mono text-zinc-300 bg-[#020509] px-3.5 py-2.5 border border-[#1b2636] rounded-md shrink-0">
             <div className="text-white font-bold">8 Monographs · 100 Patents</div>
-            <div className="text-[11px] text-zinc-400">PDFs at /papers/*.pdf · 200 as application/pdf</div>
+            <div className="text-[11px] text-zinc-400">Companion PDFs · direct downloads</div>
           </div>
         }
       />
@@ -65,7 +65,7 @@ export const Papers: React.FC = () => {
           <BookOpen className="w-4 h-4 text-[#dfb76c]" aria-hidden="true" />
           <h2 id="monograph-pdfs" className="text-sm font-bold text-white tracking-wide">Peer-reviewed monographs - Transactions (8) - HTML + PDF</h2>
         </div>
-        <p className="text-xs text-zinc-400 leading-relaxed">Peer-reviewed working papers (ISSN 2834-9180). Each entry links to the HTML dossier (with ScholarlyArticle + citation_* meta) and to the PDF that the meta’s <code className="px-1 py-0.5 bg-[#0c1420] border border-[#1b2738] rounded text-cyan-300">citation_pdf_url</code> points to. The PDF 200s as <code className="text-cyan-300">application/pdf</code> and is cacheable 7 days.</p>
+        <p className="text-xs text-zinc-400 leading-relaxed">Peer-reviewed working papers (ISSN 2834-9180). Each entry links to its HTML dossier, which carries scholarly article data and citation metadata, and to the companion PDF referenced from that dossier. The PDF is served as <code className="text-cyan-300">application/pdf</code> and is cacheable for seven days.</p>
         <ul className="space-y-2.5" aria-label="Monograph PDFs">
           {monographs.map(m => (
             <li key={m.id} className="bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/60 rounded-lg p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 group">
@@ -118,7 +118,7 @@ export const Papers: React.FC = () => {
 
       <section aria-labelledby="how-to-cite" className="bg-[#05080f] border border-[#1b2738] rounded-xl p-5 space-y-3">
         <h2 id="how-to-cite" className="text-sm font-bold text-white">How to cite - Scholar-compatible</h2>
-        <p className="text-xs text-zinc-300 leading-relaxed">Each HTML dossier emits Highwire Press meta: <code className="text-cyan-300">citation_title, citation_author, citation_publication_date, citation_journal_title, citation_volume, citation_pdf_url, citation_publisher, dc.identifier</code>. The <code className="text-cyan-300">citation_pdf_url</code> is the PDF listed above (200 as <code className="text-cyan-300">application/pdf</code>). The PDF’s own <code className="text-zinc-400">Info</code> dictionary mirrors the same title/author/subject. No meta is emitted on logs, prototypes or post-mortems - only on surfaces that actually have a PDF artifact.</p>
+        <p className="text-xs text-zinc-300 leading-relaxed">Each HTML dossier emits Highwire Press meta: <code className="text-cyan-300">citation_identifier, citation_title, citation_author, citation_publication_date, citation_journal_title, citation_volume, citation_pdf_url, citation_publisher, dc.identifier</code>. The <code className="text-cyan-300">citation_pdf_url</code> is the PDF listed above (200 as <code className="text-cyan-300">application/pdf</code>). The PDF’s own <code className="text-zinc-400">Info</code> dictionary carries the same title, authors, stable identifier and canonical URL. No meta is emitted on logs, prototypes or post-mortems - only on surfaces that actually have a PDF artifact.</p>
         <p className="text-[11px] font-mono text-zinc-500">BibTeX/APA/IEEE on each dossier’s “Cite” button generates the same identifier and canonical URL used in the meta. For monographs the journal is <em className="text-zinc-400">ZIAA Transactions on Applied Anomalies & Experimental Systems, ISSN 2834-9180</em>.</p>
       </section>
     </div>

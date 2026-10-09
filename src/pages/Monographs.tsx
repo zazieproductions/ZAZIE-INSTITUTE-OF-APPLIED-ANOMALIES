@@ -38,11 +38,11 @@ export const Monographs: React.FC = () => {
     const url = `${SITE_URL}${monographPath(m.id)}`;
 
     if (fmt === 'apa') {
-      return `${authors}. (${year}). ${m.title}. ${m.volume}, ZIAA Press. ${url}`;
+      return `${authors}. (${year}). ${m.title} [${m.id}]. ${m.volume}, ZIAA Press. ${url}`;
     } else if (fmt === 'ieee') {
-      return `${authors}, "${m.title}," ${m.volume}, Zazie Institute of Applied Anomalies, ${year}. [Online]. Available: ${url}`;
+      return `${authors}, "${m.title}," [${m.id}], ${m.volume}, Zazie Institute of Applied Anomalies, ${year}. [Online]. Available: ${url}`;
     } else if (fmt === 'chicago') {
-      return `${authors}. "${m.title}." ${m.volume} (ZIAA Archive, ${year}). ${url}.`;
+      return `${authors}. "${m.title}." ${m.volume} (${m.id}; ZIAA Archive, ${year}). ${url}.`;
     } else {
       // BibTeX
       const citeKey = `${m.author.split(' ').pop()?.toLowerCase() || 'ziaa'}${year}${m.id.replace(/[^0-9]/g, '')}`;
@@ -52,6 +52,7 @@ export const Monographs: React.FC = () => {
   journal = {${m.volume}},
   year = {${year}},
   publisher = {Zazie Institute of Applied Anomalies},
+  note = {Archive accession ${m.id}},
   url = {${SITE_URL}${monographPath(m.id)}}
 }`;
     }
@@ -109,6 +110,7 @@ export const Monographs: React.FC = () => {
           publishedTime={shown.date}
           keywords={['monograph', 'ZIAA', shown.volume]}
           citation={{
+            identifier: shown.id,
             title: shown.title,
             authors: [shown.author, ...(shown.coAuthors || [])],
             publicationDate: shown.date.replace(/-/g, '/'),
