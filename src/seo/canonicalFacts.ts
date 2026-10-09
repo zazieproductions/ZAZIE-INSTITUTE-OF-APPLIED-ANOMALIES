@@ -318,7 +318,7 @@ export function recordCitation(rec: {
   const authors = rec.authors.join(', ');
   const last = rec.authors[0]?.split(' ').pop()?.toLowerCase() ?? 'ziaa';
   if (style === 'apa') {
-    return `${authors}. (${rec.year}). ${rec.title}. ${rec.container ?? 'ZIAA Research Archive'}. Zazie Institute of Applied Anomalies. ${rec.url}`;
+    return `${authors}. (${rec.year}). ${rec.title} [${rec.identifier}]. ${rec.container ?? 'ZIAA Research Archive'}. Zazie Institute of Applied Anomalies. ${rec.url}`;
   }
   if (style === 'chicago') {
     return `${authors}. “${rec.title}.” ${rec.container ?? 'ZIAA Research Archive'} (${rec.identifier}). Zazie Institute of Applied Anomalies, ${rec.year}. ${rec.url}.`;

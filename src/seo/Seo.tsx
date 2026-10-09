@@ -21,6 +21,8 @@ export interface SeoProps {
   keywords?: string[];
   /** Google Scholar / Open Graph academic citation meta (Highwire Press tags). */
   citation?: {
+    /** Stable archive accession shared by the HTML dossier and its PDF. */
+    identifier: string;
     title?: string;
     authors?: string[];
     publicationDate?: string;
@@ -131,7 +133,8 @@ export const Seo: React.FC<SeoProps> = ({
       <meta name="twitter:image" content={img} />
       <meta name="twitter:image:alt" content={imageAlt} />
 
-      {/* Google Scholar / Highwire Press - citation hacking surface for academic indexes */}
+      {/* Google Scholar / Highwire Press - citation metadata for scholarly indexes. */}
+      {citation?.identifier && <meta name="citation_identifier" content={citation.identifier} />}
       {citation?.title && <meta name="citation_title" content={citation.title} />}
       {citation?.authors?.map(a => (
         <meta key={a} name="citation_author" content={a} />

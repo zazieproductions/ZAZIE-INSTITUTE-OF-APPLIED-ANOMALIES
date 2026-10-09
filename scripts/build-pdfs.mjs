@@ -13,15 +13,27 @@ const outDir = resolve(root, 'public/papers');
 mkdirSync(outDir, { recursive: true });
 
 const SITE = 'https://zazieinstitute.org';
+const buildDate = new Date();
+buildDate.setUTCHours(0, 0, 0, 0);
+
+// Pin older PDFs to their archive date for reproducible output; clamp future in-fiction dates to today.
+function pdfCreationDate(recordDate) {
+  const archived = new Date(`${recordDate.slice(0, 10)}T00:00:00.000Z`);
+  return archived > buildDate ? buildDate : archived;
+}
 
 function genMonographPDF(m) {
   const id = m.id.toLowerCase();
   const path = join(outDir, `${id}.pdf`);
+  const canonicalUrl = `${SITE}/monographs/${id}`;
   const doc = new PDFDocument({ size: 'A4', margins: { top: 64, bottom: 64, left: 64, right: 64 }, info: {
     Title: m.title,
     Author: [m.author, ...(m.coAuthors || [])].join(', '),
     Subject: m.abstract.slice(0, 200),
-    Keywords: 'ZIAA, applied anomalies, experimental audio, Zazie Kanwar-Torge, Zazie Productions LLC',
+    Keywords: `ZIAA, applied anomalies, experimental audio, Zazie Kanwar-Torge, Zazie Productions LLC, accession ${m.id}, canonical ${canonicalUrl}`,
+    Identifier: m.id,
+    CanonicalURL: canonicalUrl,
+    CreationDate: pdfCreationDate(m.date),
     Creator: 'ZIAA Archive / build-pdfs.mjs',
     Producer: 'PDFKit'
   }});
@@ -48,7 +60,7 @@ function genMonographPDF(m) {
   doc.font('Helvetica').fontSize(9).fillColor('#333')
     .text(`Author: ${m.author}${m.coAuthors?.length ? `  •  Co-authors: ${m.coAuthors.join(', ')}` : ''}`);
   doc.font('Helvetica').fontSize(8).fillColor('#666')
-    .text(`Published: ${m.date}   •   Accession: ${m.id}   •   Canonical: ${SITE}/monographs/${id}`);
+    .text(`Published: ${m.date}   •   Accession: ${m.id}   •   Canonical: ${canonicalUrl}`);
   doc.moveDown(1);
 
   // Abstract
@@ -88,7 +100,7 @@ function genMonographPDF(m) {
 
   // Footer - archival
   doc.font('Helvetica').fontSize(6).fillColor('#999')
-    .text(`Archival specimen - ZIAA Publications Division  •  ${SITE}/monographs/${id}  •  (c) 2021-2026 Zazie Productions LLC · Founded by Zazie Kanwar-Torge · All rights reserved  •  Cite as: ${m.author} et al., "${m.title}," ${m.volume}, ZIAA Press, ${m.date.slice(0,4)}.`, { align: 'center' });
+    .text(`Archival specimen - ZIAA Publications Division  •  ${canonicalUrl}  •  (c) 2021-2026 Zazie Productions LLC · Founded by Zazie Kanwar-Torge · All rights reserved  •  Cite as: ${m.author} et al., "${m.title}," ${m.volume}, ZIAA Press, ${m.date.slice(0,4)}.`, { align: 'center' });
 
   doc.end();
   return done.then(buf => {
@@ -100,11 +112,15 @@ function genMonographPDF(m) {
 function genPatentPDF(p) {
   const id = p.id.toLowerCase();
   const path = join(outDir, `${id}.pdf`);
+  const canonicalUrl = `${SITE}/patents/${id}`;
   const doc = new PDFDocument({ size: 'A4', margins: { top: 64, bottom: 64, left: 64, right: 64 }, info: {
     Title: p.title,
     Author: p.inventors.join(', '),
     Subject: p.abstract.slice(0, 200),
-    Keywords: 'ZIAA, defensive publication, Zazie Kanwar-Torge, Zazie Productions LLC',
+    Keywords: `ZIAA, defensive publication, Zazie Kanwar-Torge, Zazie Productions LLC, accession ${p.id}, canonical ${canonicalUrl}`,
+    Identifier: p.id,
+    CanonicalURL: canonicalUrl,
+    CreationDate: pdfCreationDate(p.filingDate),
     Creator: 'ZIAA Archive / build-pdfs.mjs',
   }});
   const chunks = [];
@@ -121,11 +137,11 @@ function genPatentPDF(p) {
   doc.font('Helvetica-Bold').fontSize(12).fillColor('#05080f').text(p.title);
   doc.moveDown(0.4);
   doc.font('Helvetica').fontSize(8).fillColor('#333')
-    .text(`Filing: ${p.filingDate}  •  Status: ${p.status.replace(/_/g,' ')}  •  Discipline: ${p.primaryDiscipline}`);
+    .text(`Accession: ${p.id}  •  Filing: ${p.filingDate}  •  Status: ${p.status.replace(/_/g,' ')}  •  Discipline: ${p.primaryDiscipline}`);
   doc.font('Helvetica').fontSize(8).fillColor('#333')
     .text(`Inventors: ${p.inventors.join(', ')}  •  Assignee: ${p.assignee}`);
   doc.font('Helvetica').fontSize(7).fillColor('#666')
-    .text(`Canonical: ${SITE}/patents/${id}`);
+    .text(`Canonical: ${canonicalUrl}`);
   doc.moveDown(0.8);
 
   doc.font('Helvetica-Bold').fontSize(8).fillColor('#8c6d31').text('ABSTRACT & METHOD DISCLOSURE');
@@ -151,7 +167,7 @@ function genPatentPDF(p) {
   doc.font('Helvetica-Oblique').fontSize(7).fillColor('#555').text(p.legalCounselMemo, { align: 'justify' });
   doc.moveDown(0.8);
   doc.font('Helvetica').fontSize(6).fillColor('#999')
-    .text(`Defensive publication - disclosed to prevent predatory encumbrance  •  ${SITE}/patents/${id}  •  (c) 2021-2026 Zazie Productions LLC · All rights reserved  •  See /legal/disclaimer`, { align: 'center' });
+    .text(`Defensive publication - disclosed to prevent predatory encumbrance  •  ${canonicalUrl}  •  (c) 2021-2026 Zazie Productions LLC · All rights reserved  •  See /legal/disclaimer`, { align: 'center' });
 
   doc.end();
   return done.then(buf => {

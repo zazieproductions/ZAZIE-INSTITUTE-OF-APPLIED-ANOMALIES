@@ -52,7 +52,7 @@ interface Meta {
   ogType: 'article' | 'profile' | 'website';
   published?: string;
   keywords: string[];
-  citation?: { title: string; authors: string[]; publicationDate: string; journalTitle?: string; pdfUrl?: string };
+  citation?: { identifier: string; title: string; authors: string[]; publicationDate: string; journalTitle?: string; pdfUrl?: string };
 }
 
 function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
@@ -94,19 +94,23 @@ function buildMeta(type: RecordType, rec: AnyRecord, path: string): Meta {
         ogType: 'article',
         published: p.filingDate,
         keywords: [p.primaryDiscipline, 'speculative patent', 'defensive disclosure', 'ZIAA'],
-        citation: { title: p.title, authors: p.inventors, publicationDate: p.filingDate.replace(/-/g, '/'), journalTitle: 'ZIAA Speculative Patent Disclosures', pdfUrl: `${SITE_URL}/papers/${p.id.toLowerCase()}.pdf` },
+        citation: { identifier: p.id, title: p.title, authors: p.inventors, publicationDate: p.filingDate.replace(/-/g, '/'), journalTitle: 'ZIAA Speculative Patent Disclosures', pdfUrl: `${SITE_URL}/papers/${p.id.toLowerCase()}.pdf` },
         jsonLd: creativeWorkSchema({
           type: 'CreativeWork',
           path,
           name: `${p.patentNumber} - ${p.title}`,
           description: p.abstract,
-          identifier: p.patentNumber,
+          identifier: p.id,
           datePublished: p.filingDate,
           authors: p.inventors,
           keywords: [p.primaryDiscipline],
           additionalType: 'https://schema.org/TechArticle',
           genre: 'Speculative patent disclosure (design fiction)',
-          extra: { copyrightHolder: { '@type': 'Organization', name: p.assignee }, creativeWorkStatus: humanize(p.status) }
+          extra: {
+            alternateName: p.patentNumber,
+            copyrightHolder: { '@type': 'Organization', name: p.assignee },
+            creativeWorkStatus: humanize(p.status)
+          }
         })
       };
     }

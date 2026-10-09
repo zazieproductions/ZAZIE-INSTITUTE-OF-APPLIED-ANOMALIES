@@ -167,7 +167,8 @@ export const CitePolicy: React.FC = () => {
         </div>
         <p className="text-xs text-zinc-400 leading-relaxed max-w-3xl">
           PDF-bearing surfaces (monographs and defensive disclosures) additionally expose Scholar-style citation
-          metadata - <code className="text-cyan-300 font-mono">citation_title</code>,{' '}
+          metadata - <code className="text-cyan-300 font-mono">citation_identifier</code>,{' '}
+          <code className="text-cyan-300 font-mono">citation_title</code>,{' '}
           <code className="text-cyan-300 font-mono">citation_author</code>,{' '}
           <code className="text-cyan-300 font-mono">citation_pdf_url</code> and{' '}
           <code className="text-cyan-300 font-mono">citation_issn</code> - alongside the record&apos;s JSON-LD.
