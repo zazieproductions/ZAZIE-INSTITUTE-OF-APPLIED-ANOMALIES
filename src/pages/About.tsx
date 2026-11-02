@@ -142,6 +142,17 @@ export const About: React.FC = () => (
           the Institute&apos;s founder and director. Its archive spans the {archiveStats.operationalYears}{' '}
           research cycle and is maintained as a permanent, citable record.
         </p>
+        <h2 className="text-lg font-bold text-white pt-2">Film scoring at Zazie Productions</h2>
+        <p>
+          Alongside the Institute&apos;s research archive, Zazie Kanwar-Torge&apos;s commercial composition practice
+          offers original scores for psychological horror, folk horror, slow-burn thrillers and experimental
+          art-house cinema. For filmmakers seeking a bespoke musical identity, explore{' '}
+          <a href="https://horror.zazieproductions.com/" className="text-[#dfb76c] underline underline-offset-4 hover:text-white">
+            horror film scoring by Zazie Productions
+          </a>{' '}
+          to hear selected cues, view the showreel and discuss a scoring commission. Film-scoring inquiries are
+          handled through that portfolio, separately from Institute research inquiries.
+        </p>
         <h2 className="text-lg font-bold text-white pt-2">Primary Fields</h2>
         <ul className="flex flex-wrap gap-2 font-mono text-[11px]">
           {ENTITY.fields.map(f => (
