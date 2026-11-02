@@ -40,3 +40,16 @@ test('production build ships rendered homepage markup and a top-level 404 page',
     assert.ok(existsSync(resolve(dist, asset.slice(1))), `missing deployed asset: ${asset}`);
   }
 });
+
+test('About page prerenders a contextual, followable film-scoring link', {
+  skip: !existsSync(resolve(dist, 'about/index.html'))
+}, () => {
+  const html = readFileSync(resolve(dist, 'about/index.html'), 'utf8');
+  const link = html.match(/<a\b[^>]*href="https:\/\/horror\.zazieproductions\.com\/"[^>]*>[^<]*<\/a>/g);
+  assert.equal(link?.length, 1, 'publish one descriptive portfolio link in the rendered page');
+  assert.match(link[0], />horror film scoring by Zazie Productions<\/a>/);
+  assert.doesNotMatch(link[0], /\brel="[^"]*\b(?:nofollow|sponsored|ugc)\b/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/zazieinstitute\.org\/about"/);
+  assert.match(html, /<meta name="robots" content="index, follow/);
+  assert.match(readFileSync(resolve(root, 'public/sitemap.xml'), 'utf8'), /<loc>https:\/\/zazieinstitute\.org\/about<\/loc>/);
+});
