@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Seo } from '../seo/Seo';
-import { ENTITY, FOUNDER, SITE_URL } from '../seo/site';
+import { ENTITY, FOUNDER, SITE_URL, FILM_SCORING_PORTFOLIO } from '../seo/site';
 import { FOUNDER_STATEMENT, TRADEMARK_NOTICE, STATUS_ANSWER } from '../seo/canonicalFacts';
 import { breadcrumbSchema, founderPersonSchema, organizationSchema, faqPageSchema } from '../seo/schema';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
 import { archiveStats } from '../data/archive';
-import { Award, Building2, Scale, Mail, ArrowRight } from 'lucide-react';
+import { Award, Building2, Scale, Mail, ArrowRight, Clapperboard } from 'lucide-react';
 
 const CRUMBS = [
   { name: 'ZIAA', path: '/' },
@@ -32,10 +32,24 @@ const FAQ = [
     a: 'All Institute names, marks, crests and instrument titles are common-law trademarks of Zazie Productions LLC, and all archive materials are copyright © 2021–2026 Zazie Productions LLC. The full mark schedule is published at /legal/trademarks.'
   },
   {
+    q: 'Does Zazie Kanwar-Torge compose music for film?',
+    a: 'Yes. Alongside the Institute, Zazie Kanwar-Torge runs the film-scoring practice of Zazie Productions LLC, composing original scores for psychological horror, folk horror and slow-burn thrillers. Selected cues, the showreel and commission inquiries are published at https://horror.zazieproductions.com/ - the portfolio is separate from Institute research inquiries.'
+  },
+  {
     q: 'How do I contact Zazie Kanwar-Torge or the Institute?',
     a: 'Research, partnership, licensing and verification inquiries are directed to the Institute’s administration at research@zazieinstitute.org. See the Institutional Status notice for the full organizational record.'
   }
 ];
+
+/** Render FAQ answers with any https URL turned into a followable link (the JSON-LD keeps the plain string). */
+const linkify = (text: string) =>
+  text.split(/(https:\/\/[^\s]+(?:[^\s.,;:-]))/g).map((part, i) =>
+    part.startsWith('https://') ? (
+      <a key={i} href={part} className="text-[#dfb76c] hover:underline">{part}</a>
+    ) : (
+      <React.Fragment key={i}>{part}</React.Fragment>
+    )
+  );
 
 export const Founder: React.FC = () => (
   <div className="space-y-6 font-serif">
@@ -120,6 +134,14 @@ export const Founder: React.FC = () => (
           <div><dt className="text-zinc-400">Founded</dt><dd className="text-zinc-100">{ENTITY.founded} - Mojave Basin, California</dd></div>
           <div><dt className="text-zinc-400">Research cycle</dt><dd className="text-zinc-100">{archiveStats.operationalYears}</dd></div>
           <div>
+            <dt className="text-zinc-400">Film scoring practice</dt>
+            <dd>
+              <a href={FILM_SCORING_PORTFOLIO.url} className="text-[#dfb76c] hover:underline inline-flex items-center gap-1">
+                <Clapperboard className="w-3 h-3" aria-hidden="true" />{FILM_SCORING_PORTFOLIO.displayUrl}
+              </a>
+            </dd>
+          </div>
+          <div>
             <dt className="text-zinc-400">Research inquiries</dt>
             <dd><a href={`mailto:${ENTITY.email}`} className="text-[#dfb76c] hover:underline inline-flex items-center gap-1"><Mail className="w-3 h-3" aria-hidden="true" />{ENTITY.email}</a></dd>
           </div>
@@ -136,7 +158,7 @@ export const Founder: React.FC = () => (
 
     <section aria-labelledby="founded-operates" className="bg-[#05080f] border border-[#213045] rounded-xl p-6 space-y-4">
       <h2 id="founded-operates" className="text-lg font-bold text-white">What {FOUNDER.name} founded and operates</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
         <li>
           <Link to="/" className="block h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group">
             <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c]">The Research Archive</div>
@@ -161,6 +183,12 @@ export const Founder: React.FC = () => (
             <p className="text-zinc-400 mt-1.5 leading-relaxed">Acoustic Bench, SPECTRA//LAB, VOID//OCULUS and SYNTHESIS//SIGNAL - no account required.</p>
           </Link>
         </li>
+        <li>
+          <a href={FILM_SCORING_PORTFOLIO.url} className="block h-full p-3.5 bg-[#03060a] border border-[#1b2738] hover:border-[#dfb76c]/70 rounded-lg group">
+            <div className="font-bold text-zinc-100 group-hover:text-[#dfb76c]">The Composition Practice</div>
+            <p className="text-zinc-400 mt-1.5 leading-relaxed">Original scores for psychological horror, folk horror and slow-burn thrillers, released through Zazie Productions.</p>
+          </a>
+        </li>
       </ul>
       <p className="text-[11px] text-zinc-500 font-mono border-t border-[#1b2636] pt-3">
         Canonical Person page: {SITE_URL}{FOUNDER.path} · Entity node: {SITE_URL}/founder#person
@@ -173,7 +201,7 @@ export const Founder: React.FC = () => (
         {FAQ.map(f => (
           <div key={f.q} className="border-l-2 border-[#dfb76c]/60 pl-4">
             <dt className="font-bold text-zinc-100">{f.q}</dt>
-            <dd className="text-zinc-300 leading-relaxed mt-1">{f.a}</dd>
+            <dd className="text-zinc-300 leading-relaxed mt-1">{linkify(f.a)}</dd>
           </div>
         ))}
       </dl>

@@ -114,6 +114,29 @@ export const ENTITY = {
   themeColor: '#030508'
 } as const;
 
+/**
+ * Sister property - the commercial film-scoring portfolio operated by the
+ * legal parent (Zazie Productions LLC) and founded by the same person as the
+ * Institute. Every contextual cross-property reference (homepage band, About
+ * section, Founder fact sheet, footer line, division hubs, legal contact
+ * blocks, llms.txt, README) derives from this constant so the URL and its
+ * framing never drift. Links are followable by design: this is a controlled,
+ * resolvable, same-owner property, and the archive is its highest-authority
+ * referrer. Keep anchor text varied across surfaces (see the playbook's
+ * anchor-diversity rule); the constant only pins URL + canonical framing.
+ */
+export const FILM_SCORING_PORTFOLIO = {
+  /** Canonical URL - always link exactly this (trailing slash included). */
+  url: 'https://horror.zazieproductions.com/',
+  /** Bare host, for URL-style anchors and monospace fact sheets. */
+  displayUrl: 'horror.zazieproductions.com',
+  /** Canonical one-line framing used in copy and machine-readable surfaces. */
+  description:
+    'The commercial composition practice of Zazie Productions LLC: original scores for psychological horror, folk horror, slow-burn thrillers and experimental art-house cinema, with selected cues, showreel and scoring commissions.',
+  /** Short label for cards, footers and fact sheets. */
+  label: 'Horror film scoring portfolio'
+} as const;
+
 // Canonical discipline vocabulary - single source for nav, sitemap, schema, internal anchoring.
 export const DISCIPLINE_SLUGS: Record<string, string> = {
   'Applied Anomalies': 'applied-anomalies',

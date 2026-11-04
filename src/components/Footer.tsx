@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Radio, Lock, Mail } from 'lucide-react';
+import { Shield, Radio, Lock, Mail, Clapperboard } from 'lucide-react';
 import { archiveStats } from '../data/archive';
 import { InstitutionalCrest } from './InstitutionalCrest';
-import { ENTITY, FOUNDER, COPYRIGHT_NOTICE } from '../seo/site';
+import { ENTITY, FOUNDER, COPYRIGHT_NOTICE, FILM_SCORING_PORTFOLIO } from '../seo/site';
 import { TRADEMARK_NOTICE } from '../seo/canonicalFacts';
 
 const ARCHIVE_LINKS = [
@@ -114,6 +114,14 @@ export const Footer: React.FC = () => {
             >
               <Radio className="w-3.5 h-3.5" aria-hidden="true" />
               llms.txt - machine-readable archive guide
+            </a>
+            <a
+              href={FILM_SCORING_PORTFOLIO.url}
+              className="mt-2 inline-flex items-center gap-1.5 text-zinc-300 hover:text-white font-mono text-[11px]"
+              title="Original scores for psychological horror, folk horror and slow-burn thrillers - the commercial composition practice of Zazie Productions LLC"
+            >
+              <Clapperboard className="w-3.5 h-3.5 text-[#dfb76c]" aria-hidden="true" />
+              Horror film scoring · {FILM_SCORING_PORTFOLIO.displayUrl}
             </a>
             <a
               href={`mailto:${ENTITY.email}`}

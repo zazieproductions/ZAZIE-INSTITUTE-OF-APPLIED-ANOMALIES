@@ -340,6 +340,12 @@ export const LegalDisclosuresPage: React.FC = () => {
                 <div>Directorate of Administration & Legal Affairs</div>
                 <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
                 <div className="text-cyan-400">Web: zazieinstitute.org · zazieproductions.com</div>
+                <div className="text-zinc-400">
+                  Film scoring portfolio:{' '}
+                  <a href="https://horror.zazieproductions.com/" className="text-cyan-400 hover:text-white underline underline-offset-2">
+                    horror.zazieproductions.com
+                  </a>
+                </div>
               </div>
             </div>
           </section>
@@ -846,6 +852,12 @@ export const LegalDisclosuresPage: React.FC = () => {
                 <div>Founder &amp; Owner: Zazie Kanwar-Torge</div>
                 <div className="text-zinc-400">Initiative: Zazie Institute of Applied Anomalies (ZIAA)</div>
                 <div className="text-cyan-400">Web: zazieinstitute.org · zazieproductions.com</div>
+                <div className="text-zinc-400">
+                  Film scoring portfolio:{' '}
+                  <a href="https://horror.zazieproductions.com/" className="text-cyan-400 hover:text-white underline underline-offset-2">
+                    horror.zazieproductions.com
+                  </a>
+                </div>
               </div>
             </div>
           </section>

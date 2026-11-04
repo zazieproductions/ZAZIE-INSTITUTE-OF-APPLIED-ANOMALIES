@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { archiveStats, featured, facilities, disciplines, recordPath, monographPath } from '../data/archive';
-import { disciplinePath } from '../seo/site';
+import { disciplinePath, FILM_SCORING_PORTFOLIO } from '../seo/site';
 import { NetworkGraph } from '../components/NetworkGraph';
 import { AcousticBench } from '../components/AcousticBench';
 import { InstitutionalCrest } from '../components/InstitutionalCrest';
@@ -10,7 +10,7 @@ import { ENTITY, FOUNDER } from '../seo/site';
 import { prestigeLead } from '../seo/canonicalFacts';
 import { founderPersonSchema, organizationSchema, websiteSchema } from '../seo/schema';
 import {
-  Activity, Cpu, FileText, AlertTriangle, ArrowRight, Layers, Radio, Zap, BookOpen, Users, MapPin
+  Activity, Cpu, FileText, AlertTriangle, ArrowRight, Layers, Radio, Zap, BookOpen, Users, MapPin, Clapperboard
 } from 'lucide-react';
 
 const DISCIPLINE_SUMMARIES: Record<string, string> = {
@@ -430,6 +430,33 @@ export const Dashboard: React.FC = () => {
         <Link to="/field-stations" className="inline-flex items-center gap-1 mt-3 text-xs font-mono text-[#dfb76c] hover:underline">
           All {archiveStats.totalFieldSites} field stations <ArrowRight className="w-3 h-3" aria-hidden="true" />
         </Link>
+      </section>
+
+      {/* Parent studio - the commercial composition practice of Zazie Productions LLC */}
+      <section
+        aria-labelledby="parent-studio-heading"
+        className="bg-[#05080f] border border-[#213045] rounded-xl p-5 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4"
+      >
+        <div className="space-y-1.5 max-w-3xl">
+          <div className="archival-stamp text-[9px] font-mono">PARENT STUDIO // COMMERCIAL PRACTICE</div>
+          <h2 id="parent-studio-heading" className="text-sm md:text-base font-bold text-white tracking-wide">
+            Beyond the archive - film scoring by Zazie Productions
+          </h2>
+          <p className="text-xs text-zinc-400 leading-relaxed">
+            The Institute is the research division of {ENTITY.legalParent}. Beyond the archive, the company&apos;s
+            composition practice writes original scores for independent genre cinema - psychological horror, folk
+            horror and slow-burn thrillers - applying the psychoacoustic, synthesis and spatial-audio research
+            documented here.
+          </p>
+        </div>
+        <a
+          href={FILM_SCORING_PORTFOLIO.url}
+          className="shrink-0 px-4 py-2 bg-[#0d0a04] hover:bg-[#161309] border border-[#8c6d31] text-[#dfb76c] hover:text-white font-bold text-xs rounded transition-all flex items-center gap-2"
+        >
+          <Clapperboard className="w-3.5 h-3.5" aria-hidden="true" />
+          <span>Horror film scoring portfolio</span>
+          <ArrowRight className="w-3 h-3" aria-hidden="true" />
+        </a>
       </section>
     </div>
   );
