@@ -6,6 +6,8 @@ Source for **https://zazieinstitute.org** - the public archive of the Zazie Inst
 
 > **Founder.** ZIAA was founded by **[Zazie Kanwar-Torge](https://zazieinstitute.org/founder)**, founder and owner of Zazie Productions LLC and founder and director of the Institute.
 
+> **Other work.** Beyond the Institute, Zazie Productions LLC operates a commercial composition practice: [horror film scoring by Zazie Productions](https://horror.zazieproductions.com/) - original scores for psychological horror, folk horror and slow-burn thrillers, with selected cues, showreel and scoring commissions. Film-scoring inquiries are handled through that portfolio; research inquiries through the Institute.
+
 > **Institutional status.** ZIAA is an independent research institute and open research archive; it is **not** an accredited university, a government agency or a standards body. See the [Institutional Status notice](https://zazieinstitute.org/legal/institutional-status).
 
 > **Trademarks.** Zazie Institute of Applied Anomalies™, ZIAA™, Zazie Productions™, Auditus Inauditi™ and all Institute instrument names are trademarks of Zazie Productions LLC. © 2021–2026 Zazie Productions LLC. All rights reserved. Full notice: [Trademarks & IP](https://zazieinstitute.org/legal/trademarks).

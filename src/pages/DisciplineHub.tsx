@@ -5,7 +5,7 @@ import { useCollection } from '../lib/useCollection';
 import { Seo } from '../seo/Seo';
 import { breadcrumbSchema, collectionPageSchema, researchProjectSchema, faqPageSchema } from '../seo/schema';
 import { PageHeader } from '../components/PageHeader';
-import { DISCIPLINE_SLUGS } from '../seo/site';
+import { DISCIPLINE_SLUGS, FILM_SCORING_PORTFOLIO, ENTITY } from '../seo/site';
 import { FlaskConical, Layers, FileText } from 'lucide-react';
 
 interface DisciplineMeta {
@@ -389,6 +389,14 @@ export const DisciplineHub: React.FC = () => {
             </ul>
           </div>
         </div>
+
+        <p className="text-xs text-zinc-400 leading-relaxed border-t border-[#1b2636] pt-3">
+          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#dfb76c]">Beyond the Institute</span>
+          {' '}- the parent studio applies this research in professional practice: {ENTITY.legalParent} composes{' '}
+          <a href={FILM_SCORING_PORTFOLIO.url} className="text-[#dfb76c] hover:underline">
+            original scores for horror cinema
+          </a>, drawing on the Institute&apos;s work in {meta.name}.
+        </p>
       </section>
 
       {/* Prototype cluster */}

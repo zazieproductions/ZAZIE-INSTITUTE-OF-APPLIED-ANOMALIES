@@ -2,7 +2,7 @@
  * schema.org JSON-LD builders. Every graph node references the same
  * Organization @id so search engines merge signals onto one entity.
  */
-import { ENTITY, SITE_URL, FOUNDER, FOUNDER_ID, absoluteUrl } from './site';
+import { ENTITY, SITE_URL, FOUNDER, FOUNDER_ID, FILM_SCORING_PORTFOLIO, absoluteUrl } from './site';
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -242,7 +242,9 @@ export const aboutPageSchema = (path: string) => ({
   name: `About the ${ENTITY.name}`,
   isPartOf: { '@id': WEBSITE_ID },
   about: { '@id': ORG_ID },
-  mainEntity: { '@id': ORG_ID }
+  mainEntity: { '@id': ORG_ID },
+  /** Sister property of the operating company - the film-scoring portfolio. */
+  relatedLink: FILM_SCORING_PORTFOLIO.url
 });
 
 /** DefinedTerm + DefinedTermSet for the institutional lexicon. */
